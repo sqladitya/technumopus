@@ -22,7 +22,7 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* Floating geometric shapes */}
+        {/* Floating geometric shapes with magenta theme */}
         <div className="absolute top-20 left-20 w-32 h-32 border border-white/20 rounded-lg animate-float opacity-60" />
         <div className="absolute top-40 right-40 w-24 h-24 border border-tech-primary/30 rounded-full animate-pulse-slow opacity-40" />
         <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-tech-pink/20 rounded-lg animate-spin-slow opacity-50" />
@@ -46,6 +46,16 @@ const HeroSection = () => {
           <circle cx="90" cy="10" r="2" fill="currentColor" />
           <circle cx="50" cy="50" r="2" fill="currentColor" />
         </svg>
+
+        {/* Logo-inspired magenta accents */}
+        <HeroAccents />
+
+        {/* Additional magenta glow effects */}
+        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-tech-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div
+          className="absolute bottom-1/3 left-1/3 w-64 h-32 bg-tech-secondary/15 rounded-full blur-2xl animate-float"
+          style={{ animationDelay: "3s" }}
+        />
       </div>
 
       {/* Main Hero Content */}
@@ -61,7 +71,7 @@ const HeroSection = () => {
             Innovative solutions for the modern enterprise
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-tech-primary hover:bg-tech-primary-light text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <button className="px-8 py-4 bg-tech-primary hover:bg-tech-primary-light text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-tech-primary/25">
               Explore Services
             </button>
             <button className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-tech-primary transition-all duration-300">
