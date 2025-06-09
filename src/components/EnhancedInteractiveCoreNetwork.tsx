@@ -185,29 +185,27 @@ const EnhancedInteractiveCoreNetwork = ({
         }}
         onMouseMove={handleMouseMove}
       >
-        {/* Connection Lines */}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={`connection-line-${i}`}
-            className={`connection-line ${connectionLinesActive ? "active" : ""}`}
-            style={{
-              position: "absolute",
-              width: "2px",
-              height: "800px",
-              background: connectionLinesActive
-                ? "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(59, 130, 246, 0.8), rgba(255, 255, 255, 0))"
-                : "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
-              transformOrigin: "50% 50%",
-              top: "50%",
-              left: "50%",
-              transform: `rotate(${22.5 + i * 45}deg)`,
-              animation: connectionLinesActive
-                ? "glow 2s infinite ease-in-out"
-                : "fade 5s infinite ease-in-out",
-              transition: "background 0.3s ease",
-            }}
-          />
-        ))}
+        {/* Vertical Line from Core to Bottom */}
+        <div
+          className={`vertical-line ${verticalLineActive ? "active" : ""}`}
+          style={{
+            position: "absolute",
+            width: "3px",
+            height: "100vh",
+            background: verticalLineActive
+              ? "linear-gradient(to bottom, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.3))"
+              : "linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1))",
+            top: "50%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            transformOrigin: "top center",
+            animation: verticalLineActive
+              ? "verticalGlow 3s infinite ease-in-out"
+              : "verticalFade 6s infinite ease-in-out",
+            transition: "background 0.3s ease",
+            zIndex: 1,
+          }}
+        />
 
         {/* Core */}
         <div
