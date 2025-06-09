@@ -10,6 +10,7 @@ import Careers from "./pages/Careers";
 import NewsInsights from "./pages/NewsInsights";
 import Contact from "./pages/Contact";
 import ViewAllServices from "./pages/ViewAllServices";
+import Partners from "./pages/Partners";
 import SAPConsulting from "./pages/services/SAPConsulting";
 import SAASDevelopment from "./pages/services/SAASDevelopment";
 import CloudArchitecture from "./pages/services/CloudArchitecture";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/news-insights" element={<NewsInsights />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/partners" element={<Partners />} />
           <Route path="/services" element={<ViewAllServices />} />
           <Route path="/services/sap-consulting" element={<SAPConsulting />} />
           <Route
