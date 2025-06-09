@@ -267,7 +267,7 @@ const Leadership = () => {
                 View Open Positions
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
               >
                 Contact Us
