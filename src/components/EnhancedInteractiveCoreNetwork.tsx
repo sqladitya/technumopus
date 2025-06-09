@@ -454,12 +454,12 @@ const EnhancedInteractiveCoreNetwork = ({
 
         @keyframes orbit {
           0% {
-            transform: rotate(0deg) translateX(var(--orbit-radius, 300px))
-              rotate(0deg);
+            transform: translate(-50%, -50%) rotate(0deg)
+              translateX(var(--orbit-radius, 300px));
           }
           100% {
-            transform: rotate(360deg) translateX(var(--orbit-radius, 300px))
-              rotate(-360deg);
+            transform: translate(-50%, -50%) rotate(360deg)
+              translateX(var(--orbit-radius, 300px));
           }
         }
 
