@@ -9,7 +9,6 @@ import {
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
-import SubtleCircuitBackground from "@/components/SubtleCircuitBackground";
 
 const Index = () => {
   return (
@@ -20,11 +19,9 @@ const Index = () => {
 
       {/* Services Section */}
       <SectionBackground variant="light">
-        <SubtleCircuitBackground variant="light">
-          <Section className="" id="services">
-            <ServicesSection />
-          </Section>
-        </SubtleCircuitBackground>
+        <Section className="" id="services">
+          <ServicesSection />
+        </Section>
       </SectionBackground>
 
       {/* About Section */}
@@ -36,11 +33,9 @@ const Index = () => {
 
       {/* Partners Section */}
       <SectionBackground variant="light">
-        <SubtleCircuitBackground variant="light">
-          <Section className="" id="partners">
-            <PartnersSection />
-          </Section>
-        </SubtleCircuitBackground>
+        <Section className="" id="partners">
+          <PartnersSection />
+        </Section>
       </SectionBackground>
 
       {/* Why Choose Us Section */}

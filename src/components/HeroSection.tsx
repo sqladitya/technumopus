@@ -1,21 +1,26 @@
-import ProfessionalBackground from "./ProfessionalBackground";
 import CircuitBoardAnimation from "./CircuitBoardAnimation";
 
 const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+      className="relative min-h-screen overflow-hidden bg-fixed bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+      style={{
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
-      {/* Professional subtle background overlay */}
+      {/* Fixed Professional Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/90 via-purple-600/85 to-slate-900/95" />
 
-      {/* Circuit Board Animation */}
+      {/* Circuit Board Animation - Only in Hero Section */}
       <CircuitBoardAnimation
-        particleColor="rgba(255, 255, 255, 0.6)"
-        lineColor="rgba(255, 255, 255, 0.1)"
-        numParticles={60}
-        className="opacity-40"
+        particleColor="rgba(255, 255, 255, 0.7)"
+        lineColor="rgba(255, 255, 255, 0.15)"
+        numParticles={80}
+        className="opacity-60"
       />
 
       {/* Very subtle pattern overlay */}
@@ -32,11 +37,10 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Minimal floating elements */}
+      {/* Minimal floating elements for depth */}
       <div className="absolute inset-0 z-5">
-        {/* Single subtle accent */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-tech-primary/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-white/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-tech-primary/8 rounded-full blur-2xl" />
       </div>
 
       {/* Main Hero Content */}
