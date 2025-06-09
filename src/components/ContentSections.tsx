@@ -143,10 +143,11 @@ export const AboutSection = () => (
         Innovation Meets Excellence
       </h2>
       <p className="text-lg text-tech-text-medium mb-6 leading-relaxed">
-        At Technum Opus, we believe in a client-first approach that puts your
-        success at the center of everything we do. Our team combines deep
-        technical expertise with innovative thinking to deliver solutions that
-        drive real business value.
+        At Technum <span className="text-tech-primary font-semibold">Opus</span>
+        , we believe in a client-first approach that puts your success at the
+        center of everything we do. Our team combines deep technical expertise
+        with innovative thinking to deliver solutions that drive real business
+        value.
       </p>
       <p className="text-lg text-tech-text-medium mb-8 leading-relaxed">
         With years of experience across enterprise technologies, cloud

@@ -42,7 +42,7 @@ const Index = () => {
         <Section className="">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-              Why Choose Technum Opus
+              Why Choose Technum <span className="text-tech-primary">Opus</span>
             </h2>
             <p className="text-lg sm:text-xl text-tech-text-medium max-w-3xl mx-auto px-4">
               We combine technical excellence with business insight to deliver

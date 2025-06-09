@@ -222,7 +222,10 @@ const Footer = () => {
 
         {/* Bottom Border */}
         <div className="border-t border-tech-charcoal/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm">© 2024 Technum Opus. All rights reserved.</p>
+          <p className="text-sm">
+            © 2024 Technum <span className="text-tech-primary">Opus</span>. All
+            rights reserved.
+          </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
