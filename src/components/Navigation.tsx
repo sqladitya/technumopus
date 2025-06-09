@@ -501,8 +501,8 @@ const Navigation = () => {
                       ))}
                     </div>
                     <div className="border-t border-gray-100 mt-3 pt-3">
-                      <a
-                        href="#services"
+                      <Link
+                        to="/services"
                         onClick={closeAllDropdowns}
                         className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
                       >
@@ -520,7 +520,7 @@ const Navigation = () => {
                             d="M17 8l4 4m0 0l-4 4m4-4H3"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
