@@ -382,7 +382,7 @@ const Navigation = () => {
               <a href="/" className="flex items-center gap-2 sm:gap-3">
                 <Logo />
                 <span className="text-lg sm:text-xl font-bold text-tech-text-dark">
-                  Technum Opus
+                  Technum <span className="text-tech-primary">Opus</span>
                 </span>
               </a>
             </div>
