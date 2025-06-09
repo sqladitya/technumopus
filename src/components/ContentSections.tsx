@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import PartnersLogos from "./PartnersLogos";
 
 interface SectionProps {
   children: React.ReactNode;
@@ -26,7 +27,7 @@ export const ServicesSection = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {/* SAP Consulting */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
         <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -52,7 +53,7 @@ export const ServicesSection = () => (
       </div>
 
       {/* SAAS Platform Development */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
         <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -78,7 +79,7 @@ export const ServicesSection = () => (
       </div>
 
       {/* Cloud Architecture */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
         <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -104,7 +105,7 @@ export const ServicesSection = () => (
       </div>
 
       {/* Hardware Infrastructure Solutions */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
         <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -132,55 +133,7 @@ export const ServicesSection = () => (
   </div>
 );
 
-export const PartnersSection = () => (
-  <div>
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-        Our Partners
-      </h2>
-      <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-        We collaborate with industry leaders to deliver cutting-edge solutions
-      </p>
-    </div>
-
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-      {/* Partner logos - using placeholder divs with company names */}
-      {[
-        { name: "AWS", color: "bg-orange-500" },
-        { name: "Microsoft Azure", color: "bg-blue-600" },
-        { name: "Google Cloud", color: "bg-blue-500" },
-        { name: "Cisco", color: "bg-blue-700" },
-        { name: "Zebra", color: "bg-black" },
-        { name: "Dell", color: "bg-blue-800" },
-        { name: "HP", color: "bg-blue-600" },
-        { name: "Lenovo", color: "bg-red-600" },
-        { name: "Palo Alto", color: "bg-orange-600" },
-        { name: "SentinelOne", color: "bg-purple-600" },
-      ].map((partner, index) => (
-        <div
-          key={partner.name}
-          className="group bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105"
-        >
-          <div
-            className={cn(
-              "w-16 h-16 rounded-lg mx-auto mb-3 flex items-center justify-center text-white font-bold text-sm transition-all duration-300",
-              partner.color,
-              "group-hover:scale-110",
-            )}
-          >
-            {partner.name
-              .split(" ")
-              .map((word) => word[0])
-              .join("")}
-          </div>
-          <p className="text-center text-sm font-medium text-tech-text-medium group-hover:text-tech-text-dark transition-colors duration-300">
-            {partner.name}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-);
+export const PartnersSection = () => <PartnersLogos />;
 
 export const AboutSection = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
