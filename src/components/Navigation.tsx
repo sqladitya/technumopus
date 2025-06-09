@@ -858,31 +858,41 @@ const Navigation = () => {
 
               {/* Mobile Partners Section */}
               <div className={cn("rounded-lg", isPartnersOpen && "bg-gray-50")}>
-                <button
-                  onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                  className={cn(
-                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
-                    isPartnersOpen && "text-tech-primary bg-gray-50",
-                  )}
-                >
-                  Partners
-                  <svg
+                <div className="flex items-center justify-between">
+                  <a
+                    href="/partners"
+                    onClick={closeMobileMenu}
                     className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      isPartnersOpen ? "rotate-180" : "",
+                      "flex-1 text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
                     )}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
+                    Partners
+                  </a>
+                  <button
+                    onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                    className={cn(
+                      "p-2 text-tech-text-dark hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-50",
+                      isPartnersOpen && "text-tech-primary bg-gray-50",
+                    )}
+                  >
+                    <svg
+                      className={cn(
+                        "w-4 h-4 transition-transform duration-200",
+                        isPartnersOpen ? "rotate-180" : "",
+                      )}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                </div>
                 <div
                   className={cn(
                     "mt-2 ml-3 space-y-2 transition-all duration-300",
