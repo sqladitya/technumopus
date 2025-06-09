@@ -2,10 +2,11 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import {
   Section,
-  FourColumnGrid,
-  ThreeColumnGrid,
-  TwoColumnGrid,
+  ServicesSection,
+  PartnersSection,
+  AboutSection,
 } from "@/components/ContentSections";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,175 +16,113 @@ const Index = () => {
 
       <HeroSection />
 
-      {/* Services Section - White background with 4-column grid */}
+      {/* Services Section */}
       <Section className="bg-white" id="services">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-technum-text-dark mb-4">
-            What We Offer
+        <ServicesSection />
+      </Section>
+
+      {/* About Section */}
+      <Section className="bg-tech-bg-light" id="about">
+        <AboutSection />
+      </Section>
+
+      {/* Partners Section */}
+      <Section className="bg-white" id="partners">
+        <PartnersSection />
+      </Section>
+
+      {/* Why Choose Us Section */}
+      <Section className="bg-tech-bg-light">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+            Why Choose Technum Opus
           </h2>
-          <p className="text-xl text-technum-text-medium max-w-2xl mx-auto">
-            Comprehensive technology solutions designed to accelerate your
-            business growth
+          <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+            We combine technical excellence with business insight to deliver
+            transformative results
           </p>
         </div>
-        <FourColumnGrid />
-      </Section>
 
-      {/* About Section - Light purple background with 3-column grid */}
-      <Section className="bg-technum-bg-light-purple" id="about">
-        <ThreeColumnGrid />
-      </Section>
-
-      {/* Features Section - White background with 2-column and 4-column grids */}
-      <Section className="bg-white">
-        <TwoColumnGrid />
-        <div className="mt-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-technum-text-dark mb-4">
-              Our Process
-            </h2>
-            <p className="text-xl text-technum-text-medium max-w-2xl mx-auto">
-              A streamlined approach to delivering exceptional results
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+              Innovation First
+            </h3>
+            <p className="text-tech-text-medium">
+              We stay ahead of technology trends to deliver cutting-edge
+              solutions that give you a competitive advantage.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-gradient rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-                Discovery
-              </h3>
-              <p className="text-technum-text-medium">
-                Understanding your vision and requirements
-              </p>
+
+          <div className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
             </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-gradient rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-                Planning
-              </h3>
-              <p className="text-technum-text-medium">
-                Creating detailed roadmaps and strategies
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-gradient rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-                Development
-              </h3>
-              <p className="text-technum-text-medium">
-                Building solutions with cutting-edge technology
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-gradient rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">4</span>
-              </div>
-              <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-                Delivery
-              </h3>
-              <p className="text-technum-text-medium">
-                Launching and supporting your success
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Partners Section - Light purple background with 2-column grid */}
-      <Section className="bg-technum-bg-light-purple" id="partners">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-technum-text-dark mb-4">
-            Trusted by Industry Leaders
-          </h2>
-          <p className="text-xl text-technum-text-medium max-w-2xl mx-auto mb-12">
-            We partner with forward-thinking companies to drive innovation and
-            achieve remarkable results
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-2xl font-bold text-technum-text-dark mb-6">
-              Success Stories
+            <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+              Expert Team
             </h3>
-            <div className="space-y-6">
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">A</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-technum-text-dark mb-2">
-                      Acme Corporation
-                    </h4>
-                    <p className="text-technum-text-medium text-sm">
-                      "Technum Opus transformed our digital presence, resulting
-                      in a 300% increase in online engagement."
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">B</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-technum-text-dark mb-2">
-                      Beta Industries
-                    </h4>
-                    <p className="text-technum-text-medium text-sm">
-                      "Their innovative approach to mobile development exceeded
-                      our expectations and delivered exceptional ROI."
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="text-tech-text-medium">
+              Our certified professionals bring deep expertise across enterprise
+              technologies and emerging platforms.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="text-3xl font-bold text-technum-purple mb-2">
-                150+
-              </div>
-              <div className="text-technum-text-medium">Projects Completed</div>
+          <div className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
             </div>
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="text-3xl font-bold text-technum-purple mb-2">
-                98%
-              </div>
-              <div className="text-technum-text-medium">
-                Client Satisfaction
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="text-3xl font-bold text-technum-purple mb-2">
-                50+
-              </div>
-              <div className="text-technum-text-medium">
-                Expert Team Members
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="text-3xl font-bold text-technum-purple mb-2">
-                24/7
-              </div>
-              <div className="text-technum-text-medium">Support Available</div>
-            </div>
+            <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+              Proven Results
+            </h3>
+            <p className="text-tech-text-medium">
+              Our track record speaks for itself - 500+ successful projects and
+              99% client satisfaction rate.
+            </p>
           </div>
         </div>
       </Section>
+
+      {/* Contact Form Section */}
+      <ContactForm />
 
       <Footer />
     </div>

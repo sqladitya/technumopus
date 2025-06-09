@@ -19,74 +19,50 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Notification Area */}
-      <div className="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-md rounded-lg px-4 py-2 shadow-lg">
-        <p className="text-sm text-technum-text-medium">Latest Updates</p>
-      </div>
-
       {/* Navigation Bar */}
       <nav
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
           isScrolled
-            ? "bg-white/90 backdrop-blur-md shadow-sm"
-            : "bg-white/70 backdrop-blur-sm",
+            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+            : "bg-white/90 backdrop-blur-sm",
         )}
       >
-        <div className="max-w-[1280px] mx-auto px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Brand Logo */}
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-purple-gradient rounded-lg flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-tech-gradient rounded-lg flex items-center justify-center">
                 <span className="text-white text-sm font-bold">TO</span>
               </div>
-              <span className="text-lg font-semibold text-technum-text-dark">
+              <span className="text-xl font-bold text-tech-text-dark">
                 Technum Opus
               </span>
             </div>
 
-            {/* Navigation Menu */}
+            {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#home"
-                className="text-technum-text-medium hover:text-technum-purple transition-colors font-medium"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                className="text-technum-text-medium hover:text-technum-purple transition-colors font-medium"
-              >
-                About Us
-              </a>
-              <a
-                href="#services"
-                className="text-technum-text-medium hover:text-technum-purple transition-colors font-medium"
-              >
-                Services
-              </a>
-              <a
-                href="#partners"
-                className="text-technum-text-medium hover:text-technum-purple transition-colors font-medium"
-              >
-                Partners
-              </a>
-              <a
-                href="#careers"
-                className="text-technum-text-medium hover:text-technum-purple transition-colors font-medium"
-              >
-                Careers
-              </a>
-              <a
-                href="#contact"
-                className="text-technum-text-medium hover:text-technum-purple transition-colors font-medium"
-              >
-                Contact
-              </a>
+              {[
+                { name: "Home", href: "#home" },
+                { name: "About Us", href: "#about" },
+                { name: "Services", href: "#services" },
+                { name: "Partners", href: "#partners" },
+                { name: "Careers", href: "#careers" },
+                { name: "Contact", href: "#contact" },
+              ].map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="relative text-tech-text-medium hover:text-tech-deep-blue font-medium transition-colors duration-300 group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2">
+            <button className="md:hidden p-2 text-tech-text-medium hover:text-tech-deep-blue">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -108,7 +84,7 @@ const Navigation = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-purple-gradient rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-tech-gradient rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
       >
         <svg
           className="w-6 h-6 text-white"

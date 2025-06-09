@@ -62,15 +62,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Technum Opus brand colors
-        technum: {
-          purple: "rgb(147, 51, 234)",
-          "purple-light": "rgb(192, 132, 252)",
-          "text-dark": "rgb(30, 41, 59)",
-          "text-medium": "rgb(71, 85, 105)",
-          "text-light": "rgb(203, 213, 225)",
-          "bg-light-purple": "rgb(250, 245, 255)",
-          "footer-dark": "rgb(15, 23, 42)",
+        // Tech-oriented brand colors
+        tech: {
+          "deep-blue": "#1e3a8a",
+          "deep-blue-dark": "#1e40af",
+          charcoal: "#374151",
+          "charcoal-dark": "#1f2937",
+          green: "#10b981",
+          "green-light": "#34d399",
+          teal: "#14b8a6",
+          "teal-light": "#5eead4",
+          "text-dark": "#111827",
+          "text-medium": "#6b7280",
+          "text-light": "#9ca3af",
+          "bg-light": "#f8fafc",
+          "bg-dark": "#0f172a",
+          orange: "#f97316",
+          "orange-hover": "#ea580c",
         },
       },
       borderRadius: {
@@ -80,9 +88,10 @@ export default {
       },
       backgroundImage: {
         "hero-gradient":
-          "linear-gradient(to right bottom, rgb(248, 250, 252), rgb(250, 245, 255), rgb(243, 232, 255))",
-        "purple-gradient":
-          "linear-gradient(to right, rgb(147, 51, 234), rgb(192, 132, 252))",
+          "linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #14b8a6 100%)",
+        "tech-gradient": "linear-gradient(to right, #1e3a8a, #14b8a6)",
+        "green-gradient": "linear-gradient(to right, #10b981, #34d399)",
+        "card-gradient": "linear-gradient(145deg, #ffffff 0%, #f8fafc 100%)",
       },
       blur: {
         "4xl": "72px",

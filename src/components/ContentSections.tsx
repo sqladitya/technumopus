@@ -8,122 +8,52 @@ interface SectionProps {
 
 export const Section = ({ children, className, id }: SectionProps) => (
   <section id={id} className={cn("py-20", className)}>
-    <div className="max-w-[1280px] mx-auto px-8">{children}</div>
+    <div className="max-w-7xl mx-auto px-6 lg:px-8">{children}</div>
   </section>
 );
 
-export const FourColumnGrid = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-      <div className="w-12 h-12 bg-purple-gradient rounded-lg mb-4 flex items-center justify-center">
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-      </div>
-      <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-        Fast Performance
-      </h3>
-      <p className="text-technum-text-medium">
-        Lightning-fast solutions that deliver exceptional user experiences.
+export const ServicesSection = () => (
+  <div>
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+        Our Services
+      </h2>
+      <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+        Comprehensive technology solutions designed to accelerate your digital
+        transformation journey
       </p>
     </div>
 
-    <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-      <div className="w-12 h-12 bg-purple-gradient rounded-lg mb-4 flex items-center justify-center">
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* SAP Consulting */}
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg
+            className="w-8 h-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+          SAP Consulting
+        </h3>
+        <p className="text-tech-text-medium">
+          Enterprise-grade SAP implementations, optimizations, and support to
+          streamline your business processes.
+        </p>
       </div>
-      <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-        Reliable Security
-      </h3>
-      <p className="text-technum-text-medium">
-        Enterprise-grade security measures to protect your valuable data.
-      </p>
-    </div>
 
-    <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-      <div className="w-12 h-12 bg-purple-gradient rounded-lg mb-4 flex items-center justify-center">
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-          />
-        </svg>
-      </div>
-      <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-        User-Focused
-      </h3>
-      <p className="text-technum-text-medium">
-        Intuitive designs that prioritize user experience and satisfaction.
-      </p>
-    </div>
-
-    <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-      <div className="w-12 h-12 bg-purple-gradient rounded-lg mb-4 flex items-center justify-center">
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
-          />
-        </svg>
-      </div>
-      <h3 className="text-lg font-semibold text-technum-text-dark mb-2">
-        Scalable Solutions
-      </h3>
-      <p className="text-technum-text-medium">
-        Future-proof architecture that grows with your business needs.
-      </p>
-    </div>
-  </div>
-);
-
-export const ThreeColumnGrid = () => (
-  <div className="text-center mb-12">
-    <h2 className="text-3xl md:text-4xl font-bold text-technum-text-dark mb-4">
-      Our Services
-    </h2>
-    <p className="text-xl text-technum-text-medium max-w-2xl mx-auto mb-12">
-      Comprehensive technology solutions tailored to your business requirements
-    </p>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div className="bg-white rounded-xl shadow-sm p-8 hover:shadow-md transition-shadow duration-300">
-        <div className="w-16 h-16 bg-purple-gradient rounded-xl mb-6 mx-auto flex items-center justify-center">
+      {/* SAAS Platform Development */}
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -138,41 +68,18 @@ export const ThreeColumnGrid = () => (
             />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-technum-text-dark mb-4">
-          Web Development
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+          SAAS Platform Development
         </h3>
-        <p className="text-technum-text-medium">
-          Custom web applications built with modern frameworks and best
-          practices.
+        <p className="text-tech-text-medium">
+          Scalable software-as-a-service solutions built with modern frameworks
+          and cloud-native technologies.
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm p-8 hover:shadow-md transition-shadow duration-300">
-        <div className="w-16 h-16 bg-purple-gradient rounded-xl mb-6 mx-auto flex items-center justify-center">
-          <svg
-            className="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-            />
-          </svg>
-        </div>
-        <h3 className="text-xl font-semibold text-technum-text-dark mb-4">
-          Mobile Apps
-        </h3>
-        <p className="text-technum-text-medium">
-          Native and cross-platform mobile applications for iOS and Android.
-        </p>
-      </div>
-
-      <div className="bg-white rounded-xl shadow-sm p-8 hover:shadow-md transition-shadow duration-300">
-        <div className="w-16 h-16 bg-purple-gradient rounded-xl mb-6 mx-auto flex items-center justify-center">
+      {/* Cloud Architecture */}
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -187,117 +94,126 @@ export const ThreeColumnGrid = () => (
             />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-technum-text-dark mb-4">
-          Cloud Solutions
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+          Cloud Architecture
         </h3>
-        <p className="text-technum-text-medium">
-          Scalable cloud infrastructure and deployment strategies for your
-          applications.
+        <p className="text-tech-text-medium">
+          Robust, secure, and scalable cloud infrastructure design and
+          implementation for maximum performance.
+        </p>
+      </div>
+
+      {/* Hardware Infrastructure Solutions */}
+      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg
+            className="w-8 h-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+            />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+          Hardware Infrastructure Solutions
+        </h3>
+        <p className="text-tech-text-medium">
+          Complete hardware solutions from procurement to deployment, ensuring
+          optimal performance and reliability.
         </p>
       </div>
     </div>
   </div>
 );
 
-export const TwoColumnGrid = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 className="text-3xl md:text-4xl font-bold text-technum-text-dark mb-6">
-        Why Choose Technum Opus
+export const PartnersSection = () => (
+  <div>
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+        Our Partners
       </h2>
-      <p className="text-lg text-technum-text-medium mb-6">
-        With years of experience in the technology industry, we bring expertise,
-        innovation, and dedication to every project we undertake.
+      <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+        We collaborate with industry leaders to deliver cutting-edge solutions
       </p>
-      <div className="space-y-4">
-        <div className="flex items-start gap-3">
-          <div className="w-6 h-6 bg-purple-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg
-              className="w-3 h-3 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={3}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-          <div>
-            <h4 className="font-semibold text-technum-text-dark">
-              Expert Team
-            </h4>
-            <p className="text-technum-text-medium">
-              Highly skilled professionals with proven track records
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <div className="w-6 h-6 bg-purple-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg
-              className="w-3 h-3 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={3}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-          <div>
-            <h4 className="font-semibold text-technum-text-dark">
-              Quality Assurance
-            </h4>
-            <p className="text-technum-text-medium">
-              Rigorous testing and quality control processes
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <div className="w-6 h-6 bg-purple-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg
-              className="w-3 h-3 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={3}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-          <div>
-            <h4 className="font-semibold text-technum-text-dark">
-              24/7 Support
-            </h4>
-            <p className="text-technum-text-medium">
-              Round-the-clock assistance and maintenance
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <div className="relative">
-      <div className="aspect-square bg-hero-gradient rounded-2xl p-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-purple-gradient opacity-10 rounded-2xl" />
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+      {/* Partner logos - using placeholder divs with company names */}
+      {[
+        { name: "AWS", color: "bg-orange-500" },
+        { name: "Microsoft Azure", color: "bg-blue-600" },
+        { name: "Google Cloud", color: "bg-blue-500" },
+        { name: "Cisco", color: "bg-blue-700" },
+        { name: "Zebra", color: "bg-black" },
+        { name: "Dell", color: "bg-blue-800" },
+        { name: "HP", color: "bg-blue-600" },
+        { name: "Lenovo", color: "bg-red-600" },
+        { name: "Palo Alto", color: "bg-orange-600" },
+        { name: "SentinelOne", color: "bg-purple-600" },
+      ].map((partner, index) => (
+        <div
+          key={partner.name}
+          className="group bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105"
+        >
+          <div
+            className={cn(
+              "w-16 h-16 rounded-lg mx-auto mb-3 flex items-center justify-center text-white font-bold text-sm transition-all duration-300",
+              partner.color,
+              "group-hover:scale-110",
+            )}
+          >
+            {partner.name
+              .split(" ")
+              .map((word) => word[0])
+              .join("")}
+          </div>
+          <p className="text-center text-sm font-medium text-tech-text-medium group-hover:text-tech-text-dark transition-colors duration-300">
+            {partner.name}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+export const AboutSection = () => (
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    {/* Text Content */}
+    <div>
+      <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-6">
+        Innovation Meets Excellence
+      </h2>
+      <p className="text-lg text-tech-text-medium mb-6 leading-relaxed">
+        At Technum Opus, we believe in a client-first approach that puts your
+        success at the center of everything we do. Our team combines deep
+        technical expertise with innovative thinking to deliver solutions that
+        drive real business value.
+      </p>
+      <p className="text-lg text-tech-text-medium mb-8 leading-relaxed">
+        With years of experience across enterprise technologies, cloud
+        platforms, and emerging digital trends, we're uniquely positioned to
+        guide your digital transformation journey from strategy to
+        implementation.
+      </p>
+
+      {/* Key Points */}
+      <div className="space-y-4">
+        {[
+          "Client-first approach with personalized solutions",
+          "Deep technical expertise across all major platforms",
+          "Proven track record of successful implementations",
+          "Continuous innovation and technology leadership",
+        ].map((point, index) => (
+          <div key={index} className="flex items-start gap-3">
+            <div className="w-6 h-6 bg-tech-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
               <svg
-                className="w-12 h-12 text-technum-purple"
+                className="w-3 h-3 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -305,17 +221,66 @@ export const TwoColumnGrid = () => (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  strokeWidth={3}
+                  d="M5 13l4 4L19 7"
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-technum-text-dark mb-2">
-              Innovation First
-            </h3>
-            <p className="text-technum-text-medium">
-              Cutting-edge solutions for tomorrow's challenges
-            </p>
+            <p className="text-tech-text-medium">{point}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Image/Visual Content */}
+    <div className="relative">
+      <div className="bg-card-gradient rounded-2xl p-8 shadow-xl">
+        <div className="grid grid-cols-2 gap-6">
+          {/* Stats Cards */}
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+            <div className="text-3xl font-bold text-tech-deep-blue mb-2">
+              500+
+            </div>
+            <div className="text-tech-text-medium text-sm">
+              Projects Delivered
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+            <div className="text-3xl font-bold text-tech-green mb-2">99%</div>
+            <div className="text-tech-text-medium text-sm">
+              Client Satisfaction
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+            <div className="text-3xl font-bold text-tech-teal mb-2">15+</div>
+            <div className="text-tech-text-medium text-sm">
+              Years Experience
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+            <div className="text-3xl font-bold text-tech-deep-blue mb-2">
+              24/7
+            </div>
+            <div className="text-tech-text-medium text-sm">Support</div>
+          </div>
+        </div>
+
+        {/* Central Tech Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="w-20 h-20 bg-tech-gradient rounded-full flex items-center justify-center shadow-2xl">
+            <svg
+              className="w-10 h-10 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
           </div>
         </div>
       </div>

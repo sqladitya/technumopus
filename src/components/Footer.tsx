@@ -1,29 +1,25 @@
 const Footer = () => {
   return (
-    <footer
-      id="contact"
-      className="bg-technum-footer-dark text-technum-text-light py-16"
-    >
-      <div className="max-w-[1280px] mx-auto px-8">
+    <footer className="bg-tech-bg-dark text-tech-text-light py-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-purple-gradient rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-tech-gradient rounded-lg flex items-center justify-center">
                 <span className="text-white text-sm font-bold">TO</span>
               </div>
-              <span className="text-lg font-semibold text-white">
-                Technum Opus
-              </span>
+              <span className="text-xl font-bold text-white">Technum Opus</span>
             </div>
-            <p className="text-technum-text-light mb-4">
-              Transforming ideas into digital reality with cutting-edge
-              technology and unparalleled expertise.
+            <p className="text-tech-text-light mb-6 leading-relaxed">
+              Empowering digital transformation with innovative solutions for
+              the modern enterprise.
             </p>
             <div className="flex space-x-4">
+              {/* Social Media Icons */}
               <a
                 href="#"
-                className="w-10 h-10 bg-technum-text-medium/20 rounded-lg flex items-center justify-center hover:bg-purple-gradient transition-colors duration-300"
+                className="w-10 h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
               >
                 <svg
                   className="w-5 h-5"
@@ -35,7 +31,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-technum-text-medium/20 rounded-lg flex items-center justify-center hover:bg-purple-gradient transition-colors duration-300"
+                className="w-10 h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
               >
                 <svg
                   className="w-5 h-5"
@@ -47,7 +43,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-technum-text-medium/20 rounded-lg flex items-center justify-center hover:bg-purple-gradient transition-colors duration-300"
+                className="w-10 h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
               >
                 <svg
                   className="w-5 h-5"
@@ -60,6 +56,32 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-white text-lg font-semibold mb-6">
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
+              {[
+                { name: "Home", href: "#home" },
+                { name: "About Us", href: "#about" },
+                { name: "Services", href: "#services" },
+                { name: "Partners", href: "#partners" },
+                { name: "Careers", href: "#careers" },
+                { name: "Contact", href: "#contact" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:text-tech-green transition-colors duration-300"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Services */}
           <div>
             <h3 className="text-white text-lg font-semibold mb-6">Services</h3>
@@ -67,39 +89,39 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors duration-300"
+                  className="hover:text-tech-green transition-colors duration-300"
                 >
-                  Web Development
+                  SAP Consulting
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors duration-300"
+                  className="hover:text-tech-green transition-colors duration-300"
                 >
-                  Mobile Applications
+                  SAAS Development
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors duration-300"
+                  className="hover:text-tech-green transition-colors duration-300"
                 >
-                  Cloud Solutions
+                  Cloud Architecture
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors duration-300"
+                  className="hover:text-tech-green transition-colors duration-300"
                 >
-                  AI & Machine Learning
+                  Hardware Infrastructure
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors duration-300"
+                  className="hover:text-tech-green transition-colors duration-300"
                 >
                   Digital Transformation
                 </a>
@@ -107,60 +129,15 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Contact Info */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#about"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#careers"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#partners"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  Partners
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-white transition-colors duration-300"
-                >
-                  News
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-white text-lg font-semibold mb-6">Contact</h3>
+            <h3 className="text-white text-lg font-semibold mb-6">
+              Contact Info
+            </h3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 mt-1 flex-shrink-0"
+                  className="w-5 h-5 mt-1 flex-shrink-0 text-tech-green"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -178,13 +155,13 @@ const Footer = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>
+                <span className="text-sm">
                   123 Tech Street, Innovation District, Tech City 12345
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-5 h-5 flex-shrink-0"
+                  className="w-5 h-5 flex-shrink-0 text-tech-green"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -196,11 +173,11 @@ const Footer = () => {
                     d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span>hello@technumopus.com</span>
+                <span className="text-sm">hello@technumopus.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-5 h-5 flex-shrink-0"
+                  className="w-5 h-5 flex-shrink-0 text-tech-green"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -212,31 +189,31 @@ const Footer = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>+1 (555) 123-4567</span>
+                <span className="text-sm">+1 (555) 123-4567</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Border */}
-        <div className="border-t border-technum-text-medium/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-tech-charcoal/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm">© 2024 Technum Opus. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
-              className="text-sm hover:text-white transition-colors duration-300"
+              className="text-sm hover:text-tech-green transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-sm hover:text-white transition-colors duration-300"
+              className="text-sm hover:text-tech-green transition-colors duration-300"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-sm hover:text-white transition-colors duration-300"
+              className="text-sm hover:text-tech-green transition-colors duration-300"
             >
               Cookie Policy
             </a>
