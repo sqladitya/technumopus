@@ -478,9 +478,9 @@ const Navigation = () => {
                     </div>
                     <div className="space-y-1">
                       {services.map((service) => (
-                        <a
+                        <Link
                           key={service.name}
-                          href={service.href}
+                          to={service.href}
                           onClick={closeAllDropdowns}
                           className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
                         >
@@ -497,7 +497,7 @@ const Navigation = () => {
                               {service.description}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                     <div className="border-t border-gray-100 mt-3 pt-3">
