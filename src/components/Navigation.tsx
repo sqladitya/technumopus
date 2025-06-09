@@ -51,6 +51,31 @@ const Navigation = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Helper functions to manage dropdown states
+  const openCompanyDropdown = () => {
+    setIsCompanyOpen(true);
+    setIsServicesOpen(false);
+    setIsPartnersOpen(false);
+  };
+
+  const openServicesDropdown = () => {
+    setIsServicesOpen(true);
+    setIsCompanyOpen(false);
+    setIsPartnersOpen(false);
+  };
+
+  const openPartnersDropdown = () => {
+    setIsPartnersOpen(true);
+    setIsCompanyOpen(false);
+    setIsServicesOpen(false);
+  };
+
+  const closeAllDropdowns = () => {
+    setIsCompanyOpen(false);
+    setIsServicesOpen(false);
+    setIsPartnersOpen(false);
+  };
+
   const services = [
     {
       name: "SAP Consulting",
@@ -325,6 +350,7 @@ const Navigation = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#home"
+                onMouseEnter={closeAllDropdowns}
                 className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
               >
                 Home
@@ -335,7 +361,7 @@ const Navigation = () => {
               <div className="relative" ref={companyRef}>
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                  onMouseEnter={() => setIsCompanyOpen(true)}
+                  onMouseEnter={openCompanyDropdown}
                   className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
                 >
                   Company
@@ -370,7 +396,7 @@ const Navigation = () => {
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2",
                   )}
-                  onMouseLeave={() => setIsCompanyOpen(false)}
+                  onMouseLeave={closeAllDropdowns}
                 >
                   <div className="p-4">
                     <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
@@ -381,7 +407,7 @@ const Navigation = () => {
                         <a
                           key={link.name}
                           href={link.href}
-                          onClick={() => setIsCompanyOpen(false)}
+                          onClick={closeAllDropdowns}
                           className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
                         >
                           <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
@@ -406,7 +432,7 @@ const Navigation = () => {
               <div className="relative" ref={servicesRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseEnter={openServicesDropdown}
                   className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
                 >
                   Services
@@ -441,7 +467,7 @@ const Navigation = () => {
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2",
                   )}
-                  onMouseLeave={() => setIsServicesOpen(false)}
+                  onMouseLeave={closeAllDropdowns}
                 >
                   <div className="p-4">
                     <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
@@ -452,7 +478,7 @@ const Navigation = () => {
                         <a
                           key={service.name}
                           href={service.href}
-                          onClick={() => setIsServicesOpen(false)}
+                          onClick={closeAllDropdowns}
                           className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
                         >
                           <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
@@ -474,7 +500,7 @@ const Navigation = () => {
                     <div className="border-t border-gray-100 mt-3 pt-3">
                       <a
                         href="#services"
-                        onClick={() => setIsServicesOpen(false)}
+                        onClick={closeAllDropdowns}
                         className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
                       >
                         View All Services
@@ -501,7 +527,7 @@ const Navigation = () => {
               <div className="relative" ref={partnersRef}>
                 <button
                   onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                  onMouseEnter={() => setIsPartnersOpen(true)}
+                  onMouseEnter={openPartnersDropdown}
                   className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
                 >
                   Partners
@@ -536,7 +562,7 @@ const Navigation = () => {
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2",
                   )}
-                  onMouseLeave={() => setIsPartnersOpen(false)}
+                  onMouseLeave={closeAllDropdowns}
                 >
                   <div className="p-4">
                     <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
@@ -547,7 +573,7 @@ const Navigation = () => {
                         <a
                           key={partner.name}
                           href={partner.href}
-                          onClick={() => setIsPartnersOpen(false)}
+                          onClick={closeAllDropdowns}
                           className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
                         >
                           <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
@@ -569,7 +595,7 @@ const Navigation = () => {
                     <div className="border-t border-gray-100 mt-3 pt-3">
                       <a
                         href="#partners"
-                        onClick={() => setIsPartnersOpen(false)}
+                        onClick={closeAllDropdowns}
                         className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
                       >
                         View All Partners
@@ -594,6 +620,7 @@ const Navigation = () => {
 
               <a
                 href="#contact"
+                onMouseEnter={closeAllDropdowns}
                 className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
               >
                 Contact
