@@ -71,7 +71,7 @@ const HeroSection = () => {
             Innovative solutions for the modern enterprise
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-tech-primary hover:bg-tech-primary-light text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-tech-primary/25">
+            <button className="px-8 py-4 bg-tech-primary hover:bg-tech-primary-light text-white rounded-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-xl shadow-tech-primary/30">
               Explore Services
             </button>
             <button className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-tech-primary transition-all duration-300">

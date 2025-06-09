@@ -22,7 +22,10 @@ const Index = () => {
       </Section>
 
       {/* About Section */}
-      <Section className="bg-tech-bg-light" id="about">
+      <Section
+        className="bg-gradient-to-br from-tech-bg-light to-white"
+        id="about"
+      >
         <AboutSection />
       </Section>
 
@@ -32,7 +35,7 @@ const Index = () => {
       </Section>
 
       {/* Why Choose Us Section */}
-      <Section className="bg-tech-bg-light">
+      <Section className="bg-gradient-to-br from-white to-tech-bg-light">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
             Why Choose Technum Opus
