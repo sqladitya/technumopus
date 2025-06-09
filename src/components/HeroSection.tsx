@@ -1,4 +1,4 @@
-import EnhancedInteractiveCoreNetwork from "./EnhancedInteractiveCoreNetwork";
+import HeroAnimation from "./HeroAnimation";
 
 const HeroSection = () => {
   return (
