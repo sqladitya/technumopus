@@ -27,8 +27,8 @@ export const ServicesSection = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {/* SAP Consulting */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
-        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -53,8 +53,8 @@ export const ServicesSection = () => (
       </div>
 
       {/* SAAS Platform Development */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
-        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -79,8 +79,8 @@ export const ServicesSection = () => (
       </div>
 
       {/* Cloud Architecture */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
-        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -105,8 +105,8 @@ export const ServicesSection = () => (
       </div>
 
       {/* Hardware Infrastructure Solutions */}
-      <div className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
-        <div className="w-16 h-16 bg-tech-gradient rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+        <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
             fill="none"
@@ -187,10 +187,10 @@ export const AboutSection = () => (
 
     {/* Image/Visual Content */}
     <div className="relative">
-      <div className="bg-card-gradient rounded-2xl p-8 shadow-xl">
+      <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg border border-gray-100">
         <div className="grid grid-cols-2 gap-6">
           {/* Stats Cards */}
-          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+          <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
             <div className="text-3xl font-bold text-tech-primary mb-2">
               500+
             </div>
@@ -198,13 +198,13 @@ export const AboutSection = () => (
               Projects Delivered
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+          <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
             <div className="text-3xl font-bold text-tech-primary mb-2">99%</div>
             <div className="text-tech-text-medium text-sm">
               Client Satisfaction
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+          <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
             <div className="text-3xl font-bold text-tech-secondary mb-2">
               15+
             </div>
@@ -212,7 +212,7 @@ export const AboutSection = () => (
               Years Experience
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+          <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
             <div className="text-3xl font-bold text-tech-primary mb-2">
               24/7
             </div>
@@ -222,7 +222,7 @@ export const AboutSection = () => (
 
         {/* Central Tech Icon */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="w-20 h-20 bg-tech-gradient rounded-full flex items-center justify-center shadow-2xl">
+          <div className="w-20 h-20 bg-tech-gradient rounded-full flex items-center justify-center shadow-lg">
             <svg
               className="w-10 h-10 text-white"
               fill="none"
