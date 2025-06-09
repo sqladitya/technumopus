@@ -193,9 +193,9 @@ const EnhancedInteractiveCoreNetwork = ({
         <div
           className={`vertical-line ${verticalLineActive ? "active" : ""}`}
           style={{
-            position: "fixed",
+            position: "absolute",
             width: "4px",
-            height: "calc(100vh - 50%)",
+            height: "100vh",
             background: verticalLineActive
               ? "linear-gradient(to bottom, rgba(59, 130, 246, 1), rgba(59, 130, 246, 0.7), rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1))"
               : "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
