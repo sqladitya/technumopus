@@ -193,7 +193,7 @@ const Navigation = () => {
   const partners = [
     {
       name: "Cloud Partners",
-      href: "#partners",
+      href: "/partners/cloud-partners",
       description: "AWS, Microsoft Azure, Google Cloud",
       icon: (
         <svg
@@ -213,7 +213,7 @@ const Navigation = () => {
     },
     {
       name: "Technology Partners",
-      href: "#partners",
+      href: "/partners/technology-partners",
       description: "Cisco, Dell, HP, Lenovo",
       icon: (
         <svg
@@ -233,7 +233,7 @@ const Navigation = () => {
     },
     {
       name: "Security Partners",
-      href: "#partners",
+      href: "/partners/security-partners",
       description: "Palo Alto Networks, SentinelOne",
       icon: (
         <svg
@@ -253,7 +253,7 @@ const Navigation = () => {
     },
     {
       name: "Integration Partners",
-      href: "#partners",
+      href: "/partners/integration-partners",
       description: "Zebra Technologies and more",
       icon: (
         <svg
