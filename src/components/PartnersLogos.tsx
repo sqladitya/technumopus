@@ -3,76 +3,31 @@ const PartnersLogos = () => {
     {
       name: "AWS",
       logo: (
-        <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* AWS official logo */}
-          <g transform="translate(60, 25)">
-            {/* AWS text */}
-            <text
-              x="0"
-              y="-5"
-              fill="#232F3E"
-              fontSize="12"
-              fontFamily="Arial"
-              fontWeight="400"
-              textAnchor="middle"
-            >
-              aws
-            </text>
-            {/* AWS smile curve */}
-            <path
-              fill="#FF9900"
-              d="M-18 2c4.5 3.5 11.8 5.5 18 5.5s13.5-2 18-5.5c0.5-0.4 1 0.2 0.5 0.7-5 4-12.5 6.3-18.5 6.3s-13.5-2.3-18.5-6.3c-0.5-0.5 0-1.1 0.5-0.7z"
-            />
-            <path
-              fill="#FF9900"
-              d="M15 0c0.8-1 0.2-2.5-1-2.8-1.2-0.3-2.5 0.3-2.8 1.5-0.3 1.2 0.8 2.5 2 2.5 0.8 0 1.5-0.5 1.8-1.2z"
-            />
-          </g>
-        </svg>
+        <img
+          src="/assets/aws-logo.svg"
+          alt="AWS"
+          className="w-16 h-8 object-contain"
+        />
       ),
     },
     {
       name: "Microsoft Azure",
       logo: (
-        <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Azure official logo */}
-          <g transform="translate(60, 25)">
-            <path fill="#0078D4" d="M-12 -15L8 -8L4 8L-16 8L-12 -15z" />
-            <path
-              fill="#0078D4"
-              d="M-12 -15L-2 12L8 -8L-12 -15z"
-              opacity="0.8"
-            />
-            <path fill="#0078D4" d="M-8 -5L4 8L8 -8L-8 -5z" opacity="0.6" />
-          </g>
-        </svg>
+        <img
+          src="/assets/azure-logo.svg"
+          alt="Microsoft Azure"
+          className="w-12 h-12 object-contain"
+        />
       ),
     },
     {
       name: "Google Cloud",
       logo: (
-        <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Google Cloud official logo */}
-          <g transform="translate(60, 25)">
-            {/* Cloud shape with Google's four colors */}
-            <path
-              fill="#EA4335"
-              d="M-8 -3c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5c3 0 5.5 2.5 5.5 5.5s-2.5 5.5-5.5 5.5h-11c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c0.3 0 0.7 0 1-0.1"
-            />
-            <path
-              fill="#FBBC04"
-              d="M-8 -3c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"
-            />
-            <path
-              fill="#34A853"
-              d="M8 2.5c0 3-2.5 5.5-5.5 5.5h-11c-2.5 0-4.5-2-4.5-4.5"
-            />
-            <path
-              fill="#4285F4"
-              d="M8 2.5c0-3-2.5-5.5-5.5-5.5H3c0-3-2.5-5.5-5.5-5.5"
-            />
-          </g>
-        </svg>
+        <img
+          src="/assets/google-cloud-logo.svg"
+          alt="Google Cloud"
+          className="w-16 h-12 object-contain"
+        />
       ),
     },
     {
@@ -198,20 +153,11 @@ const PartnersLogos = () => {
     {
       name: "Lenovo",
       logo: (
-        <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Lenovo official logo */}
-          <text
-            x="60"
-            y="28"
-            fill="#E31E24"
-            fontSize="14"
-            fontFamily="Arial, sans-serif"
-            fontWeight="400"
-            textAnchor="middle"
-          >
-            Lenovo
-          </text>
-        </svg>
+        <img
+          src="/assets/lenovo-logo.svg"
+          alt="Lenovo"
+          className="w-20 h-8 object-contain"
+        />
       ),
     },
     {

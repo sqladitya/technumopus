@@ -1,0 +1,15 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- AWS official logo based on the provided image -->
+  <defs>
+    <style>
+      .aws-text { font-family: 'Amazon Ember', Arial, sans-serif; font-weight: 400; }
+    </style>
+  </defs>
+  
+  <!-- AWS text -->
+  <text x="100" y="45" class="aws-text" text-anchor="middle" font-size="32" fill="#232F3E">aws</text>
+  
+  <!-- AWS smile arrow -->
+  <path d="M40 60 Q100 75 160 60" stroke="#FF9900" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M150 55 L160 60 L150 65" stroke="#FF9900" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
