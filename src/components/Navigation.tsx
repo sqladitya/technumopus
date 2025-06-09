@@ -25,29 +25,40 @@ const Navigation = () => {
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        servicesRef.current &&
-        !servicesRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+
+      // Check if click is outside any dropdown area
+      const isOutsideServices =
+        servicesRef.current && !servicesRef.current.contains(target);
+      const isOutsidePartners =
+        partnersRef.current && !partnersRef.current.contains(target);
+      const isOutsideCompany =
+        companyRef.current && !companyRef.current.contains(target);
+
+      // For mobile, also check if click is outside the mobile menu
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const isOutsideMobileMenu = !mobileMenu || !mobileMenu.contains(target);
+
+      if (isOutsideServices) {
         setIsServicesOpen(false);
       }
-      if (
-        partnersRef.current &&
-        !partnersRef.current.contains(event.target as Node)
-      ) {
+      if (isOutsidePartners) {
         setIsPartnersOpen(false);
       }
-      if (
-        companyRef.current &&
-        !companyRef.current.contains(event.target as Node)
-      ) {
+      if (isOutsideCompany) {
         setIsCompanyOpen(false);
+      }
+
+      // Close mobile menu if clicking outside on mobile
+      if (window.innerWidth < 1024 && isOutsideMobileMenu && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        closeAllDropdowns();
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isMobileMenuOpen]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -346,6 +357,22 @@ const Navigation = () => {
 
   return (
     <>
+      {/* White Background Overlay for Mobile/Tablet Dropdowns */}
+      {(isCompanyOpen || isServicesOpen || isPartnersOpen) && (
+        <div
+          className="fixed inset-0 bg-white z-30 lg:hidden"
+          onClick={closeAllDropdowns}
+        />
+      )}
+
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/20 z-20 lg:hidden"
+          onClick={closeMobileMenu}
+        />
+      )}
+
       {/* Navigation Bar */}
       <nav
         className={cn(
@@ -686,8 +713,9 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <div
+          data-mobile-menu
           className={cn(
-            "lg:hidden absolute left-4 right-4 top-16 bg-white/98 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl transition-all duration-300 transform",
+            "lg:hidden absolute left-4 right-4 top-16 bg-white border border-gray-200 rounded-xl shadow-xl transition-all duration-300 transform z-40",
             isMobileMenuOpen
               ? "opacity-100 visible translate-y-0 max-h-96"
               : "opacity-0 invisible -translate-y-4 max-h-0",
