@@ -7,26 +7,27 @@ const PartnersLogos = () => {
           <g>
             {/* AWS text */}
             <text
-              x="15"
-              y="26"
+              x="20"
+              y="24"
               fill="#232F3E"
-              fontSize="20"
+              fontSize="18"
               fontFamily="AmazonEmber, Arial"
               fontWeight="400"
-              letterSpacing="-0.5px"
+              letterSpacing="-0.3px"
             >
               aws
             </text>
-            {/* AWS smile curve */}
+            {/* AWS smile curve - main curve */}
             <path
               fill="#FF9900"
-              d="M15 34c-6.8 5-16.7 7.6-25.2 7.6-11.9 0-22.6-4.4-30.7-11.7-.6-.6-.1-1.4.7-1 9.8 5.7 21.9 9.1 34.4 9.1 8.4 0 17.6-1.7 26.1-5.3 1.3-.6 2.4.9 1.2 1.6"
-              transform="translate(25, -15)"
+              d="M20 32c-5.5 4-13.5 6.1-20.4 6.1-9.6 0-18.3-3.6-24.8-9.5-.5-.5-.1-1.1.6-.8 7.9 4.6 17.7 7.3 27.8 7.3 6.8 0 14.2-1.4 21.1-4.3 1-.5 1.9.7 1-.3"
+              transform="translate(15, -10)"
             />
+            {/* AWS smile curve - arrow tip */}
             <path
               fill="#FF9900"
-              d="M17.5 30.5c-.9-1.1-5.9-.6-8.2-.3-.7.1-.8-.5-.2-1 4-2.8 10.6-2 11.4-1 .8 1-.2 7.8-4 11.1-.6.5-1.1.2-.9-.4.9-2 2.7-6.6 1.9-8.4"
-              transform="translate(25, -15)"
+              d="M18 29c-.7-.9-4.8-.5-6.6-.2-.5.1-.6-.4-.2-.8 3.2-2.3 8.5-1.6 9.2-.8.7.8-.2 6.3-3.3 9-.5.4-.9.2-.7-.3.7-1.6 2.2-5.3 1.6-6.9"
+              transform="translate(15, -10)"
             />
           </g>
         </svg>
@@ -36,10 +37,10 @@ const PartnersLogos = () => {
       name: "Microsoft Azure",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Azure official triangular logo */}
-          <g transform="translate(40, 5)">
-            <path fill="#0078D4" d="M20 5L0 35h40L20 5z" />
-            <path fill="#0078D4" d="M20 5L8 28l24 12h8L20 5z" opacity="0.6" />
+          {/* Azure precise triangular logo */}
+          <g transform="translate(45, 8)">
+            <path fill="#0078D4" d="M15 0L0 25h30L15 0z" />
+            <path fill="#0078D4" d="M15 0L6 20l18 9h6L15 0z" opacity="0.7" />
           </g>
         </svg>
       ),
@@ -48,32 +49,24 @@ const PartnersLogos = () => {
       name: "Google Cloud",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Google Cloud official logo */}
-          <g transform="translate(35, 10)">
-            {/* Blue curved section */}
+          {/* Google Cloud exact logo recreation */}
+          <g transform="translate(35, 12)">
+            {/* Blue right section */}
             <path
               fill="#4285F4"
-              d="M25 15c0-1.5-.3-3-.8-4.3C22 8.5 19.8 7 17.2 7c-1.5 0-2.9.4-4.1 1.2C11.7 6.5 9.5 5.5 7 5.5 2.8 5.5-.5 8.8-.5 13c0 .3 0 .6.1.9-1.8 1.2-2.6 2.8-2.6 4.6 0 3.6 2.9 6.5 6.5 6.5h19c3.9 0 7-3.1 7-7z"
+              d="M25 12c0-6.6-5.4-12-12-12-3.3 0-6.3 1.3-8.5 3.5 0 0 0 0 0 0L25 24.5V12z"
             />
-            {/* Red curved section */}
-            <path
-              fill="#EA4335"
-              d="M25 15c0-1.5-.3-3-.8-4.3C22 8.5 19.8 7 17.2 7c-1.5 0-2.9.4-4.1 1.2L25 15z"
-            />
-            {/* Yellow curved section */}
-            <path
-              fill="#FBBC04"
-              d="M-2.5 13c0 .3 0 .6.1.9-1.8 1.2-2.6 2.8-2.6 4.6 0 3.6 2.9 6.5 6.5 6.5h8L-2.5 13z"
-            />
+            {/* Red top section */}
+            <path fill="#EA4335" d="M25 12c0-6.6-5.4-12-12-12S1 5.4 1 12h24z" />
+            {/* Yellow left section */}
+            <path fill="#FBBC04" d="M1 12c0 6.6 5.4 12 12 12v-12H1z" />
             {/* Green bottom section */}
-            <path
-              fill="#34A853"
-              d="M22 25h-19c-3.6 0-6.5-2.9-6.5-6.5h25c0 3.9-3.1 7-7 7h7.5z"
-            />
-            {/* White cloud shape overlay */}
+            <path fill="#34A853" d="M13 24c6.6 0 12-5.4 12-12H13v12z" />
+            {/* White cloud center */}
             <path
               fill="white"
-              d="M20 12c0-1-.2-2-.6-2.9C18.5 7.8 17 7 15.4 7c-1 0-2 .3-2.8.8C11.8 6.2 10.2 5.5 8.4 5.5c-3.5 0-6.4 2.8-6.4 6.3 0 .2 0 .4.1.6-1.1.7-1.8 2-1.8 3.4 0 2.2 1.8 4 4 4h15.2c2.4 0 4.3-1.9 4.3-4.3 0-2.1-1.5-3.8-3.5-4.2.1-.5.2-1 .2-1.3z"
+              d="M20 10c0-1.1-.2-2.2-.6-3.2-1.2-3.2-4.2-5.5-7.8-5.5-1.8 0-3.5.6-4.9 1.5-2.2-1.8-5-2.8-8-2.8-6.1 0-11 4.9-11 11 0 .4 0 .7.1 1.1-2.4 1.6-4 4.3-4 7.4 0 4.9 4 8.9 8.9 8.9h26.7c5.5 0 10-4.5 10-10 0-4.9-3.5-9-8.1-9.9.5-1.2.7-2.5.7-3.5z"
+              transform="translate(-6, -1)"
             />
           </g>
         </svg>
@@ -203,15 +196,15 @@ const PartnersLogos = () => {
       name: "Lenovo",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Lenovo official red text */}
+          {/* Lenovo exact red text */}
           <text
-            x="10"
-            y="30"
+            x="15"
+            y="28"
             fill="#E31E24"
-            fontSize="16"
+            fontSize="15"
             fontFamily="Arial"
             fontWeight="700"
-            letterSpacing="1px"
+            letterSpacing="0.8px"
           >
             Lenovo
           </text>
