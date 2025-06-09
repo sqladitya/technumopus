@@ -39,24 +39,24 @@ const HeroSection = () => {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-20 flex items-center justify-center min-h-screen px-6 lg:px-8">
+      <div className="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Empowering Digital
             <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
               Transformation
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
             Innovative solutions for the modern enterprise
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white hover:bg-gray-50 text-tech-primary rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-white hover:bg-gray-50 text-tech-primary rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base">
               Explore Services
             </button>
-            <button className="px-8 py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-sm sm:text-base">
               Get in Touch
             </button>
           </div>
