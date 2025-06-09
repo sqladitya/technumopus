@@ -10,22 +10,22 @@ const PartnersLogos = () => {
               x="10"
               y="28"
               fill="#232F3E"
-              fontSize="20"
+              fontSize="22"
               fontFamily="AmazonEmber, Arial"
               fontWeight="400"
-              letterSpacing="-0.5px"
+              letterSpacing="-1px"
             >
               aws
             </text>
             {/* AWS smile/arrow */}
             <path
               fill="#FF9900"
-              d="M17 35c-5.2 3.8-12.7 5.8-19.2 5.8-9.1 0-17.3-3.4-23.5-9-.5-.4-.1-1 .6-.8 7.5 4.3 16.7 6.9 26.2 6.9 6.4 0 13.5-1.3 20-4.1.8-.3 1.5.6.9 1z"
+              d="M15 34c-8.5 6.3-20.8 9.6-31.4 9.6-14.9 0-28.3-5.5-38.5-14.6-.8-.7-.1-1.7 1-1.3 12.3 7.2 27.5 11.5 43.2 11.5 10.6 0 22.2-2.2 32.9-6.7 1.6-.7 3 1.2 1.8 2.1"
               transform="translate(25, -20)"
             />
             <path
               fill="#FF9900"
-              d="M19 33.5c-.7-.8-4.6-.4-6.3-.2-.5.1-.6-.4-.1-.7 3.1-2.2 8.2-1.6 8.8-.8.6.8-.1 6.1-3.2 8.6-.5.4-.9.2-.7-.3.7-1.6 2.1-5.2 1.5-6.6"
+              d="M18.5 31c-1.1-1.4-7.4-.7-10.2-.4-.8.1-1-.6-.2-1.1 5-3.5 13.2-2.5 14.1-1.3 1 1.2-.3 9.7-5.1 13.7-.7.6-1.4.3-1.1-.5 1.1-2.6 3.6-8.4 2.5-10.4"
               transform="translate(25, -20)"
             />
           </g>
@@ -35,87 +35,48 @@ const PartnersLogos = () => {
     {
       name: "Microsoft Azure",
       logo: (
-        <svg viewBox="0 0 140 50" className="w-28 h-10">
-          {/* Azure triangular logo */}
-          <g transform="translate(15, 8)">
-            <path fill="#0078D4" d="M20 6l-15 24h9l21-24z" />
-            <path fill="#0078D4" d="M26 30L14 6l-9 20L5 30h21z" opacity="0.8" />
+        <svg viewBox="0 0 120 50" className="w-24 h-10">
+          {/* Azure triangular A logo */}
+          <g transform="translate(35, 5)">
+            <path fill="#0078D4" d="M25 8L5 35L0 40h30L25 8z" />
+            <path
+              fill="#0078D4"
+              d="M25 8L15 30L30 40L50 40L25 8z"
+              opacity="0.8"
+            />
           </g>
-          {/* Microsoft text */}
-          <text
-            x="55"
-            y="20"
-            fill="#0078D4"
-            fontSize="9"
-            fontFamily="Segoe UI, Arial"
-            fontWeight="400"
-          >
-            Microsoft
-          </text>
-          {/* Azure text */}
-          <text
-            x="55"
-            y="33"
-            fill="#0078D4"
-            fontSize="12"
-            fontFamily="Segoe UI, Arial"
-            fontWeight="600"
-          >
-            Azure
-          </text>
         </svg>
       ),
     },
     {
       name: "Google Cloud",
       logo: (
-        <svg viewBox="0 0 140 50" className="w-28 h-10">
-          {/* Google Cloud official logo */}
-          <g transform="translate(10, 8)">
-            {/* Cloud shape */}
+        <svg viewBox="0 0 120 50" className="w-24 h-10">
+          {/* Google Cloud official colorful cloud logo */}
+          <g transform="translate(35, 8)">
+            {/* Main cloud shape with Google colors */}
             <path
               fill="#4285F4"
-              d="M24 16c0-1.5-.3-3-.8-4.3C22 9.5 19.8 8 17.2 8c-1.5 0-2.9.4-4.1 1.2C11.7 7.5 9.5 6.5 7 6.5 2.8 6.5-.5 9.8-.5 14c0 .3 0 .6.1.9C-1.3 16.1-2 17.7-2 19.5c0 3.6 2.9 6.5 6.5 6.5h19c3.9 0 7-3.1 7-7 0-3.4-2.4-6.2-5.5-6.9z"
-              transform="translate(4, 2)"
+              d="M30 18c0-2.5-.5-4.8-1.4-7C26.8 8.5 23.8 6.5 20.2 6.5c-2.5 0-4.8.7-6.8 2C11.2 6.8 8.2 5.5 4.8 5.5c-6.9 0-12.5 5.6-12.5 12.5 0 .5.1 1 .1 1.5-2.2 1.8-3.6 4.5-3.6 7.6 0 5.4 4.4 9.8 9.8 9.8h27.6c5.9 0 10.7-4.8 10.7-10.7 0-5.2-3.7-9.5-8.9-10.2z"
+              transform="translate(-15, -2)"
             />
-            {/* Google colors overlay */}
+            {/* Color segments */}
             <path
               fill="#34A853"
-              d="M18 10c-1 0-2 .2-2.8.6 1.4.8 2.5 2 3.2 3.4.3-.7.6-1.4.6-2.2 0-.6-.1-1.2-.3-1.8z"
-              transform="translate(4, 2)"
+              d="M25 15c-1.5 0-3 .3-4.3.9 2.2 1.3 3.9 3.2 5 5.6.5-1.1.9-2.3.9-3.6 0-1-.2-1.9-.5-2.9z"
+              transform="translate(-15, -2)"
             />
             <path
               fill="#FBBC04"
-              d="M7 8.5c-2.5 0-4.5 1.5-5.4 3.6.4-.1.8-.1 1.2-.1 1.4 0 2.7.4 3.8 1.1.5-2.4 2.6-4.2 5.1-4.6-.3 0-.5 0-.7 0z"
-              transform="translate(4, 2)"
+              d="M4.8 7.5c-4.1 0-7.4 2.4-8.9 5.9.7-.2 1.3-.2 2-.2 2.3 0 4.4.7 6.2 1.8.8-3.9 4.3-6.9 8.4-7.5-.6 0-1 0-1.2 0-.5 0-1 0-1.5 0-.3 0-.7 0-1 0-.3 0-.7 0-1 0-.3 0-.7 0-1 0-.3 0-.7 0-1 0z"
+              transform="translate(-15, -2)"
             />
             <path
               fill="#EA4335"
-              d="M23.5 19c0 .8-.1 1.5-.4 2.2-.8 2.2-2.9 3.8-5.4 3.8H4.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h13.2c1.3 0 2.3-1 2.3-2.3 0-.8-.4-1.5-1-1.9.6-.3 1.2-.8 1.6-1.4.8.5 1.4 1.4 1.4 2.6z"
-              transform="translate(4, 2)"
+              d="M35 27c0 1.3-.2 2.5-.7 3.6-1.3 3.6-4.7 6.2-8.8 6.2H4.8c-1.3 0-2.4-1.1-2.4-2.4s1.1-2.4 2.4-2.4h20.7c2.1 0 3.8-1.7 3.8-3.8 0-1.3-.7-2.4-1.7-3.1 1-.5 1.9-1.3 2.6-2.3 1.3.8 2.3 2.3 2.3 4.2z"
+              transform="translate(-15, -2)"
             />
           </g>
-          {/* Google Cloud text */}
-          <text
-            x="50"
-            y="20"
-            fill="#5F6368"
-            fontSize="10"
-            fontFamily="Google Sans, Arial"
-            fontWeight="500"
-          >
-            Google
-          </text>
-          <text
-            x="50"
-            y="33"
-            fill="#5F6368"
-            fontSize="10"
-            fontFamily="Google Sans, Arial"
-            fontWeight="400"
-          >
-            Cloud
-          </text>
         </svg>
       ),
     },
@@ -242,16 +203,16 @@ const PartnersLogos = () => {
     {
       name: "Lenovo",
       logo: (
-        <svg viewBox="0 0 140 50" className="w-28 h-10">
-          {/* Lenovo text */}
+        <svg viewBox="0 0 120 50" className="w-24 h-10">
+          {/* Lenovo simple red text */}
           <text
-            x="10"
+            x="15"
             y="30"
             fill="#E31E24"
-            fontSize="20"
+            fontSize="18"
             fontFamily="Arial"
             fontWeight="700"
-            letterSpacing="1px"
+            letterSpacing="0.5px"
           >
             Lenovo
           </text>
