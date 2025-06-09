@@ -346,11 +346,6 @@ const Navigation = () => {
 
   return (
     <>
-      {/* White Background Overlay for Mobile/Tablet Dropdowns */}
-      {(isCompanyOpen || isServicesOpen || isPartnersOpen) && (
-        <div className="fixed inset-0 bg-white z-30 lg:hidden" />
-      )}
-
       {/* Navigation Bar */}
       <nav
         className={cn(
@@ -692,14 +687,14 @@ const Navigation = () => {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "lg:hidden fixed inset-x-0 top-16 bg-white border-b border-gray-200 transition-all duration-300 transform",
+            "lg:hidden absolute left-4 right-4 top-16 bg-white/98 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl transition-all duration-300 transform",
             isMobileMenuOpen
-              ? "opacity-100 visible translate-y-0 max-h-screen"
+              ? "opacity-100 visible translate-y-0 max-h-96"
               : "opacity-0 invisible -translate-y-4 max-h-0",
           )}
         >
-          <div className="max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <div className="px-4 py-6 space-y-6">
+          <div className="max-h-80 overflow-y-auto">
+            <div className="px-4 py-4 space-y-4">
               {/* Mobile Home Link */}
               <a
                 href="/"
@@ -710,15 +705,15 @@ const Navigation = () => {
               </a>
 
               {/* Mobile Company Section */}
-              <div className="bg-white">
+              <div>
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
+                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
                 >
                   Company
                   <svg
                     className={cn(
-                      "w-5 h-5 transition-transform duration-200",
+                      "w-4 h-4 transition-transform duration-200",
                       isCompanyOpen ? "rotate-180" : "",
                     )}
                     fill="none"
@@ -735,9 +730,9 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-3 ml-4 space-y-3 transition-all duration-300 bg-white",
+                    "mt-2 ml-3 space-y-2 transition-all duration-300",
                     isCompanyOpen
-                      ? "max-h-96 opacity-100"
+                      ? "max-h-64 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
                   )}
                 >
@@ -746,16 +741,13 @@ const Navigation = () => {
                       key={link.name}
                       href={link.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-3 py-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
+                      className="flex items-center gap-2 py-1.5 px-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-md hover:bg-gray-50"
                     >
-                      <div className="w-6 h-6 text-tech-primary">
+                      <div className="w-4 h-4 text-tech-primary flex-shrink-0">
                         {link.icon}
                       </div>
                       <div>
-                        <div className="font-medium">{link.name}</div>
-                        <div className="text-sm text-tech-text-medium">
-                          {link.description}
-                        </div>
+                        <div className="text-sm font-medium">{link.name}</div>
                       </div>
                     </a>
                   ))}
@@ -763,15 +755,15 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Services Section */}
-              <div className="bg-white">
+              <div>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
+                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
                 >
                   Services
                   <svg
                     className={cn(
-                      "w-5 h-5 transition-transform duration-200",
+                      "w-4 h-4 transition-transform duration-200",
                       isServicesOpen ? "rotate-180" : "",
                     )}
                     fill="none"
@@ -788,9 +780,9 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-3 ml-4 space-y-3 transition-all duration-300 bg-white",
+                    "mt-2 ml-3 space-y-2 transition-all duration-300",
                     isServicesOpen
-                      ? "max-h-96 opacity-100"
+                      ? "max-h-64 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
                   )}
                 >
@@ -799,15 +791,14 @@ const Navigation = () => {
                       key={service.name}
                       to={service.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-3 py-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
+                      className="flex items-center gap-2 py-1.5 px-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-md hover:bg-gray-50"
                     >
-                      <div className="w-6 h-6 text-tech-primary">
+                      <div className="w-4 h-4 text-tech-primary flex-shrink-0">
                         {service.icon}
                       </div>
                       <div>
-                        <div className="font-medium">{service.name}</div>
-                        <div className="text-sm text-tech-text-medium">
-                          {service.description}
+                        <div className="text-sm font-medium">
+                          {service.name}
                         </div>
                       </div>
                     </Link>
@@ -815,11 +806,11 @@ const Navigation = () => {
                   <Link
                     to="/services"
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-2 py-2 text-tech-primary font-medium"
+                    className="flex items-center gap-2 py-1.5 px-2 text-tech-primary text-sm font-medium rounded-md hover:bg-gray-50"
                   >
                     View All Services
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -836,15 +827,15 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Partners Section */}
-              <div className="bg-white">
+              <div>
                 <button
                   onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
+                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
                 >
                   Partners
                   <svg
                     className={cn(
-                      "w-5 h-5 transition-transform duration-200",
+                      "w-4 h-4 transition-transform duration-200",
                       isPartnersOpen ? "rotate-180" : "",
                     )}
                     fill="none"
@@ -861,9 +852,9 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-3 ml-4 space-y-3 transition-all duration-300 bg-white",
+                    "mt-2 ml-3 space-y-2 transition-all duration-300",
                     isPartnersOpen
-                      ? "max-h-96 opacity-100"
+                      ? "max-h-64 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
                   )}
                 >
@@ -872,15 +863,14 @@ const Navigation = () => {
                       key={partner.name}
                       href={partner.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-3 py-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
+                      className="flex items-center gap-2 py-1.5 px-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-md hover:bg-gray-50"
                     >
-                      <div className="w-6 h-6 text-tech-primary">
+                      <div className="w-4 h-4 text-tech-primary flex-shrink-0">
                         {partner.icon}
                       </div>
                       <div>
-                        <div className="font-medium">{partner.name}</div>
-                        <div className="text-sm text-tech-text-medium">
-                          {partner.description}
+                        <div className="text-sm font-medium">
+                          {partner.name}
                         </div>
                       </div>
                     </a>
@@ -888,11 +878,11 @@ const Navigation = () => {
                   <a
                     href="#partners"
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-2 py-2 text-tech-primary font-medium"
+                    className="flex items-center gap-2 py-1.5 px-2 text-tech-primary text-sm font-medium rounded-md hover:bg-gray-50"
                   >
                     View All Partners
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -912,7 +902,7 @@ const Navigation = () => {
               <a
                 href="#contact"
                 onClick={closeMobileMenu}
-                className="block text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
+                className="block text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
               >
                 Contact
               </a>
