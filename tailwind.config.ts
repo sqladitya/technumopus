@@ -94,6 +94,8 @@ export default {
         "tech-gradient": "linear-gradient(to right, #ff007f, #ff66b3)",
         "pink-gradient": "linear-gradient(to right, #ff007f, #ff99cc)",
         "card-gradient": "linear-gradient(145deg, #ffffff 0%, #fef7f0 100%)",
+        "mesh-gradient":
+          "radial-gradient(circle at 20% 80%, #ff007f 0%, transparent 50%), radial-gradient(circle at 80% 20%, #ff66b3 0%, transparent 50%), radial-gradient(circle at 40% 40%, #a855f7 0%, transparent 50%)",
       },
       blur: {
         "4xl": "72px",
@@ -142,6 +144,32 @@ export default {
             transform: "translateY(-20px)",
           },
         },
+        "glow-pulse": {
+          "0%, 100%": {
+            opacity: "0.4",
+            transform: "scale(1)",
+            filter: "blur(20px)",
+          },
+          "50%": {
+            opacity: "0.8",
+            transform: "scale(1.1)",
+            filter: "blur(15px)",
+          },
+        },
+        drift: {
+          "0%": {
+            transform: "translateX(0px) translateY(0px) rotate(0deg)",
+          },
+          "33%": {
+            transform: "translateX(30px) translateY(-30px) rotate(120deg)",
+          },
+          "66%": {
+            transform: "translateX(-20px) translateY(20px) rotate(240deg)",
+          },
+          "100%": {
+            transform: "translateX(0px) translateY(0px) rotate(360deg)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -149,6 +177,8 @@ export default {
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
         "spin-slow": "spin-slow 8s linear infinite",
         float: "float 6s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        drift: "drift 20s ease-in-out infinite",
       },
     },
   },
