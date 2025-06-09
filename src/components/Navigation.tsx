@@ -566,35 +566,38 @@ const Navigation = () => {
 
               {/* Partners Dropdown */}
               <div className="relative" ref={partnersRef}>
-                <button
-                  onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                  onMouseEnter={openPartnersDropdown}
-                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
-                >
-                  Partners
-                  <svg
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      isPartnersOpen ? "rotate-180" : "",
-                    )}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="flex items-center">
+                  <a
+                    href="/partners"
+                    className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
+                    onMouseEnter={openPartnersDropdown}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                  <span
-                    className={cn(
-                      "absolute -bottom-1 left-0 h-0.5 bg-tech-primary transition-all duration-300",
-                      isPartnersOpen ? "w-full" : "w-0 group-hover:w-full",
-                    )}
-                  ></span>
-                </button>
+                    Partners
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                  <button
+                    onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                    onMouseEnter={openPartnersDropdown}
+                    className="ml-1 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
+                  >
+                    <svg
+                      className={cn(
+                        "w-4 h-4 transition-transform duration-200",
+                        isPartnersOpen ? "rotate-180" : "",
+                      )}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                </div>
 
                 <div
                   className={cn(
