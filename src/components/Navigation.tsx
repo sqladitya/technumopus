@@ -79,7 +79,7 @@ const Navigation = () => {
   const services = [
     {
       name: "SAP Consulting",
-      href: "#services",
+      href: "/services/sap-consulting",
       description: "Enterprise SAP implementations and optimization",
       icon: (
         <svg
@@ -99,7 +99,7 @@ const Navigation = () => {
     },
     {
       name: "SAAS Platform Development",
-      href: "#services",
+      href: "/services/saas-development",
       description: "Scalable cloud-based software solutions",
       icon: (
         <svg
@@ -119,7 +119,7 @@ const Navigation = () => {
     },
     {
       name: "Cloud Architecture",
-      href: "#services",
+      href: "/services/cloud-architecture",
       description: "Robust and secure cloud infrastructure",
       icon: (
         <svg
@@ -139,7 +139,7 @@ const Navigation = () => {
     },
     {
       name: "Hardware Infrastructure",
-      href: "#services",
+      href: "/services/hardware-infrastructure",
       description: "Complete hardware solutions and deployment",
       icon: (
         <svg
