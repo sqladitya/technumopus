@@ -1,24 +1,54 @@
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- SentinelOne official logo - Purple geometric S design -->
+  <!-- SentinelOne official logo - Isometric geometric S design -->
   <defs>
-    <linearGradient id="purpleGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="purpleTop" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#7B2CBF;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#5A189A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A1B9A;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="purpleGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#9D4EDD;stop-opacity:1" />
+    <linearGradient id="purpleSide" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A189A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A148C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleFront" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8E24AA;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#7B2CBF;stop-opacity:1" />
     </linearGradient>
   </defs>
-  
-  <!-- Top section of the S -->
-  <path d="M20 20 L180 20 L180 80 L100 80 L100 100 L80 120 L20 120 Z" fill="url(#purpleGradient1)"/>
-  
-  <!-- Middle white space creates the S shape -->
-  
-  <!-- Bottom section of the S -->
-  <path d="M180 180 L20 180 L20 120 L100 120 L100 100 L120 80 L180 80 Z" fill="url(#purpleGradient2)"/>
-  
-  <!-- Inner geometric detail -->
-  <path d="M80 80 L120 80 L120 120 L80 120 Z" fill="url(#purpleGradient1)"/>
+
+  <!-- Isometric cube structure forming S shape -->
+
+  <!-- Top left cube - top face -->
+  <path d="M20 40 L60 20 L100 40 L60 60 Z" fill="url(#purpleTop)"/>
+  <!-- Top left cube - left face -->
+  <path d="M20 40 L60 60 L60 100 L20 80 Z" fill="url(#purpleSide)"/>
+  <!-- Top left cube - right face -->
+  <path d="M60 60 L100 40 L100 80 L60 100 Z" fill="url(#purpleFront)"/>
+
+  <!-- Top right cube - top face -->
+  <path d="M100 40 L140 20 L180 40 L140 60 Z" fill="url(#purpleTop)"/>
+  <!-- Top right cube - left face -->
+  <path d="M100 40 L140 60 L140 100 L100 80 Z" fill="url(#purpleSide)"/>
+  <!-- Top right cube - right face -->
+  <path d="M140 60 L180 40 L180 80 L140 100 Z" fill="url(#purpleFront)"/>
+
+  <!-- Middle connector cube - top face -->
+  <path d="M60 100 L100 80 L140 100 L100 120 Z" fill="url(#purpleTop)"/>
+  <!-- Middle connector cube - left face -->
+  <path d="M60 100 L100 120 L100 160 L60 140 Z" fill="url(#purpleSide)"/>
+  <!-- Middle connector cube - right face -->
+  <path d="M100 120 L140 100 L140 140 L100 160 Z" fill="url(#purpleFront)"/>
+
+  <!-- Bottom left cube - top face -->
+  <path d="M20 120 L60 100 L100 120 L60 140 Z" fill="url(#purpleTop)"/>
+  <!-- Bottom left cube - left face -->
+  <path d="M20 120 L60 140 L60 180 L20 160 Z" fill="url(#purpleSide)"/>
+  <!-- Bottom left cube - right face -->
+  <path d="M60 140 L100 120 L100 160 L60 180 Z" fill="url(#purpleFront)"/>
+
+  <!-- Bottom right cube - top face -->
+  <path d="M100 120 L140 100 L180 120 L140 140 Z" fill="url(#purpleTop)"/>
+  <!-- Bottom right cube - left face -->
+  <path d="M100 120 L140 140 L140 180 L100 160 Z" fill="url(#purpleSide)"/>
+  <!-- Bottom right cube - right face -->
+  <path d="M140 140 L180 120 L180 160 L140 180 Z" fill="url(#purpleFront)"/>
 </svg>
