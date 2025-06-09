@@ -15,6 +15,7 @@ import SAPConsulting from "./pages/services/SAPConsulting";
 import SAASDevelopment from "./pages/services/SAASDevelopment";
 import CloudArchitecture from "./pages/services/CloudArchitecture";
 import HardwareInfrastructure from "./pages/services/HardwareInfrastructure";
+import DigitalTransformation from "./pages/services/DigitalTransformation";
 import CloudPartners from "./pages/partners/CloudPartners";
 import TechnologyPartners from "./pages/partners/TechnologyPartners";
 import SecurityPartners from "./pages/partners/SecurityPartners";
@@ -51,6 +52,10 @@ const App = () => (
           <Route
             path="/services/hardware-infrastructure"
             element={<HardwareInfrastructure />}
+          />
+          <Route
+            path="/services/digital-transformation"
+            element={<DigitalTransformation />}
           />
           <Route path="/partners/cloud-partners" element={<CloudPartners />} />
           <Route
