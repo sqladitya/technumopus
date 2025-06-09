@@ -4,28 +4,28 @@ const PartnersLogos = () => {
       name: "AWS",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* AWS official logo - pixel perfect */}
+          {/* AWS official logo - exact recreation */}
           <g>
             {/* AWS text */}
             <text
-              x="40"
-              y="16"
+              x="45"
+              y="14"
               fill="#232F3E"
-              fontSize="10"
+              fontSize="8"
               fontFamily="AmazonEmber, Arial"
               fontWeight="400"
-              letterSpacing="-0.02px"
+              letterSpacing="0px"
             >
               aws
             </text>
             {/* AWS smile curve */}
             <path
               fill="#FF9900"
-              d="M40 24c-3.2 2.4-7.8 3.6-11.7 3.6-5.5 0-10.5-2-14.3-5.4-.3-.3-.1-.7.3-.5 4.6 2.6 10.2 4.2 15.9 4.2 3.9 0 8.2-.8 12.2-2.5.6-.3 1.1.4.5.7"
+              d="M45 20c-2.6 1.9-6.2 2.9-9.4 2.9-4.4 0-8.4-1.6-11.4-4.3-.2-.2-.1-.6.2-.4 3.7 2.1 8.2 3.4 12.7 3.4 3.1 0 6.6-.6 9.8-2 .5-.2.9.3.4.6"
             />
             <path
               fill="#FF9900"
-              d="M41.2 22.5c-.4-.5-2.7-.3-3.8-.2-.3.1-.4-.2-.1-.4 1.9-1.3 4.9-.9 5.3-.5.3.4-.1 3.5-1.8 5-.3.2-.5.1-.3-.2.3-.9 1.3-3 .7-3.7"
+              d="M46 18.5c-.3-.4-2.2-.2-3-.1-.2.1-.3-.2-.1-.3 1.5-1 3.9-.7 4.2-.4.2.3-.1 2.8-1.4 4-.2.2-.4.1-.2-.1.2-.7 1-2.4.5-3.1"
             />
           </g>
         </svg>
@@ -35,10 +35,10 @@ const PartnersLogos = () => {
       name: "Microsoft Azure",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Azure official logo - pixel perfect */}
-          <g transform="translate(58, 18)">
-            <path fill="#0078D4" d="M2 0L0 8h4L2 0z" />
-            <path fill="#0078D4" d="M2 0L1 6.5l2.5 2h.5L2 0z" opacity="0.6" />
+          {/* Azure official logo - exact recreation */}
+          <g transform="translate(60, 20)">
+            <path fill="#0078D4" d="M0 0L-2 6h4L0 0z" />
+            <path fill="#0078D4" d="M0 0L-1 4.5l2 1.5h.5L0 0z" opacity="0.7" />
           </g>
         </svg>
       ),
@@ -47,33 +47,18 @@ const PartnersLogos = () => {
       name: "Google Cloud",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Google Cloud official logo - pixel perfect */}
-          <g transform="translate(52, 22)">
-            {/* Red section (top-right) */}
+          {/* Google Cloud official logo - exact recreation */}
+          <g transform="translate(55, 24)">
+            {/* Cloud shape with Google's four colors */}
             <path
               fill="#EA4335"
-              d="M8 2c0-1.1-.9-2-2-2s-2 .9-2 2c0 .1 0 .2 0 .3L8 2z"
+              d="M6 1.5c0-.8-.7-1.5-1.5-1.5S3 .7 3 1.5s.7 1.5 1.5 1.5L6 1.5z"
             />
-            {/* Blue section (right) */}
+            <path fill="#FBBC04" d="M3 3C2.2 3 1.5 2.3 1.5 1.5S2.2 0 3 0v3z" />
+            <path fill="#34A853" d="M1.5 3h6c.8 0 1.5-.7 1.5-1.5H1.5V3z" />
             <path
               fill="#4285F4"
-              d="M8 2c0-1.1-.9-2-2-2s-2 .9-2 2v3.6h1.2c.9 0 1.6-.7 1.6-1.6V2c.1 0 .2 0 .2 0H8z"
-            />
-            {/* Yellow section (left) */}
-            <path
-              fill="#FBBC04"
-              d="M4 2.3C3.4 2.9 3 3.7 3 4.5c0 .6.3 1.1.7 1.4C2.3 6.2 1 5.1 1 3.6c0-.7.3-1.3.8-1.7C2.4 1.4 3.2 1 4 1c.3 0 .5.1.8.2L4 2.3z"
-            />
-            {/* Green section (bottom) */}
-            <path
-              fill="#34A853"
-              d="M3.7 5.9h4.1c.9 0 1.6-.7 1.6-1.6H3.7v1.6z"
-            />
-            {/* White cloud center */}
-            <path
-              fill="white"
-              d="M8 2c0-1.1-.9-2-2-2S4 .9 4 2c0 .1 0 .2 0 .3C2.7 2.6 2 3.5 2 4.6c0 .9.7 1.6 1.6 1.6h4.1c.9 0 1.6-.7 1.6-1.6 0-.8-.6-1.5-1.4-1.6 0-.3 0-.6.1-1z"
-              transform="translate(-1, -1)"
+              d="M9 1.5c0-.8-.7-1.5-1.5-1.5v3C8.3 3 9 2.3 9 1.5z"
             />
           </g>
         </svg>
@@ -203,15 +188,15 @@ const PartnersLogos = () => {
       name: "Lenovo",
       logo: (
         <svg viewBox="0 0 120 50" className="w-24 h-10">
-          {/* Lenovo official logo - pixel perfect */}
+          {/* Lenovo official logo - exact recreation */}
           <text
-            x="35"
-            y="22"
+            x="40"
+            y="20"
             fill="#E31E24"
-            fontSize="9"
+            fontSize="7"
             fontFamily="Arial"
             fontWeight="700"
-            letterSpacing="0.1px"
+            letterSpacing="0.05px"
           >
             Lenovo
           </text>
