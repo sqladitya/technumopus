@@ -2,27 +2,29 @@ import Logo from "./Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-tech-bg-dark text-tech-text-light py-16">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-tech-bg-dark text-tech-text-light py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <Logo />
-              <span className="text-xl font-bold text-white">Technum Opus</span>
+              <span className="text-lg sm:text-xl font-bold text-white">
+                Technum Opus
+              </span>
             </div>
-            <p className="text-tech-text-light mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-tech-text-light mb-4 sm:mb-6 leading-relaxed">
               Empowering digital transformation with innovative solutions for
               the modern enterprise.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               {/* Social Media Icons */}
               <a
                 href="#"
-                className="w-10 h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -31,10 +33,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -43,10 +45,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -58,12 +60,14 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-6">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+              Services
+            </h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a
                   href="#services"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   SAP Consulting
                 </a>
@@ -71,7 +75,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#services"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   SAAS Development
                 </a>
@@ -79,7 +83,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#services"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Cloud Architecture
                 </a>
@@ -87,7 +91,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#services"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Hardware Infrastructure
                 </a>
@@ -95,7 +99,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#services"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Digital Transformation
                 </a>
