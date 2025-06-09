@@ -160,6 +160,30 @@ const EnhancedInteractiveCoreNetwork = ({
         zIndex: 1,
       }}
     >
+      {/* Vertical Line from Center to Bottom of Background */}
+      <div
+        className={`main-vertical-line ${verticalLineActive ? "active" : ""}`}
+        style={{
+          position: "fixed",
+          width: "4px",
+          height: "50vh",
+          background: verticalLineActive
+            ? "linear-gradient(to bottom, rgba(59, 130, 246, 1), rgba(59, 130, 246, 0.7), rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1))"
+            : "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
+          top: "50%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          animation: verticalLineActive
+            ? "verticalGlow 3s infinite ease-in-out"
+            : "verticalFade 6s infinite ease-in-out",
+          transition: "background 0.3s ease",
+          zIndex: 2,
+          boxShadow: verticalLineActive
+            ? "0 0 15px rgba(59, 130, 246, 0.5)"
+            : "0 0 8px rgba(255, 255, 255, 0.3)",
+        }}
+      />
+
       {/* Container */}
       <div
         ref={containerRef}
@@ -189,31 +213,6 @@ const EnhancedInteractiveCoreNetwork = ({
         }}
         onMouseMove={handleMouseMove}
       >
-        {/* Vertical Line from Core to Bottom */}
-        <div
-          className={`vertical-line ${verticalLineActive ? "active" : ""}`}
-          style={{
-            position: "absolute",
-            width: "4px",
-            height: "100vh",
-            background: verticalLineActive
-              ? "linear-gradient(to bottom, rgba(59, 130, 246, 1), rgba(59, 130, 246, 0.7), rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1))"
-              : "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
-            top: "50%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            transformOrigin: "top center",
-            animation: verticalLineActive
-              ? "verticalGlow 3s infinite ease-in-out"
-              : "verticalFade 6s infinite ease-in-out",
-            transition: "background 0.3s ease",
-            zIndex: 2,
-            boxShadow: verticalLineActive
-              ? "0 0 15px rgba(59, 130, 246, 0.5)"
-              : "0 0 8px rgba(255, 255, 255, 0.3)",
-          }}
-        />
-
         {/* Core */}
         <div
           className="core"
@@ -381,32 +380,8 @@ const EnhancedInteractiveCoreNetwork = ({
               } as React.CSSProperties & { "--orbit-radius": string }
             }
           />
-        )}
+        ))}
       </div>
-
-      {/* Extended Line from Screen Center to Bottom */}
-      <div
-        className={`extended-vertical-line ${verticalLineActive ? "active" : ""}`}
-        style={{
-          position: "fixed",
-          width: "4px",
-          height: "50vh",
-          background: verticalLineActive
-            ? "linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1))"
-            : "linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0))",
-          top: "50%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          animation: verticalLineActive
-            ? "verticalGlow 3s infinite ease-in-out"
-            : "verticalFade 6s infinite ease-in-out",
-          transition: "background 0.3s ease",
-          zIndex: 1,
-          boxShadow: verticalLineActive
-            ? "0 0 10px rgba(59, 130, 246, 0.3)"
-            : "0 0 5px rgba(255, 255, 255, 0.2)",
-        }}
-      />
 
       {/* CSS Animations */}
       <style jsx>{`
