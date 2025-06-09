@@ -362,21 +362,24 @@ const EnhancedInteractiveCoreNetwork = ({
           <div
             key={`satellite-${i}`}
             className="satellite"
-            style={{
-              position: "absolute",
-              width: "15px",
-              height: "15px",
-              background: "#a5b4fc",
-              borderRadius: "50%",
-              animation: `orbit 10s linear infinite`,
-              animationDelay: `${-i}s`,
-              boxShadow: satellite.boxShadow,
-              transition: "box-shadow 0.2s ease",
-              top: "50%",
-              left: "50%",
-              transformOrigin: "50% 50%",
-              transform: satellite.transform || `translate(-50%, -50%)`,
-            }}
+            style={
+              {
+                position: "absolute",
+                width: "15px",
+                height: "15px",
+                background: "#a5b4fc",
+                borderRadius: "50%",
+                animation: `orbit 10s linear infinite`,
+                animationDelay: `${-i}s`,
+                boxShadow: satellite.boxShadow,
+                transition: "box-shadow 0.2s ease",
+                top: "50%",
+                left: "50%",
+                transformOrigin: "50% 50%",
+                "--orbit-radius": `${satellite.orbitRadius}px`,
+                transform: satellite.transform || `translate(-50%, -50%)`,
+              } as React.CSSProperties & { "--orbit-radius": string }
+            }
           />
         ))}
       </div>
