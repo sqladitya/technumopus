@@ -24,22 +24,22 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
             Get in Touch
           </h2>
-          <p className="text-xl text-tech-text-medium max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-tech-text-medium max-w-2xl mx-auto px-4">
             Ready to transform your business? Let's discuss your project and
             explore how we can help.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h3 className="text-2xl font-bold text-tech-text-dark mb-6">
+          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-tech-text-dark mb-6">
               Leave Us A Message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -57,7 +57,7 @@ const ContactForm = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors duration-300"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
                   placeholder="Your full name"
                 />
               </div>
@@ -76,7 +76,7 @@ const ContactForm = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors duration-300"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
                   placeholder="your@email.com"
                 />
               </div>
@@ -94,7 +94,7 @@ const ContactForm = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
@@ -113,14 +113,14 @@ const ContactForm = () => {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors duration-300 resize-none"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors duration-300 resize-none text-sm sm:text-base"
                   placeholder="Tell us about your project..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-tech-orange hover:bg-tech-orange-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-[1.02]"
+                className="w-full bg-tech-orange hover:bg-tech-orange-hover text-white font-semibold py-3 sm:py-3.5 px-6 rounded-lg transition-colors duration-300 transform hover:scale-[1.02] text-sm sm:text-base"
               >
                 Send Message
               </button>
@@ -128,13 +128,13 @@ const ContactForm = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Address Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-tech-gradient rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -154,10 +154,10 @@ const ContactForm = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-tech-text-dark mb-2">
+                  <h4 className="text-base sm:text-lg font-semibold text-tech-text-dark mb-1 sm:mb-2">
                     Office Address
                   </h4>
-                  <p className="text-tech-text-medium">
+                  <p className="text-sm sm:text-base text-tech-text-medium">
                     123 Tech Street
                     <br />
                     Innovation District
@@ -169,11 +169,11 @@ const ContactForm = () => {
             </div>
 
             {/* Email Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-tech-gradient rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -187,10 +187,10 @@ const ContactForm = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-tech-text-dark mb-2">
+                  <h4 className="text-base sm:text-lg font-semibold text-tech-text-dark mb-1 sm:mb-2">
                     Email Us
                   </h4>
-                  <p className="text-tech-text-medium">
+                  <p className="text-sm sm:text-base text-tech-text-medium">
                     hello@technumopus.com
                     <br />
                     support@technumopus.com
@@ -200,11 +200,11 @@ const ContactForm = () => {
             </div>
 
             {/* Phone Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-tech-gradient rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -218,10 +218,10 @@ const ContactForm = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-tech-text-dark mb-2">
+                  <h4 className="text-base sm:text-lg font-semibold text-tech-text-dark mb-1 sm:mb-2">
                     Call Us
                   </h4>
-                  <p className="text-tech-text-medium">
+                  <p className="text-sm sm:text-base text-tech-text-medium">
                     +1 (555) 123-4567
                     <br />
                     +1 (555) 987-6543
