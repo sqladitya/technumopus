@@ -19,9 +19,11 @@ const Index = () => {
 
       {/* Services Section */}
       <SectionBackground variant="light">
-        <Section className="" id="services">
-          <ServicesSection />
-        </Section>
+        <SubtleCircuitBackground variant="light">
+          <Section className="" id="services">
+            <ServicesSection />
+          </Section>
+        </SubtleCircuitBackground>
       </SectionBackground>
 
       {/* About Section */}
@@ -33,9 +35,11 @@ const Index = () => {
 
       {/* Partners Section */}
       <SectionBackground variant="light">
-        <Section className="" id="partners">
-          <PartnersSection />
-        </Section>
+        <SubtleCircuitBackground variant="light">
+          <Section className="" id="partners">
+            <PartnersSection />
+          </Section>
+        </SubtleCircuitBackground>
       </SectionBackground>
 
       {/* Why Choose Us Section */}

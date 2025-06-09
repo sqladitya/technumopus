@@ -1,4 +1,5 @@
 import ProfessionalBackground from "./ProfessionalBackground";
+import CircuitBoardAnimation from "./CircuitBoardAnimation";
 
 const HeroSection = () => {
   return (
@@ -9,8 +10,16 @@ const HeroSection = () => {
       {/* Professional subtle background overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/90 via-purple-600/85 to-slate-900/95" />
 
+      {/* Circuit Board Animation */}
+      <CircuitBoardAnimation
+        particleColor="rgba(255, 255, 255, 0.6)"
+        lineColor="rgba(255, 255, 255, 0.1)"
+        numParticles={60}
+        className="opacity-40"
+      />
+
       {/* Very subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 z-10">
         <div
           className="absolute inset-0"
           style={{
@@ -24,14 +33,14 @@ const HeroSection = () => {
       </div>
 
       {/* Minimal floating elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-5">
         {/* Single subtle accent */}
         <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-tech-primary/10 rounded-full blur-2xl" />
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-6 lg:px-8">
+      <div className="relative z-20 flex items-center justify-center min-h-screen px-6 lg:px-8">
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             Empowering Digital
@@ -56,7 +65,7 @@ const HeroSection = () => {
       </div>
 
       {/* Simple scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce z-20">
         <svg
           className="w-6 h-6"
           fill="none"
