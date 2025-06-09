@@ -4,14 +4,29 @@ interface EnhancedInteractiveCoreNetworkProps {
   className?: string;
 }
 
+interface SatelliteState {
+  transform: string;
+  boxShadow: string;
+  orbitRadius: number;
+  baseAngle: number;
+}
+
+interface ParticleState {
+  x: number;
+  y: number;
+  active: boolean;
+}
+
 const EnhancedInteractiveCoreNetwork = ({
   className = "",
 }: EnhancedInteractiveCoreNetworkProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHoveringContainer, setIsHoveringContainer] = useState(false);
-  const [activeParticles, setActiveParticles] = useState(false);
   const [connectionLinesActive, setConnectionLinesActive] = useState(false);
   const [hoveredSegment, setHoveredSegment] = useState<number | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [satellites, setSatellites] = useState<SatelliteState[]>([]);
+  const [particles, setParticles] = useState<ParticleState[]>([]);
 
   const services = [
     "SAP CONSULTING",
@@ -20,56 +35,117 @@ const EnhancedInteractiveCoreNetwork = ({
     "HARDWARE INFRASTRUCTURE SOLUTIONS",
   ];
 
+  // Initialize satellites
+  useEffect(() => {
+    const initialSatellites: SatelliteState[] = Array.from({ length: 8 }).map(
+      (_, i) => ({
+        transform: "",
+        boxShadow: "0 0 8px rgba(165, 243, 252, 0.4)",
+        orbitRadius: 250 + (i % 4) * 50,
+        baseAngle: i * 45,
+      }),
+    );
+    setSatellites(initialSatellites);
+
+    // Initialize particles
+    const initialParticles: ParticleState[] = Array.from({ length: 10 }).map(
+      () => ({
+        x: 0,
+        y: 0,
+        active: false,
+      }),
+    );
+    setParticles(initialParticles);
+  }, []);
+
+  // Core click handler
   const handleCoreClick = () => {
-    setActiveParticles(true);
-    setConnectionLinesActive(true);
+    // Toggle connection lines
+    setConnectionLinesActive((prev) => !prev);
+
+    // Trigger particle burst
+    setParticles((prev) =>
+      prev.map(() => {
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 200 + 100;
+        return {
+          x: Math.cos(angle) * distance,
+          y: Math.sin(angle) * distance,
+          active: true,
+        };
+      }),
+    );
 
     // Reset particles after animation
     setTimeout(() => {
-      setActiveParticles(false);
+      setParticles((prev) => prev.map((p) => ({ ...p, active: false })));
     }, 1000);
-
-    // Reset connection lines after animation
-    setTimeout(() => {
-      setConnectionLinesActive(false);
-    }, 2000);
   };
 
-  const generateParticles = () => {
-    const particles = [];
-    for (let i = 0; i < 10; i++) {
-      const angle = i * 36 * (Math.PI / 180);
-      const distance = 200;
-      const x = Math.cos(angle) * distance;
-      const y = Math.sin(angle) * distance;
+  // Mouse movement handler
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
 
-      particles.push(
-        <div
-          key={`particle-${i}`}
-          className="particle"
-          style={
-            {
-              position: "absolute",
-              width: "5px",
-              height: "5px",
-              background: "#93c5fd",
-              borderRadius: "50%",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              opacity: activeParticles ? 0.7 : 0,
-              transition: activeParticles
-                ? "opacity 0.5s ease, transform 1s ease"
-                : "none",
-              ...(activeParticles && {
-                transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-              }),
-            } as React.CSSProperties
-          }
-        />,
-      );
-    }
-    return particles;
+    const rect = containerRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left - rect.width / 2;
+    const mouseY = e.clientY - rect.top - rect.height / 2;
+
+    setSatellites((prev) =>
+      prev.map((satellite, i) => {
+        const influenceX = (mouseX / rect.width) * 40;
+        const influenceY = (mouseY / rect.height) * 40;
+
+        // Calculate current satellite position
+        const angle =
+          satellite.baseAngle + (Date.now() / 100) * (i % 2 === 0 ? 1 : -1);
+        const satelliteX =
+          satellite.orbitRadius * Math.cos((angle * Math.PI) / 180) +
+          influenceX;
+        const satelliteY =
+          satellite.orbitRadius * Math.sin((angle * Math.PI) / 180) +
+          influenceY;
+
+        // Calculate distance to mouse and glow intensity
+        const distanceToMouse = Math.sqrt(
+          (mouseX - satelliteX) ** 2 + (mouseY - satelliteY) ** 2,
+        );
+        const glowIntensity = Math.max(0.4, 1 - distanceToMouse / 300);
+
+        return {
+          ...satellite,
+          transform: `rotate(${angle}deg) translate(${satellite.orbitRadius + influenceX}px, ${influenceY}px) rotate(-${angle}deg)`,
+          boxShadow: `0 0 ${glowIntensity * 20}px rgba(165, 243, 252, ${glowIntensity})`,
+        };
+      }),
+    );
+  };
+
+  // Mouse leave handler
+  const handleMouseLeave = () => {
+    setSatellites((prev) =>
+      prev.map((satellite) => ({
+        ...satellite,
+        transform: "",
+        boxShadow: "0 0 8px rgba(165, 243, 252, 0.4)",
+      })),
+    );
+  };
+
+  // Scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate container transform based on scroll
+  const getContainerTransform = () => {
+    const zoomFactor = 0.7 + scrollY / 1000;
+    const rotationX = (scrollY % 20) - 10;
+    return `scale(${zoomFactor}) rotateX(${rotationX}deg)`;
   };
 
   return (
@@ -95,18 +171,25 @@ const EnhancedInteractiveCoreNetwork = ({
           perspective: "1000px",
           animation: "zoom 12s infinite ease-in-out",
           transition: "transform 0.3s ease",
-          transform: isHoveringContainer
-            ? "scale(0.9) rotateX(0deg)"
-            : undefined,
+          transform:
+            scrollY > 0
+              ? getContainerTransform()
+              : isHoveringContainer
+                ? "scale(0.9) rotateX(0deg)"
+                : undefined,
         }}
         onMouseEnter={() => setIsHoveringContainer(true)}
-        onMouseLeave={() => setIsHoveringContainer(false)}
+        onMouseLeave={() => {
+          setIsHoveringContainer(false);
+          handleMouseLeave();
+        }}
+        onMouseMove={handleMouseMove}
       >
         {/* Connection Lines */}
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={`connection-line-${i}`}
-            className="connection-line"
+            className={`connection-line ${connectionLinesActive ? "active" : ""}`}
             style={{
               position: "absolute",
               width: "2px",
@@ -154,20 +237,19 @@ const EnhancedInteractiveCoreNetwork = ({
                   i === 0 ? "100%" : i === 1 ? "80%" : i === 2 ? "60%" : "40%",
                 border: "3px solid transparent",
                 borderRadius: "50%",
-                borderTopColor: [
-                  "rgba(255, 255, 255, 0.4)",
-                  "rgba(34, 197, 94, 0.4)",
-                  "rgba(236, 72, 153, 0.4)",
-                  "rgba(147, 197, 253, 0.4)",
-                ][i],
-                animation: `spin 15s linear infinite ${i % 2 === 1 ? "reverse" : ""}`,
+                borderTopColor:
+                  hoveredSegment === i
+                    ? "rgba(255, 255, 255, 0.8)"
+                    : [
+                        "rgba(255, 255, 255, 0.4)",
+                        "rgba(34, 197, 94, 0.4)",
+                        "rgba(236, 72, 153, 0.4)",
+                        "rgba(147, 197, 253, 0.4)",
+                      ][i],
+                animation: `spin ${hoveredSegment === i ? 8 : 15}s linear infinite ${i % 2 === 1 ? "reverse" : ""}`,
                 transition:
                   "border-color 0.3s ease, animation-duration 0.3s ease",
                 transformStyle: "preserve-3d",
-                ...(hoveredSegment === i && {
-                  borderTopColor: "rgba(255, 255, 255, 0.8)",
-                  animationDuration: "8s",
-                }),
               }}
               onMouseEnter={() => setHoveredSegment(i)}
               onMouseLeave={() => setHoveredSegment(null)}
@@ -239,12 +321,33 @@ const EnhancedInteractiveCoreNetwork = ({
               pointerEvents: "none",
             }}
           >
-            {generateParticles()}
+            {particles.map((particle, i) => (
+              <div
+                key={`particle-${i}`}
+                className="particle"
+                style={{
+                  position: "absolute",
+                  width: "5px",
+                  height: "5px",
+                  background: "#93c5fd",
+                  borderRadius: "50%",
+                  top: "50%",
+                  left: "50%",
+                  transform: particle.active
+                    ? `translate(calc(-50% + ${particle.x}px), calc(-50% + ${particle.y}px))`
+                    : "translate(-50%, -50%)",
+                  opacity: particle.active ? 0.7 : 0,
+                  transition: particle.active
+                    ? "opacity 0.5s ease, transform 1s ease"
+                    : "none",
+                }}
+              />
+            ))}
           </div>
         </div>
 
         {/* Satellites */}
-        {Array.from({ length: 8 }).map((_, i) => (
+        {satellites.map((satellite, i) => (
           <div
             key={`satellite-${i}`}
             className="satellite"
@@ -256,12 +359,14 @@ const EnhancedInteractiveCoreNetwork = ({
               borderRadius: "50%",
               animation: `orbit 10s linear infinite`,
               animationDelay: `${-i}s`,
-              boxShadow: "0 0 8px rgba(165, 243, 252, 0.4)",
+              boxShadow: satellite.boxShadow,
               transition: "box-shadow 0.2s ease",
               top: "50%",
               left: "50%",
               transformOrigin: "0 0",
-              transform: `rotate(${i * 45}deg) translateX(${250 + (i % 4) * 50}px) rotate(${-i * 45}deg)`,
+              transform:
+                satellite.transform ||
+                `rotate(${satellite.baseAngle}deg) translateX(${satellite.orbitRadius}px) rotate(-${satellite.baseAngle}deg)`,
             }}
           />
         ))}
