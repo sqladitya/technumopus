@@ -14,6 +14,11 @@ import SAPConsulting from "./pages/services/SAPConsulting";
 import SAASDevelopment from "./pages/services/SAASDevelopment";
 import CloudArchitecture from "./pages/services/CloudArchitecture";
 import HardwareInfrastructure from "./pages/services/HardwareInfrastructure";
+import CloudPartners from "./pages/partners/CloudPartners";
+import TechnologyPartners from "./pages/partners/TechnologyPartners";
+import SecurityPartners from "./pages/partners/SecurityPartners";
+import IntegrationPartners from "./pages/partners/IntegrationPartners";
+import ViewAllPartners from "./pages/partners/ViewAllPartners";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +50,20 @@ const App = () => (
             path="/services/hardware-infrastructure"
             element={<HardwareInfrastructure />}
           />
+          <Route path="/partners/cloud-partners" element={<CloudPartners />} />
+          <Route
+            path="/partners/technology-partners"
+            element={<TechnologyPartners />}
+          />
+          <Route
+            path="/partners/security-partners"
+            element={<SecurityPartners />}
+          />
+          <Route
+            path="/partners/integration-partners"
+            element={<IntegrationPartners />}
+          />
+          <Route path="/partners/view-all" element={<ViewAllPartners />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
