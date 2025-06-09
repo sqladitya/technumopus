@@ -8,335 +8,334 @@ const EnhancedInteractiveCoreNetwork = ({
   className = "",
 }: EnhancedInteractiveCoreNetworkProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHoveringCore, setIsHoveringCore] = useState(false);
-  const [activeSegment, setActiveSegment] = useState<number | null>(null);
-  const [isParticleBurst, setIsParticleBurst] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [isHoveringContainer, setIsHoveringContainer] = useState(false);
+  const [activeParticles, setActiveParticles] = useState(false);
+  const [connectionLinesActive, setConnectionLinesActive] = useState(false);
+  const [hoveredSegment, setHoveredSegment] = useState<number | null>(null);
 
   const services = [
     "SAP CONSULTING",
-    "SAAS DEVELOPMENT",
+    "SAAS PLATFORM DEVELOPMENT",
     "CLOUD ARCHITECTURE",
-    "HARDWARE SOLUTIONS",
+    "HARDWARE INFRASTRUCTURE SOLUTIONS",
   ];
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left - rect.width / 2,
-          y: e.clientY - rect.top - rect.height / 2,
-        });
-      }
-    };
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const handleCoreClick = () => {
-    setIsParticleBurst(true);
-    setTimeout(() => setIsParticleBurst(false), 2000);
+    setActiveParticles(true);
+    setConnectionLinesActive(true);
+
+    // Reset particles after animation
+    setTimeout(() => {
+      setActiveParticles(false);
+    }, 1000);
+
+    // Reset connection lines after animation
+    setTimeout(() => {
+      setConnectionLinesActive(false);
+    }, 2000);
   };
 
-  const calculateSatelliteTransform = (index: number) => {
-    const distance = Math.sqrt(mousePosition.x ** 2 + mousePosition.y ** 2);
-    const maxDistance = 200;
-    const pullStrength = Math.max(0, 1 - distance / maxDistance) * 40;
+  const generateParticles = () => {
+    const particles = [];
+    for (let i = 0; i < 10; i++) {
+      const angle = i * 36 * (Math.PI / 180);
+      const distance = 200;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
 
-    const angle = Math.atan2(mousePosition.y, mousePosition.x);
-    const offsetX = Math.cos(angle) * pullStrength;
-    const offsetY = Math.sin(angle) * pullStrength;
-
-    return `translate(${offsetX}px, ${offsetY}px)`;
-  };
-
-  const getSatelliteGlow = (index: number) => {
-    const distance = Math.sqrt(mousePosition.x ** 2 + mousePosition.y ** 2);
-    const maxDistance = 150;
-    const glowIntensity = Math.max(0, 1 - distance / maxDistance);
-    const shadowSize = 10 + glowIntensity * 20;
-
-    return `0 0 ${shadowSize}px rgba(165, 243, 252, ${0.4 + glowIntensity * 0.6})`;
-  };
-
-  const getZoomScale = () => {
-    const scrollFactor = Math.min(scrollY / 1000, 1);
-    return 0.7 + scrollFactor * 0.6;
-  };
-
-  const getTiltRotation = () => {
-    const scrollFactor = Math.min(scrollY / 1000, 1);
-    return scrollFactor * 15;
+      particles.push(
+        <div
+          key={`particle-${i}`}
+          className="particle"
+          style={
+            {
+              position: "absolute",
+              width: "5px",
+              height: "5px",
+              background: "#93c5fd",
+              borderRadius: "50%",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              opacity: activeParticles ? 0.7 : 0,
+              transition: activeParticles
+                ? "opacity 0.5s ease, transform 1s ease"
+                : "none",
+              ...(activeParticles && {
+                transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+              }),
+            } as React.CSSProperties
+          }
+        />,
+      );
+    }
+    return particles;
   };
 
   return (
     <div
-      ref={containerRef}
-      className={`fixed inset-0 flex items-center justify-center pointer-events-none ${className}`}
+      className={`fixed inset-0 flex items-center justify-center ${className}`}
       style={{
+        margin: 0,
+        overflow: "hidden",
         background: "#0d1321",
-        perspective: "1000px",
+        height: "100vh",
+        fontFamily: "Arial, sans-serif",
         zIndex: 1,
       }}
     >
-      {/* Animation Container */}
+      {/* Container */}
       <div
-        className="relative"
+        ref={containerRef}
+        className="container"
         style={{
+          position: "relative",
           width: "800px",
           height: "800px",
-          transform: `scale(${getZoomScale()}) rotateX(${getTiltRotation()}deg)`,
-          transformStyle: "preserve-3d",
-          transition: "transform 0.1s ease-out",
+          perspective: "1000px",
+          animation: "zoom 12s infinite ease-in-out",
+          transition: "transform 0.3s ease",
+          transform: isHoveringContainer
+            ? "scale(0.9) rotateX(0deg)"
+            : undefined,
         }}
+        onMouseEnter={() => setIsHoveringContainer(true)}
+        onMouseLeave={() => setIsHoveringContainer(false)}
       >
         {/* Connection Lines */}
         {Array.from({ length: 8 }).map((_, i) => (
           <div
-            key={`line-${i}`}
-            className="absolute top-1/2 left-1/2 origin-left"
+            key={`connection-line-${i}`}
+            className="connection-line"
             style={{
-              width: "300px",
-              height: "2px",
-              transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
-              background: isParticleBurst
-                ? "linear-gradient(to right, rgba(59, 130, 246, 0.8), transparent)"
-                : "linear-gradient(to right, rgba(255, 255, 255, 0.6), transparent)",
-              animation: isParticleBurst
-                ? "connectionLineActive 2s ease-out"
-                : "connectionLineFade 4s ease-in-out infinite",
-              animationDelay: `${i * 0.2}s`,
+              position: "absolute",
+              width: "2px",
+              height: "800px",
+              background: connectionLinesActive
+                ? "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(59, 130, 246, 0.8), rgba(255, 255, 255, 0))"
+                : "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
+              transformOrigin: "50% 50%",
+              top: "50%",
+              left: "50%",
+              transform: `rotate(${22.5 + i * 45}deg)`,
+              animation: connectionLinesActive
+                ? "glow 2s infinite ease-in-out"
+                : "fade 5s infinite ease-in-out",
+              transition: "background 0.3s ease",
             }}
           />
         ))}
 
-        {/* Segments (Rotating Rings) */}
-        {services.map((service, i) => (
-          <div
-            key={`segment-${i}`}
-            className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
-            style={{
-              width: `${150 + i * 60}px`,
-              height: `${150 + i * 60}px`,
-              transform: "translate(-50%, -50%)",
-              animation: `segmentRotate${i % 2 === 0 ? "CW" : "CCW"} ${8 + i * 2}s linear infinite`,
-            }}
-            onMouseEnter={() => setActiveSegment(i)}
-            onMouseLeave={() => setActiveSegment(null)}
-          >
+        {/* Core */}
+        <div
+          className="core"
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            transformStyle: "preserve-3d",
+          }}
+          onClick={handleCoreClick}
+        >
+          {/* Segments */}
+          {services.map((service, i) => (
             <div
-              className="w-full h-full rounded-full border-2 transition-all duration-300"
+              key={`segment-${i}`}
+              className="segment"
               style={{
-                borderColor:
-                  activeSegment === i
-                    ? [
-                        "rgba(255, 255, 255, 0.8)",
-                        "rgba(34, 197, 94, 0.8)",
-                        "rgba(236, 72, 153, 0.8)",
-                        "rgba(147, 197, 253, 0.8)",
-                      ][i]
-                    : [
-                        "rgba(255, 255, 255, 0.4)",
-                        "rgba(34, 197, 94, 0.4)",
-                        "rgba(236, 72, 153, 0.4)",
-                        "rgba(147, 197, 253, 0.4)",
-                      ][i],
-                boxShadow:
-                  activeSegment === i
-                    ? `0 0 20px ${["rgba(255, 255, 255, 0.5)", "rgba(34, 197, 94, 0.5)", "rgba(236, 72, 153, 0.5)", "rgba(147, 197, 253, 0.5)"][i]}`
-                    : "none",
+                position: "absolute",
+                width:
+                  i === 0 ? "100%" : i === 1 ? "80%" : i === 2 ? "60%" : "40%",
+                height:
+                  i === 0 ? "100%" : i === 1 ? "80%" : i === 2 ? "60%" : "40%",
+                border: "3px solid transparent",
+                borderRadius: "50%",
+                borderTopColor: [
+                  "rgba(255, 255, 255, 0.4)",
+                  "rgba(34, 197, 94, 0.4)",
+                  "rgba(236, 72, 153, 0.4)",
+                  "rgba(147, 197, 253, 0.4)",
+                ][i],
+                animation: `spin 15s linear infinite ${i % 2 === 1 ? "reverse" : ""}`,
+                transition:
+                  "border-color 0.3s ease, animation-duration 0.3s ease",
+                transformStyle: "preserve-3d",
+                ...(hoveredSegment === i && {
+                  borderTopColor: "rgba(255, 255, 255, 0.8)",
+                  animationDuration: "8s",
+                }),
               }}
-            />
-
-            {/* Segment Label */}
-            {activeSegment === i && (
+              onMouseEnter={() => setHoveredSegment(i)}
+              onMouseLeave={() => setHoveredSegment(null)}
+            >
+              {/* Segment Label */}
               <div
-                className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 text-white text-sm font-bold uppercase tracking-wider pointer-events-none"
+                className="segment-label"
                 style={{
-                  animation: "labelFadeIn 0.3s ease-out",
-                  textShadow: "0 0 10px rgba(255, 255, 255, 0.5)",
+                  position: "absolute",
+                  color: "#fff",
+                  fontSize: "14px",
+                  textTransform: "uppercase",
+                  letterSpacing: "2px",
+                  opacity: hoveredSegment === i ? 1 : 0,
+                  transition: "opacity 0.3s ease",
+                  pointerEvents: "none",
+                  zIndex: 15,
+                  ...(i === 0 && {
+                    top: "-50px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }),
+                  ...(i === 1 && {
+                    top: "-50px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }),
+                  ...(i === 2 && {
+                    bottom: "-50px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }),
+                  ...(i === 3 && {
+                    right: "-100px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                  }),
                 }}
               >
                 {service}
               </div>
-            )}
-          </div>
-        ))}
+            </div>
+          ))}
 
-        {/* Core Center */}
-        <div
-          className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
-          style={{
-            width: "120px",
-            height: "120px",
-            transform: `translate(-50%, -50%) scale(${isHoveringCore ? 1.3 : 1})`,
-            transition: "transform 0.3s ease-out",
-          }}
-          onMouseEnter={() => setIsHoveringCore(true)}
-          onMouseLeave={() => setIsHoveringCore(false)}
-          onClick={handleCoreClick}
-        >
+          {/* Core Center */}
           <div
-            className="w-full h-full rounded-full"
+            className="core-center"
             style={{
+              width: "150px",
+              height: "150px",
               background: "radial-gradient(circle, #3b82f6, #1e40af)",
-              boxShadow: isHoveringCore
-                ? "0 0 60px rgba(59, 130, 246, 0.8), inset 0 0 20px rgba(30, 64, 175, 0.5)"
-                : "0 0 30px rgba(59, 130, 246, 0.6), inset 0 0 15px rgba(30, 64, 175, 0.3)",
-              animation: "corePulse 2s ease-in-out infinite",
+              borderRadius: "50%",
+              boxShadow:
+                "0 0 40px rgba(59, 130, 246, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.3)",
+              animation: "pulse 4s infinite ease-in-out",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              position: "relative",
+              zIndex: 10,
             }}
           />
+
+          {/* Particles Container */}
+          <div
+            className="particles"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+            }}
+          >
+            {generateParticles()}
+          </div>
         </div>
 
         {/* Satellites */}
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={`satellite-${i}`}
-            className="absolute top-1/2 left-1/2"
+            className="satellite"
             style={{
-              width: "16px",
-              height: "16px",
-              transform: "translate(-50%, -50%)",
-              animation: `satelliteOrbit${i % 2 === 0 ? "CW" : "CCW"} ${6 + i * 0.5}s linear infinite`,
+              position: "absolute",
+              width: "15px",
+              height: "15px",
+              background: "#a5b4fc",
+              borderRadius: "50%",
+              animation: `orbit 10s linear infinite`,
+              animationDelay: `${-i}s`,
+              boxShadow: "0 0 8px rgba(165, 243, 252, 0.4)",
+              transition: "box-shadow 0.2s ease",
+              top: "50%",
+              left: "50%",
+              transformOrigin: "0 0",
+              transform: `rotate(${i * 45}deg) translateX(${250 + (i % 4) * 50}px) rotate(${-i * 45}deg)`,
             }}
-          >
-            <div
-              className="w-full h-full rounded-full bg-blue-300"
-              style={{
-                transform: calculateSatelliteTransform(i),
-                boxShadow: getSatelliteGlow(i),
-                transition: "transform 0.1s ease-out, box-shadow 0.1s ease-out",
-              }}
-            />
-          </div>
+          />
         ))}
-
-        {/* Particles */}
-        {isParticleBurst &&
-          Array.from({ length: 10 }).map((_, i) => (
-            <div
-              key={`particle-${i}`}
-              className="absolute top-1/2 left-1/2 w-3 h-3 bg-blue-300 rounded-full"
-              style={
-                {
-                  transform: "translate(-50%, -50%)",
-                  animation: `particleBurst 2s ease-out forwards`,
-                  animationDelay: `${i * 0.1}s`,
-                  "--particle-x": `${Math.cos((i * 36 * Math.PI) / 180) * 200}px`,
-                  "--particle-y": `${Math.sin((i * 36 * Math.PI) / 180) * 200}px`,
-                } as React.CSSProperties & { [key: string]: string }
-              }
-            />
-          ))}
       </div>
 
       {/* CSS Animations */}
       <style jsx>{`
-        @keyframes corePulse {
+        @keyframes zoom {
           0%,
           100% {
-            transform: translate(-50%, -50%) scale(${isHoveringCore ? 1.3 : 1});
+            transform: scale(0.7) rotateX(10deg);
           }
           50% {
-            transform: translate(-50%, -50%)
-              scale(${isHoveringCore ? 1.4 : 1.1});
+            transform: scale(1.3) rotateX(-10deg);
           }
         }
 
-        @keyframes segmentRotateCW {
-          from {
-            transform: translate(-50%, -50%) rotate(0deg);
+        .container:hover {
+          transform: scale(0.9) rotateX(0deg) !important;
+        }
+
+        .core:hover .core-center {
+          transform: scale(1.3) rotate(5deg) !important;
+          box-shadow:
+            0 0 60px rgba(59, 130, 246, 1),
+            inset 0 0 30px rgba(255, 255, 255, 0.5) !important;
+        }
+
+        @keyframes pulse {
+          0%,
+          100% {
+            transform: scale(1);
+            opacity: 0.8;
           }
-          to {
-            transform: translate(-50%, -50%) rotate(360deg);
+          50% {
+            transform: scale(1.1);
+            opacity: 1;
           }
         }
 
-        @keyframes segmentRotateCCW {
-          from {
-            transform: translate(-50%, -50%) rotate(0deg);
-          }
-          to {
-            transform: translate(-50%, -50%) rotate(-360deg);
+        @keyframes spin {
+          100% {
+            transform: rotate(360deg);
           }
         }
 
-        @keyframes satelliteOrbitCW {
-          from {
-            transform: translate(-50%, -50%) rotate(0deg) translateX(250px)
+        @keyframes orbit {
+          0% {
+            transform: rotate(0deg) translateX(var(--orbit-radius, 300px))
               rotate(0deg);
           }
-          to {
-            transform: translate(-50%, -50%) rotate(360deg) translateX(250px)
+          100% {
+            transform: rotate(360deg) translateX(var(--orbit-radius, 300px))
               rotate(-360deg);
           }
         }
 
-        @keyframes satelliteOrbitCCW {
-          from {
-            transform: translate(-50%, -50%) rotate(0deg) translateX(180px)
-              rotate(0deg);
-          }
-          to {
-            transform: translate(-50%, -50%) rotate(-360deg) translateX(180px)
-              rotate(360deg);
-          }
-        }
-
-        @keyframes connectionLineFade {
+        @keyframes fade {
           0%,
           100% {
-            opacity: 0.6;
+            opacity: 0.3;
           }
           50% {
-            opacity: 1;
-          }
-        }
-
-        @keyframes connectionLineActive {
-          0% {
-            opacity: 0.8;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
             opacity: 0.6;
           }
         }
 
-        @keyframes labelFadeIn {
-          from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(-8px) scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-8px) scale(1);
-          }
-        }
-
-        @keyframes particleBurst {
-          0% {
-            transform: translate(-50%, -50%) translate(0, 0) scale(1);
-            opacity: 1;
-          }
+        @keyframes glow {
+          0%,
           100% {
-            transform: translate(-50%, -50%)
-              translate(var(--particle-x), var(--particle-y)) scale(0);
-            opacity: 0;
+            opacity: 0.5;
+          }
+          50% {
+            opacity: 1;
           }
         }
       `}</style>
