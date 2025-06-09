@@ -1,4 +1,4 @@
-import OrbitalRingsAnimation from "./OrbitalRingsAnimation";
+import EnhancedInteractiveCoreNetwork from "./EnhancedInteractiveCoreNetwork";
 
 const HeroSection = () => {
   return (
