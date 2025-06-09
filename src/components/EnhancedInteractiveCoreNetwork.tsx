@@ -375,9 +375,7 @@ const EnhancedInteractiveCoreNetwork = ({
               top: "50%",
               left: "50%",
               transformOrigin: "50% 50%",
-              transform:
-                satellite.transform ||
-                `translate(-50%, -50%) rotate(${satellite.baseAngle}deg) translateX(${satellite.orbitRadius}px) rotate(-${satellite.baseAngle}deg)`,
+              transform: satellite.transform || `translate(-50%, -50%)`,
             }}
           />
         ))}
