@@ -154,13 +154,13 @@ const HeroAnimation = ({ className = "" }: HeroAnimationProps) => {
         zIndex: 1,
       }}
     >
-      {/* Vertical Line from Center to Bottom - Hero Section Only */}
+      {/* Vertical Line from Center to Bottom of Hero Section Only */}
       <div
         className={`hero-vertical-line ${verticalLineActive ? "active" : ""}`}
         style={{
-          position: "fixed",
+          position: "absolute",
           width: "3px",
-          height: "50vh",
+          height: "50%",
           background: verticalLineActive
             ? "linear-gradient(to bottom, rgba(59, 130, 246, 1), rgba(59, 130, 246, 0.8), rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0))"
             : "linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
