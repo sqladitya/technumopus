@@ -15,12 +15,8 @@ const HeroSection = () => {
       {/* Fixed Professional Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/90 via-purple-600/85 to-slate-900/95" />
 
-      {/* Orbital Data Rings Animation - Only in Hero Section */}
-      <OrbitalRingsAnimation
-        ringColor="rgba(255, 255, 255, 0.6)"
-        numRings={15}
-        className="opacity-70"
-      />
+      {/* Enhanced Interactive Core Network Animation - Only in Hero Section */}
+      <EnhancedInteractiveCoreNetwork className="opacity-80" />
 
       {/* Very subtle pattern overlay */}
       <div className="absolute inset-0 opacity-5 z-10">
