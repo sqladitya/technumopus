@@ -909,7 +909,7 @@ const Navigation = () => {
                     </a>
                   ))}
                   <a
-                    href="#partners"
+                    href="/partners/view-all"
                     onClick={closeMobileMenu}
                     className="flex items-center gap-2 py-1.5 px-2 text-tech-primary text-sm font-medium rounded-md hover:bg-gray-50"
                   >
