@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
@@ -217,8 +218,8 @@ const Services = () => {
                       </div>
 
                       <div className="mt-6">
-                        <a
-                          href={service.href}
+                        <Link
+                          to={service.href}
                           className="inline-flex items-center gap-2 px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
                         >
                           Learn More
@@ -235,7 +236,7 @@ const Services = () => {
                               d="M17 8l4 4m0 0l-4 4m4-4H3"
                             />
                           </svg>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
