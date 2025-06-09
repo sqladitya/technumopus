@@ -127,6 +127,38 @@ const ViewAllServices = () => {
         },
       ],
     },
+    {
+      title: "Digital Innovation",
+      description: "Comprehensive transformation and modernization services",
+      services: [
+        {
+          name: "Digital Transformation",
+          description: "End-to-end business transformation and modernization",
+          href: "/services/digital-transformation",
+          features: [
+            "Process Automation",
+            "Data Analytics & AI",
+            "Cloud Migration",
+            "Digital Customer Experience",
+          ],
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          ),
+        },
+      ],
+    },
   ];
 
   const serviceStats = [
