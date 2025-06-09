@@ -228,19 +228,19 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
-              href="#"
+              href="/privacy-policy"
               className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="/terms-of-service"
               className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Terms of Service
             </a>
             <a
-              href="#"
+              href="/cookie-policy"
               className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Cookie Policy
