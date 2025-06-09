@@ -154,7 +154,8 @@ const EnhancedInteractiveCoreNetwork = ({
       style={{
         margin: 0,
         overflow: "hidden",
-        background: "#0d1321",
+        background:
+          "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%)",
         height: "100vh",
         fontFamily: "Arial, sans-serif",
         zIndex: 1,
