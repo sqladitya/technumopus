@@ -373,10 +373,10 @@ const EnhancedInteractiveCoreNetwork = ({
               transition: "box-shadow 0.2s ease",
               top: "50%",
               left: "50%",
-              transformOrigin: "0 0",
+              transformOrigin: "50% 50%",
               transform:
                 satellite.transform ||
-                `rotate(${satellite.baseAngle}deg) translateX(${satellite.orbitRadius}px) rotate(-${satellite.baseAngle}deg)`,
+                `translate(-50%, -50%) rotate(${satellite.baseAngle}deg) translateX(${satellite.orbitRadius}px) rotate(-${satellite.baseAngle}deg)`,
             }}
           />
         ))}
