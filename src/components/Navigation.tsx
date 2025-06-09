@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import Logo from "./Logo";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,9 +33,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-tech-gradient rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm font-bold">TO</span>
-              </div>
+              <Logo />
               <span className="text-xl font-bold text-tech-text-dark">
                 Technum Opus
               </span>

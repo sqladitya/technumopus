@@ -1,3 +1,5 @@
+import Logo from "./Logo";
+
 const Footer = () => {
   return (
     <footer className="bg-tech-bg-dark text-tech-text-light py-16">
@@ -6,9 +8,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-tech-gradient rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm font-bold">TO</span>
-              </div>
+              <Logo />
               <span className="text-xl font-bold text-white">Technum Opus</span>
             </div>
             <p className="text-tech-text-light mb-6 leading-relaxed">

@@ -1,3 +1,5 @@
+import HeroAccents from "./HeroAccents";
+
 const HeroSection = () => {
   return (
     <section
