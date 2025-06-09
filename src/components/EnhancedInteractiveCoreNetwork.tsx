@@ -242,6 +242,9 @@ const EnhancedInteractiveCoreNetwork = ({
                   i === 0 ? "100%" : i === 1 ? "80%" : i === 2 ? "60%" : "40%",
                 height:
                   i === 0 ? "100%" : i === 1 ? "80%" : i === 2 ? "60%" : "40%",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
                 border: "3px solid transparent",
                 borderRadius: "50%",
                 borderTopColor:
