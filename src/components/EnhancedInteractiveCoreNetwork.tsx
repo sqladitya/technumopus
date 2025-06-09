@@ -165,7 +165,7 @@ const EnhancedInteractiveCoreNetwork = ({
         ref={containerRef}
         className="container"
         style={{
-          position: "relative",
+          position: "absolute",
           width: "800px",
           height: "800px",
           perspective: "1000px",
@@ -177,6 +177,10 @@ const EnhancedInteractiveCoreNetwork = ({
               : isHoveringContainer
                 ? "scale(0.9) rotateX(0deg)"
                 : undefined,
+          top: "50%",
+          left: "50%",
+          marginTop: "-400px",
+          marginLeft: "-400px",
         }}
         onMouseEnter={() => setIsHoveringContainer(true)}
         onMouseLeave={() => {
