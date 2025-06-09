@@ -56,39 +56,13 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white text-lg font-semibold mb-6">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { name: "Home", href: "#home" },
-                { name: "About Us", href: "#about" },
-                { name: "Services", href: "#services" },
-                { name: "Partners", href: "#partners" },
-                { name: "Careers", href: "#careers" },
-                { name: "Contact", href: "#contact" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="hover:text-tech-primary transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Services */}
           <div>
             <h3 className="text-white text-lg font-semibold mb-6">Services</h3>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#"
+                  href="#services"
                   className="hover:text-tech-primary transition-colors duration-300"
                 >
                   SAP Consulting
@@ -96,34 +70,81 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-tech-green transition-colors duration-300"
+                  href="#services"
+                  className="hover:text-tech-primary transition-colors duration-300"
                 >
                   SAAS Development
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-tech-green transition-colors duration-300"
+                  href="#services"
+                  className="hover:text-tech-primary transition-colors duration-300"
                 >
                   Cloud Architecture
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-tech-green transition-colors duration-300"
+                  href="#services"
+                  className="hover:text-tech-primary transition-colors duration-300"
                 >
                   Hardware Infrastructure
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-tech-green transition-colors duration-300"
+                  href="#services"
+                  className="hover:text-tech-primary transition-colors duration-300"
                 >
                   Digital Transformation
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="text-white text-lg font-semibold mb-6">Company</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="#about"
+                  className="hover:text-tech-primary transition-colors duration-300"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className="hover:text-tech-primary transition-colors duration-300"
+                >
+                  Leadership Team
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#careers"
+                  className="hover:text-tech-primary transition-colors duration-300"
+                >
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#partners"
+                  className="hover:text-tech-primary transition-colors duration-300"
+                >
+                  Partners
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#news"
+                  className="hover:text-tech-primary transition-colors duration-300"
+                >
+                  News & Insights
                 </a>
               </li>
             </ul>
@@ -177,7 +198,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-5 h-5 flex-shrink-0 text-tech-green"
+                  className="w-5 h-5 flex-shrink-0 text-tech-primary"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -207,13 +228,13 @@ const Footer = () => {
             </a>
             <a
               href="#"
-              className="text-sm hover:text-tech-green transition-colors duration-300"
+              className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-sm hover:text-tech-green transition-colors duration-300"
+              className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Cookie Policy
             </a>

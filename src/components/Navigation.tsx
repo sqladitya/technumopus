@@ -1,9 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
+  const [isCompanyOpen, setIsCompanyOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const partnersRef = useRef<HTMLDivElement>(null);
+  const companyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,9 +20,285 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        servicesRef.current &&
+        !servicesRef.current.contains(event.target as Node)
+      ) {
+        setIsServicesOpen(false);
+      }
+      if (
+        partnersRef.current &&
+        !partnersRef.current.contains(event.target as Node)
+      ) {
+        setIsPartnersOpen(false);
+      }
+      if (
+        companyRef.current &&
+        !companyRef.current.contains(event.target as Node)
+      ) {
+        setIsCompanyOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const services = [
+    {
+      name: "SAP Consulting",
+      href: "#services",
+      description: "Enterprise SAP implementations and optimization",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "SAAS Platform Development",
+      href: "#services",
+      description: "Scalable cloud-based software solutions",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Cloud Architecture",
+      href: "#services",
+      description: "Robust and secure cloud infrastructure",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Hardware Infrastructure",
+      href: "#services",
+      description: "Complete hardware solutions and deployment",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+          />
+        </svg>
+      ),
+    },
+  ];
+
+  const partners = [
+    {
+      name: "Cloud Partners",
+      href: "#partners",
+      description: "AWS, Microsoft Azure, Google Cloud",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Technology Partners",
+      href: "#partners",
+      description: "Cisco, Dell, HP, Lenovo",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Security Partners",
+      href: "#partners",
+      description: "Palo Alto Networks, SentinelOne",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Integration Partners",
+      href: "#partners",
+      description: "Zebra Technologies and more",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+          />
+        </svg>
+      ),
+    },
+  ];
+
+  const companyLinks = [
+    {
+      name: "About Us",
+      href: "#about",
+      description: "Our story, mission, and values",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Leadership Team",
+      href: "#about",
+      description: "Meet our executive leadership",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Careers",
+      href: "#careers",
+      description: "Join our growing team",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "News & Insights",
+      href: "#news",
+      description: "Latest updates and thought leadership",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+          />
+        </svg>
+      ),
+    },
+  ];
 
   return (
     <>
@@ -41,23 +323,282 @@ const Navigation = () => {
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              {[
-                { name: "Home", href: "#home" },
-                { name: "About Us", href: "#about" },
-                { name: "Services", href: "#services" },
-                { name: "Partners", href: "#partners" },
-                { name: "Careers", href: "#careers" },
-                { name: "Contact", href: "#contact" },
-              ].map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
+              <a
+                href="#home"
+                className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
+              >
+                Home
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
+              </a>
+
+              {/* Company Dropdown */}
+              <div className="relative" ref={companyRef}>
+                <button
+                  onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+                  onMouseEnter={() => setIsCompanyOpen(true)}
+                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
                 >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
+                  Company
+                  <svg
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-200",
+                      isCompanyOpen ? "rotate-180" : "",
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-0.5 bg-tech-primary transition-all duration-300",
+                      isCompanyOpen ? "w-full" : "w-0 group-hover:w-full",
+                    )}
+                  ></span>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    isCompanyOpen
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2",
+                  )}
+                  onMouseLeave={() => setIsCompanyOpen(false)}
+                >
+                  <div className="p-4">
+                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
+                      Company Information
+                    </div>
+                    <div className="space-y-1">
+                      {companyLinks.map((link) => (
+                        <a
+                          key={link.name}
+                          href={link.href}
+                          onClick={() => setIsCompanyOpen(false)}
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
+                            <div className="text-tech-primary">{link.icon}</div>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                              {link.name}
+                            </div>
+                            <div className="text-xs text-tech-text-medium mt-1">
+                              {link.description}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Services Dropdown */}
+              <div className="relative" ref={servicesRef}>
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
+                >
+                  Services
+                  <svg
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-200",
+                      isServicesOpen ? "rotate-180" : "",
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-0.5 bg-tech-primary transition-all duration-300",
+                      isServicesOpen ? "w-full" : "w-0 group-hover:w-full",
+                    )}
+                  ></span>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    isServicesOpen
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2",
+                  )}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  <div className="p-4">
+                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
+                      Our Services
+                    </div>
+                    <div className="space-y-1">
+                      {services.map((service) => (
+                        <a
+                          key={service.name}
+                          href={service.href}
+                          onClick={() => setIsServicesOpen(false)}
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
+                            <div className="text-tech-primary">
+                              {service.icon}
+                            </div>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                              {service.name}
+                            </div>
+                            <div className="text-xs text-tech-text-medium mt-1">
+                              {service.description}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                    <div className="border-t border-gray-100 mt-3 pt-3">
+                      <a
+                        href="#services"
+                        onClick={() => setIsServicesOpen(false)}
+                        className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
+                      >
+                        View All Services
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Partners Dropdown */}
+              <div className="relative" ref={partnersRef}>
+                <button
+                  onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                  onMouseEnter={() => setIsPartnersOpen(true)}
+                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
+                >
+                  Partners
+                  <svg
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-200",
+                      isPartnersOpen ? "rotate-180" : "",
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-0.5 bg-tech-primary transition-all duration-300",
+                      isPartnersOpen ? "w-full" : "w-0 group-hover:w-full",
+                    )}
+                  ></span>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    isPartnersOpen
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2",
+                  )}
+                  onMouseLeave={() => setIsPartnersOpen(false)}
+                >
+                  <div className="p-4">
+                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
+                      Partner Categories
+                    </div>
+                    <div className="space-y-1">
+                      {partners.map((partner) => (
+                        <a
+                          key={partner.name}
+                          href={partner.href}
+                          onClick={() => setIsPartnersOpen(false)}
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                        >
+                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
+                            <div className="text-tech-primary">
+                              {partner.icon}
+                            </div>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                              {partner.name}
+                            </div>
+                            <div className="text-xs text-tech-text-medium mt-1">
+                              {partner.description}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                    <div className="border-t border-gray-100 mt-3 pt-3">
+                      <a
+                        href="#partners"
+                        onClick={() => setIsPartnersOpen(false)}
+                        className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
+                      >
+                        View All Partners
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#contact"
+                className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
+              >
+                Contact
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
