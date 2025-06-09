@@ -211,7 +211,7 @@ export const AboutSection = () => (
           "Continuous innovation and technology leadership",
         ].map((point, index) => (
           <div key={index} className="flex items-start gap-3">
-            <div className="w-6 h-6 bg-tech-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="w-6 h-6 bg-tech-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
               <svg
                 className="w-3 h-3 text-white"
                 fill="none"
@@ -238,7 +238,7 @@ export const AboutSection = () => (
         <div className="grid grid-cols-2 gap-6">
           {/* Stats Cards */}
           <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-tech-deep-blue mb-2">
+            <div className="text-3xl font-bold text-tech-primary mb-2">
               500+
             </div>
             <div className="text-tech-text-medium text-sm">
@@ -246,19 +246,21 @@ export const AboutSection = () => (
             </div>
           </div>
           <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-tech-green mb-2">99%</div>
+            <div className="text-3xl font-bold text-tech-primary mb-2">99%</div>
             <div className="text-tech-text-medium text-sm">
               Client Satisfaction
             </div>
           </div>
           <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-tech-teal mb-2">15+</div>
+            <div className="text-3xl font-bold text-tech-secondary mb-2">
+              15+
+            </div>
             <div className="text-tech-text-medium text-sm">
               Years Experience
             </div>
           </div>
           <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-tech-deep-blue mb-2">
+            <div className="text-3xl font-bold text-tech-primary mb-2">
               24/7
             </div>
             <div className="text-tech-text-medium text-sm">Support</div>

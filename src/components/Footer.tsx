@@ -73,7 +73,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="hover:text-tech-green transition-colors duration-300"
+                    className="hover:text-tech-primary transition-colors duration-300"
                   >
                     {link.name}
                   </a>
@@ -89,7 +89,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="hover:text-tech-green transition-colors duration-300"
+                  className="hover:text-tech-primary transition-colors duration-300"
                 >
                   SAP Consulting
                 </a>
@@ -137,7 +137,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 mt-1 flex-shrink-0 text-tech-green"
+                  className="w-5 h-5 mt-1 flex-shrink-0 text-tech-primary"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -161,7 +161,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-5 h-5 flex-shrink-0 text-tech-green"
+                  className="w-5 h-5 flex-shrink-0 text-tech-primary"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -201,7 +201,7 @@ const Footer = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
-              className="text-sm hover:text-tech-green transition-colors duration-300"
+              className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Privacy Policy
             </a>

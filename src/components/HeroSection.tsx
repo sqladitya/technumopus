@@ -22,8 +22,8 @@ const HeroSection = () => {
 
         {/* Floating geometric shapes */}
         <div className="absolute top-20 left-20 w-32 h-32 border border-white/20 rounded-lg animate-float opacity-60" />
-        <div className="absolute top-40 right-40 w-24 h-24 border border-tech-green/30 rounded-full animate-pulse-slow opacity-40" />
-        <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-tech-teal/20 rounded-lg animate-spin-slow opacity-50" />
+        <div className="absolute top-40 right-40 w-24 h-24 border border-tech-primary/30 rounded-full animate-pulse-slow opacity-40" />
+        <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-tech-pink/20 rounded-lg animate-spin-slow opacity-50" />
         <div
           className="absolute bottom-32 right-32 w-20 h-20 border border-white/15 rounded-full animate-float opacity-30"
           style={{ animationDelay: "2s" }}
@@ -51,7 +51,7 @@ const HeroSection = () => {
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             Empowering Digital
-            <span className="block bg-gradient-to-r from-tech-green to-tech-teal bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-tech-primary to-tech-pink-light bg-clip-text text-transparent">
               Transformation
             </span>
           </h1>
@@ -59,10 +59,10 @@ const HeroSection = () => {
             Innovative solutions for the modern enterprise
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-tech-green hover:bg-tech-green-light text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <button className="px-8 py-4 bg-tech-primary hover:bg-tech-primary-light text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
               Explore Services
             </button>
-            <button className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-tech-deep-blue transition-all duration-300">
+            <button className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-tech-primary transition-all duration-300">
               Get in Touch
             </button>
           </div>

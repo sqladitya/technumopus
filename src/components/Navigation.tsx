@@ -53,16 +53,16 @@ const Navigation = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative text-tech-text-medium hover:text-tech-deep-blue font-medium transition-colors duration-300 group"
+                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-green transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 text-tech-text-medium hover:text-tech-deep-blue">
+            <button className="md:hidden p-2 text-tech-text-medium hover:text-tech-primary">
               <svg
                 className="w-6 h-6"
                 fill="none"
