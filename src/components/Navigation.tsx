@@ -27,29 +27,30 @@ const Navigation = () => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
 
-      // Check if click is outside any dropdown area
-      const isOutsideServices =
-        servicesRef.current && !servicesRef.current.contains(target);
-      const isOutsidePartners =
-        partnersRef.current && !partnersRef.current.contains(target);
-      const isOutsideCompany =
-        companyRef.current && !companyRef.current.contains(target);
+      // Check if click is outside any dropdown area (desktop only)
+      if (window.innerWidth >= 1024) {
+        const isOutsideServices =
+          servicesRef.current && !servicesRef.current.contains(target);
+        const isOutsidePartners =
+          partnersRef.current && !partnersRef.current.contains(target);
+        const isOutsideCompany =
+          companyRef.current && !companyRef.current.contains(target);
 
-      // For mobile, also check if click is outside the mobile menu
+        if (isOutsideServices) {
+          setIsServicesOpen(false);
+        }
+        if (isOutsidePartners) {
+          setIsPartnersOpen(false);
+        }
+        if (isOutsideCompany) {
+          setIsCompanyOpen(false);
+        }
+      }
+
+      // For mobile, check if click is outside the mobile menu
       const mobileMenu = document.querySelector("[data-mobile-menu]");
       const isOutsideMobileMenu = !mobileMenu || !mobileMenu.contains(target);
 
-      if (isOutsideServices) {
-        setIsServicesOpen(false);
-      }
-      if (isOutsidePartners) {
-        setIsPartnersOpen(false);
-      }
-      if (isOutsideCompany) {
-        setIsCompanyOpen(false);
-      }
-
-      // Close mobile menu if clicking outside on mobile
       if (window.innerWidth < 1024 && isOutsideMobileMenu && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
         closeAllDropdowns();
@@ -357,14 +358,6 @@ const Navigation = () => {
 
   return (
     <>
-      {/* White Background Overlay for Mobile/Tablet Dropdowns */}
-      {(isCompanyOpen || isServicesOpen || isPartnersOpen) && (
-        <div
-          className="fixed inset-0 bg-white z-30 lg:hidden"
-          onClick={closeAllDropdowns}
-        />
-      )}
-
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
@@ -722,7 +715,7 @@ const Navigation = () => {
           )}
         >
           <div className="max-h-80 overflow-y-auto">
-            <div className="px-4 py-4 space-y-4">
+            <div className="px-4 py-4 space-y-4 relative">
               {/* Mobile Home Link */}
               <a
                 href="/"
@@ -733,10 +726,13 @@ const Navigation = () => {
               </a>
 
               {/* Mobile Company Section */}
-              <div>
+              <div className={cn("rounded-lg", isCompanyOpen && "bg-gray-50")}>
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
+                  className={cn(
+                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
+                    isCompanyOpen && "text-tech-primary bg-gray-50",
+                  )}
                 >
                   Company
                   <svg
@@ -783,10 +779,13 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Services Section */}
-              <div>
+              <div className={cn("rounded-lg", isServicesOpen && "bg-gray-50")}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
+                  className={cn(
+                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
+                    isServicesOpen && "text-tech-primary bg-gray-50",
+                  )}
                 >
                   Services
                   <svg
@@ -855,10 +854,13 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Partners Section */}
-              <div>
+              <div className={cn("rounded-lg", isPartnersOpen && "bg-gray-50")}>
                 <button
                   onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                  className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
+                  className={cn(
+                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
+                    isPartnersOpen && "text-tech-primary bg-gray-50",
+                  )}
                 >
                   Partners
                   <svg
