@@ -441,6 +441,28 @@ const EnhancedInteractiveCoreNetwork = ({
             opacity: 1;
           }
         }
+
+        @keyframes verticalFade {
+          0%,
+          100% {
+            opacity: 0.4;
+          }
+          50% {
+            opacity: 0.7;
+          }
+        }
+
+        @keyframes verticalGlow {
+          0%,
+          100% {
+            opacity: 0.6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+          }
+          50% {
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+          }
+        }
       `}</style>
     </div>
   );
