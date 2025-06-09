@@ -109,7 +109,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#about"
+                  href="/about"
                   className="hover:text-tech-primary transition-colors duration-300"
                 >
                   About Us
@@ -117,7 +117,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="/leadership"
                   className="hover:text-tech-primary transition-colors duration-300"
                 >
                   Leadership Team
@@ -125,7 +125,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#careers"
+                  href="/careers"
                   className="hover:text-tech-primary transition-colors duration-300"
                 >
                   Careers
@@ -141,7 +141,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#news"
+                  href="/news-insights"
                   className="hover:text-tech-primary transition-colors duration-300"
                 >
                   News & Insights

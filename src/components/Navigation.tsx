@@ -245,7 +245,7 @@ const Navigation = () => {
   const companyLinks = [
     {
       name: "About Us",
-      href: "#about",
+      href: "/about",
       description: "Our story, mission, and values",
       icon: (
         <svg
@@ -265,7 +265,7 @@ const Navigation = () => {
     },
     {
       name: "Leadership Team",
-      href: "#about",
+      href: "/leadership",
       description: "Meet our executive leadership",
       icon: (
         <svg
@@ -285,7 +285,7 @@ const Navigation = () => {
     },
     {
       name: "Careers",
-      href: "#careers",
+      href: "/careers",
       description: "Join our growing team",
       icon: (
         <svg
@@ -305,7 +305,7 @@ const Navigation = () => {
     },
     {
       name: "News & Insights",
-      href: "#news",
+      href: "/news-insights",
       description: "Latest updates and thought leadership",
       icon: (
         <svg
@@ -340,16 +340,18 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <Logo />
-              <span className="text-xl font-bold text-tech-text-dark">
-                Technum Opus
-              </span>
+              <a href="/" className="flex items-center gap-3">
+                <Logo />
+                <span className="text-xl font-bold text-tech-text-dark">
+                  Technum Opus
+                </span>
+              </a>
             </div>
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
               <a
-                href="#home"
+                href="/"
                 onMouseEnter={closeAllDropdowns}
                 className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
               >
