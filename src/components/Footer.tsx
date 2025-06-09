@@ -66,7 +66,7 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a
-                  href="#services"
+                  href="/services/sap-consulting"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   SAP Consulting
@@ -74,7 +74,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services/saas-development"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   SAAS Development
@@ -82,7 +82,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services/cloud-architecture"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Cloud Architecture
@@ -90,7 +90,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services/hardware-infrastructure"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Hardware Infrastructure
@@ -98,7 +98,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services/digital-transformation"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Digital Transformation
@@ -137,7 +137,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#partners"
+                  href="/partners"
                   className="hover:text-tech-primary transition-colors duration-300"
                 >
                   Partners
