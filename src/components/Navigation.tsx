@@ -660,7 +660,7 @@ const Navigation = () => {
               </div>
 
               <a
-                href="#contact"
+                href="/contact"
                 onMouseEnter={closeAllDropdowns}
                 className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
               >
@@ -930,7 +930,7 @@ const Navigation = () => {
 
               {/* Mobile Contact Link */}
               <a
-                href="#contact"
+                href="/contact"
                 onClick={closeMobileMenu}
                 className="block text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
               >

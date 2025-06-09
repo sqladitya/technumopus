@@ -6,7 +6,6 @@ import {
   PartnersSection,
   AboutSection,
 } from "@/components/ContentSections";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
 
@@ -129,9 +128,6 @@ const Index = () => {
           </div>
         </Section>
       </SectionBackground>
-
-      {/* Contact Form Section */}
-      <ContactForm />
 
       <Footer />
     </div>
