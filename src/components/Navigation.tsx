@@ -635,7 +635,7 @@ const Navigation = () => {
                     </div>
                     <div className="border-t border-gray-100 mt-3 pt-3">
                       <a
-                        href="#partners"
+                        href="/partners/view-all"
                         onClick={closeAllDropdowns}
                         className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
                       >
