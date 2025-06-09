@@ -346,6 +346,11 @@ const Navigation = () => {
 
   return (
     <>
+      {/* White Background Overlay for Mobile/Tablet Dropdowns */}
+      {(isCompanyOpen || isServicesOpen || isPartnersOpen) && (
+        <div className="fixed inset-0 bg-white z-30 lg:hidden" />
+      )}
+
       {/* Navigation Bar */}
       <nav
         className={cn(
@@ -687,7 +692,7 @@ const Navigation = () => {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "lg:hidden fixed inset-x-0 top-16 bg-white/98 backdrop-blur-md border-b border-gray-200 transition-all duration-300 transform",
+            "lg:hidden fixed inset-x-0 top-16 bg-white border-b border-gray-200 transition-all duration-300 transform",
             isMobileMenuOpen
               ? "opacity-100 visible translate-y-0 max-h-screen"
               : "opacity-0 invisible -translate-y-4 max-h-0",
@@ -705,7 +710,7 @@ const Navigation = () => {
               </a>
 
               {/* Mobile Company Section */}
-              <div>
+              <div className="bg-white">
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
                   className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
@@ -730,7 +735,7 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-3 ml-4 space-y-3 transition-all duration-300",
+                    "mt-3 ml-4 space-y-3 transition-all duration-300 bg-white",
                     isCompanyOpen
                       ? "max-h-96 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
@@ -758,7 +763,7 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Services Section */}
-              <div>
+              <div className="bg-white">
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
@@ -783,7 +788,7 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-3 ml-4 space-y-3 transition-all duration-300",
+                    "mt-3 ml-4 space-y-3 transition-all duration-300 bg-white",
                     isServicesOpen
                       ? "max-h-96 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
@@ -831,7 +836,7 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Partners Section */}
-              <div>
+              <div className="bg-white">
                 <button
                   onClick={() => setIsPartnersOpen(!isPartnersOpen)}
                   className="flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
@@ -856,7 +861,7 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-3 ml-4 space-y-3 transition-all duration-300",
+                    "mt-3 ml-4 space-y-3 transition-all duration-300 bg-white",
                     isPartnersOpen
                       ? "max-h-96 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
