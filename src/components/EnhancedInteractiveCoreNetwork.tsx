@@ -244,7 +244,6 @@ const EnhancedInteractiveCoreNetwork = ({
                   i === 0 ? "100%" : i === 1 ? "80%" : i === 2 ? "60%" : "40%",
                 top: "50%",
                 left: "50%",
-                transform: "translate(-50%, -50%)",
                 border: "3px solid transparent",
                 borderRadius: "50%",
                 borderTopColor:
@@ -256,7 +255,9 @@ const EnhancedInteractiveCoreNetwork = ({
                         "rgba(236, 72, 153, 0.4)",
                         "rgba(147, 197, 253, 0.4)",
                       ][i],
-                animation: `spin ${hoveredSegment === i ? 8 : 15}s linear infinite ${i % 2 === 1 ? "reverse" : ""}`,
+                transform: "translate(-50%, -50%)",
+                transformOrigin: "center center",
+                animation: `spin${i} ${hoveredSegment === i ? 8 : 15}s linear infinite`,
                 transition:
                   "border-color 0.3s ease, animation-duration 0.3s ease",
                 transformStyle: "preserve-3d",
