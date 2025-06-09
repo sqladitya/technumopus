@@ -418,9 +418,39 @@ const EnhancedInteractiveCoreNetwork = ({
           }
         }
 
-        @keyframes spin {
+        @keyframes spin0 {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
           100% {
-            transform: rotate(360deg);
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
+        }
+
+        @keyframes spin1 {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(-360deg);
+          }
+        }
+
+        @keyframes spin2 {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
+        }
+
+        @keyframes spin3 {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(-360deg);
           }
         }
 
