@@ -60,8 +60,8 @@ const EnhancedInteractiveCoreNetwork = ({
 
   // Core click handler
   const handleCoreClick = () => {
-    // Toggle connection lines
-    setConnectionLinesActive((prev) => !prev);
+    // Toggle vertical line
+    setVerticalLineActive((prev) => !prev);
 
     // Trigger particle burst
     setParticles((prev) =>
