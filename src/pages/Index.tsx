@@ -9,6 +9,7 @@ import {
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
+import SubtleCircuitBackground from "@/components/SubtleCircuitBackground";
 
 const Index = () => {
   return (
