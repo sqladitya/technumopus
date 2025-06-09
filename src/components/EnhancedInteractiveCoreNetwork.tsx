@@ -189,12 +189,12 @@ const EnhancedInteractiveCoreNetwork = ({
         <div
           className={`vertical-line ${verticalLineActive ? "active" : ""}`}
           style={{
-            position: "absolute",
-            width: "3px",
-            height: "100vh",
+            position: "fixed",
+            width: "4px",
+            height: "calc(100vh - 50%)",
             background: verticalLineActive
-              ? "linear-gradient(to bottom, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.3))"
-              : "linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1))",
+              ? "linear-gradient(to bottom, rgba(59, 130, 246, 1), rgba(59, 130, 246, 0.7), rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1))"
+              : "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0))",
             top: "50%",
             left: "50%",
             transform: "translateX(-50%)",
@@ -203,7 +203,10 @@ const EnhancedInteractiveCoreNetwork = ({
               ? "verticalGlow 3s infinite ease-in-out"
               : "verticalFade 6s infinite ease-in-out",
             transition: "background 0.3s ease",
-            zIndex: 1,
+            zIndex: 2,
+            boxShadow: verticalLineActive
+              ? "0 0 15px rgba(59, 130, 246, 0.5)"
+              : "0 0 8px rgba(255, 255, 255, 0.3)",
           }}
         />
 
