@@ -252,32 +252,11 @@ const PartnersLogos = () => {
     {
       name: "SentinelOne",
       logo: (
-        <svg viewBox="0 0 140 50" className="w-28 h-10">
-          <g>
-            <circle cx="25" cy="25" r="15" fill="#663399" />
-            <path
-              d="M18 25l5 5 10-10"
-              stroke="white"
-              strokeWidth="3"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </g>
-          <text
-            x="50"
-            y="22"
-            fill="#663399"
-            fontSize="11"
-            fontFamily="Arial"
-            fontWeight="bold"
-          >
-            SentinelOne
-          </text>
-          <text x="50" y="34" fill="#666" fontSize="7" fontFamily="Arial">
-            Autonomous Security
-          </text>
-        </svg>
+        <img
+          src="/assets/sentinelone-logo.svg"
+          alt="SentinelOne"
+          className="w-10 h-10 object-contain"
+        />
       ),
     },
   ];
