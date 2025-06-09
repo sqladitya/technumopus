@@ -6,7 +6,6 @@ import {
   PartnersSection,
   AboutSection,
 } from "@/components/ContentSections";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
 
@@ -41,21 +40,21 @@ const Index = () => {
       {/* Why Choose Us Section */}
       <SectionBackground variant="gradient">
         <Section className="">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-              Why Choose Technum Opus
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+              Why Choose Technum <span className="text-tech-primary">Opus</span>
             </h2>
-            <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-tech-text-medium max-w-3xl mx-auto px-4">
               We combine technical excellence with business insight to deliver
               transformative results
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -68,19 +67,19 @@ const Index = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
                 Innovation First
               </h3>
-              <p className="text-tech-text-medium">
+              <p className="text-sm sm:text-base text-tech-text-medium">
                 We stay ahead of technology trends to deliver cutting-edge
                 solutions that give you a competitive advantage.
               </p>
             </div>
 
-            <div className="text-center bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -93,19 +92,19 @@ const Index = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
                 Expert Team
               </h3>
-              <p className="text-tech-text-medium">
+              <p className="text-sm sm:text-base text-tech-text-medium">
                 Our certified professionals bring deep expertise across
                 enterprise technologies and emerging platforms.
               </p>
             </div>
 
-            <div className="text-center bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -118,10 +117,10 @@ const Index = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
                 Proven Results
               </h3>
-              <p className="text-tech-text-medium">
+              <p className="text-sm sm:text-base text-tech-text-medium">
                 Our track record speaks for itself - 500+ successful projects
                 and 99% client satisfaction rate.
               </p>
@@ -129,9 +128,6 @@ const Index = () => {
           </div>
         </Section>
       </SectionBackground>
-
-      {/* Contact Form Section */}
-      <ContactForm />
 
       <Footer />
     </div>

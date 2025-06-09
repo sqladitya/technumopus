@@ -1,0 +1,29 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- SentinelOne official logo - Isometric geometric S design -->
+  <defs>
+    <linearGradient id="purpleLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6D28D9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Isometric S shape - exact recreation of SentinelOne logo -->
+
+  <!-- Top section of S -->
+  <path d="M10 25 L50 5 L90 25 L90 45 L50 25 L10 45 Z" fill="url(#purpleLight)"/>
+  <path d="M10 25 L10 45 L30 55 L30 35 Z" fill="url(#purpleDark)"/>
+  <path d="M50 25 L90 45 L90 65 L50 45 Z" fill="url(#purpleDark)"/>
+
+  <!-- Middle connecting section -->
+  <path d="M30 35 L30 55 L70 35 L70 55 Z" fill="url(#purpleLight)"/>
+  <path d="M30 55 L50 65 L70 55 L50 45 Z" fill="url(#purpleDark)"/>
+
+  <!-- Bottom section of S -->
+  <path d="M30 55 L50 65 L10 85 L10 65 Z" fill="url(#purpleDark)"/>
+  <path d="M50 65 L90 45 L90 65 L70 75 L70 55 Z" fill="url(#purpleDark)"/>
+  <path d="M10 65 L50 85 L90 65 L50 85 L10 85 Z" fill="url(#purpleLight)"/>
+</svg>

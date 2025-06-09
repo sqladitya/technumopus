@@ -127,6 +127,38 @@ const ViewAllServices = () => {
         },
       ],
     },
+    {
+      title: "Digital Innovation",
+      description: "Comprehensive transformation and modernization services",
+      services: [
+        {
+          name: "Digital Transformation",
+          description: "End-to-end business transformation and modernization",
+          href: "/services/digital-transformation",
+          features: [
+            "Process Automation",
+            "Data Analytics & AI",
+            "Cloud Migration",
+            "Digital Customer Experience",
+          ],
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          ),
+        },
+      ],
+    },
   ];
 
   const serviceStats = [
@@ -288,16 +320,16 @@ const ViewAllServices = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#contact"
-              className="px-8 py-4 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
+              href="/contact"
+              className="px-8 py-4 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
               Get Started Today
             </a>
             <a
-              href="#services"
-              className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
+              href="/services"
+              className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
             >
-              Explore Services
+              Browse Services
             </a>
           </div>
         </div>

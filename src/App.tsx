@@ -8,11 +8,22 @@ import AboutUs from "./pages/AboutUs";
 import Leadership from "./pages/Leadership";
 import Careers from "./pages/Careers";
 import NewsInsights from "./pages/NewsInsights";
+import Contact from "./pages/Contact";
 import ViewAllServices from "./pages/ViewAllServices";
+import Partners from "./pages/Partners";
 import SAPConsulting from "./pages/services/SAPConsulting";
 import SAASDevelopment from "./pages/services/SAASDevelopment";
 import CloudArchitecture from "./pages/services/CloudArchitecture";
 import HardwareInfrastructure from "./pages/services/HardwareInfrastructure";
+import DigitalTransformation from "./pages/services/DigitalTransformation";
+import CloudPartners from "./pages/partners/CloudPartners";
+import TechnologyPartners from "./pages/partners/TechnologyPartners";
+import SecurityPartners from "./pages/partners/SecurityPartners";
+import IntegrationPartners from "./pages/partners/IntegrationPartners";
+import ViewAllPartners from "./pages/partners/ViewAllPartners";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +40,8 @@ const App = () => (
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/news-insights" element={<NewsInsights />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/partners" element={<Partners />} />
           <Route path="/services" element={<ViewAllServices />} />
           <Route path="/services/sap-consulting" element={<SAPConsulting />} />
           <Route
@@ -43,6 +56,27 @@ const App = () => (
             path="/services/hardware-infrastructure"
             element={<HardwareInfrastructure />}
           />
+          <Route
+            path="/services/digital-transformation"
+            element={<DigitalTransformation />}
+          />
+          <Route path="/partners/cloud-partners" element={<CloudPartners />} />
+          <Route
+            path="/partners/technology-partners"
+            element={<TechnologyPartners />}
+          />
+          <Route
+            path="/partners/security-partners"
+            element={<SecurityPartners />}
+          />
+          <Route
+            path="/partners/integration-partners"
+            element={<IntegrationPartners />}
+          />
+          <Route path="/partners/view-all" element={<ViewAllPartners />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

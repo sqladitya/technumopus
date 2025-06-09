@@ -8,24 +8,24 @@ interface SectionProps {
 }
 
 export const Section = ({ children, className, id }: SectionProps) => (
-  <section id={id} className={cn("py-20", className)}>
-    <div className="max-w-7xl mx-auto px-6 lg:px-8">{children}</div>
+  <section id={id} className={cn("py-12 sm:py-16 md:py-20", className)}>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
   </section>
 );
 
 export const ServicesSection = () => (
   <div>
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+    <div className="text-center mb-12 sm:mb-16">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
         Our Services
       </h2>
-      <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+      <p className="text-lg sm:text-xl text-tech-text-medium max-w-3xl mx-auto px-4">
         Comprehensive technology solutions designed to accelerate your digital
         transformation journey
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
       {/* SAP Consulting */}
       <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
         <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -143,10 +143,11 @@ export const AboutSection = () => (
         Innovation Meets Excellence
       </h2>
       <p className="text-lg text-tech-text-medium mb-6 leading-relaxed">
-        At Technum Opus, we believe in a client-first approach that puts your
-        success at the center of everything we do. Our team combines deep
-        technical expertise with innovative thinking to deliver solutions that
-        drive real business value.
+        At Technum <span className="text-tech-primary font-semibold">Opus</span>
+        , we believe in a client-first approach that puts your success at the
+        center of everything we do. Our team combines deep technical expertise
+        with innovative thinking to deliver solutions that drive real business
+        value.
       </p>
       <p className="text-lg text-tech-text-medium mb-8 leading-relaxed">
         With years of experience across enterprise technologies, cloud
