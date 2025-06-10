@@ -108,7 +108,11 @@ const Navigation = () => {
     setIsPartnersOpen(false);
   };
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = (e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setIsMobileMenuOpen(false);
     closeAllDropdowns();
   };
