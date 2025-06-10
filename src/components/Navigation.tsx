@@ -457,22 +457,22 @@ const Navigation = () => {
                   >
                     {/* Define gradients and filters for 3D effects */}
                     <defs>
-                      {/* Pink gradient for triangle */}
+                      {/* Bright pink gradient for triangle */}
                       <linearGradient
-                        id="pinkGradient"
+                        id="pinkTriangleGradient"
                         x1="0%"
                         y1="0%"
                         x2="100%"
                         y2="100%"
                       >
-                        <stop offset="0%" stopColor="#FF1493" />
-                        <stop offset="50%" stopColor="#EC4899" />
-                        <stop offset="100%" stopColor="#DB2777" />
+                        <stop offset="0%" stopColor="#FF0080" />
+                        <stop offset="50%" stopColor="#E91E63" />
+                        <stop offset="100%" stopColor="#C2185B" />
                       </linearGradient>
 
-                      {/* Metallic white-to-gray gradient for T */}
+                      {/* White metallic gradient for T */}
                       <linearGradient
-                        id="metallicGradient"
+                        id="whiteMetallicGradient"
                         x1="0%"
                         y1="0%"
                         x2="100%"
@@ -481,19 +481,19 @@ const Navigation = () => {
                         <stop offset="0%" stopColor="#FFFFFF" />
                         <stop offset="30%" stopColor="#F8FAFC" />
                         <stop offset="70%" stopColor="#E2E8F0" />
-                        <stop offset="100%" stopColor="#94A3B8" />
+                        <stop offset="100%" stopColor="#CBD5E1" />
                       </linearGradient>
 
-                      {/* Ring gradient */}
-                      <radialGradient id="ringGradient" cx="50%" cy="30%">
+                      {/* White ring gradient */}
+                      <radialGradient id="whiteRingGradient" cx="50%" cy="30%">
                         <stop offset="0%" stopColor="#FFFFFF" />
-                        <stop offset="50%" stopColor="#F1F5F9" />
-                        <stop offset="100%" stopColor="#CBD5E1" />
+                        <stop offset="50%" stopColor="#F8FAFC" />
+                        <stop offset="100%" stopColor="#E2E8F0" />
                       </radialGradient>
 
-                      {/* Shadow filter */}
+                      {/* Drop shadow filter */}
                       <filter
-                        id="dropShadow"
+                        id="logoDropShadow"
                         x="-50%"
                         y="-50%"
                         width="200%"
@@ -502,51 +502,51 @@ const Navigation = () => {
                         <feDropShadow
                           dx="2"
                           dy="4"
-                          stdDeviation="3"
+                          stdDeviation="4"
                           floodColor="#000000"
-                          floodOpacity="0.3"
+                          floodOpacity="0.25"
                         />
                       </filter>
 
                       {/* Inner shadow for depth */}
                       <filter
-                        id="innerShadow"
+                        id="logoInnerShadow"
                         x="-50%"
                         y="-50%"
                         width="200%"
                         height="200%"
                       >
-                        <feFlood floodColor="#000000" floodOpacity="0.2" />
+                        <feFlood floodColor="#000000" floodOpacity="0.15" />
                         <feComposite in="SourceGraphic" />
                       </filter>
                     </defs>
 
                     {/* Main triangular play button with rounded corners */}
                     <path
-                      d="M20 25 Q20 20 25 20 L85 45 Q90 50 90 60 Q90 70 85 75 L25 100 Q20 100 20 95 Z"
-                      fill="url(#pinkGradient)"
-                      filter="url(#dropShadow)"
+                      d="M15 20 Q15 15 20 15 L85 45 Q95 50 95 60 Q95 70 85 75 L20 105 Q15 105 15 100 Z"
+                      fill="url(#pinkTriangleGradient)"
+                      filter="url(#logoDropShadow)"
                       className="transition-all duration-300"
                     />
 
-                    {/* Inner shadow overlay for depth */}
+                    {/* Inner highlight on triangle for 3D effect */}
                     <path
-                      d="M20 25 Q20 20 25 20 L85 45 Q90 50 90 60 Q90 70 85 75 L25 100 Q20 100 20 95 Z"
+                      d="M15 20 Q15 15 20 15 L85 45 Q95 50 95 60 Q95 70 85 75 L20 105 Q15 105 15 100 Z"
                       fill="none"
-                      stroke="rgba(0,0,0,0.1)"
+                      stroke="rgba(255,255,255,0.3)"
                       strokeWidth="1"
                       className="transition-all duration-300"
                     />
 
-                    {/* The O - Bold white ring with metallic gradient */}
+                    {/* The O - Bold white ring */}
                     <circle
                       cx="55"
                       cy="60"
-                      r="18"
+                      r="16"
                       fill="none"
-                      stroke="url(#ringGradient)"
-                      strokeWidth="6"
-                      filter="url(#innerShadow)"
+                      stroke="url(#whiteRingGradient)"
+                      strokeWidth="8"
+                      filter="url(#logoInnerShadow)"
                       className="transition-all duration-300"
                     />
 
@@ -554,67 +554,77 @@ const Navigation = () => {
                     <circle
                       cx="55"
                       cy="60"
-                      r="18"
+                      r="16"
                       fill="none"
-                      stroke="rgba(255,255,255,0.6)"
+                      stroke="rgba(255,255,255,0.9)"
                       strokeWidth="2"
                       className="transition-all duration-300"
                     />
 
-                    {/* The T - Horizontal bar across the top */}
+                    {/* The T - Horizontal bar across the top of circle */}
                     <rect
-                      x="40"
-                      y="35"
-                      width="30"
+                      x="42"
+                      y="38"
+                      width="26"
                       height="6"
                       rx="3"
-                      fill="url(#metallicGradient)"
-                      filter="url(#innerShadow)"
+                      fill="url(#whiteMetallicGradient)"
+                      filter="url(#logoInnerShadow)"
                       className="transition-all duration-300"
                     />
 
-                    {/* The T - Vertical bar intersecting the O */}
+                    {/* The T - Vertical bar intersecting through the O */}
                     <rect
                       x="52"
-                      y="38"
+                      y="44"
                       width="6"
-                      height="44"
+                      height="38"
                       rx="3"
-                      fill="url(#metallicGradient)"
-                      filter="url(#innerShadow)"
+                      fill="url(#whiteMetallicGradient)"
+                      filter="url(#logoInnerShadow)"
                       className="transition-all duration-300"
                     />
 
                     {/* Highlight effects on T for 3D appearance */}
                     <rect
-                      x="40"
-                      y="35"
-                      width="30"
+                      x="42"
+                      y="38"
+                      width="26"
                       height="2"
                       rx="1"
-                      fill="rgba(255,255,255,0.8)"
+                      fill="rgba(255,255,255,0.95)"
                       className="transition-all duration-300"
                     />
 
                     <rect
                       x="52"
-                      y="38"
+                      y="44"
                       width="2"
-                      height="44"
+                      height="38"
                       rx="1"
-                      fill="rgba(255,255,255,0.8)"
+                      fill="rgba(255,255,255,0.95)"
                       className="transition-all duration-300"
                     />
 
-                    {/* Subtle glow effect around the entire logo */}
-                    <circle
-                      cx="55"
-                      cy="60"
-                      r="35"
-                      fill="none"
-                      stroke="url(#pinkGradient)"
-                      strokeWidth="0.5"
-                      opacity="0.3"
+                    {/* Additional depth shadow on the right side of T */}
+                    <rect
+                      x="56"
+                      y="44"
+                      width="2"
+                      height="38"
+                      rx="1"
+                      fill="rgba(0,0,0,0.1)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Additional depth shadow on bottom of horizontal bar */}
+                    <rect
+                      x="42"
+                      y="42"
+                      width="26"
+                      height="1"
+                      rx="0.5"
+                      fill="rgba(0,0,0,0.1)"
                       className="transition-all duration-300"
                     />
                   </svg>
