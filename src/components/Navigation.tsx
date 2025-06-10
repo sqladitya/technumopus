@@ -511,28 +511,23 @@ const Navigation = () => {
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
+                  <div className="p-2">
+                    <div className="text-sm font-semibold text-tech-text-dark mb-2 border-b border-gray-100 pb-2">
                       Company Information
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-0.5">
                       {companyLinks.map((link) => (
                         <a
                           key={link.name}
                           href={link.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                          className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-tech-primary/5 transition-colors duration-200 group whitespace-nowrap"
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
-                            <div className="text-tech-primary">{link.icon}</div>
+                          <div className="flex-shrink-0 w-4 h-4 text-tech-primary">
+                            {link.icon}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
-                              {link.name}
-                            </div>
-                            <div className="text-xs text-tech-text-medium mt-1">
-                              {link.description}
-                            </div>
+                          <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                            {link.name}
                           </div>
                         </a>
                       ))}
