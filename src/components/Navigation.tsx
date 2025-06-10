@@ -803,10 +803,7 @@ const Navigation = () => {
           <div className="max-h-80 overflow-y-auto">
             <div className="px-4 py-4 space-y-4 relative">
               {/* Mobile Menu Header with Close Button */}
-              <div className="flex items-center justify-between pb-2 border-b border-gray-100 mb-4">
-                <span className="text-sm font-semibold text-tech-text-dark">
-                  Menu
-                </span>
+              <div className="flex items-center justify-end pb-2 border-b border-gray-100 mb-4">
                 <button
                   onClick={closeMobileMenu}
                   className="p-1.5 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
