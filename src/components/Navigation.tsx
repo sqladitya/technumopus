@@ -450,73 +450,178 @@ const Navigation = () => {
                 {/* Logo SVG */}
                 <div className="relative">
                   <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 100 100"
+                    width="44"
+                    height="44"
+                    viewBox="0 0 120 120"
                     className="transition-transform duration-300 group-hover:scale-105"
                   >
-                    {/* Top triangular curved section */}
+                    {/* Define gradients and filters for 3D effects */}
+                    <defs>
+                      {/* Pink gradient for triangle */}
+                      <linearGradient
+                        id="pinkGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="#FF1493" />
+                        <stop offset="50%" stopColor="#EC4899" />
+                        <stop offset="100%" stopColor="#DB2777" />
+                      </linearGradient>
+
+                      {/* Metallic white-to-gray gradient for T */}
+                      <linearGradient
+                        id="metallicGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="#FFFFFF" />
+                        <stop offset="30%" stopColor="#F8FAFC" />
+                        <stop offset="70%" stopColor="#E2E8F0" />
+                        <stop offset="100%" stopColor="#94A3B8" />
+                      </linearGradient>
+
+                      {/* Ring gradient */}
+                      <radialGradient id="ringGradient" cx="50%" cy="30%">
+                        <stop offset="0%" stopColor="#FFFFFF" />
+                        <stop offset="50%" stopColor="#F1F5F9" />
+                        <stop offset="100%" stopColor="#CBD5E1" />
+                      </radialGradient>
+
+                      {/* Shadow filter */}
+                      <filter
+                        id="dropShadow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%"
+                      >
+                        <feDropShadow
+                          dx="2"
+                          dy="4"
+                          stdDeviation="3"
+                          floodColor="#000000"
+                          floodOpacity="0.3"
+                        />
+                      </filter>
+
+                      {/* Inner shadow for depth */}
+                      <filter
+                        id="innerShadow"
+                        x="-50%"
+                        y="-50%"
+                        width="200%"
+                        height="200%"
+                      >
+                        <feFlood floodColor="#000000" floodOpacity="0.2" />
+                        <feComposite in="SourceGraphic" />
+                      </filter>
+                    </defs>
+
+                    {/* Main triangular play button with rounded corners */}
                     <path
-                      d="M8 18 Q20 8 40 12 Q60 16 85 30 L60 38 Q40 32 20 35 L8 30 Z"
-                      fill="#EC4899"
+                      d="M20 25 Q20 20 25 20 L85 45 Q90 50 90 60 Q90 70 85 75 L25 100 Q20 100 20 95 Z"
+                      fill="url(#pinkGradient)"
+                      filter="url(#dropShadow)"
                       className="transition-all duration-300"
                     />
 
-                    {/* Left vertical pillar with rounded ends */}
+                    {/* Inner shadow overlay for depth */}
                     <path
-                      d="M8 40 Q8 35 12 35 L18 35 Q22 35 22 40 L22 85 Q22 90 18 90 L12 90 Q8 90 8 85 Z"
-                      fill="#EC4899"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Main large curved P body */}
-                    <path
-                      d="M32 40 Q45 38 60 45 Q75 52 82 65 Q88 78 80 85 Q72 92 60 90 L45 88 Q38 85 35 80 Q32 75 32 68 Z"
-                      fill="#EC4899"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Outer white/gray ring */}
-                    <circle
-                      cx="58"
-                      cy="65"
-                      r="16"
-                      fill="rgba(255,255,255,0.85)"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Inner pink circle */}
-                    <circle
-                      cx="58"
-                      cy="65"
-                      r="10"
-                      fill="#EC4899"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Central vertical white bar */}
-                    <rect
-                      x="55"
-                      y="45"
-                      width="6"
-                      height="40"
-                      fill="white"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Additional subtle ring accent */}
-                    <circle
-                      cx="58"
-                      cy="65"
-                      r="13"
+                      d="M20 25 Q20 20 25 20 L85 45 Q90 50 90 60 Q90 70 85 75 L25 100 Q20 100 20 95 Z"
                       fill="none"
-                      stroke="rgba(255,255,255,0.4)"
+                      stroke="rgba(0,0,0,0.1)"
                       strokeWidth="1"
                       className="transition-all duration-300"
                     />
+
+                    {/* The O - Bold white ring with metallic gradient */}
+                    <circle
+                      cx="55"
+                      cy="60"
+                      r="18"
+                      fill="none"
+                      stroke="url(#ringGradient)"
+                      strokeWidth="6"
+                      filter="url(#innerShadow)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Inner highlight for O ring */}
+                    <circle
+                      cx="55"
+                      cy="60"
+                      r="18"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.6)"
+                      strokeWidth="2"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* The T - Horizontal bar across the top */}
+                    <rect
+                      x="40"
+                      y="35"
+                      width="30"
+                      height="6"
+                      rx="3"
+                      fill="url(#metallicGradient)"
+                      filter="url(#innerShadow)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* The T - Vertical bar intersecting the O */}
+                    <rect
+                      x="52"
+                      y="38"
+                      width="6"
+                      height="44"
+                      rx="3"
+                      fill="url(#metallicGradient)"
+                      filter="url(#innerShadow)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Highlight effects on T for 3D appearance */}
+                    <rect
+                      x="40"
+                      y="35"
+                      width="30"
+                      height="2"
+                      rx="1"
+                      fill="rgba(255,255,255,0.8)"
+                      className="transition-all duration-300"
+                    />
+
+                    <rect
+                      x="52"
+                      y="38"
+                      width="2"
+                      height="44"
+                      rx="1"
+                      fill="rgba(255,255,255,0.8)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Subtle glow effect around the entire logo */}
+                    <circle
+                      cx="55"
+                      cy="60"
+                      r="35"
+                      fill="none"
+                      stroke="url(#pinkGradient)"
+                      strokeWidth="0.5"
+                      opacity="0.3"
+                      className="transition-all duration-300"
+                    />
                   </svg>
-                  {/* Hover glow effect */}
-                  <div className="absolute -inset-1 bg-pink-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+
+                  {/* Enhanced hover glow effect */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" />
+                  <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
                 </div>
 
                 {/* Text Logo */}
