@@ -827,31 +827,55 @@ const Navigation = () => {
 
               {/* Mobile Services Section */}
               <div className={cn("rounded-lg", isServicesOpen && "bg-gray-50")}>
-                <button
-                  onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className={cn(
-                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
-                    isServicesOpen && "text-tech-primary bg-gray-50",
-                  )}
-                >
-                  Services
-                  <svg
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      isServicesOpen ? "rotate-180" : "",
+                      "flex items-center justify-between flex-1 text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
+                      isServicesOpen && "text-tech-primary bg-gray-50",
                     )}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
+                    Services
+                    <svg
+                      className={cn(
+                        "w-4 h-4 transition-transform duration-200",
+                        isServicesOpen ? "rotate-180" : "",
+                      )}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  {/* Close button for mobile dropdown */}
+                  {isServicesOpen && (
+                    <button
+                      onClick={() => setIsServicesOpen(false)}
+                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
+                      aria-label="Close services menu"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                </div>
                 <div
                   className={cn(
                     "mt-2 ml-3 space-y-2 transition-all duration-300",
