@@ -446,7 +446,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Clean Logo */}
             <div className="flex items-center gap-3 flex-shrink-0">
-              <a href="/" className="flex items-center gap-3 group">
+              <Link to="/" className="flex items-center gap-3 group">
                 <div className="relative">
                   <Logo />
                   <div className="absolute -inset-1 bg-tech-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -460,18 +460,18 @@ const Navigation = () => {
                     <div className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-tech-primary rounded-full"></div>
                   </span>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Clean Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
-              <a
-                href="/"
+              <Link
+                to="/"
                 onMouseEnter={closeAllDropdowns}
                 className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
               >
                 Home
-              </a>
+              </Link>
 
               {/* Company Dropdown */}
               <div className="relative" ref={companyRef}>
@@ -514,9 +514,9 @@ const Navigation = () => {
                     </div>
                     <div className="space-y-1">
                       {companyLinks.map((link) => (
-                        <a
+                        <Link
                           key={link.name}
-                          href={link.href}
+                          to={link.href}
                           onClick={closeAllDropdowns}
                           className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
                         >
@@ -531,7 +531,7 @@ const Navigation = () => {
                               {link.description}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -666,9 +666,9 @@ const Navigation = () => {
                     </div>
                     <div className="space-y-1">
                       {partners.map((partner) => (
-                        <a
+                        <Link
                           key={partner.name}
-                          href={partner.href}
+                          to={partner.href}
                           onClick={closeAllDropdowns}
                           className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
                         >
@@ -683,12 +683,12 @@ const Navigation = () => {
                               {partner.description}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                     <div className="border-t border-gray-100 mt-2 pt-2">
-                      <a
-                        href="/partners/view-all"
+                      <Link
+                        to="/partners/view-all"
                         onClick={closeAllDropdowns}
                         className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-150 whitespace-nowrap"
                       >
@@ -706,19 +706,19 @@ const Navigation = () => {
                             d="M17 8l4 4m0 0l-4 4m4-4H3"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 onMouseEnter={closeAllDropdowns}
                 className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
               >
                 Contact
-              </a>
+              </Link>
             </div>
 
             {/* Simple Mobile Menu Button */}
@@ -786,13 +786,13 @@ const Navigation = () => {
           <div className="max-h-80 overflow-y-auto">
             <div className="px-4 py-4 space-y-3">
               {/* Mobile Home Link */}
-              <a
-                href="/"
+              <Link
+                to="/"
                 onClick={closeMobileMenu}
                 className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
               >
                 Home
-              </a>
+              </Link>
 
               {/* Mobile Company Section */}
               <div className="border-b border-gray-100 pb-3">
@@ -828,15 +828,15 @@ const Navigation = () => {
                   )}
                 >
                   {companyLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.name}
-                      href={link.href}
+                      to={link.href}
                       onClick={closeMobileMenu}
                       className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
                     >
                       <div className="text-gray-400">{link.icon}</div>
                       <div className="text-sm font-medium">{link.name}</div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -911,13 +911,13 @@ const Navigation = () => {
               {/* Mobile Partners Section */}
               <div className="border-b border-gray-100 pb-3">
                 <div className="flex items-center justify-between">
-                  <a
-                    href="/partners"
+                  <Link
+                    to="/partners"
                     onClick={closeMobileMenu}
                     className="flex-1 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
                   >
                     Partners
-                  </a>
+                  </Link>
                   <button
                     onClick={() => setIsPartnersOpen(!isPartnersOpen)}
                     className="p-2 text-gray-600 hover:text-gray-900 transition-colors duration-150"
@@ -950,18 +950,18 @@ const Navigation = () => {
                   )}
                 >
                   {partners.map((partner) => (
-                    <a
+                    <Link
                       key={partner.name}
-                      href={partner.href}
+                      to={partner.href}
                       onClick={closeMobileMenu}
                       className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
                     >
                       <div className="text-gray-400">{partner.icon}</div>
                       <div className="text-sm font-medium">{partner.name}</div>
-                    </a>
+                    </Link>
                   ))}
-                  <a
-                    href="/partners/view-all"
+                  <Link
+                    to="/partners/view-all"
                     onClick={closeMobileMenu}
                     className="flex items-center gap-2 px-3 py-2 text-tech-primary hover:text-tech-primary-dark text-sm font-medium rounded-md transition-colors duration-150"
                   >
@@ -979,18 +979,18 @@ const Navigation = () => {
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
               {/* Mobile Contact Link */}
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 onClick={closeMobileMenu}
                 className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
         </div>
