@@ -111,8 +111,8 @@ const Navigation = () => {
   };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
     closeAllDropdowns();
+    setIsMobileMenuOpen(false);
   };
 
   // Handle swipe gestures for mobile menu
