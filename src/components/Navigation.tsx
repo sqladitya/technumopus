@@ -504,7 +504,7 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 min-w-72 w-max max-w-96 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
                     isCompanyOpen
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2",
