@@ -627,37 +627,29 @@ const Navigation = () => {
 
               {/* Partners Dropdown */}
               <div className="relative" ref={partnersRef}>
-                <div className="flex items-center">
-                  <a
-                    href="/partners"
-                    className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
-                    onMouseEnter={openPartnersDropdown}
+                <button
+                  onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                  onMouseEnter={openPartnersDropdown}
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                >
+                  Partners
+                  <svg
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-200",
+                      isPartnersOpen ? "rotate-180" : "",
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    Partners
-                  </a>
-                  <button
-                    onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                    onMouseEnter={openPartnersDropdown}
-                    className="p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200"
-                  >
-                    <svg
-                      className={cn(
-                        "w-4 h-4 transition-transform duration-200",
-                        isPartnersOpen ? "rotate-180" : "",
-                      )}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
 
                 <div
                   className={cn(
