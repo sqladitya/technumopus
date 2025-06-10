@@ -876,7 +876,8 @@ const Navigation = () => {
                   {/* Close button for mobile dropdown */}
                   {isServicesOpen && (
                     <button
-                      onClick={() => setIsServicesOpen(false)}
+                      onClick={closeMobileServicesDropdown}
+                      onTouchEnd={closeMobileServicesDropdown}
                       className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                       aria-label="Close services menu"
                     >
