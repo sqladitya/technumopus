@@ -577,43 +577,36 @@ const Navigation = () => {
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
+                  <div className="p-2">
+                    <div className="text-sm font-semibold text-tech-text-dark mb-2 border-b border-gray-100 pb-2">
                       Our Services
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-0.5">
                       {services.map((service) => (
                         <Link
                           key={service.name}
                           to={service.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                          className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-tech-primary/5 transition-colors duration-200 group whitespace-nowrap"
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
-                            <div className="text-tech-primary">
-                              {service.icon}
-                            </div>
+                          <div className="flex-shrink-0 w-4 h-4 text-tech-primary">
+                            {service.icon}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
-                              {service.name}
-                            </div>
-                            <div className="text-xs text-tech-text-medium mt-1">
-                              {service.description}
-                            </div>
+                          <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                            {service.name}
                           </div>
                         </Link>
                       ))}
                     </div>
-                    <div className="border-t border-gray-100 mt-3 pt-3">
+                    <div className="border-t border-gray-100 mt-2 pt-2">
                       <Link
                         to="/services"
                         onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
+                        className="flex items-center justify-center gap-1 px-2 py-1.5 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200 whitespace-nowrap"
                       >
                         View All Services
                         <svg
-                          className="w-4 h-4"
+                          className="w-3 h-3"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
