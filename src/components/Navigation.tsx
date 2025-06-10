@@ -110,37 +110,21 @@ const Navigation = () => {
     setIsPartnersOpen(false);
   };
 
-  const closeMobileMenu = (e?: React.MouseEvent | React.TouchEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     closeAllDropdowns();
   };
 
   // Helper functions for individual mobile dropdown management
-  const closeMobileCompanyDropdown = (
-    e: React.MouseEvent | React.TouchEvent,
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const closeMobileCompanyDropdown = () => {
     setIsCompanyOpen(false);
   };
 
-  const closeMobileServicesDropdown = (
-    e: React.MouseEvent | React.TouchEvent,
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const closeMobileServicesDropdown = () => {
     setIsServicesOpen(false);
   };
 
-  const closeMobilePartnersDropdown = (
-    e: React.MouseEvent | React.TouchEvent,
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const closeMobilePartnersDropdown = () => {
     setIsPartnersOpen(false);
   };
 
@@ -158,12 +142,18 @@ const Navigation = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
 
     // Close mobile menu on left swipe (swipe left to close)
     if (isLeftSwipe && isMobileMenuOpen) {
       closeMobileMenu();
     }
+  };
+
+  // Enhanced mobile menu close handler
+  const handleBackdropClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeMobileMenu();
   };
 
   const services = [
@@ -440,10 +430,14 @@ const Navigation = () => {
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-20 lg:hidden backdrop-blur-sm"
-          onClick={closeMobileMenu}
-          onTouchEnd={closeMobileMenu}
-          style={{ touchAction: "manipulation" }}
+          className="fixed inset-0 bg-black/40 z-20 lg:hidden backdrop-blur-sm"
+          onClick={handleBackdropClick}
+          style={{
+            touchAction: "manipulation",
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
+          }}
         />
       )}
 
@@ -758,6 +752,7 @@ const Navigation = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
               aria-label="Toggle mobile menu"
+              style={{ touchAction: "manipulation" }}
             >
               <svg
                 className={cn(
@@ -800,6 +795,10 @@ const Navigation = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          style={{
+            touchAction: "pan-y",
+            WebkitTouchCallout: "none",
+          }}
         >
           <div className="max-h-80 overflow-y-auto">
             <div className="px-4 py-4 space-y-4 relative">
@@ -810,7 +809,7 @@ const Navigation = () => {
                 </span>
                 <button
                   onClick={closeMobileMenu}
-                  className="p-1.5 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
+                  className="p-1.5 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                   aria-label="Close mobile menu"
                   style={{ touchAction: "manipulation" }}
                 >
@@ -829,6 +828,7 @@ const Navigation = () => {
                   </svg>
                 </button>
               </div>
+
               {/* Mobile Home Link */}
               <a
                 href="/"
@@ -847,6 +847,7 @@ const Navigation = () => {
                       "flex items-center justify-between flex-1 text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
                       isCompanyOpen && "text-tech-primary bg-gray-50",
                     )}
+                    style={{ touchAction: "manipulation" }}
                   >
                     Company
                     <svg
@@ -870,7 +871,7 @@ const Navigation = () => {
                   {isCompanyOpen && (
                     <button
                       onClick={closeMobileCompanyDropdown}
-                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
+                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                       aria-label="Close company menu"
                       style={{ touchAction: "manipulation" }}
                     >
@@ -925,6 +926,7 @@ const Navigation = () => {
                       "flex items-center justify-between flex-1 text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
                       isServicesOpen && "text-tech-primary bg-gray-50",
                     )}
+                    style={{ touchAction: "manipulation" }}
                   >
                     Services
                     <svg
@@ -948,7 +950,7 @@ const Navigation = () => {
                   {isServicesOpen && (
                     <button
                       onClick={closeMobileServicesDropdown}
-                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
+                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                       aria-label="Close services menu"
                       style={{ touchAction: "manipulation" }}
                     >
@@ -1035,6 +1037,7 @@ const Navigation = () => {
                         "p-2 text-tech-text-dark hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-50",
                         isPartnersOpen && "text-tech-primary bg-gray-50",
                       )}
+                      style={{ touchAction: "manipulation" }}
                     >
                       <svg
                         className={cn(
@@ -1057,7 +1060,7 @@ const Navigation = () => {
                     {isPartnersOpen && (
                       <button
                         onClick={closeMobilePartnersDropdown}
-                        className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
+                        className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                         aria-label="Close partners menu"
                         style={{ touchAction: "manipulation" }}
                       >
