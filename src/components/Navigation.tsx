@@ -977,56 +977,31 @@ const Navigation = () => {
                   >
                     Partners
                   </a>
-                  <div className="flex items-center gap-1">
-                    <button
-                      onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                      className={cn(
-                        "p-2 text-tech-text-dark hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-50",
-                        isPartnersOpen && "text-tech-primary bg-gray-50",
-                      )}
-                      style={{ touchAction: "manipulation" }}
-                    >
-                      <svg
-                        className={cn(
-                          "w-4 h-4 transition-transform duration-200",
-                          isPartnersOpen ? "rotate-180" : "",
-                        )}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    {/* Close button for mobile dropdown */}
-                    {isPartnersOpen && (
-                      <button
-                        onClick={closeMobilePartnersDropdown}
-                        className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
-                        aria-label="Close partners menu"
-                        style={{ touchAction: "manipulation" }}
-                      >
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      </button>
+                  <button
+                    onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                    className={cn(
+                      "p-2 text-tech-text-dark hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-50",
+                      isPartnersOpen && "text-tech-primary bg-gray-50",
                     )}
-                  </div>
+                    style={{ touchAction: "manipulation" }}
+                  >
+                    <svg
+                      className={cn(
+                        "w-4 h-4 transition-transform duration-200",
+                        isPartnersOpen ? "rotate-180" : "",
+                      )}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
                   className={cn(
