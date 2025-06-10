@@ -455,8 +455,9 @@ const Navigation = () => {
                   <span className="text-xl font-bold text-gray-900 leading-none">
                     Technum
                   </span>
-                  <span className="text-sm font-semibold text-tech-primary leading-none">
-                    Opus
+                  <span className="text-lg font-black text-tech-primary leading-none tracking-wide relative">
+                    OPUS
+                    <div className="absolute -inset-1 bg-tech-primary/10 rounded-md -z-10"></div>
                   </span>
                 </div>
               </a>
