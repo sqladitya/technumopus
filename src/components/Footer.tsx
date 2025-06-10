@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
 const Footer = () => {
@@ -7,12 +8,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <Link
+              to="/"
+              className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 hover:opacity-80 transition-opacity duration-300"
+            >
               <Logo />
               <span className="text-lg sm:text-xl font-bold text-white">
                 Technum <span className="text-tech-primary">Opus</span>
               </span>
-            </div>
+            </Link>
             <p className="text-sm sm:text-base text-tech-text-light mb-4 sm:mb-6 leading-relaxed">
               Empowering digital transformation with innovative solutions for
               the modern enterprise.
@@ -22,6 +26,7 @@ const Footer = () => {
               <a
                 href="#"
                 className="w-8 h-8 sm:w-10 sm:h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
+                aria-label="Twitter"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
@@ -34,6 +39,7 @@ const Footer = () => {
               <a
                 href="#"
                 className="w-8 h-8 sm:w-10 sm:h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
+                aria-label="LinkedIn"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
@@ -46,6 +52,7 @@ const Footer = () => {
               <a
                 href="#"
                 className="w-8 h-8 sm:w-10 sm:h-10 bg-tech-charcoal/50 rounded-lg flex items-center justify-center hover:bg-tech-gradient transition-all duration-300"
+                aria-label="Instagram"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
@@ -65,98 +72,100 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a
-                  href="/services/sap-consulting"
+                <Link
+                  to="/services/sap-consulting"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   SAP Consulting
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/services/saas-development"
+                <Link
+                  to="/services/saas-development"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   SAAS Development
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/services/cloud-architecture"
+                <Link
+                  to="/services/cloud-architecture"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Cloud Architecture
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/services/hardware-infrastructure"
+                <Link
+                  to="/services/hardware-infrastructure"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Hardware Infrastructure
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/services/digital-transformation"
+                <Link
+                  to="/services/digital-transformation"
                   className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Digital Transformation
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white text-base sm:text-lg font-semibold mb-4 sm:mb-6">
+              Company
+            </h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a
-                  href="/about"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                <Link
+                  to="/about"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/leadership"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                <Link
+                  to="/leadership"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Leadership Team
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/careers"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                <Link
+                  to="/careers"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Careers
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/partners"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                <Link
+                  to="/partners"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   Partners
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/news-insights"
-                  className="hover:text-tech-primary transition-colors duration-300"
+                <Link
+                  to="/news-insights"
+                  className="text-sm sm:text-base hover:text-tech-primary transition-colors duration-300"
                 >
                   News & Insights
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-6">
+            <h3 className="text-white text-base sm:text-lg font-semibold mb-4 sm:mb-6">
               Contact Info
             </h3>
             <div className="space-y-3">
@@ -198,7 +207,12 @@ const Footer = () => {
                     d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-sm">hello@technumopus.com</span>
+                <a
+                  href="mailto:hello@technumopus.com"
+                  className="text-sm hover:text-tech-primary transition-colors duration-300"
+                >
+                  hello@technumopus.com
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <svg
@@ -214,7 +228,35 @@ const Footer = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span className="text-sm">+1 (555) 123-4567</span>
+                <a
+                  href="tel:+15551234567"
+                  className="text-sm hover:text-tech-primary transition-colors duration-300"
+                >
+                  +1 (555) 123-4567
+                </a>
+              </div>
+
+              {/* Contact Button */}
+              <div className="pt-4">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105 text-sm"
+                >
+                  Get in Touch
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
               </div>
             </div>
           </div>
@@ -227,24 +269,24 @@ const Footer = () => {
             rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a
-              href="/privacy-policy"
+            <Link
+              to="/privacy-policy"
               className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Privacy Policy
-            </a>
-            <a
-              href="/terms-of-service"
+            </Link>
+            <Link
+              to="/terms-of-service"
               className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Terms of Service
-            </a>
-            <a
-              href="/cookie-policy"
+            </Link>
+            <Link
+              to="/cookie-policy"
               className="text-sm hover:text-tech-primary transition-colors duration-300"
             >
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
