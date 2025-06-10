@@ -455,56 +455,63 @@ const Navigation = () => {
                     viewBox="0 0 100 100"
                     className="transition-transform duration-300 group-hover:scale-105"
                   >
-                    {/* Top curved section */}
+                    {/* Top triangular curved section */}
                     <path
-                      d="M12 15 Q30 8 50 12 Q70 16 88 28 L65 35 Q45 30 25 32 L12 28 Z"
+                      d="M8 18 Q20 8 40 12 Q60 16 85 30 L60 38 Q40 32 20 35 L8 30 Z"
                       fill="#EC4899"
                       className="transition-all duration-300"
                     />
 
-                    {/* Left vertical pillar */}
-                    <rect
-                      x="12"
-                      y="35"
-                      width="14"
-                      height="50"
-                      rx="7"
-                      fill="#EC4899"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Main P body - large curved section */}
+                    {/* Left vertical pillar with rounded ends */}
                     <path
-                      d="M35 35 L88 35 Q95 42 95 60 Q95 78 88 85 L60 85 Q50 85 45 80 Q40 75 40 65 L40 35 Q37.5 35 35 35 Z"
+                      d="M8 40 Q8 35 12 35 L18 35 Q22 35 22 40 L22 85 Q22 90 18 90 L12 90 Q8 90 8 85 Z"
                       fill="#EC4899"
                       className="transition-all duration-300"
                     />
 
-                    {/* Large circular ring - outer */}
-                    <circle
-                      cx="62"
-                      cy="60"
-                      r="20"
-                      fill="rgba(255,255,255,0.9)"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Large circular ring - inner (pink) */}
-                    <circle
-                      cx="62"
-                      cy="60"
-                      r="13"
+                    {/* Main large curved P body */}
+                    <path
+                      d="M32 40 Q45 38 60 45 Q75 52 82 65 Q88 78 80 85 Q72 92 60 90 L45 88 Q38 85 35 80 Q32 75 32 68 Z"
                       fill="#EC4899"
                       className="transition-all duration-300"
                     />
 
-                    {/* Central vertical white stripe */}
+                    {/* Outer white/gray ring */}
+                    <circle
+                      cx="58"
+                      cy="65"
+                      r="16"
+                      fill="rgba(255,255,255,0.85)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Inner pink circle */}
+                    <circle
+                      cx="58"
+                      cy="65"
+                      r="10"
+                      fill="#EC4899"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Central vertical white bar */}
                     <rect
-                      x="59"
-                      y="40"
+                      x="55"
+                      y="45"
                       width="6"
                       height="40"
                       fill="white"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Additional subtle ring accent */}
+                    <circle
+                      cx="58"
+                      cy="65"
+                      r="13"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.4)"
+                      strokeWidth="1"
                       className="transition-all duration-300"
                     />
                   </svg>
