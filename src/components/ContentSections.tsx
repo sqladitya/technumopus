@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import PartnersLogos from "./PartnersLogos";
 
@@ -27,7 +28,10 @@ export const ServicesSection = () => (
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
       {/* SAP Consulting */}
-      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+      <Link
+        to="/services/sap-consulting"
+        className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300 cursor-pointer"
+      >
         <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -43,17 +47,20 @@ export const ServicesSection = () => (
             />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4 group-hover:text-tech-primary transition-colors duration-300">
           SAP Consulting
         </h3>
         <p className="text-tech-text-medium">
           Enterprise-grade SAP implementations, optimizations, and support to
           streamline your business processes.
         </p>
-      </div>
+      </Link>
 
       {/* SAAS Platform Development */}
-      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+      <Link
+        to="/services/saas-development"
+        className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300 cursor-pointer"
+      >
         <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -69,17 +76,20 @@ export const ServicesSection = () => (
             />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4 group-hover:text-tech-primary transition-colors duration-300">
           SAAS Platform Development
         </h3>
         <p className="text-tech-text-medium">
           Scalable software-as-a-service solutions built with modern frameworks
           and cloud-native technologies.
         </p>
-      </div>
+      </Link>
 
       {/* Cloud Architecture */}
-      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+      <Link
+        to="/services/cloud-architecture"
+        className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300 cursor-pointer"
+      >
         <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -95,17 +105,20 @@ export const ServicesSection = () => (
             />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4 group-hover:text-tech-primary transition-colors duration-300">
           Cloud Architecture
         </h3>
         <p className="text-tech-text-medium">
           Robust, secure, and scalable cloud infrastructure design and
           implementation for maximum performance.
         </p>
-      </div>
+      </Link>
 
       {/* Hardware Infrastructure Solutions */}
-      <div className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300">
+      <Link
+        to="/services/hardware-infrastructure"
+        className="group bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:border-tech-primary/20 transition-all duration-300 cursor-pointer"
+      >
         <div className="w-16 h-16 bg-tech-gradient rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
           <svg
             className="w-8 h-8 text-white"
@@ -121,14 +134,37 @@ export const ServicesSection = () => (
             />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+        <h3 className="text-xl font-bold text-tech-text-dark mb-4 group-hover:text-tech-primary transition-colors duration-300">
           Hardware Infrastructure Solutions
         </h3>
         <p className="text-tech-text-medium">
           Complete hardware solutions from procurement to deployment, ensuring
           optimal performance and reliability.
         </p>
-      </div>
+      </Link>
+    </div>
+
+    {/* View All Services Button */}
+    <div className="text-center mt-12">
+      <Link
+        to="/services"
+        className="inline-flex items-center gap-2 px-8 py-4 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+      >
+        View All Services
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </Link>
     </div>
   </div>
 );
@@ -157,7 +193,7 @@ export const AboutSection = () => (
       </p>
 
       {/* Key Points */}
-      <div className="space-y-4">
+      <div className="space-y-4 mb-8">
         {[
           "Client-first approach with personalized solutions",
           "Deep technical expertise across all major platforms",
@@ -183,6 +219,48 @@ export const AboutSection = () => (
             <p className="text-tech-text-medium">{point}</p>
           </div>
         ))}
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Link
+          to="/about"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
+        >
+          Learn More About Us
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
+        <Link
+          to="/leadership"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
+        >
+          Meet Our Team
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+        </Link>
       </div>
     </div>
 
