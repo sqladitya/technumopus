@@ -798,7 +798,8 @@ const Navigation = () => {
                   {/* Close button for mobile dropdown */}
                   {isCompanyOpen && (
                     <button
-                      onClick={() => setIsCompanyOpen(false)}
+                      onClick={closeMobileCompanyDropdown}
+                      onTouchEnd={closeMobileCompanyDropdown}
                       className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                       aria-label="Close company menu"
                     >
