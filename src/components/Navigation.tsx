@@ -114,15 +114,27 @@ const Navigation = () => {
   };
 
   // Helper functions for individual mobile dropdown management
-  const closeMobileCompanyDropdown = () => {
+  const closeMobileCompanyDropdown = (
+    e: React.MouseEvent | React.TouchEvent,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsCompanyOpen(false);
   };
 
-  const closeMobileServicesDropdown = () => {
+  const closeMobileServicesDropdown = (
+    e: React.MouseEvent | React.TouchEvent,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsServicesOpen(false);
   };
 
-  const closeMobilePartnersDropdown = () => {
+  const closeMobilePartnersDropdown = (
+    e: React.MouseEvent | React.TouchEvent,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsPartnersOpen(false);
   };
 
