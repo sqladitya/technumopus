@@ -797,6 +797,9 @@ const Navigation = () => {
               ? "opacity-100 visible translate-y-0 max-h-96"
               : "opacity-0 invisible -translate-y-4 max-h-0",
           )}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div className="max-h-80 overflow-y-auto">
             <div className="px-4 py-4 space-y-4 relative">
