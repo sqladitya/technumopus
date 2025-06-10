@@ -985,7 +985,8 @@ const Navigation = () => {
                     {/* Close button for mobile dropdown */}
                     {isPartnersOpen && (
                       <button
-                        onClick={() => setIsPartnersOpen(false)}
+                        onClick={closeMobilePartnersDropdown}
+                        onTouchEnd={closeMobilePartnersDropdown}
                         className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
                         aria-label="Close partners menu"
                       >
