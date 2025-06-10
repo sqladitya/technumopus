@@ -22,9 +22,9 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdowns when clicking outside
+  // Close dropdowns when clicking outside (support both mouse and touch events)
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node;
 
       // Check if click is outside any dropdown area (desktop only)
@@ -57,8 +57,14 @@ const Navigation = () => {
       }
     };
 
+    // Add both mouse and touch event listeners for better mobile support
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [isMobileMenuOpen]);
 
   // Prevent body scroll when mobile menu is open
