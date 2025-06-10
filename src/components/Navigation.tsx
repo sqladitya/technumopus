@@ -455,58 +455,52 @@ const Navigation = () => {
                     viewBox="0 0 100 100"
                     className="transition-transform duration-300 group-hover:scale-105"
                   >
-                    {/* Top curved triangular section */}
+                    {/* Top triangular section */}
                     <path
-                      d="M10 8 Q30 8 50 8 Q70 8 85 20 L55 28 Q35 25 20 25 L10 22 Z"
+                      d="M8 12 Q25 5 45 8 Q65 10 85 25 L50 32 Q30 28 15 28 L8 25 Z"
                       fill="#EC4899"
                       className="transition-all duration-300"
                     />
 
-                    {/* Left vertical pillar */}
-                    <rect
-                      x="10"
-                      y="30"
-                      width="12"
-                      height="55"
-                      rx="6"
-                      fill="#EC4899"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Main large curved body - right side */}
+                    {/* Left vertical rounded pillar */}
                     <path
-                      d="M30 30 Q55 28 70 40 Q85 52 88 68 Q88 84 75 90 Q60 95 45 92 L35 90 Q30 88 30 85 L30 30 Z"
+                      d="M8 35 Q8 30 12 30 L18 30 Q22 30 22 35 L22 82 Q22 87 18 87 L12 87 Q8 87 8 82 Z"
                       fill="#EC4899"
                       className="transition-all duration-300"
                     />
 
-                    {/* Large circular cutout */}
+                    {/* Main curved P body */}
+                    <path
+                      d="M32 35 Q52 33 68 45 Q84 57 87 72 Q87 87 72 92 Q57 95 42 92 L35 90 Q32 88 32 85 Z"
+                      fill="#EC4899"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Outer ring cutout */}
                     <circle
-                      cx="55"
-                      cy="62"
-                      r="15"
-                      fill="white"
+                      cx="57"
+                      cy="65"
+                      r="18"
+                      fill="rgba(255,255,255,0.85)"
                       className="transition-all duration-300"
                     />
 
-                    {/* Central vertical bar cutout */}
+                    {/* Inner circle */}
+                    <circle
+                      cx="57"
+                      cy="65"
+                      r="12"
+                      fill="#EC4899"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Central vertical white bar */}
                     <rect
-                      x="52"
-                      y="45"
+                      x="54"
+                      y="42"
                       width="6"
-                      height="35"
+                      height="46"
                       fill="white"
-                      className="transition-all duration-300"
-                    />
-
-                    {/* Inner ring accent */}
-                    <circle
-                      cx="55"
-                      cy="62"
-                      r="11"
-                      fill="none"
-                      stroke="rgba(236, 72, 153, 0.3)"
-                      strokeWidth="1"
                       className="transition-all duration-300"
                     />
                   </svg>
