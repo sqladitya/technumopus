@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeroAnimation from "./HeroAnimation";
 
 const HeroSection = () => {
@@ -53,12 +54,18 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-white hover:bg-gray-50 text-tech-primary rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base">
+            <Link
+              to="/services"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-white hover:bg-gray-50 text-tech-primary rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base text-center"
+            >
               Explore Services
-            </button>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-sm sm:text-base">
+            </Link>
+            <Link
+              to="/contact"
+              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-sm sm:text-base text-center"
+            >
               Get in Touch
-            </button>
+            </Link>
           </div>
         </div>
       </div>
