@@ -998,9 +998,9 @@ const Navigation = () => {
                     {isPartnersOpen && (
                       <button
                         onClick={closeMobilePartnersDropdown}
-                        onTouchEnd={closeMobilePartnersDropdown}
-                        className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
+                        className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
                         aria-label="Close partners menu"
+                        style={{ touchAction: "manipulation" }}
                       >
                         <svg
                           className="w-4 h-4"
