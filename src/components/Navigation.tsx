@@ -485,7 +485,7 @@ const Navigation = () => {
 
         {/* Sidebar Content */}
         <div className="flex-1 overflow-y-auto">
-          <div className="py-6">
+          <div className="py-4">
             {/* Home Link */}
             <div className="px-6 mb-1">
               <Link
