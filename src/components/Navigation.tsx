@@ -736,7 +736,15 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => {
+                if (isMobileMenuOpen) {
+                  // If menu is open, close it and all dropdowns
+                  closeMobileMenu();
+                } else {
+                  // If menu is closed, just open it
+                  setIsMobileMenuOpen(true);
+                }
+              }}
               className="lg:hidden p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
               aria-label="Toggle mobile menu"
               style={{ touchAction: "manipulation" }}
