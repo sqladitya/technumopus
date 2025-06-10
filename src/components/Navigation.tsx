@@ -772,6 +772,32 @@ const Navigation = () => {
         >
           <div className="max-h-80 overflow-y-auto">
             <div className="px-4 py-4 space-y-4 relative">
+              {/* Mobile Menu Header with Close Button */}
+              <div className="flex items-center justify-between pb-2 border-b border-gray-100 mb-4">
+                <span className="text-sm font-semibold text-tech-text-dark">
+                  Menu
+                </span>
+                <button
+                  onClick={closeMobileMenu}
+                  className="p-1.5 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
+                  aria-label="Close mobile menu"
+                  style={{ touchAction: "manipulation" }}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
               {/* Mobile Home Link */}
               <a
                 href="/"
