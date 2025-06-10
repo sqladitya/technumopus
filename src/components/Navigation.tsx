@@ -134,10 +134,10 @@ const Navigation = () => {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
+    const distance = touchEnd - touchStart;
+    const isRightSwipe = distance > 50;
 
-    if (isLeftSwipe && isMobileMenuOpen) {
+    if (isRightSwipe && isMobileMenuOpen) {
       closeMobileMenu();
     }
   };
