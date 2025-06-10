@@ -659,7 +659,7 @@ const Navigation = () => {
             </div>
 
             {/* Partners Section */}
-            <div className="px-6 mb-6">
+            <div className="px-6 mb-3">
               <button
                 onClick={() => setIsPartnersOpen(!isPartnersOpen)}
                 className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
