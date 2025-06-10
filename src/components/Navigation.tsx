@@ -113,6 +113,19 @@ const Navigation = () => {
     closeAllDropdowns();
   };
 
+  // Helper functions for individual mobile dropdown management
+  const closeMobileCompanyDropdown = () => {
+    setIsCompanyOpen(false);
+  };
+
+  const closeMobileServicesDropdown = () => {
+    setIsServicesOpen(false);
+  };
+
+  const closeMobilePartnersDropdown = () => {
+    setIsPartnersOpen(false);
+  };
+
   const services = [
     {
       name: "SAP Consulting",
