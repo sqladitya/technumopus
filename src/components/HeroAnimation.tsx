@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "./HeroAnimation.css";
 
 interface HeroAnimationProps {
   className?: string;
