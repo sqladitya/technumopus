@@ -446,19 +446,18 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Clean Logo */}
             <div className="flex items-center gap-3 flex-shrink-0">
-              <Link to="/" className="flex items-center gap-3 group">
-                <div className="relative">
-                  <Logo />
-                  <div className="absolute -inset-1 bg-tech-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <Link to="/" className="flex flex-col group">
+                <div className="text-2xl font-black text-red-600 leading-tight tracking-wide">
+                  TECHNUM
                 </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-bold text-gray-900">
-                    Technum
-                  </span>
-                  <span className="text-xl font-extrabold text-tech-primary relative">
-                    Opus
-                    <div className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-tech-primary rounded-full"></div>
-                  </span>
+                <div className="flex items-center gap-2">
+                  <div className="text-lg font-bold text-gray-800 leading-tight tracking-widest">
+                    OPUS
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <div className="w-16 h-0.5 bg-gray-800"></div>
+                    <div className="w-16 h-0.5 bg-gray-800"></div>
+                  </div>
                 </div>
               </Link>
             </div>
