@@ -736,7 +736,9 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 if (isMobileMenuOpen) {
                   // If menu is open, close it and all dropdowns
                   closeMobileMenu();
