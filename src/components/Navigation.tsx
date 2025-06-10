@@ -51,9 +51,19 @@ const Navigation = () => {
 
       // For mobile, check if click is outside the mobile menu
       const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileMenuButton = document.querySelector(
+        "[data-mobile-menu-button]",
+      );
       const isOutsideMobileMenu = !mobileMenu || !mobileMenu.contains(target);
+      const isNotMobileMenuButton =
+        !mobileMenuButton || !mobileMenuButton.contains(target);
 
-      if (window.innerWidth < 1024 && isOutsideMobileMenu && isMobileMenuOpen) {
+      if (
+        window.innerWidth < 1024 &&
+        isOutsideMobileMenu &&
+        isNotMobileMenuButton &&
+        isMobileMenuOpen
+      ) {
         setIsMobileMenuOpen(false);
         closeAllDropdowns();
       }
