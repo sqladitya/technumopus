@@ -9,6 +9,8 @@ const Navigation = () => {
   const [isPartnersOpen, setIsPartnersOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const partnersRef = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
@@ -24,10 +26,9 @@ const Navigation = () => {
 
   // Close dropdowns when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node;
 
-      // Check if click is outside any dropdown area (desktop only)
       if (window.innerWidth >= 1024) {
         const isOutsideServices =
           servicesRef.current && !servicesRef.current.contains(target);
@@ -47,18 +48,32 @@ const Navigation = () => {
         }
       }
 
-      // For mobile, check if click is outside the mobile menu
       const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileMenuButton = document.querySelector(
+        "[data-mobile-menu-button]",
+      );
       const isOutsideMobileMenu = !mobileMenu || !mobileMenu.contains(target);
+      const isNotMobileMenuButton =
+        !mobileMenuButton || !mobileMenuButton.contains(target);
 
-      if (window.innerWidth < 1024 && isOutsideMobileMenu && isMobileMenuOpen) {
+      if (
+        window.innerWidth < 1024 &&
+        isOutsideMobileMenu &&
+        isNotMobileMenuButton &&
+        isMobileMenuOpen
+      ) {
         setIsMobileMenuOpen(false);
         closeAllDropdowns();
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [isMobileMenuOpen]);
 
   // Prevent body scroll when mobile menu is open
@@ -103,8 +118,34 @@ const Navigation = () => {
   };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
     closeAllDropdowns();
+    setIsMobileMenuOpen(false);
+  };
+
+  // Handle swipe gestures for mobile menu
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+
+    if (isLeftSwipe && isMobileMenuOpen) {
+      closeMobileMenu();
+    }
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeMobileMenu();
   };
 
   const services = [
@@ -114,7 +155,7 @@ const Navigation = () => {
       description: "Enterprise SAP implementations and optimization",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -134,7 +175,7 @@ const Navigation = () => {
       description: "Scalable cloud-based software solutions",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -154,7 +195,7 @@ const Navigation = () => {
       description: "Robust and secure cloud infrastructure",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -174,7 +215,7 @@ const Navigation = () => {
       description: "Complete hardware solutions and deployment",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -194,7 +235,7 @@ const Navigation = () => {
       description: "End-to-end business transformation and modernization",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -217,7 +258,7 @@ const Navigation = () => {
       description: "AWS, Microsoft Azure, Google Cloud",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -237,7 +278,7 @@ const Navigation = () => {
       description: "Cisco, Dell, HP, Lenovo",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -257,7 +298,7 @@ const Navigation = () => {
       description: "Palo Alto Networks, SentinelOne",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -277,7 +318,7 @@ const Navigation = () => {
       description: "Zebra Technologies and more",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -300,7 +341,7 @@ const Navigation = () => {
       description: "Our story, mission, and values",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -320,7 +361,7 @@ const Navigation = () => {
       description: "Meet our executive leadership",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -340,7 +381,7 @@ const Navigation = () => {
       description: "Join our growing team",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -360,7 +401,7 @@ const Navigation = () => {
       description: "Latest updates and thought leadership",
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -378,52 +419,83 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Mobile Menu Backdrop */}
+      {/* Clean Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/20 z-20 lg:hidden"
-          onClick={closeMobileMenu}
+          onClick={handleBackdropClick}
+          style={{
+            touchAction: "manipulation",
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
+          }}
         />
       )}
 
-      {/* Navigation Bar */}
+      {/* Minimalist Navigation Bar */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+            ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100"
             : "bg-white/90 backdrop-blur-sm",
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-              <a href="/" className="flex items-center gap-2 sm:gap-3">
-                <Logo />
-                <span className="text-lg sm:text-xl font-bold text-tech-text-dark">
-                  Technum <span className="text-tech-primary">Opus</span>
-                </span>
-              </a>
+            {/* Clean Logo */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <Link to="/" className="flex items-center gap-3 group">
+                {/* Logo Image */}
+                <div className="relative">
+                  <img
+                    src="/logo.png"
+                    alt="TECHNUM OPUS Logo"
+                    width="44"
+                    height="44"
+                    className="w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+
+                  {/* Enhanced hover glow effect */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" />
+                  <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+                </div>
+
+                {/* Text Logo */}
+                <div className="flex flex-col">
+                  <div className="text-2xl font-black text-pink-600 leading-tight tracking-wide">
+                    TECHNUM
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="text-lg font-bold text-gray-800 leading-tight tracking-widest">
+                      OPUS
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="w-16 h-0.5 bg-gray-800"></div>
+                      <div className="w-16 h-0.5 bg-gray-800"></div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-              <a
-                href="/"
+            {/* Clean Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1">
+              <Link
+                to="/"
                 onMouseEnter={closeAllDropdowns}
-                className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
+                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
               >
                 Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
 
               {/* Company Dropdown */}
               <div className="relative" ref={companyRef}>
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
                   onMouseEnter={openCompanyDropdown}
-                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
                 >
                   Company
                   <svg
@@ -442,47 +514,41 @@ const Navigation = () => {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                  <span
-                    className={cn(
-                      "absolute -bottom-1 left-0 h-0.5 bg-tech-primary transition-all duration-300",
-                      isCompanyOpen ? "w-full" : "w-0 group-hover:w-full",
-                    )}
-                  ></span>
                 </button>
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 transform origin-top-left",
                     isCompanyOpen
-                      ? "opacity-100 visible translate-y-0"
-                      : "opacity-0 invisible -translate-y-2",
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95",
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
-                      Company Information
+                  <div className="p-3">
+                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-3">
+                      Company
                     </div>
                     <div className="space-y-1">
                       {companyLinks.map((link) => (
-                        <a
+                        <Link
                           key={link.name}
-                          href={link.href}
+                          to={link.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
-                            <div className="text-tech-primary">{link.icon}</div>
+                          <div className="text-gray-400 group-hover:text-tech-primary transition-colors duration-150">
+                            {link.icon}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                          <div>
+                            <div className="text-sm font-medium">
                               {link.name}
                             </div>
-                            <div className="text-xs text-tech-text-medium mt-1">
+                            <div className="text-xs text-gray-500">
                               {link.description}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -494,7 +560,7 @@ const Navigation = () => {
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   onMouseEnter={openServicesDropdown}
-                  className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group flex items-center gap-1"
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
                 >
                   Services
                   <svg
@@ -513,25 +579,19 @@ const Navigation = () => {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                  <span
-                    className={cn(
-                      "absolute -bottom-1 left-0 h-0.5 bg-tech-primary transition-all duration-300",
-                      isServicesOpen ? "w-full" : "w-0 group-hover:w-full",
-                    )}
-                  ></span>
                 </button>
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 transform origin-top-left",
                     isServicesOpen
-                      ? "opacity-100 visible translate-y-0"
-                      : "opacity-0 invisible -translate-y-2",
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95",
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
+                  <div className="p-3">
+                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-3">
                       Our Services
                     </div>
                     <div className="space-y-1">
@@ -540,33 +600,31 @@ const Navigation = () => {
                           key={service.name}
                           to={service.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
-                            <div className="text-tech-primary">
-                              {service.icon}
-                            </div>
+                          <div className="text-gray-400 group-hover:text-tech-primary transition-colors duration-150">
+                            {service.icon}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                          <div>
+                            <div className="text-sm font-medium">
                               {service.name}
                             </div>
-                            <div className="text-xs text-tech-text-medium mt-1">
+                            <div className="text-xs text-gray-500">
                               {service.description}
                             </div>
                           </div>
                         </Link>
                       ))}
                     </div>
-                    <div className="border-t border-gray-100 mt-3 pt-3">
+                    <div className="border-t border-gray-100 mt-2 pt-2">
                       <Link
                         to="/services"
                         onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
+                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-150 whitespace-nowrap"
                       >
                         View All Services
                         <svg
-                          className="w-4 h-4"
+                          className="w-3 h-3"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -586,85 +644,74 @@ const Navigation = () => {
 
               {/* Partners Dropdown */}
               <div className="relative" ref={partnersRef}>
-                <div className="flex items-center">
-                  <a
-                    href="/partners"
-                    className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
-                    onMouseEnter={openPartnersDropdown}
+                <button
+                  onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                  onMouseEnter={openPartnersDropdown}
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                >
+                  Partners
+                  <svg
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-200",
+                      isPartnersOpen ? "rotate-180" : "",
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    Partners
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
-                  </a>
-                  <button
-                    onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                    onMouseEnter={openPartnersDropdown}
-                    className="ml-1 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
-                  >
-                    <svg
-                      className={cn(
-                        "w-4 h-4 transition-transform duration-200",
-                        isPartnersOpen ? "rotate-180" : "",
-                      )}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 transform",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 transform origin-top-left",
                     isPartnersOpen
-                      ? "opacity-100 visible translate-y-0"
-                      : "opacity-0 invisible -translate-y-2",
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95",
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3 border-b border-gray-100 pb-3">
-                      Partner Categories
+                  <div className="p-3">
+                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-3">
+                      Partners
                     </div>
                     <div className="space-y-1">
                       {partners.map((partner) => (
-                        <a
+                        <Link
                           key={partner.name}
-                          href={partner.href}
+                          to={partner.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-tech-primary/5 transition-colors duration-200 group"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
                         >
-                          <div className="flex-shrink-0 w-8 h-8 bg-tech-primary/10 rounded-lg flex items-center justify-center group-hover:bg-tech-primary/20 transition-colors duration-200">
-                            <div className="text-tech-primary">
-                              {partner.icon}
-                            </div>
+                          <div className="text-gray-400 group-hover:text-tech-primary transition-colors duration-150">
+                            {partner.icon}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium text-tech-text-dark group-hover:text-tech-primary transition-colors duration-200">
+                          <div>
+                            <div className="text-sm font-medium">
                               {partner.name}
                             </div>
-                            <div className="text-xs text-tech-text-medium mt-1">
+                            <div className="text-xs text-gray-500">
                               {partner.description}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
-                    <div className="border-t border-gray-100 mt-3 pt-3">
-                      <a
-                        href="/partners/view-all"
+                    <div className="border-t border-gray-100 mt-2 pt-2">
+                      <Link
+                        to="/partners/view-all"
                         onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-200"
+                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-150 whitespace-nowrap"
                       >
                         View All Partners
                         <svg
-                          className="w-4 h-4"
+                          className="w-3 h-3"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -676,31 +723,40 @@ const Navigation = () => {
                             d="M17 8l4 4m0 0l-4 4m4-4H3"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 onMouseEnter={closeAllDropdowns}
-                className="relative text-tech-text-medium hover:text-tech-primary font-medium transition-colors duration-300 group"
+                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
               >
                 Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-tech-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Simple Mobile Menu Button */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300"
+              data-mobile-menu-button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (isMobileMenuOpen) {
+                  closeMobileMenu();
+                } else {
+                  setIsMobileMenuOpen(true);
+                }
+              }}
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
               aria-label="Toggle mobile menu"
+              style={{ touchAction: "manipulation" }}
             >
               <svg
                 className={cn(
-                  "w-6 h-6 transition-transform duration-300",
+                  "w-6 h-6 transition-transform duration-200",
                   isMobileMenuOpen && "rotate-90",
                 )}
                 fill="none"
@@ -727,35 +783,40 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Clean Mobile Menu */}
         <div
           data-mobile-menu
           className={cn(
-            "lg:hidden absolute left-4 right-4 top-16 bg-white border border-gray-200 rounded-xl shadow-xl transition-all duration-300 transform z-40",
+            "lg:hidden absolute left-4 right-4 top-16 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-200 transform z-40",
             isMobileMenuOpen
               ? "opacity-100 visible translate-y-0 max-h-96"
-              : "opacity-0 invisible -translate-y-4 max-h-0",
+              : "opacity-0 invisible -translate-y-2 max-h-0",
           )}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          style={{
+            touchAction: "pan-y",
+            WebkitTouchCallout: "none",
+          }}
         >
           <div className="max-h-80 overflow-y-auto">
-            <div className="px-4 py-4 space-y-4 relative">
+            <div className="px-4 py-4 space-y-3">
               {/* Mobile Home Link */}
-              <a
-                href="/"
+              <Link
+                to="/"
                 onClick={closeMobileMenu}
-                className="block text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300"
+                className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
               >
                 Home
-              </a>
+              </Link>
 
               {/* Mobile Company Section */}
-              <div className={cn("rounded-lg", isCompanyOpen && "bg-gray-50")}>
+              <div className="border-b border-gray-100 pb-3">
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                  className={cn(
-                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
-                    isCompanyOpen && "text-tech-primary bg-gray-50",
-                  )}
+                  className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
+                  style={{ touchAction: "manipulation" }}
                 >
                   Company
                   <svg
@@ -777,38 +838,32 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-2 ml-3 space-y-2 transition-all duration-300",
+                    "mt-2 ml-3 space-y-1 transition-all duration-200",
                     isCompanyOpen
                       ? "max-h-64 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
                   )}
                 >
                   {companyLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.name}
-                      href={link.href}
+                      to={link.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-2 py-1.5 px-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-md hover:bg-gray-50"
+                      className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
                     >
-                      <div className="w-4 h-4 text-tech-primary flex-shrink-0">
-                        {link.icon}
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium">{link.name}</div>
-                      </div>
-                    </a>
+                      <div className="text-gray-400">{link.icon}</div>
+                      <div className="text-sm font-medium">{link.name}</div>
+                    </Link>
                   ))}
                 </div>
               </div>
 
               {/* Mobile Services Section */}
-              <div className={cn("rounded-lg", isServicesOpen && "bg-gray-50")}>
+              <div className="border-b border-gray-100 pb-3">
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className={cn(
-                    "flex items-center justify-between w-full text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
-                    isServicesOpen && "text-tech-primary bg-gray-50",
-                  )}
+                  className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
+                  style={{ touchAction: "manipulation" }}
                 >
                   Services
                   <svg
@@ -830,9 +885,9 @@ const Navigation = () => {
                 </button>
                 <div
                   className={cn(
-                    "mt-2 ml-3 space-y-2 transition-all duration-300",
+                    "mt-2 ml-3 space-y-1 transition-all duration-200",
                     isServicesOpen
-                      ? "max-h-64 opacity-100"
+                      ? "max-h-80 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
                   )}
                 >
@@ -841,22 +896,16 @@ const Navigation = () => {
                       key={service.name}
                       to={service.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-2 py-1.5 px-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-md hover:bg-gray-50"
+                      className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
                     >
-                      <div className="w-4 h-4 text-tech-primary flex-shrink-0">
-                        {service.icon}
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium">
-                          {service.name}
-                        </div>
-                      </div>
+                      <div className="text-gray-400">{service.icon}</div>
+                      <div className="text-sm font-medium">{service.name}</div>
                     </Link>
                   ))}
                   <Link
                     to="/services"
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-2 py-1.5 px-2 text-tech-primary text-sm font-medium rounded-md hover:bg-gray-50"
+                    className="flex items-center gap-2 px-3 py-2 text-tech-primary hover:text-tech-primary-dark text-sm font-medium rounded-md transition-colors duration-150"
                   >
                     View All Services
                     <svg
@@ -877,23 +926,19 @@ const Navigation = () => {
               </div>
 
               {/* Mobile Partners Section */}
-              <div className={cn("rounded-lg", isPartnersOpen && "bg-gray-50")}>
+              <div className="border-b border-gray-100 pb-3">
                 <div className="flex items-center justify-between">
-                  <a
-                    href="/partners"
+                  <Link
+                    to="/partners"
                     onClick={closeMobileMenu}
-                    className={cn(
-                      "flex-1 text-left text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50",
-                    )}
+                    className="flex-1 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
                   >
                     Partners
-                  </a>
+                  </Link>
                   <button
                     onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                    className={cn(
-                      "p-2 text-tech-text-dark hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-50",
-                      isPartnersOpen && "text-tech-primary bg-gray-50",
-                    )}
+                    className="p-2 text-gray-600 hover:text-gray-900 transition-colors duration-150"
+                    style={{ touchAction: "manipulation" }}
                   >
                     <svg
                       className={cn(
@@ -915,33 +960,27 @@ const Navigation = () => {
                 </div>
                 <div
                   className={cn(
-                    "mt-2 ml-3 space-y-2 transition-all duration-300",
+                    "mt-2 ml-3 space-y-1 transition-all duration-200",
                     isPartnersOpen
                       ? "max-h-64 opacity-100"
                       : "max-h-0 opacity-0 overflow-hidden",
                   )}
                 >
                   {partners.map((partner) => (
-                    <a
+                    <Link
                       key={partner.name}
-                      href={partner.href}
+                      to={partner.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-2 py-1.5 px-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-md hover:bg-gray-50"
+                      className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
                     >
-                      <div className="w-4 h-4 text-tech-primary flex-shrink-0">
-                        {partner.icon}
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium">
-                          {partner.name}
-                        </div>
-                      </div>
-                    </a>
+                      <div className="text-gray-400">{partner.icon}</div>
+                      <div className="text-sm font-medium">{partner.name}</div>
+                    </Link>
                   ))}
-                  <a
-                    href="/partners/view-all"
+                  <Link
+                    to="/partners/view-all"
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-2 py-1.5 px-2 text-tech-primary text-sm font-medium rounded-md hover:bg-gray-50"
+                    className="flex items-center gap-2 px-3 py-2 text-tech-primary hover:text-tech-primary-dark text-sm font-medium rounded-md transition-colors duration-150"
                   >
                     View All Partners
                     <svg
@@ -957,30 +996,30 @@ const Navigation = () => {
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
               {/* Mobile Contact Link */}
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 onClick={closeMobileMenu}
-                className="block text-tech-text-dark hover:text-tech-primary font-medium transition-colors duration-300 p-2 rounded-lg hover:bg-gray-50"
+                className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Scroll to Top Button */}
+      {/* Simple Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 w-10 h-10 sm:w-12 sm:h-12 bg-tech-gradient rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 hover:border-tech-primary"
       >
         <svg
-          className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+          className="w-5 h-5 text-gray-600 hover:text-tech-primary transition-colors duration-200"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
