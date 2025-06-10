@@ -811,9 +811,9 @@ const Navigation = () => {
                   {isCompanyOpen && (
                     <button
                       onClick={closeMobileCompanyDropdown}
-                      onTouchEnd={closeMobileCompanyDropdown}
-                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100"
+                      className="p-2 text-tech-text-medium hover:text-tech-primary transition-colors duration-300 rounded-lg hover:bg-gray-100 touch-manipulation"
                       aria-label="Close company menu"
+                      style={{ touchAction: "manipulation" }}
                     >
                       <svg
                         className="w-4 h-4"
