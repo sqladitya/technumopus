@@ -746,6 +746,7 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <button
+              data-mobile-menu-button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
