@@ -451,13 +451,13 @@ const Navigation = () => {
                   <Logo />
                   <div className="absolute -inset-1 bg-tech-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold text-gray-900 leading-none">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-xl font-bold text-gray-900">
                     Technum
                   </span>
-                  <span className="text-lg font-black text-tech-primary leading-none tracking-wide relative">
-                    OPUS
-                    <div className="absolute -inset-1 bg-tech-primary/10 rounded-md -z-10"></div>
+                  <span className="text-xl font-extrabold text-tech-primary relative">
+                    Opus
+                    <div className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-tech-primary rounded-full"></div>
                   </span>
                 </div>
               </a>
