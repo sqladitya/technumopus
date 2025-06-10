@@ -144,6 +144,28 @@ const Navigation = () => {
     setIsPartnersOpen(false);
   };
 
+  // Handle swipe gestures for mobile menu
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    // Close mobile menu on left swipe (swipe left to close)
+    if (isLeftSwipe && isMobileMenuOpen) {
+      closeMobileMenu();
+    }
+  };
+
   const services = [
     {
       name: "SAP Consulting",
