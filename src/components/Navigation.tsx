@@ -443,23 +443,36 @@ const Navigation = () => {
           <Link
             to="/"
             onClick={closeMobileMenu}
-            className="flex items-center gap-3"
+            className="flex items-center gap-3 group"
           >
+            {/* Logo Image */}
             <div className="relative">
               <img
                 src="/logo.png"
                 alt="TECHNUM OPUS Logo"
                 width="40"
                 height="40"
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105"
               />
+
+              {/* Enhanced hover glow effect */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" />
+              <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
             </div>
+
+            {/* Text Logo */}
             <div className="flex flex-col">
               <div className="text-xl font-black text-pink-600 leading-tight tracking-wide">
                 TECHNUM
               </div>
-              <div className="text-sm font-bold text-gray-800 leading-tight tracking-widest">
-                OPUS
+              <div className="flex items-center gap-2">
+                <div className="text-sm font-bold text-gray-800 leading-tight tracking-widest">
+                  OPUS
+                </div>
+                <div className="flex flex-col gap-1">
+                  <div className="w-12 h-0.5 bg-gray-800"></div>
+                  <div className="w-12 h-0.5 bg-gray-800"></div>
+                </div>
               </div>
             </div>
           </Link>
