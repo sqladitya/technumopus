@@ -48,7 +48,7 @@ const Navigation = () => {
         }
       }
 
-      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileMenu = document.querySelector("[data-mobile-sidebar]");
       const mobileMenuButton = document.querySelector(
         "[data-mobile-menu-button]",
       );
@@ -122,7 +122,7 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Handle swipe gestures for mobile menu
+  // Handle swipe gestures for mobile sidebar
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -419,24 +419,360 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Clean Mobile Menu Backdrop */}
+      {/* Mobile Sidebar Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-20 lg:hidden"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300"
           onClick={handleBackdropClick}
-          style={{
-            touchAction: "manipulation",
-            WebkitTouchCallout: "none",
-            WebkitUserSelect: "none",
-            userSelect: "none",
-          }}
         />
       )}
 
-      {/* Minimalist Navigation Bar */}
+      {/* Mobile Sidebar */}
+      <div
+        data-mobile-sidebar
+        className={cn(
+          "fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden",
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
+        )}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Sidebar Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            className="flex items-center gap-3"
+          >
+            <div className="relative">
+              <img
+                src="/logo.png"
+                alt="TECHNUM OPUS Logo"
+                width="40"
+                height="40"
+                className="w-10 h-10 object-contain"
+              />
+            </div>
+            <div className="flex flex-col">
+              <div className="text-xl font-black text-pink-600 leading-tight tracking-wide">
+                TECHNUM
+              </div>
+              <div className="text-sm font-bold text-gray-800 leading-tight tracking-widest">
+                OPUS
+              </div>
+            </div>
+          </Link>
+          <button
+            onClick={closeMobileMenu}
+            className="p-2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Sidebar Content */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="py-6">
+            {/* Home Link */}
+            <div className="px-6 mb-2">
+              <Link
+                to="/"
+                onClick={closeMobileMenu}
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+                Home
+              </Link>
+            </div>
+
+            {/* Company Section */}
+            <div className="px-6 mb-6">
+              <button
+                onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    />
+                  </svg>
+                  Company
+                </div>
+                <svg
+                  className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    isCompanyOpen ? "rotate-180" : "",
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  "mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300",
+                  isCompanyOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0",
+                )}
+              >
+                {companyLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                  >
+                    <div className="text-gray-400">{link.icon}</div>
+                    <div>
+                      <div className="text-sm font-medium">{link.name}</div>
+                      <div className="text-xs text-gray-500">
+                        {link.description}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Services Section */}
+            <div className="px-6 mb-6">
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                  Services
+                </div>
+                <svg
+                  className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    isServicesOpen ? "rotate-180" : "",
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  "mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300",
+                  isServicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+                )}
+              >
+                {services.map((service) => (
+                  <Link
+                    key={service.name}
+                    to={service.href}
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                  >
+                    <div className="text-gray-400">{service.icon}</div>
+                    <div>
+                      <div className="text-sm font-medium">{service.name}</div>
+                      <div className="text-xs text-gray-500">
+                        {service.description}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+                <Link
+                  to="/services"
+                  onClick={closeMobileMenu}
+                  className="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-lg transition-colors duration-200 mt-2"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                  <div className="text-sm font-medium">View All Services</div>
+                </Link>
+              </div>
+            </div>
+
+            {/* Partners Section */}
+            <div className="px-6 mb-6">
+              <button
+                onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  Partners
+                </div>
+                <svg
+                  className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    isPartnersOpen ? "rotate-180" : "",
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  "mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300",
+                  isPartnersOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
+                )}
+              >
+                {partners.map((partner) => (
+                  <Link
+                    key={partner.name}
+                    to={partner.href}
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                  >
+                    <div className="text-gray-400">{partner.icon}</div>
+                    <div>
+                      <div className="text-sm font-medium">{partner.name}</div>
+                      <div className="text-xs text-gray-500">
+                        {partner.description}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+                <Link
+                  to="/partners/view-all"
+                  onClick={closeMobileMenu}
+                  className="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-lg transition-colors duration-200 mt-2"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                  <div className="text-sm font-medium">View All Partners</div>
+                </Link>
+              </div>
+            </div>
+
+            {/* Contact Link */}
+            <div className="px-6">
+              <Link
+                to="/contact"
+                onClick={closeMobileMenu}
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                Contact
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navigation Bar */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
           isScrolled
             ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100"
             : "bg-white/90 backdrop-blur-sm",
@@ -444,10 +780,9 @@ const Navigation = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Clean Logo */}
+            {/* Logo */}
             <div className="flex items-center gap-3 flex-shrink-0">
               <Link to="/" className="flex items-center gap-3 group">
-                {/* Logo Image */}
                 <div className="relative">
                   <img
                     src="/logo.png"
@@ -456,13 +791,9 @@ const Navigation = () => {
                     height="44"
                     className="w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105"
                   />
-
-                  {/* Enhanced hover glow effect */}
                   <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" />
                   <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
                 </div>
-
-                {/* Text Logo */}
                 <div className="flex flex-col">
                   <div className="text-2xl font-black text-pink-600 leading-tight tracking-wide">
                     TECHNUM
@@ -480,7 +811,7 @@ const Navigation = () => {
               </Link>
             </div>
 
-            {/* Clean Desktop Navigation */}
+            {/* Desktop Navigation - Hidden on tablets and phones */}
             <div className="hidden lg:flex items-center space-x-1">
               <Link
                 to="/"
@@ -738,27 +1069,19 @@ const Navigation = () => {
               </Link>
             </div>
 
-            {/* Simple Mobile Menu Button */}
+            {/* Mobile Hamburger Menu Button - Visible on tablets and phones */}
             <button
               data-mobile-menu-button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                if (isMobileMenuOpen) {
-                  closeMobileMenu();
-                } else {
-                  setIsMobileMenuOpen(true);
-                }
+                setIsMobileMenuOpen(!isMobileMenuOpen);
               }}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 rounded-md hover:bg-gray-50"
               aria-label="Toggle mobile menu"
-              style={{ touchAction: "manipulation" }}
             >
               <svg
-                className={cn(
-                  "w-6 h-6 transition-transform duration-200",
-                  isMobileMenuOpen && "rotate-90",
-                )}
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -782,241 +1105,12 @@ const Navigation = () => {
             </button>
           </div>
         </div>
-
-        {/* Clean Mobile Menu */}
-        <div
-          data-mobile-menu
-          className={cn(
-            "lg:hidden absolute left-4 right-4 top-16 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-200 transform z-40",
-            isMobileMenuOpen
-              ? "opacity-100 visible translate-y-0 max-h-96"
-              : "opacity-0 invisible -translate-y-2 max-h-0",
-          )}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          style={{
-            touchAction: "pan-y",
-            WebkitTouchCallout: "none",
-          }}
-        >
-          <div className="max-h-80 overflow-y-auto">
-            <div className="px-4 py-4 space-y-3">
-              {/* Mobile Home Link */}
-              <Link
-                to="/"
-                onClick={closeMobileMenu}
-                className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
-              >
-                Home
-              </Link>
-
-              {/* Mobile Company Section */}
-              <div className="border-b border-gray-100 pb-3">
-                <button
-                  onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                  className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
-                  style={{ touchAction: "manipulation" }}
-                >
-                  Company
-                  <svg
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      isCompanyOpen ? "rotate-180" : "",
-                    )}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <div
-                  className={cn(
-                    "mt-2 ml-3 space-y-1 transition-all duration-200",
-                    isCompanyOpen
-                      ? "max-h-64 opacity-100"
-                      : "max-h-0 opacity-0 overflow-hidden",
-                  )}
-                >
-                  {companyLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      onClick={closeMobileMenu}
-                      className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
-                    >
-                      <div className="text-gray-400">{link.icon}</div>
-                      <div className="text-sm font-medium">{link.name}</div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mobile Services Section */}
-              <div className="border-b border-gray-100 pb-3">
-                <button
-                  onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
-                  style={{ touchAction: "manipulation" }}
-                >
-                  Services
-                  <svg
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      isServicesOpen ? "rotate-180" : "",
-                    )}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <div
-                  className={cn(
-                    "mt-2 ml-3 space-y-1 transition-all duration-200",
-                    isServicesOpen
-                      ? "max-h-80 opacity-100"
-                      : "max-h-0 opacity-0 overflow-hidden",
-                  )}
-                >
-                  {services.map((service) => (
-                    <Link
-                      key={service.name}
-                      to={service.href}
-                      onClick={closeMobileMenu}
-                      className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
-                    >
-                      <div className="text-gray-400">{service.icon}</div>
-                      <div className="text-sm font-medium">{service.name}</div>
-                    </Link>
-                  ))}
-                  <Link
-                    to="/services"
-                    onClick={closeMobileMenu}
-                    className="flex items-center gap-2 px-3 py-2 text-tech-primary hover:text-tech-primary-dark text-sm font-medium rounded-md transition-colors duration-150"
-                  >
-                    View All Services
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Mobile Partners Section */}
-              <div className="border-b border-gray-100 pb-3">
-                <div className="flex items-center justify-between">
-                  <Link
-                    to="/partners"
-                    onClick={closeMobileMenu}
-                    className="flex-1 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
-                  >
-                    Partners
-                  </Link>
-                  <button
-                    onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                    className="p-2 text-gray-600 hover:text-gray-900 transition-colors duration-150"
-                    style={{ touchAction: "manipulation" }}
-                  >
-                    <svg
-                      className={cn(
-                        "w-4 h-4 transition-transform duration-200",
-                        isPartnersOpen ? "rotate-180" : "",
-                      )}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  className={cn(
-                    "mt-2 ml-3 space-y-1 transition-all duration-200",
-                    isPartnersOpen
-                      ? "max-h-64 opacity-100"
-                      : "max-h-0 opacity-0 overflow-hidden",
-                  )}
-                >
-                  {partners.map((partner) => (
-                    <Link
-                      key={partner.name}
-                      to={partner.href}
-                      onClick={closeMobileMenu}
-                      className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
-                    >
-                      <div className="text-gray-400">{partner.icon}</div>
-                      <div className="text-sm font-medium">{partner.name}</div>
-                    </Link>
-                  ))}
-                  <Link
-                    to="/partners/view-all"
-                    onClick={closeMobileMenu}
-                    className="flex items-center gap-2 px-3 py-2 text-tech-primary hover:text-tech-primary-dark text-sm font-medium rounded-md transition-colors duration-150"
-                  >
-                    View All Partners
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Mobile Contact Link */}
-              <Link
-                to="/contact"
-                onClick={closeMobileMenu}
-                className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md font-medium transition-colors duration-150"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
       </nav>
 
-      {/* Simple Scroll to Top Button */}
+      {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 hover:border-tech-primary"
+        className="fixed bottom-6 right-6 z-30 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 hover:border-tech-primary"
       >
         <svg
           className="w-5 h-5 text-gray-600 hover:text-tech-primary transition-colors duration-200"
