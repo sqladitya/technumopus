@@ -452,46 +452,61 @@ const Navigation = () => {
                   <svg
                     width="40"
                     height="40"
-                    viewBox="0 0 400 400"
+                    viewBox="0 0 100 100"
                     className="transition-transform duration-300 group-hover:scale-105"
                   >
-                    {/* Top triangle */}
+                    {/* Top triangular section */}
                     <path
-                      d="M75 50 L325 50 L200 125 Z"
-                      fill="#E91E63"
+                      d="M15 15 L85 15 L50 35 L15 25 Z"
+                      fill="#EC4899"
                       className="transition-all duration-300"
                     />
-                    {/* Bottom left rectangle */}
+
+                    {/* Left vertical rounded rectangle */}
                     <rect
-                      x="75"
-                      y="135"
-                      width="100"
-                      height="215"
-                      rx="20"
-                      fill="#E91E63"
+                      x="15"
+                      y="35"
+                      width="15"
+                      height="50"
+                      rx="7"
+                      fill="#EC4899"
                       className="transition-all duration-300"
                     />
-                    {/* Large curved shape */}
+
+                    {/* Main curved P body */}
                     <path
-                      d="M200 135 Q275 135 325 185 Q375 235 375 310 Q375 385 300 385 L225 385 Q200 385 200 360 L200 135 Z"
-                      fill="#E91E63"
+                      d="M40 35 Q65 35 75 50 Q85 65 85 80 Q85 95 70 95 L45 95 Q40 95 40 90 L40 35 Z"
+                      fill="#EC4899"
                       className="transition-all duration-300"
                     />
-                    {/* Inner circle cutout */}
+
+                    {/* Inner circular cutout with gradient effect */}
                     <circle
-                      cx="250"
-                      cy="250"
-                      r="60"
+                      cx="60"
+                      cy="65"
+                      r="12"
+                      fill="rgba(255,255,255,0.9)"
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Central vertical white bar */}
+                    <rect
+                      x="57"
+                      y="50"
+                      width="6"
+                      height="30"
                       fill="white"
                       className="transition-all duration-300"
                     />
-                    {/* Central vertical bar */}
-                    <rect
-                      x="235"
-                      y="180"
-                      width="30"
-                      height="140"
-                      fill="white"
+
+                    {/* Additional geometric accent */}
+                    <circle
+                      cx="60"
+                      cy="65"
+                      r="8"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.3)"
+                      strokeWidth="1"
                       className="transition-all duration-300"
                     />
                   </svg>
