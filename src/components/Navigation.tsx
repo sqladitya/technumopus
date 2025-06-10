@@ -115,19 +115,6 @@ const Navigation = () => {
     closeAllDropdowns();
   };
 
-  // Helper functions for individual mobile dropdown management
-  const closeMobileCompanyDropdown = () => {
-    setIsCompanyOpen(false);
-  };
-
-  const closeMobileServicesDropdown = () => {
-    setIsServicesOpen(false);
-  };
-
-  const closeMobilePartnersDropdown = () => {
-    setIsPartnersOpen(false);
-  };
-
   // Handle swipe gestures for mobile menu
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
