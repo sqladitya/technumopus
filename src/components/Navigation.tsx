@@ -446,17 +446,72 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Clean Logo */}
             <div className="flex items-center gap-3 flex-shrink-0">
-              <Link to="/" className="flex flex-col group">
-                <div className="text-2xl font-black text-red-600 leading-tight tracking-wide">
-                  TECHNUM
+              <Link to="/" className="flex items-center gap-3 group">
+                {/* Logo SVG */}
+                <div className="relative">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 400 400"
+                    className="transition-transform duration-300 group-hover:scale-105"
+                  >
+                    {/* Top triangle */}
+                    <path
+                      d="M75 50 L325 50 L200 125 Z"
+                      fill="#E91E63"
+                      className="transition-all duration-300"
+                    />
+                    {/* Bottom left rectangle */}
+                    <rect
+                      x="75"
+                      y="135"
+                      width="100"
+                      height="215"
+                      rx="20"
+                      fill="#E91E63"
+                      className="transition-all duration-300"
+                    />
+                    {/* Large curved shape */}
+                    <path
+                      d="M200 135 Q275 135 325 185 Q375 235 375 310 Q375 385 300 385 L225 385 Q200 385 200 360 L200 135 Z"
+                      fill="#E91E63"
+                      className="transition-all duration-300"
+                    />
+                    {/* Inner circle cutout */}
+                    <circle
+                      cx="250"
+                      cy="250"
+                      r="60"
+                      fill="white"
+                      className="transition-all duration-300"
+                    />
+                    {/* Central vertical bar */}
+                    <rect
+                      x="235"
+                      y="180"
+                      width="30"
+                      height="140"
+                      fill="white"
+                      className="transition-all duration-300"
+                    />
+                  </svg>
+                  {/* Hover glow effect */}
+                  <div className="absolute -inset-1 bg-pink-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="text-lg font-bold text-gray-800 leading-tight tracking-widest">
-                    OPUS
+
+                {/* Text Logo */}
+                <div className="flex flex-col">
+                  <div className="text-2xl font-black text-pink-600 leading-tight tracking-wide">
+                    TECHNUM
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <div className="w-16 h-0.5 bg-gray-800"></div>
-                    <div className="w-16 h-0.5 bg-gray-800"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="text-lg font-bold text-gray-800 leading-tight tracking-widest">
+                      OPUS
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="w-16 h-0.5 bg-gray-800"></div>
+                      <div className="w-16 h-0.5 bg-gray-800"></div>
+                    </div>
                   </div>
                 </div>
               </Link>
