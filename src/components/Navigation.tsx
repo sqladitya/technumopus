@@ -412,8 +412,10 @@ const Navigation = () => {
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-20 lg:hidden"
+          className="fixed inset-0 bg-black/30 z-20 lg:hidden backdrop-blur-sm"
           onClick={closeMobileMenu}
+          onTouchEnd={closeMobileMenu}
+          style={{ touchAction: "manipulation" }}
         />
       )}
 
