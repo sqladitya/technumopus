@@ -561,25 +561,25 @@ const Navigation = () => {
                       className="transition-all duration-300"
                     />
 
-                    {/* The T - Horizontal bar across the top of circle */}
+                    {/* The T - Horizontal bar spanning across the triangle width */}
                     <rect
-                      x="42"
-                      y="38"
-                      width="26"
-                      height="6"
-                      rx="3"
+                      x="25"
+                      y="30"
+                      width="55"
+                      height="8"
+                      rx="4"
                       fill="url(#whiteMetallicGradient)"
                       filter="url(#logoInnerShadow)"
                       className="transition-all duration-300"
                     />
 
-                    {/* The T - Vertical bar intersecting through the O */}
+                    {/* The T - Vertical bar spanning the full triangle height */}
                     <rect
                       x="52"
-                      y="44"
-                      width="6"
-                      height="38"
-                      rx="3"
+                      y="38"
+                      width="8"
+                      height="60"
+                      rx="4"
                       fill="url(#whiteMetallicGradient)"
                       filter="url(#logoInnerShadow)"
                       className="transition-all duration-300"
@@ -587,43 +587,43 @@ const Navigation = () => {
 
                     {/* Highlight effects on T for 3D appearance */}
                     <rect
-                      x="42"
-                      y="38"
-                      width="26"
-                      height="2"
-                      rx="1"
+                      x="25"
+                      y="30"
+                      width="55"
+                      height="3"
+                      rx="1.5"
                       fill="rgba(255,255,255,0.95)"
                       className="transition-all duration-300"
                     />
 
                     <rect
                       x="52"
-                      y="44"
-                      width="2"
-                      height="38"
-                      rx="1"
+                      y="38"
+                      width="3"
+                      height="60"
+                      rx="1.5"
                       fill="rgba(255,255,255,0.95)"
                       className="transition-all duration-300"
                     />
 
                     {/* Additional depth shadow on the right side of T */}
                     <rect
-                      x="56"
-                      y="44"
-                      width="2"
-                      height="38"
-                      rx="1"
+                      x="57"
+                      y="38"
+                      width="3"
+                      height="60"
+                      rx="1.5"
                       fill="rgba(0,0,0,0.1)"
                       className="transition-all duration-300"
                     />
 
                     {/* Additional depth shadow on bottom of horizontal bar */}
                     <rect
-                      x="42"
-                      y="42"
-                      width="26"
-                      height="1"
-                      rx="0.5"
+                      x="25"
+                      y="35"
+                      width="55"
+                      height="2"
+                      rx="1"
                       fill="rgba(0,0,0,0.1)"
                       className="transition-all duration-300"
                     />
