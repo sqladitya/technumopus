@@ -431,8 +431,8 @@ const Navigation = () => {
       <div
         data-mobile-sidebar
         className={cn(
-          "fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
+          "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden",
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
