@@ -743,7 +743,7 @@ const Navigation = () => {
             </div>
 
             {/* Contact Link */}
-            <div className="px-6">
+            <div className="px-6 mt-1">
               <Link
                 to="/contact"
                 onClick={closeMobileMenu}
