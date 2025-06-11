@@ -466,7 +466,7 @@ const Navigation = () => {
                 TECHNUM
               </div>
               <div className="flex items-center gap-2">
-                <div className="text-sm font-bold text-gray-800 leading-tight tracking-widest">
+                <div className="text-base font-bold text-gray-800 leading-tight tracking-widest">
                   OPUS
                 </div>
                 <div className="flex flex-col gap-1">
@@ -785,14 +785,14 @@ const Navigation = () => {
       {/* Main Navigation Bar */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-40",
           isScrolled
             ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100"
             : "bg-white/90 backdrop-blur-sm",
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <div className="flex items-center gap-3 flex-shrink-0">
               <Link to="/" className="flex items-center gap-3 group">
@@ -808,16 +808,16 @@ const Navigation = () => {
                   <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-2xl font-black text-pink-600 leading-tight tracking-wide">
+                  <div className="text-xl font-black text-pink-600 leading-tight tracking-wide">
                     TECHNUM
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="text-lg font-bold text-gray-800 leading-tight tracking-widest">
+                    <div className="text-base font-bold text-gray-800 leading-tight tracking-widest">
                       OPUS
                     </div>
                     <div className="flex flex-col gap-1">
-                      <div className="w-16 h-0.5 bg-gray-800"></div>
-                      <div className="w-16 h-0.5 bg-gray-800"></div>
+                      <div className="w-12 h-0.5 bg-gray-800"></div>
+                      <div className="w-12 h-0.5 bg-gray-800"></div>
                     </div>
                   </div>
                 </div>
@@ -829,7 +829,7 @@ const Navigation = () => {
               <Link
                 to="/"
                 onMouseEnter={closeAllDropdowns}
-                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
               >
                 Home
               </Link>
@@ -839,7 +839,7 @@ const Navigation = () => {
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
                   onMouseEnter={openCompanyDropdown}
-                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
                 >
                   Company
                   <svg
@@ -904,7 +904,7 @@ const Navigation = () => {
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   onMouseEnter={openServicesDropdown}
-                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
                 >
                   Services
                   <svg
@@ -991,7 +991,7 @@ const Navigation = () => {
                 <button
                   onClick={() => setIsPartnersOpen(!isPartnersOpen)}
                   onMouseEnter={openPartnersDropdown}
-                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
                 >
                   Partners
                   <svg
@@ -1076,7 +1076,7 @@ const Navigation = () => {
               <Link
                 to="/contact"
                 onMouseEnter={closeAllDropdowns}
-                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
               >
                 Contact
               </Link>
@@ -1090,7 +1090,7 @@ const Navigation = () => {
                 e.stopPropagation();
                 setIsMobileMenuOpen(!isMobileMenuOpen);
               }}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 rounded-md hover:bg-gray-50"
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50"
               aria-label="Toggle mobile menu"
             >
               <svg
