@@ -170,7 +170,7 @@ const Navigation = () => {
       ),
     },
     {
-      name: "SAAS Platform Development",
+      name: "Software Development",
       href: "/services/saas-development",
       description: "Scalable cloud-based software solutions",
       icon: (
@@ -422,7 +422,7 @@ const Navigation = () => {
       {/* Mobile Sidebar Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={handleBackdropClick}
         />
       )}
@@ -431,7 +431,7 @@ const Navigation = () => {
       <div
         data-mobile-sidebar
         className={cn(
-          "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden",
+          "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 lg:hidden",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
         onTouchStart={handleTouchStart}
@@ -452,12 +452,12 @@ const Navigation = () => {
                 alt="TECHNUM OPUS Logo"
                 width="40"
                 height="40"
-                className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="w-10 h-10 object-contain"
               />
 
               {/* Enhanced hover glow effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" />
-              <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+              <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 blur-lg" />
+              <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 blur-sm" />
             </div>
 
             {/* Text Logo */}
@@ -478,7 +478,7 @@ const Navigation = () => {
           </Link>
           <button
             onClick={closeMobileMenu}
-            className="p-2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+            className="p-2 text-gray-500 hover:text-gray-700"
           >
             <svg
               className="w-6 h-6"
@@ -504,7 +504,7 @@ const Navigation = () => {
               <Link
                 to="/"
                 onClick={closeMobileMenu}
-                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium"
               >
                 <svg
                   className="w-5 h-5"
@@ -527,7 +527,7 @@ const Navigation = () => {
             <div className="px-6 mb-2">
               <button
                 onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium"
               >
                 <div className="flex items-center gap-3">
                   <svg
@@ -546,10 +546,7 @@ const Navigation = () => {
                   Company
                 </div>
                 <svg
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    isCompanyOpen ? "rotate-180" : "",
-                  )}
+                  className={cn("w-4 h-4", isCompanyOpen ? "rotate-180" : "")}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -564,7 +561,7 @@ const Navigation = () => {
               </button>
               <div
                 className={cn(
-                  "mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300",
+                  "mt-2 ml-8 space-y-1 overflow-hidden",
                   isCompanyOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0",
                 )}
               >
@@ -573,7 +570,7 @@ const Navigation = () => {
                     key={link.name}
                     to={link.href}
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg"
                   >
                     <div className="text-gray-400">{link.icon}</div>
                     <div>
@@ -591,7 +588,7 @@ const Navigation = () => {
             <div className="px-6 mb-2">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium"
               >
                 <div className="flex items-center gap-3">
                   <svg
@@ -610,10 +607,7 @@ const Navigation = () => {
                   Services
                 </div>
                 <svg
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    isServicesOpen ? "rotate-180" : "",
-                  )}
+                  className={cn("w-4 h-4", isServicesOpen ? "rotate-180" : "")}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -628,7 +622,7 @@ const Navigation = () => {
               </button>
               <div
                 className={cn(
-                  "mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300",
+                  "mt-2 ml-8 space-y-1 overflow-hidden",
                   isServicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
                 )}
               >
@@ -637,7 +631,7 @@ const Navigation = () => {
                     key={service.name}
                     to={service.href}
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg"
                   >
                     <div className="text-gray-400">{service.icon}</div>
                     <div>
@@ -651,7 +645,7 @@ const Navigation = () => {
                 <Link
                   to="/services"
                   onClick={closeMobileMenu}
-                  className="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-lg transition-colors duration-200 mt-2"
+                  className="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-lg mt-2"
                 >
                   <svg
                     className="w-4 h-4"
@@ -675,7 +669,7 @@ const Navigation = () => {
             <div className="px-6 mb-2">
               <button
                 onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium"
               >
                 <div className="flex items-center gap-3">
                   <svg
@@ -694,10 +688,7 @@ const Navigation = () => {
                   Partners
                 </div>
                 <svg
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    isPartnersOpen ? "rotate-180" : "",
-                  )}
+                  className={cn("w-4 h-4", isPartnersOpen ? "rotate-180" : "")}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -712,7 +703,7 @@ const Navigation = () => {
               </button>
               <div
                 className={cn(
-                  "mt-2 ml-8 space-y-1 overflow-hidden transition-all duration-300",
+                  "mt-2 ml-8 space-y-1 overflow-hidden",
                   isPartnersOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
                 )}
               >
@@ -721,7 +712,7 @@ const Navigation = () => {
                     key={partner.name}
                     to={partner.href}
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                    className="flex items-center gap-3 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg"
                   >
                     <div className="text-gray-400">{partner.icon}</div>
                     <div>
@@ -735,7 +726,7 @@ const Navigation = () => {
                 <Link
                   to="/partners/view-all"
                   onClick={closeMobileMenu}
-                  className="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-lg transition-colors duration-200 mt-2"
+                  className="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-lg mt-2"
                 >
                   <svg
                     className="w-4 h-4"
@@ -760,7 +751,7 @@ const Navigation = () => {
               <Link
                 to="/contact"
                 onClick={closeMobileMenu}
-                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium"
               >
                 <svg
                   className="w-5 h-5"
@@ -802,10 +793,10 @@ const Navigation = () => {
                     alt="TECHNUM OPUS Logo"
                     width="44"
                     height="44"
-                    className="w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="w-11 h-11 object-contain"
                   />
-                  <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" />
-                  <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+                  <div className="absolute -inset-2 bg-gradient-to-r from-pink-500/30 via-fuchsia-500/30 to-pink-500/30 rounded-2xl opacity-0 group-hover:opacity-100 blur-lg" />
+                  <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 blur-sm" />
                 </div>
                 <div className="flex flex-col">
                   <div className="text-xl font-black text-pink-600 leading-tight tracking-wide">
@@ -843,10 +834,7 @@ const Navigation = () => {
                 >
                   Company
                   <svg
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      isCompanyOpen ? "rotate-180" : "",
-                    )}
+                    className={cn("w-4 h-4", isCompanyOpen ? "rotate-180" : "")}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -862,7 +850,7 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 transform origin-top-left",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transform origin-top-left",
                     isCompanyOpen
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
@@ -879,9 +867,9 @@ const Navigation = () => {
                           key={link.name}
                           to={link.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md group whitespace-nowrap"
                         >
-                          <div className="text-gray-400 group-hover:text-tech-primary transition-colors duration-150">
+                          <div className="text-gray-400 group-hover:text-tech-primary">
                             {link.icon}
                           </div>
                           <div>
@@ -909,7 +897,7 @@ const Navigation = () => {
                   Services
                   <svg
                     className={cn(
-                      "w-4 h-4 transition-transform duration-200",
+                      "w-4 h-4",
                       isServicesOpen ? "rotate-180" : "",
                     )}
                     fill="none"
@@ -927,7 +915,7 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 transform origin-top-left",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transform origin-top-left",
                     isServicesOpen
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
@@ -944,9 +932,9 @@ const Navigation = () => {
                           key={service.name}
                           to={service.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md group whitespace-nowrap"
                         >
-                          <div className="text-gray-400 group-hover:text-tech-primary transition-colors duration-150">
+                          <div className="text-gray-400 group-hover:text-tech-primary">
                             {service.icon}
                           </div>
                           <div>
@@ -964,7 +952,7 @@ const Navigation = () => {
                       <Link
                         to="/services"
                         onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-150 whitespace-nowrap"
+                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark whitespace-nowrap"
                       >
                         View All Services
                         <svg
@@ -996,7 +984,7 @@ const Navigation = () => {
                   Partners
                   <svg
                     className={cn(
-                      "w-4 h-4 transition-transform duration-200",
+                      "w-4 h-4",
                       isPartnersOpen ? "rotate-180" : "",
                     )}
                     fill="none"
@@ -1014,7 +1002,7 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 transform origin-top-left",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-lg border border-gray-200 transform origin-top-left",
                     isPartnersOpen
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
@@ -1031,9 +1019,9 @@ const Navigation = () => {
                           key={partner.name}
                           to={partner.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150 group whitespace-nowrap"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md group whitespace-nowrap"
                         >
-                          <div className="text-gray-400 group-hover:text-tech-primary transition-colors duration-150">
+                          <div className="text-gray-400 group-hover:text-tech-primary">
                             {partner.icon}
                           </div>
                           <div>
@@ -1051,7 +1039,7 @@ const Navigation = () => {
                       <Link
                         to="/partners/view-all"
                         onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark transition-colors duration-150 whitespace-nowrap"
+                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-tech-primary hover:text-tech-primary-dark whitespace-nowrap"
                       >
                         View All Partners
                         <svg
@@ -1123,10 +1111,10 @@ const Navigation = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-30 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 hover:border-tech-primary"
+        className="fixed bottom-6 right-6 z-30 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:border-tech-primary"
       >
         <svg
-          className="w-5 h-5 text-gray-600 hover:text-tech-primary transition-colors duration-200"
+          className="w-5 h-5 text-gray-600 hover:text-tech-primary"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
