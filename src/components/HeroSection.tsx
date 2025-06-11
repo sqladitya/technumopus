@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
+import HeroAnimation from "./HeroAnimation";
 
 const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+      className="relative min-h-screen overflow-hidden bg-fixed bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+      style={{
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
       {/* Fixed Professional Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/90 via-purple-600/85 to-slate-900/95" />
+
+      {/* Hero Animation - Only in Hero Section */}
+      <HeroAnimation className="opacity-90" />
 
       {/* Very subtle pattern overlay */}
       <div className="absolute inset-0 opacity-5 z-10">
@@ -46,13 +56,13 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Link
               to="/services"
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-white hover:bg-gray-50 text-tech-primary rounded-lg font-semibold hover:shadow-lg text-sm sm:text-base text-center"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-white hover:bg-gray-50 text-tech-primary rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base text-center"
             >
               Explore Services
             </Link>
             <Link
               to="/contact"
-              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 text-sm sm:text-base text-center"
+              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-sm sm:text-base text-center"
             >
               Get in Touch
             </Link>
