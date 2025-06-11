@@ -1090,7 +1090,7 @@ const Navigation = () => {
                 e.stopPropagation();
                 setIsMobileMenuOpen(!isMobileMenuOpen);
               }}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 rounded-md hover:bg-gray-50"
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 rounded-md hover:bg-gray-50"
               aria-label="Toggle mobile menu"
             >
               <svg
