@@ -808,16 +808,16 @@ const Navigation = () => {
                   <div className="absolute -inset-1 bg-pink-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-2xl font-black text-pink-600 leading-tight tracking-wide">
+                  <div className="text-xl font-black text-pink-600 leading-tight tracking-wide">
                     TECHNUM
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="text-lg font-bold text-gray-800 leading-tight tracking-widest">
+                    <div className="text-base font-bold text-gray-800 leading-tight tracking-widest">
                       OPUS
                     </div>
                     <div className="flex flex-col gap-1">
-                      <div className="w-16 h-0.5 bg-gray-800"></div>
-                      <div className="w-16 h-0.5 bg-gray-800"></div>
+                      <div className="w-12 h-0.5 bg-gray-800"></div>
+                      <div className="w-12 h-0.5 bg-gray-800"></div>
                     </div>
                   </div>
                 </div>
