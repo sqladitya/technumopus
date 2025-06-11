@@ -839,7 +839,7 @@ const Navigation = () => {
                 <button
                   onClick={() => setIsCompanyOpen(!isCompanyOpen)}
                   onMouseEnter={openCompanyDropdown}
-                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                  className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
                 >
                   Company
                   <svg
