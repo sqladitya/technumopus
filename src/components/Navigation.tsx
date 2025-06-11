@@ -829,7 +829,7 @@ const Navigation = () => {
               <Link
                 to="/"
                 onMouseEnter={closeAllDropdowns}
-                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 rounded-md hover:bg-gray-50"
+                className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium rounded-md hover:bg-gray-50"
               >
                 Home
               </Link>
