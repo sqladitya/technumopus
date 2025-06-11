@@ -1,208 +1,60 @@
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
-import ServicesCarousel from "@/components/ServicesCarousel";
-import InsightsSection from "@/components/InsightsSection";
-import ClientStoriesCarousel from "@/components/ClientStoriesCarousel";
-import AwardsSection from "@/components/AwardsSection";
-import NewsCarousel from "@/components/NewsCarousel";
-import ValuePropositionSection from "@/components/ValuePropositionSection";
-import { Link } from "react-router-dom";
+import {
+  Section,
+  ServicesSection,
+  PartnersSection,
+  AboutSection,
+} from "@/components/ContentSections";
+import Footer from "@/components/Footer";
+import SectionBackground from "@/components/SectionBackground";
 
 const Index = () => {
   return (
-    <div className="bg-black text-white overflow-x-hidden">
+    <div className="bg-white">
       <Navigation />
 
-      {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-purple-900 via-black to-pink-900"></div>
-          {/* Animated particles */}
-          <div className="absolute inset-0">
-            {[...Array(50)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
+      <HeroSection />
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 text-center">
-          <div className="space-y-8 animate-fade-in">
-            <h1 className="text-6xl lg:text-8xl font-bold leading-tight">
-              <span className="block">Let there be</span>
-              <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                CHANGE
-              </span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              We are a global professional services company with leading
-              capabilities in digital, cloud and security. Combining unmatched
-              experience and specialized skills across more than 40 industries.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <Link
-                to="/services"
-                className="group px-8 py-4 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-all duration-300 transform hover:scale-105"
-              >
-                <span className="flex items-center gap-2">
-                  Explore Services
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </span>
-              </Link>
-              <Link
-                to="/contact"
-                className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition-all duration-300"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* Services Section */}
+      <SectionBackground variant="light">
+        <Section className="" id="services">
+          <ServicesSection />
+        </Section>
+      </SectionBackground>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
-      </section>
+      {/* About Section */}
+      <SectionBackground variant="gradient">
+        <Section className="" id="about">
+          <AboutSection />
+        </Section>
+      </SectionBackground>
 
-      {/* Services Carousel */}
-      <ServicesCarousel />
+      {/* Partners Section */}
+      <SectionBackground variant="light">
+        <Section className="" id="partners">
+          <PartnersSection />
+        </Section>
+      </SectionBackground>
 
-      {/* Value Proposition Section */}
-      <ValuePropositionSection />
-
-      {/* Insights Section */}
-      <InsightsSection />
-
-      {/* Client Stories Carousel */}
-      <ClientStoriesCarousel />
-
-      {/* Awards Section */}
-      <AwardsSection />
-
-      {/* Technology Stack Showcase */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-              Technology
-              <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                LEADERSHIP
-              </span>
+      {/* Why Choose Us Section */}
+      <SectionBackground variant="gradient">
+        <Section className="">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+              Why Choose Technum <span className="text-tech-primary">Opus</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-              We leverage cutting-edge technologies to drive innovation and
-              create lasting value for our clients across industries.
+            <p className="text-lg sm:text-xl text-tech-text-medium max-w-3xl mx-auto px-4">
+              We combine technical excellence with business insight to deliver
+              transformative results
             </p>
           </div>
 
-          {/* Floating Tech Icons */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {[
-              { name: "Cloud", icon: "☁️" },
-              { name: "AI/ML", icon: "🤖" },
-              { name: "Blockchain", icon: "⛓️" },
-              { name: "IoT", icon: "📡" },
-              { name: "Security", icon: "🛡️" },
-              { name: "Analytics", icon: "📊" },
-            ].map((tech, index) => (
-              <div
-                key={index}
-                className="group text-center transform hover:scale-110 transition-all duration-300"
-                style={{
-                  animationDelay: `${index * 0.2}s`,
-                }}
-              >
-                <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-3xl group-hover:shadow-2xl group-hover:shadow-purple-500/50 transition-all duration-300">
-                  {tech.icon}
-                </div>
-                <p className="text-gray-300 group-hover:text-white transition-colors">
-                  {tech.name}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* News Carousel */}
-      <NewsCarousel />
-
-      {/* Culture Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-900 via-black to-pink-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h2 className="text-4xl lg:text-6xl font-bold">
-                Culture of
-                <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  INNOVATION
-                </span>
-              </h2>
-              <p className="text-xl text-gray-300 leading-relaxed">
-                Our people are at the heart of everything we do. We foster an
-                inclusive culture where diverse perspectives drive breakthrough
-                innovations and exceptional client outcomes.
-              </p>
-              <div className="space-y-4">
-                {[
-                  "Diverse and inclusive workforce",
-                  "Continuous learning and development",
-                  "Innovation-first mindset",
-                  "Collaborative global teams",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-3 h-3 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-gray-300">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                to="/careers"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
-              >
-                Join Our Team
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
                 <svg
-                  className="w-4 h-4"
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -211,74 +63,71 @@ const Index = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                   />
                 </svg>
-              </Link>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl p-1">
-                <div className="bg-black rounded-3xl p-8">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-purple-400 mb-2">
-                        50+
-                      </div>
-                      <div className="text-gray-300 text-sm">Countries</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-pink-400 mb-2">
-                        699K+
-                      </div>
-                      <div className="text-gray-300 text-sm">People</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-blue-400 mb-2">
-                        120+
-                      </div>
-                      <div className="text-gray-300 text-sm">Cities</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-green-400 mb-2">
-                        $50B+
-                      </div>
-                      <div className="text-gray-300 text-sm">Revenue</div>
-                    </div>
-                  </div>
-                </div>
               </div>
+              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
+                Innovation First
+              </h3>
+              <p className="text-sm sm:text-base text-tech-text-medium">
+                We stay ahead of technology trends to deliver cutting-edge
+                solutions that give you a competitive advantage.
+              </p>
+            </div>
+
+            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
+                <svg
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
+                Expert Team
+              </h3>
+              <p className="text-sm sm:text-base text-tech-text-medium">
+                Our certified professionals bring deep expertise across
+                enterprise technologies and emerging platforms.
+              </p>
+            </div>
+
+            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
+                <svg
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
+                Proven Results
+              </h3>
+              <p className="text-sm sm:text-base text-tech-text-medium">
+                Our track record speaks for itself - 500+ successful projects
+                and 99% client satisfaction rate.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600">
-        <div className="max-w-4xl mx-auto text-center px-6 lg:px-20">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            Ready to Transform?
-          </h2>
-          <p className="text-xl text-purple-100 mb-8 leading-relaxed">
-            Let's create something extraordinary together. Start your digital
-            transformation journey today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
-            >
-              Start Conversation
-            </Link>
-            <Link
-              to="/services"
-              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-purple-600 transition-all duration-300"
-            >
-              Explore Solutions
-            </Link>
-          </div>
-        </div>
-      </section>
+        </Section>
+      </SectionBackground>
 
       <Footer />
     </div>

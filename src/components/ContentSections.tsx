@@ -77,7 +77,7 @@ export const ServicesSection = () => (
           </svg>
         </div>
         <h3 className="text-xl font-bold text-tech-text-dark mb-4 group-hover:text-tech-primary transition-colors duration-300">
-          Software Development
+          SAAS Platform Development
         </h3>
         <p className="text-tech-text-medium">
           Scalable software-as-a-service solutions built with modern frameworks

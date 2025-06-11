@@ -1,149 +1,90 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
+import SectionBackground from "@/components/SectionBackground";
 
 const AboutUs = () => {
-  const values = [
-    {
-      title: "Client Success",
-      description:
-        "We measure our success by the value we create for our clients",
-      icon: "🎯",
-    },
-    {
-      title: "Innovation",
-      description: "We continuously explore and adopt emerging technologies",
-      icon: "💡",
-    },
-    {
-      title: "Excellence",
-      description: "We deliver exceptional quality in everything we do",
-      icon: "⭐",
-    },
-    {
-      title: "Integrity",
-      description:
-        "We operate with honesty, transparency, and ethical standards",
-      icon: "🛡️",
-    },
-  ];
-
-  const expertise = [
-    {
-      area: "Enterprise Transformation",
-      description:
-        "15+ years of experience in large-scale enterprise initiatives",
-      percentage: "95%",
-    },
-    {
-      area: "Cloud & Infrastructure",
-      description: "Leading cloud adoption and infrastructure modernization",
-      percentage: "90%",
-    },
-    {
-      area: "Software Development",
-      description: "Building scalable, secure, and maintainable applications",
-      percentage: "98%",
-    },
-    {
-      area: "Consulting & Strategy",
-      description: "Strategic guidance for digital transformation journeys",
-      percentage: "92%",
-    },
-  ];
-
-  const milestones = [
-    {
-      year: "2008",
-      title: "Company Founded",
-      description: "Started with a vision to transform enterprise technology",
-    },
-    {
-      year: "2012",
-      title: "SAP Partnership",
-      description: "Became certified SAP consulting partner",
-    },
-    {
-      year: "2016",
-      title: "Cloud Expansion",
-      description:
-        "Expanded services to include cloud architecture and migration",
-    },
-    {
-      year: "2020",
-      title: "Digital Focus",
-      description: "Pivoted to comprehensive digital transformation services",
-    },
-    {
-      year: "2024",
-      title: "Industry Leadership",
-      description: "Recognized as a leading technology consulting firm",
-    },
-  ];
-
   return (
     <div className="bg-white">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/20 via-purple-600/15 to-slate-900/95" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            About Technum Opus
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            Pioneering digital transformation with innovation, expertise, and
+            unwavering commitment to excellence
+          </p>
         </div>
+      </section>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                Innovation
-                <br />
-                <span className="text-pink-400">Meets Purpose</span>
-              </h1>
-              <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">
-                We are a technology consulting firm dedicated to helping
-                enterprises navigate their digital transformation journey with
-                confidence and success.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/leadership"
-                  className="px-8 py-4 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition-colors"
-                >
-                  Meet Our Team
-                </Link>
-                <Link
-                  to="/careers"
-                  className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-slate-900 transition-colors"
-                >
-                  Join Our Mission
-                </Link>
+      {/* Our Story Section */}
+      <SectionBackground variant="light">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+                  Our Story
+                </h2>
+                <div className="space-y-6 text-lg text-tech-text-medium leading-relaxed">
+                  <p>
+                    Founded in 2008, Technum Opus emerged from a simple yet
+                    powerful vision: to bridge the gap between cutting-edge
+                    technology and business success. What started as a small
+                    team of passionate technologists has evolved into a trusted
+                    partner for enterprises worldwide.
+                  </p>
+                  <p>
+                    Our journey began when our founders recognized that many
+                    organizations struggled to harness the true potential of
+                    digital technologies. They were caught between rapidly
+                    evolving tech landscapes and the practical need to maintain
+                    business continuity while driving growth.
+                  </p>
+                  <p>
+                    Today, we stand as a testament to the power of innovation
+                    guided by experience. We've helped over 500 organizations
+                    transform their operations, streamline their processes, and
+                    achieve unprecedented levels of efficiency and growth.
+                  </p>
+                </div>
               </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl p-8 shadow-2xl">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 space-y-6">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-white mb-2">
-                      15+
-                    </div>
-                    <div className="text-pink-100">Years of Excellence</div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
+              <div className="relative">
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                  <div className="grid grid-cols-2 gap-6">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-white mb-1">
+                      <div className="text-4xl font-bold text-tech-primary mb-2">
+                        15+
+                      </div>
+                      <div className="text-tech-text-medium">
+                        Years of Excellence
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-tech-primary mb-2">
                         500+
                       </div>
-                      <div className="text-sm text-pink-100">
+                      <div className="text-tech-text-medium">
                         Projects Delivered
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-white mb-1">
+                      <div className="text-4xl font-bold text-tech-primary mb-2">
+                        50+
+                      </div>
+                      <div className="text-tech-text-medium">
+                        Expert Team Members
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-tech-primary mb-2">
                         99%
                       </div>
-                      <div className="text-sm text-pink-100">
+                      <div className="text-tech-text-medium">
                         Client Satisfaction
                       </div>
                     </div>
@@ -152,229 +93,272 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionBackground>
 
-      {/* Our Mission */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">
+      {/* Mission Section */}
+      <SectionBackground variant="gradient">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
                 Our Mission
               </h2>
-              <div className="space-y-6">
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  To empower organizations with innovative technology solutions
-                  that drive sustainable growth, operational excellence, and
-                  competitive advantage in the digital economy.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  We believe that technology should be an enabler of human
-                  potential and business success. Our approach combines deep
-                  technical expertise with strategic thinking to deliver
-                  solutions that create lasting value.
-                </p>
-              </div>
+              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+                Empowering organizations to thrive in the digital age through
+                innovative technology solutions
+              </p>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg">
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                    Our Impact
-                  </h3>
+            <div className="bg-white rounded-2xl shadow-xl p-12 border border-gray-100">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg
+                    className="w-10 h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                    <div className="text-3xl font-bold text-pink-600 mb-2">
-                      $2.5M+
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Average Cost Savings
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                    <div className="text-3xl font-bold text-blue-600 mb-2">
-                      40%
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Faster Deployment
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                    <div className="text-3xl font-bold text-purple-600 mb-2">
-                      60%
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Reduced Downtime
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                    <div className="text-3xl font-bold text-green-600 mb-2">
-                      24/7
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Support Coverage
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Our Values
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do and define who we are
-              as an organization
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow text-center"
-              >
-                <div className="text-5xl mb-6">{value.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">
-                  {value.title}
+                <h3 className="text-2xl font-bold text-tech-text-dark mb-4">
+                  Transform. Innovate. Excel.
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {value.description}
-                </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Our Expertise */}
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Our Expertise
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Deep technical knowledge and industry experience across key
-              technology domains
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {expertise.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white">{item.area}</h3>
-                  <span className="text-2xl font-bold text-pink-400">
-                    {item.percentage}
-                  </span>
-                </div>
-                <p className="text-gray-300 mb-6">{item.description}</p>
-                <div className="bg-white/20 rounded-full h-2 overflow-hidden">
-                  <div
-                    className="bg-gradient-to-r from-pink-500 to-purple-500 h-full rounded-full transition-all duration-1000"
-                    style={{ width: item.percentage }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Journey */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Our Journey
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From humble beginnings to industry leadership - the milestones
-              that shaped our company
-            </p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-pink-600 to-purple-600 rounded-full"></div>
-
-            <div className="space-y-16">
-              {milestones.map((milestone, index) => (
-                <div
-                  key={index}
-                  className={`flex items-center gap-8 ${
-                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                  }`}
-                >
-                  <div className="flex-1">
-                    <div
-                      className={`bg-gray-50 rounded-2xl p-8 ${
-                        index % 2 === 0 ? "text-right" : "text-left"
-                      }`}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-tech-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 text-tech-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <div className="text-3xl font-bold text-pink-600 mb-2">
-                        {milestone.year}
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-3">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {milestone.description}
-                      </p>
-                    </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                      />
+                    </svg>
                   </div>
-
-                  {/* Timeline Dot */}
-                  <div className="w-6 h-6 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-
-                  <div className="flex-1"></div>
+                  <h4 className="text-lg font-semibold text-tech-text-dark mb-2">
+                    Innovation-Driven
+                  </h4>
+                  <p className="text-tech-text-medium">
+                    We leverage cutting-edge technologies to solve complex
+                    business challenges
+                  </p>
                 </div>
-              ))}
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-tech-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 text-tech-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-semibold text-tech-text-dark mb-2">
+                    Client-Centric
+                  </h4>
+                  <p className="text-tech-text-medium">
+                    Your success is our priority, and we tailor solutions to
+                    your unique needs
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-tech-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 text-tech-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-semibold text-tech-text-dark mb-2">
+                    Excellence
+                  </h4>
+                  <p className="text-tech-text-medium">
+                    We maintain the highest standards of quality in everything
+                    we deliver
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionBackground>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-pink-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center px-6 lg:px-20">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to Partner With Us?
-          </h2>
-          <p className="text-xl text-pink-100 mb-8 leading-relaxed">
-            Let's work together to transform your business and achieve your
-            digital transformation goals
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-white text-pink-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Get in Touch
-            </Link>
-            <Link
-              to="/services"
-              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-pink-600 transition-colors"
-            >
-              Explore Our Services
-            </Link>
+      {/* Values Section */}
+      <SectionBackground variant="light">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+                Our Core Values
+              </h2>
+              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+                The principles that guide our actions and define our culture
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mb-6">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                  Integrity
+                </h3>
+                <p className="text-tech-text-medium">
+                  We operate with transparency, honesty, and ethical principles
+                  in all our interactions
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mb-6">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                  Innovation
+                </h3>
+                <p className="text-tech-text-medium">
+                  We continuously explore new technologies and methodologies to
+                  stay ahead of the curve
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mb-6">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                  Collaboration
+                </h3>
+                <p className="text-tech-text-medium">
+                  We believe in the power of teamwork and partnership to achieve
+                  extraordinary results
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mb-6">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                  Excellence
+                </h3>
+                <p className="text-tech-text-medium">
+                  We strive for perfection in every project and maintain the
+                  highest quality standards
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionBackground>
+
+      {/* Call to Action Section */}
+      <SectionBackground variant="gradient">
+        <section className="py-20">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl text-tech-text-medium mb-8">
+              Let's discuss how Technum Opus can help you achieve your digital
+              transformation goals
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="px-8 py-4 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                Get in Touch
+              </a>
+              <a
+                href="/services"
+                className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
+              >
+                Explore Services
+              </a>
+            </div>
+          </div>
+        </section>
+      </SectionBackground>
 
       <Footer />
     </div>

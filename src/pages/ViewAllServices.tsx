@@ -1,131 +1,304 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SectionBackground from "@/components/SectionBackground";
 import { Link } from "react-router-dom";
 
 const ViewAllServices = () => {
   const serviceCategories = [
     {
       title: "Enterprise Solutions",
-      description:
-        "Transform your core business operations with intelligent enterprise solutions",
+      description: "Comprehensive enterprise-grade technology solutions",
       services: [
         {
           name: "SAP Consulting",
-          description:
-            "End-to-end SAP implementations and optimizations for modern enterprises",
+          description: "Enterprise SAP implementations and optimization",
           href: "/services/sap-consulting",
           features: [
-            "S/4HANA Migration & Implementation",
-            "Business Process Optimization",
-            "Integration & Data Management",
-            "Support & Maintenance",
+            "S/4HANA Implementation",
+            "System Integration",
+            "Performance Optimization",
+            "Security & Compliance",
           ],
-          icon: "🏢",
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              />
+            </svg>
+          ),
         },
       ],
     },
     {
-      title: "Digital Solutions",
-      description:
-        "Build the future with cutting-edge digital technologies and platforms",
+      title: "Cloud & Software Solutions",
+      description: "Modern cloud-native and software development services",
       services: [
         {
-          name: "Software Development",
-          description:
-            "Custom software solutions that scale with your business needs",
+          name: "SAAS Platform Development",
+          description: "Scalable cloud-based software solutions",
           href: "/services/saas-development",
           features: [
-            "Web & Mobile Applications",
-            "API Development & Integration",
-            "Cloud-Native Architecture",
-            "DevOps & Automation",
+            "Multi-tenant Architecture",
+            "API Development",
+            "Scalable Infrastructure",
+            "Security & Compliance",
           ],
-          icon: "💻",
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              />
+            </svg>
+          ),
         },
         {
           name: "Cloud Architecture",
-          description:
-            "Design and implement robust cloud infrastructure solutions",
+          description: "Robust and secure cloud infrastructure",
           href: "/services/cloud-architecture",
           features: [
-            "Cloud Strategy & Migration",
-            "Multi-Cloud Solutions",
+            "Cloud Migration",
+            "Infrastructure as Code",
             "Security & Compliance",
-            "Performance Optimization",
+            "Cost Optimization",
           ],
-          icon: "☁️",
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+              />
+            </svg>
+          ),
         },
       ],
     },
     {
       title: "Infrastructure Solutions",
-      description:
-        "Build reliable, scalable infrastructure that powers your business",
+      description: "Physical and network infrastructure services",
       services: [
         {
           name: "Hardware Infrastructure",
-          description:
-            "Enterprise-grade hardware solutions and deployment services",
+          description: "Complete hardware solutions and deployment",
           href: "/services/hardware-infrastructure",
           features: [
-            "Data Center Solutions",
+            "Server & Storage",
             "Network Infrastructure",
-            "Security Hardware",
-            "Maintenance & Support",
+            "Data Center Solutions",
+            "Hardware Deployment",
           ],
-          icon: "🔧",
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+              />
+            </svg>
+          ),
         },
+      ],
+    },
+    {
+      title: "Digital Innovation",
+      description: "Comprehensive transformation and modernization services",
+      services: [
         {
           name: "Digital Transformation",
-          description:
-            "Comprehensive transformation strategies and implementation",
+          description: "End-to-end business transformation and modernization",
           href: "/services/digital-transformation",
           features: [
-            "Strategy & Roadmap",
             "Process Automation",
-            "Change Management",
-            "Training & Adoption",
+            "Data Analytics & AI",
+            "Cloud Migration",
+            "Digital Customer Experience",
           ],
-          icon: "🚀",
+          icon: (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          ),
         },
       ],
     },
   ];
 
-  const capabilities = [
+  const serviceStats = [
     {
-      title: "Strategy & Consulting",
-      description: "Define your digital transformation roadmap",
-      icon: "🎯",
+      number: "500+",
+      label: "Projects Completed",
+      description: "Successfully delivered projects across all service lines",
     },
     {
-      title: "Implementation",
-      description: "Execute with precision and expertise",
-      icon: "⚙️",
+      number: "99%",
+      label: "Client Satisfaction",
+      description: "Consistently high satisfaction ratings from our clients",
     },
     {
-      title: "Support & Optimization",
-      description: "Ensure ongoing success and continuous improvement",
-      icon: "📈",
+      number: "15+",
+      label: "Years Experience",
+      description: "Deep expertise across technology domains",
+    },
+    {
+      number: "50+",
+      label: "Team Members",
+      description: "Certified professionals ready to help you succeed",
     },
   ];
 
-  const clientSuccess = [
+  const industries = [
     {
-      metric: "40%",
-      description: "Average reduction in operational costs",
+      name: "Financial Services",
+      description: "Banking, insurance, and fintech solutions",
+      services: ["SAP Banking", "Cloud Security", "Compliance Systems"],
     },
     {
-      metric: "60%",
-      description: "Faster time-to-market for new products",
+      name: "Healthcare",
+      description: "Healthcare technology and life sciences",
+      services: [
+        "HIPAA Compliance",
+        "Medical SaaS",
+        "Healthcare Infrastructure",
+      ],
     },
     {
-      metric: "99.9%",
-      description: "System uptime and reliability",
+      name: "Manufacturing",
+      description: "Industrial and manufacturing operations",
+      services: [
+        "SAP Manufacturing",
+        "IoT Infrastructure",
+        "Supply Chain Systems",
+      ],
     },
     {
-      metric: "500+",
-      description: "Successful project deliveries",
+      name: "Retail & E-commerce",
+      description: "Retail technology and e-commerce platforms",
+      services: ["E-commerce Platforms", "POS Systems", "Inventory Management"],
+    },
+    {
+      name: "Government",
+      description: "Public sector and government solutions",
+      services: [
+        "Government Cloud",
+        "Secure Infrastructure",
+        "Compliance Systems",
+      ],
+    },
+    {
+      name: "Education",
+      description: "Educational institutions and EdTech",
+      services: [
+        "Learning Platforms",
+        "Campus Infrastructure",
+        "Student Information Systems",
+      ],
+    },
+  ];
+
+  const technologyStack = [
+    {
+      category: "Enterprise Platforms",
+      technologies: [
+        "SAP S/4HANA",
+        "SAP ECC",
+        "SAP BW/4HANA",
+        "SAP Fiori",
+        "Oracle",
+        "Microsoft Dynamics",
+      ],
+    },
+    {
+      category: "Cloud Platforms",
+      technologies: [
+        "AWS",
+        "Microsoft Azure",
+        "Google Cloud Platform",
+        "IBM Cloud",
+        "Oracle Cloud",
+      ],
+    },
+    {
+      category: "Development",
+      technologies: [
+        "React",
+        "Node.js",
+        "Python",
+        "Java",
+        ".NET",
+        "TypeScript",
+        "GraphQL",
+      ],
+    },
+    {
+      category: "Infrastructure",
+      technologies: [
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "Ansible",
+        "Jenkins",
+        "GitLab CI/CD",
+      ],
+    },
+    {
+      category: "Databases",
+      technologies: [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "Oracle",
+        "SQL Server",
+        "Elasticsearch",
+      ],
+    },
+    {
+      category: "Hardware Partners",
+      technologies: [
+        "Dell Technologies",
+        "HP Enterprise",
+        "Cisco",
+        "Lenovo",
+        "VMware",
+        "NetApp",
+      ],
     },
   ];
 
@@ -134,180 +307,264 @@ const ViewAllServices = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center space-y-8">
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-              Services That
-              <br />
-              <span className="text-pink-400">Drive Results</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive technology solutions designed to accelerate your
-              digital transformation and create sustainable competitive
-              advantage
-            </p>
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/20 via-purple-600/15 to-slate-900/95" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            All Our Services
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto mb-8 leading-relaxed">
+            Comprehensive technology solutions designed to accelerate your
+            digital transformation journey. From enterprise SAP implementations
+            to cutting-edge cloud architecture.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              className="px-8 py-4 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+            >
+              Get Started Today
+            </a>
+            <a
+              href="/services"
+              className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
+            >
+              Browse Services
+            </a>
           </div>
         </div>
       </section>
 
       {/* Service Categories */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          {serviceCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-20">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                  {category.title}
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  {category.description}
-                </p>
-              </div>
-
-              <div className="grid lg:grid-cols-2 gap-12">
-                {category.services.map((service, serviceIndex) => (
-                  <Link
-                    key={serviceIndex}
-                    to={service.href}
-                    className="group bg-gray-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-pink-200"
-                  >
-                    <div className="flex items-start gap-6">
-                      <div className="text-5xl">{service.icon}</div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-pink-600 transition-colors">
-                          {service.name}
-                        </h3>
-                        <p className="text-gray-600 mb-6 leading-relaxed">
-                          {service.description}
-                        </p>
-
-                        <div className="space-y-3">
-                          <h4 className="font-semibold text-slate-900 text-sm uppercase tracking-wide">
-                            Key Capabilities
-                          </h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {service.features.map((feature, featureIndex) => (
-                              <div
-                                key={featureIndex}
-                                className="flex items-center gap-2"
-                              >
-                                <div className="w-1.5 h-1.5 bg-pink-600 rounded-full"></div>
-                                <span className="text-sm text-gray-600">
-                                  {feature}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="mt-8 flex items-center gap-2 text-pink-600 font-medium">
-                          Learn more
-                          <svg
-                            className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+      <SectionBackground variant="light">
+        <section id="services" className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+                Our Service Portfolio
+              </h2>
+              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+                Organized by solution type to help you find exactly what you
+                need for your business transformation.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Our Approach */}
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Our Approach
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              A proven methodology that ensures successful outcomes for every
-              project
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {capabilities.map((capability, index) => (
-              <div key={index} className="text-center group">
-                <div className="text-6xl mb-6">{capability.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-4">
-                  {capability.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed">
-                  {capability.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Client Success Metrics */}
-      <section className="py-20 bg-gradient-to-r from-pink-600 to-purple-600">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Proven Results
-            </h2>
-            <p className="text-xl text-pink-100 max-w-3xl mx-auto">
-              Our success is measured by the value we create for our clients
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {clientSuccess.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl font-bold text-white mb-4">
-                  {item.metric}
+            {serviceCategories.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="mb-16">
+                <div className="text-center mb-12">
+                  <h3 className="text-3xl font-bold text-tech-text-dark mb-4">
+                    {category.title}
+                  </h3>
+                  <p className="text-lg text-tech-text-medium max-w-2xl mx-auto">
+                    {category.description}
+                  </p>
                 </div>
-                <p className="text-pink-100 leading-relaxed">
-                  {item.description}
-                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {category.services.map((service, serviceIndex) => (
+                    <div
+                      key={serviceIndex}
+                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                    >
+                      <div className="w-16 h-16 bg-tech-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-tech-primary/20 transition-colors duration-300">
+                        <div className="text-tech-primary">{service.icon}</div>
+                      </div>
+
+                      <h4 className="text-2xl font-bold text-tech-text-dark mb-4">
+                        {service.name}
+                      </h4>
+                      <p className="text-tech-text-medium mb-6">
+                        {service.description}
+                      </p>
+
+                      <div className="space-y-3 mb-8">
+                        {service.features.map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="flex items-start gap-3"
+                          >
+                            <div className="w-2 h-2 bg-tech-primary rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-tech-text-medium text-sm">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <Link
+                        to={service.href}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
+                      >
+                        Learn More
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionBackground>
+
+      {/* Service Statistics */}
+      <SectionBackground variant="gradient">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+                Proven Track Record
+              </h2>
+              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+                Our success is measured by the success of our clients. Here are
+                some key metrics that showcase our commitment to excellence.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {serviceStats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-white/80 backdrop-blur-sm rounded-xl p-8 text-center border border-white/20 hover:bg-white transition-all duration-300"
+                >
+                  <div className="text-4xl md:text-5xl font-bold text-tech-primary mb-4">
+                    {stat.number}
+                  </div>
+                  <div className="text-xl font-semibold text-tech-text-dark mb-3">
+                    {stat.label}
+                  </div>
+                  <div className="text-tech-text-medium text-sm">
+                    {stat.description}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </SectionBackground>
+
+      {/* Industries We Serve */}
+      <SectionBackground variant="light">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+                Industries We Serve
+              </h2>
+              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+                Our solutions are tailored to meet the specific requirements and
+                compliance needs of various industries.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {industries.map((industry, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                >
+                  <h3 className="text-xl font-bold text-tech-text-dark mb-3">
+                    {industry.name}
+                  </h3>
+                  <p className="text-tech-text-medium mb-6">
+                    {industry.description}
+                  </p>
+                  <div className="space-y-2">
+                    <div className="text-sm font-semibold text-tech-text-dark mb-3">
+                      Key Services:
+                    </div>
+                    {industry.services.map((service, serviceIndex) => (
+                      <div
+                        key={serviceIndex}
+                        className="flex items-start gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 bg-tech-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-sm text-tech-text-medium">
+                          {service}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </SectionBackground>
+
+      {/* Technology Stack */}
+      <SectionBackground variant="gradient">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+                Our Technology Stack
+              </h2>
+              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+                We leverage cutting-edge technologies and maintain partnerships
+                with leading vendors to deliver best-in-class solutions.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {technologyStack.map((stack, index) => (
+                <div
+                  key={index}
+                  className="bg-white/80 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white transition-all duration-300"
+                >
+                  <h3 className="text-xl font-bold text-tech-text-dark mb-6">
+                    {stack.category}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {stack.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="text-sm text-tech-text-medium bg-gray-50 rounded px-3 py-2 text-center"
+                      >
+                        {tech}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </SectionBackground>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto text-center px-6 lg:px-20">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            Ready to Get Started?
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Let's discuss your specific needs and create a tailored solution
-            that drives results
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Our comprehensive service portfolio is designed to meet your
+            specific business needs. Let's discuss how we can help accelerate
+            your digital transformation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition-colors"
+            <a
+              href="#contact"
+              className="px-8 py-4 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
             >
-              Start Your Project
-            </Link>
+              Schedule Consultation
+            </a>
             <Link
               to="/about"
-              className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold rounded-lg hover:bg-slate-900 hover:text-white transition-colors"
+              className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
             >
               Learn About Us
             </Link>
