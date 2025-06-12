@@ -86,6 +86,11 @@ const SearchDialog = () => {
       <DialogTitle className="sr-only">
         Search Technum Opus - Find pages, services, and more
       </DialogTitle>
+      <DialogDescription className="sr-only">
+        Use this search dialog to quickly find pages, services, company
+        information, partners, and other content on the Technum Opus website.
+        Type your search query and press Enter or click on a result to navigate.
+      </DialogDescription>
       <CommandInput
         placeholder="Search pages, services, and more... (Cmd+K)"
         value={query}
