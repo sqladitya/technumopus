@@ -94,13 +94,13 @@ const Index = () => {
             <Link
               key={index}
               to={industry.href}
-              className="group flex flex-col items-center p-6 bg-gradient-to-br from-white to-gray-50 border border-tech-primary/30 rounded-xl hover:from-tech-primary/10 hover:to-accenture-purple/10 hover:border-tech-primary/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+              className="group flex flex-col items-center p-6 bg-gradient-to-br from-white to-gray-50 border border-accenture-purple/30 rounded-xl hover:from-accenture-purple/10 hover:to-accenture-purple/20 hover:border-accenture-purple/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300 filter group-hover:drop-shadow-lg">
                 {industry.icon}
               </div>
-              <span className="text-gray-700 font-semibold text-center group-hover:text-tech-primary transition-colors text-sm">
+              <span className="text-gray-700 font-semibold text-center group-hover:text-accenture-purple transition-colors text-sm">
                 {industry.name}
               </span>
             </Link>
