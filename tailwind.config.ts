@@ -14,7 +14,7 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1280px",
+        "2xl": "1400px",
       },
     },
     extend: {
@@ -52,35 +52,60 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
-        // Updated Pink brand colors - #ff007f theme
-        tech: {
-          primary: "#ff007f",
-          "primary-dark": "#e01171",
-          "primary-light": "#ff3399",
-          secondary: "#ff66b3",
-          charcoal: "#374151",
-          "charcoal-dark": "#1f2937",
-          accent: "#ff007f",
-          "accent-light": "#ff99cc",
-          pink: "#ff007f",
-          "pink-light": "#ff99cc",
-          "text-dark": "#111827",
-          "text-medium": "#6b7280",
-          "text-light": "#9ca3af",
-          "bg-light": "#fef7f0",
-          "bg-dark": "#0f172a",
-          orange: "#f97316",
-          "orange-hover": "#ea580c",
+        // Corporate Consulting Theme Colors
+        corporate: {
+          // TCS-inspired colors
+          black: "#000000",
+          "black-light": "#1a1a1a",
+          "black-lighter": "#2a2a2a",
+
+          // Accenture-inspired colors
+          purple: "#a100ff",
+          "purple-dark": "#8b00e6",
+          "purple-light": "#b84dff",
+
+          // Wipro-inspired colors
+          blue: "#297f94",
+          "blue-dark": "#1b6aa8",
+          "blue-light": "#2f98b3",
+          "blue-accent": "#0065f0",
+
+          // Professional grays
+          gray: {
+            50: "#f9fafb",
+            100: "#f3f4f6",
+            200: "#e5e7eb",
+            300: "#d1d5db",
+            400: "#9ca3af",
+            500: "#6b7280",
+            600: "#4b5563",
+            700: "#374151",
+            800: "#1f2937",
+            900: "#111827",
+          },
+
+          // Success and accent colors
+          green: "#059669",
+          orange: "#ea580c",
+          red: "#dc2626",
+
+          // Text colors
+          text: {
+            primary: "#111827",
+            secondary: "#4b5563",
+            tertiary: "#6b7280",
+            light: "#9ca3af",
+            inverse: "#ffffff",
+          },
+
+          // Background colors
+          bg: {
+            primary: "#ffffff",
+            secondary: "#f9fafb",
+            tertiary: "#f3f4f6",
+            dark: "#111827",
+            darker: "#000000",
+          },
         },
       },
       borderRadius: {
@@ -88,97 +113,92 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        // Corporate fonts similar to consulting firms
+        corporate: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Inter", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        // Corporate typography scale
+        hero: ["4rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        display: ["3rem", { lineHeight: "1.2", letterSpacing: "-0.02em" }],
+        "heading-xl": [
+          "2.5rem",
+          { lineHeight: "1.2", letterSpacing: "-0.01em" },
+        ],
+        "heading-lg": ["2rem", { lineHeight: "1.3", letterSpacing: "-0.01em" }],
+        "heading-md": ["1.5rem", { lineHeight: "1.4" }],
+        "heading-sm": ["1.25rem", { lineHeight: "1.4" }],
+        "body-xl": ["1.25rem", { lineHeight: "1.6" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.6" }],
+        body: ["1rem", { lineHeight: "1.6" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
+        caption: ["0.75rem", { lineHeight: "1.4" }],
+      },
+      spacing: {
+        // Corporate spacing system
+        "18": "4.5rem",
+        "88": "22rem",
+        "128": "32rem",
+        "144": "36rem",
+      },
       backgroundImage: {
-        "hero-gradient":
-          "linear-gradient(135deg, #0f172a 0%, #ff007f 50%, #ff66b3 100%)",
-        "tech-gradient": "linear-gradient(to right, #ff007f, #ff66b3)",
-        "pink-gradient": "linear-gradient(to right, #ff007f, #ff99cc)",
-        "card-gradient": "linear-gradient(145deg, #ffffff 0%, #fef7f0 100%)",
-        "mesh-gradient":
-          "radial-gradient(circle at 20% 80%, #ff007f 0%, transparent 50%), radial-gradient(circle at 80% 20%, #ff66b3 0%, transparent 50%), radial-gradient(circle at 40% 40%, #a855f7 0%, transparent 50%)",
+        // Corporate gradients
+        "gradient-corporate":
+          "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%)",
+        "gradient-purple": "linear-gradient(135deg, #a100ff 0%, #8b00e6 100%)",
+        "gradient-blue": "linear-gradient(135deg, #297f94 0%, #1b6aa8 100%)",
+        "gradient-dark": "linear-gradient(135deg, #111827 0%, #374151 100%)",
+        "gradient-light": "linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)",
+        "hero-pattern":
+          "radial-gradient(circle at 20% 80%, rgba(161, 0, 255, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(41, 127, 148, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(17, 24, 39, 0.8) 0%, transparent 50%)",
       },
-      blur: {
-        "4xl": "72px",
-        "5xl": "96px",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
-        "pulse-slow": {
-          "0%, 100%": {
-            opacity: "0.8",
-            transform: "scale(1)",
-          },
-          "50%": {
-            opacity: "0.4",
-            transform: "scale(1.1)",
-          },
-        },
-        "spin-slow": {
-          "0%": {
-            transform: "rotate(0deg)",
-          },
-          "100%": {
-            transform: "rotate(360deg)",
-          },
-        },
-        float: {
-          "0%, 100%": {
-            transform: "translateY(0px)",
-          },
-          "50%": {
-            transform: "translateY(-20px)",
-          },
-        },
-        "glow-pulse": {
-          "0%, 100%": {
-            opacity: "0.4",
-            transform: "scale(1)",
-            filter: "blur(20px)",
-          },
-          "50%": {
-            opacity: "0.8",
-            transform: "scale(1.1)",
-            filter: "blur(15px)",
-          },
-        },
-        drift: {
-          "0%": {
-            transform: "translateX(0px) translateY(0px) rotate(0deg)",
-          },
-          "33%": {
-            transform: "translateX(30px) translateY(-30px) rotate(120deg)",
-          },
-          "66%": {
-            transform: "translateX(-20px) translateY(20px) rotate(240deg)",
-          },
-          "100%": {
-            transform: "translateX(0px) translateY(0px) rotate(360deg)",
-          },
-        },
+      boxShadow: {
+        // Corporate shadows
+        corporate: "0 4px 20px -2px rgba(0, 0, 0, 0.1)",
+        "corporate-lg": "0 10px 40px -4px rgba(0, 0, 0, 0.15)",
+        "corporate-xl": "0 20px 60px -8px rgba(0, 0, 0, 0.25)",
+        card: "0 2px 8px -1px rgba(0, 0, 0, 0.1)",
+        "card-hover": "0 8px 32px -4px rgba(0, 0, 0, 0.15)",
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
-        "spin-slow": "spin-slow 8s linear infinite",
+        // Corporate animations
+        "fade-in": "fadeIn 0.6s ease-out",
+        "slide-up": "slideUp 0.6s ease-out",
+        "slide-down": "slideDown 0.6s ease-out",
+        "scale-in": "scaleIn 0.4s ease-out",
         float: "float 6s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        drift: "drift 20s ease-in-out infinite",
+        "pulse-soft": "pulseSoft 4s ease-in-out infinite",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideDown: {
+          "0%": { opacity: "0", transform: "translateY(-30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        scaleIn: {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        pulseSoft: {
+          "0%, 100%": { opacity: "0.8" },
+          "50%": { opacity: "0.4" },
+        },
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },

@@ -1,16 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import Logo from "./Logo";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
+  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
-  const partnersRef = useRef<HTMLDivElement>(null);
+  const industriesRef = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,38 +29,14 @@ const Navigation = () => {
       if (window.innerWidth >= 1024) {
         const isOutsideServices =
           servicesRef.current && !servicesRef.current.contains(target);
-        const isOutsidePartners =
-          partnersRef.current && !partnersRef.current.contains(target);
+        const isOutsideIndustries =
+          industriesRef.current && !industriesRef.current.contains(target);
         const isOutsideCompany =
           companyRef.current && !companyRef.current.contains(target);
 
-        if (isOutsideServices) {
-          setIsServicesOpen(false);
-        }
-        if (isOutsidePartners) {
-          setIsPartnersOpen(false);
-        }
-        if (isOutsideCompany) {
-          setIsCompanyOpen(false);
-        }
-      }
-
-      const mobileMenu = document.querySelector("[data-mobile-sidebar]");
-      const mobileMenuButton = document.querySelector(
-        "[data-mobile-menu-button]",
-      );
-      const isOutsideMobileMenu = !mobileMenu || !mobileMenu.contains(target);
-      const isNotMobileMenuButton =
-        !mobileMenuButton || !mobileMenuButton.contains(target);
-
-      if (
-        window.innerWidth < 1024 &&
-        isOutsideMobileMenu &&
-        isNotMobileMenuButton &&
-        isMobileMenuOpen
-      ) {
-        setIsMobileMenuOpen(false);
-        closeAllDropdowns();
+        if (isOutsideServices) setIsServicesOpen(false);
+        if (isOutsideIndustries) setIsIndustriesOpen(false);
+        if (isOutsideCompany) setIsCompanyOpen(false);
       }
     };
 
@@ -72,7 +47,7 @@ const Navigation = () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, [isMobileMenuOpen]);
+  }, []);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -86,33 +61,10 @@ const Navigation = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  // Helper functions to manage dropdown states
-  const openCompanyDropdown = () => {
-    setIsCompanyOpen(true);
-    setIsServicesOpen(false);
-    setIsPartnersOpen(false);
-  };
-
-  const openServicesDropdown = () => {
-    setIsServicesOpen(true);
-    setIsCompanyOpen(false);
-    setIsPartnersOpen(false);
-  };
-
-  const openPartnersDropdown = () => {
-    setIsPartnersOpen(true);
-    setIsCompanyOpen(false);
-    setIsServicesOpen(false);
-  };
-
   const closeAllDropdowns = () => {
-    setIsCompanyOpen(false);
     setIsServicesOpen(false);
-    setIsPartnersOpen(false);
+    setIsIndustriesOpen(false);
+    setIsCompanyOpen(false);
   };
 
   const closeMobileMenu = () => {
@@ -122,293 +74,90 @@ const Navigation = () => {
 
   const services = [
     {
-      name: "Digital Transformation",
-      href: "/services/digital-transformation",
-      description: "End-to-end business transformation and modernization",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-      ),
+      category: "TRANSFORMATION",
+      items: [
+        {
+          name: "Digital Transformation",
+          href: "/services/digital-transformation",
+          description: "End-to-end business transformation",
+        },
+        {
+          name: "Cloud Migration",
+          href: "/services/cloud-architecture",
+          description: "Secure cloud infrastructure",
+        },
+        {
+          name: "Data & Analytics",
+          href: "/services/data-analytics",
+          description: "AI-powered insights",
+        },
+      ],
     },
     {
-      name: "SAP Consulting",
-      href: "/services/sap-consulting",
-      description: "Enterprise SAP implementations and optimization",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Cloud Architecture",
-      href: "/services/cloud-architecture",
-      description: "Robust and secure cloud infrastructure solutions",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "SAAS Platform Development",
-      href: "/services/saas-development",
-      description: "Scalable cloud-based software solutions",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Hardware Infrastructure",
-      href: "/services/hardware-infrastructure",
-      description: "Complete hardware solutions and deployment",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-          />
-        </svg>
-      ),
+      category: "TECHNOLOGY",
+      items: [
+        {
+          name: "SAP Consulting",
+          href: "/services/sap-consulting",
+          description: "Enterprise SAP solutions",
+        },
+        {
+          name: "Application Development",
+          href: "/services/saas-development",
+          description: "Custom software solutions",
+        },
+        {
+          name: "Infrastructure",
+          href: "/services/hardware-infrastructure",
+          description: "IT infrastructure management",
+        },
+      ],
     },
   ];
 
-  const partners = [
+  const industries = [
     {
-      name: "Cloud Partners",
-      href: "/partners/cloud-partners",
-      description: "AWS, Microsoft Azure, Google Cloud",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-          />
-        </svg>
-      ),
+      name: "Financial Services",
+      href: "/industries/financial-services",
+      icon: "🏦",
     },
-    {
-      name: "Technology Partners",
-      href: "/partners/technology-partners",
-      description: "Leading technology vendors and platforms",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Security Partners",
-      href: "/partners/security-partners",
-      description: "Cybersecurity and data protection solutions",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Integration Partners",
-      href: "/partners/integration-partners",
-      description: "System integration and middleware solutions",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-          />
-        </svg>
-      ),
-    },
+    { name: "Healthcare", href: "/industries/healthcare", icon: "🏥" },
+    { name: "Manufacturing", href: "/industries/manufacturing", icon: "🏭" },
+    { name: "Retail", href: "/industries/retail", icon: "🛍️" },
+    { name: "Energy", href: "/industries/energy", icon: "⚡" },
+    { name: "Government", href: "/industries/government", icon: "🏛️" },
   ];
 
   const companyLinks = [
-    {
-      name: "About Us",
-      href: "/about",
-      description: "Our story, mission, and values",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Leadership Team",
-      href: "/leadership",
-      description: "Meet our executive leadership",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Careers",
-      href: "/careers",
-      description: "Join our growing team",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"
-          />
-        </svg>
-      ),
-    },
+    { name: "About Us", href: "/about", description: "Our story and mission" },
+    { name: "Leadership", href: "/leadership", description: "Executive team" },
+    { name: "Careers", href: "/careers", description: "Join our team" },
     {
       name: "News & Insights",
       href: "/news-insights",
-      description: "Latest industry insights and thought leadership",
-      icon: (
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-          />
-        </svg>
-      ),
+      description: "Latest updates",
     },
   ];
 
   return (
     <>
-      {/* Mobile Sidebar Backdrop */}
+      {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300"
-          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+          onClick={closeMobileMenu}
         />
       )}
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Menu */}
       <div
-        data-mobile-sidebar
         className={cn(
           "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        {/* Sidebar Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-black">
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between p-6 bg-corporate-black text-white">
           <Link
             to="/"
             onClick={closeMobileMenu}
@@ -416,20 +165,14 @@ const Navigation = () => {
           >
             <img
               src="/logo.png"
-              alt="TECHNUM OPUS Logo"
-              width="40"
-              height="40"
-              className="w-10 h-10 object-contain"
+              alt="TECHNUM OPUS"
+              className="w-8 h-8 object-contain"
             />
-            <div className="flex flex-col">
-              <div className="text-xl font-bold text-white leading-tight">
-                TECHNUM OPUS
-              </div>
-            </div>
+            <span className="text-lg font-bold">TECHNUM OPUS</span>
           </Link>
           <button
             onClick={closeMobileMenu}
-            className="p-2 text-white hover:text-gray-300 transition-colors duration-200"
+            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
           >
             <svg
               className="w-6 h-6"
@@ -448,243 +191,190 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Menu Content */}
-        <div className="flex-1 overflow-y-auto py-4">
-          <div className="space-y-1 px-4">
-            <Link
-              to="/"
-              onClick={closeMobileMenu}
-              className="block px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+        <div className="p-6 space-y-4">
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            className="block py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
+          >
+            Home
+          </Link>
+
+          <div>
+            <button
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              className="flex items-center justify-between w-full py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
             >
-              Home
-            </Link>
-
-            {/* Company Section */}
-            <div>
-              <button
-                onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              Services
+              <svg
+                className={cn(
+                  "w-4 h-4 transition-transform",
+                  isServicesOpen && "rotate-180",
+                )}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Company
-                <svg
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    isCompanyOpen ? "rotate-180" : "",
-                  )}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {isCompanyOpen && (
-                <div className="ml-4 mt-2 space-y-1">
-                  {companyLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      onClick={closeMobileMenu}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Services Section */}
-            <div>
-              <button
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
-              >
-                Services
-                <svg
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    isServicesOpen ? "rotate-180" : "",
-                  )}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {isServicesOpen && (
-                <div className="ml-4 mt-2 space-y-1">
-                  {services.map((service) => (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            {isServicesOpen && (
+              <div className="ml-4 mt-2 space-y-2">
+                {services
+                  .flatMap((category) => category.items)
+                  .map((service) => (
                     <Link
                       key={service.name}
                       to={service.href}
                       onClick={closeMobileMenu}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                      className="block py-2 text-sm text-corporate-text-secondary hover:text-corporate-blue"
                     >
                       {service.name}
                     </Link>
                   ))}
-                </div>
-              )}
-            </div>
+              </div>
+            )}
+          </div>
 
-            {/* Partners Section */}
-            <div>
-              <button
-                onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+          <div>
+            <button
+              onClick={() => setIsIndustriesOpen(!isIndustriesOpen)}
+              className="flex items-center justify-between w-full py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
+            >
+              Industries
+              <svg
+                className={cn(
+                  "w-4 h-4 transition-transform",
+                  isIndustriesOpen && "rotate-180",
+                )}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Partners
-                <svg
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-200",
-                    isPartnersOpen ? "rotate-180" : "",
-                  )}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {isPartnersOpen && (
-                <div className="ml-4 mt-2 space-y-1">
-                  {partners.map((partner) => (
-                    <Link
-                      key={partner.name}
-                      to={partner.href}
-                      onClick={closeMobileMenu}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
-                    >
-                      {partner.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            {isIndustriesOpen && (
+              <div className="ml-4 mt-2 space-y-2">
+                {industries.map((industry) => (
+                  <Link
+                    key={industry.name}
+                    to={industry.href}
+                    onClick={closeMobileMenu}
+                    className="block py-2 text-sm text-corporate-text-secondary hover:text-corporate-blue"
+                  >
+                    {industry.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
 
+          <div>
+            <button
+              onClick={() => setIsCompanyOpen(!isCompanyOpen)}
+              className="flex items-center justify-between w-full py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
+            >
+              Company
+              <svg
+                className={cn(
+                  "w-4 h-4 transition-transform",
+                  isCompanyOpen && "rotate-180",
+                )}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            {isCompanyOpen && (
+              <div className="ml-4 mt-2 space-y-2">
+                {companyLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={closeMobileMenu}
+                    className="block py-2 text-sm text-corporate-text-secondary hover:text-corporate-blue"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link
+            to="/contact"
+            onClick={closeMobileMenu}
+            className="block py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
+          >
+            Contact
+          </Link>
+
+          <div className="pt-4">
             <Link
               to="/contact"
               onClick={closeMobileMenu}
-              className="block px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+              className="block w-full px-6 py-3 bg-corporate-blue text-white text-center rounded-lg font-semibold hover:bg-corporate-blue-dark transition-colors"
             >
-              Contact
+              Get Started
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar - Black corporate style */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-black shadow-lg">
+      {/* Main Navigation */}
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          isScrolled
+            ? "bg-corporate-black/95 backdrop-blur-md shadow-corporate"
+            : "bg-corporate-black",
+        )}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <Link to="/" className="flex items-center gap-3">
-                <img
-                  src="/logo.png"
-                  alt="TECHNUM OPUS Logo"
-                  width="32"
-                  height="32"
-                  className="w-8 h-8 object-contain"
-                />
-                <div className="text-xl font-bold text-white">TECHNUM OPUS</div>
-              </Link>
-            </div>
+            <Link to="/" className="flex items-center gap-3 z-50">
+              <img
+                src="/logo.png"
+                alt="TECHNUM OPUS"
+                className="w-8 h-8 object-contain"
+              />
+              <span className="text-xl font-bold text-white">TECHNUM OPUS</span>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               <Link
                 to="/"
                 onMouseEnter={closeAllDropdowns}
-                className="text-white hover:text-blue-400 font-medium transition-colors duration-200"
+                className="text-white hover:text-corporate-blue font-medium transition-colors duration-200"
               >
                 Home
               </Link>
 
-              {/* Company Dropdown */}
-              <div className="relative" ref={companyRef}>
-                <button
-                  onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                  onMouseEnter={openCompanyDropdown}
-                  className="flex items-center gap-1 text-white hover:text-blue-400 font-medium transition-colors duration-200"
-                >
-                  Company
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                <div
-                  className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-xl border border-gray-200 transition-all duration-200 transform origin-top-left",
-                    isCompanyOpen
-                      ? "opacity-100 visible scale-100"
-                      : "opacity-0 invisible scale-95",
-                  )}
-                  onMouseLeave={closeAllDropdowns}
-                >
-                  <div className="p-4">
-                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                      Company
-                    </div>
-                    <div className="space-y-2">
-                      {companyLinks.map((link) => (
-                        <Link
-                          key={link.name}
-                          to={link.href}
-                          onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-150 group whitespace-nowrap"
-                        >
-                          <div className="text-gray-400 group-hover:text-blue-600 transition-colors duration-150">
-                            {link.icon}
-                          </div>
-                          <div>
-                            <div className="text-sm font-medium">
-                              {link.name}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              {link.description}
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Services Dropdown */}
+              {/* Services Mega Menu */}
               <div className="relative" ref={servicesRef}>
                 <button
-                  onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  onMouseEnter={openServicesDropdown}
-                  className="flex items-center gap-1 text-white hover:text-blue-400 font-medium transition-colors duration-200"
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  className="flex items-center gap-1 text-white hover:text-corporate-blue font-medium transition-colors duration-200"
                 >
                   Services
                   <svg
@@ -704,48 +394,49 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-xl border border-gray-200 transition-all duration-200 transform origin-top-left",
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-corporate-xl border transition-all duration-300 transform origin-top-left",
                     isServicesOpen
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                      Our Services
-                    </div>
-                    <div className="space-y-2">
-                      {services.map((service) => (
-                        <Link
-                          key={service.name}
-                          to={service.href}
-                          onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-150 group whitespace-nowrap"
-                        >
-                          <div className="text-gray-400 group-hover:text-blue-600 transition-colors duration-150">
-                            {service.icon}
+                  <div className="p-6">
+                    <div className="grid grid-cols-2 gap-8 min-w-[600px]">
+                      {services.map((category) => (
+                        <div key={category.category}>
+                          <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
+                            {category.category}
                           </div>
-                          <div>
-                            <div className="text-sm font-medium">
-                              {service.name}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              {service.description}
-                            </div>
+                          <div className="space-y-3">
+                            {category.items.map((service) => (
+                              <Link
+                                key={service.name}
+                                to={service.href}
+                                onClick={closeAllDropdowns}
+                                className="block group p-3 rounded-lg hover:bg-corporate-bg-secondary transition-colors duration-200"
+                              >
+                                <div className="font-semibold text-corporate-text-primary group-hover:text-corporate-blue mb-1">
+                                  {service.name}
+                                </div>
+                                <div className="text-sm text-corporate-text-secondary">
+                                  {service.description}
+                                </div>
+                              </Link>
+                            ))}
                           </div>
-                        </Link>
+                        </div>
                       ))}
                     </div>
-                    <div className="border-t border-gray-100 mt-3 pt-3">
+                    <div className="border-t mt-6 pt-4">
                       <Link
                         to="/services"
                         onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-150 whitespace-nowrap"
+                        className="inline-flex items-center gap-2 px-4 py-2 text-corporate-blue hover:text-corporate-blue-dark font-semibold transition-colors"
                       >
                         View All Services
                         <svg
-                          className="w-3 h-3"
+                          className="w-4 h-4"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -763,14 +454,13 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* Partners Dropdown */}
-              <div className="relative" ref={partnersRef}>
+              {/* Industries Dropdown */}
+              <div className="relative" ref={industriesRef}>
                 <button
-                  onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                  onMouseEnter={openPartnersDropdown}
-                  className="flex items-center gap-1 text-white hover:text-blue-400 font-medium transition-colors duration-200"
+                  onMouseEnter={() => setIsIndustriesOpen(true)}
+                  className="flex items-center gap-1 text-white hover:text-corporate-blue font-medium transition-colors duration-200"
                 >
-                  Partners
+                  Industries
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -788,60 +478,87 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-xl border border-gray-200 transition-all duration-200 transform origin-top-left",
-                    isPartnersOpen
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-corporate-xl border transition-all duration-300 transform origin-top-left",
+                    isIndustriesOpen
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
                   )}
                   onMouseLeave={closeAllDropdowns}
                 >
-                  <div className="p-4">
-                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                      Partners
+                  <div className="p-6 min-w-[320px]">
+                    <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
+                      INDUSTRIES
                     </div>
-                    <div className="space-y-2">
-                      {partners.map((partner) => (
+                    <div className="grid grid-cols-2 gap-3">
+                      {industries.map((industry) => (
                         <Link
-                          key={partner.name}
-                          to={partner.href}
+                          key={industry.name}
+                          to={industry.href}
                           onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-150 group whitespace-nowrap"
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-corporate-bg-secondary transition-colors duration-200 group"
                         >
-                          <div className="text-gray-400 group-hover:text-blue-600 transition-colors duration-150">
-                            {partner.icon}
-                          </div>
-                          <div>
-                            <div className="text-sm font-medium">
-                              {partner.name}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              {partner.description}
-                            </div>
-                          </div>
+                          <span className="text-lg">{industry.icon}</span>
+                          <span className="font-medium text-corporate-text-primary group-hover:text-corporate-blue">
+                            {industry.name}
+                          </span>
                         </Link>
                       ))}
                     </div>
-                    <div className="border-t border-gray-100 mt-3 pt-3">
-                      <Link
-                        to="/partners/view-all"
-                        onClick={closeAllDropdowns}
-                        className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-150 whitespace-nowrap"
-                      >
-                        View All Partners
-                        <svg
-                          className="w-3 h-3"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                  </div>
+                </div>
+              </div>
+
+              {/* Company Dropdown */}
+              <div className="relative" ref={companyRef}>
+                <button
+                  onMouseEnter={() => setIsCompanyOpen(true)}
+                  className="flex items-center gap-1 text-white hover:text-corporate-blue font-medium transition-colors duration-200"
+                >
+                  Company
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-corporate-xl border transition-all duration-300 transform origin-top-left",
+                    isCompanyOpen
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95",
+                  )}
+                  onMouseLeave={closeAllDropdowns}
+                >
+                  <div className="p-6 min-w-[280px]">
+                    <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
+                      COMPANY
+                    </div>
+                    <div className="space-y-3">
+                      {companyLinks.map((link) => (
+                        <Link
+                          key={link.name}
+                          to={link.href}
+                          onClick={closeAllDropdowns}
+                          className="block p-3 rounded-lg hover:bg-corporate-bg-secondary transition-colors duration-200 group"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </Link>
+                          <div className="font-semibold text-corporate-text-primary group-hover:text-corporate-blue mb-1">
+                            {link.name}
+                          </div>
+                          <div className="text-sm text-corporate-text-secondary">
+                            {link.description}
+                          </div>
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -850,7 +567,7 @@ const Navigation = () => {
               <Link
                 to="/contact"
                 onMouseEnter={closeAllDropdowns}
-                className="text-white hover:text-blue-400 font-medium transition-colors duration-200"
+                className="text-white hover:text-corporate-blue font-medium transition-colors duration-200"
               >
                 Contact
               </Link>
@@ -858,18 +575,16 @@ const Navigation = () => {
               {/* CTA Button */}
               <Link
                 to="/contact"
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105"
+                className="px-6 py-2 bg-corporate-blue hover:bg-corporate-blue-dark text-white rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-corporate"
               >
                 Get Started
               </Link>
             </div>
 
-            {/* Mobile Hamburger Menu Button */}
+            {/* Mobile Menu Button */}
             <button
-              data-mobile-menu-button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:text-blue-400 rounded-md"
-              aria-label="Toggle mobile menu"
+              className="lg:hidden p-2 text-white hover:text-corporate-blue transition-colors"
             >
               <svg
                 className="w-6 h-6"
