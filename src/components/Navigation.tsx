@@ -240,34 +240,29 @@ const Navigation = () => {
 
   const partners = [
     {
-      category: "TECHNOLOGY PARTNERS",
-      items: [
-        {
-          name: "Cloud Partners",
-          href: "/partners/cloud-partners",
-          description: "Leading cloud service providers",
-        },
-        {
-          name: "Technology Partners",
-          href: "/partners/technology-partners",
-          description: "Strategic technology alliances",
-        },
-      ],
+      name: "Cloud Partners",
+      href: "/partners/cloud-partners",
+      description: "Leading cloud service providers",
     },
     {
-      category: "INDUSTRY PARTNERS",
-      items: [
-        {
-          name: "Security Partners",
-          href: "/partners/security-partners",
-          description: "Cybersecurity and compliance experts",
-        },
-        {
-          name: "SAP Partners",
-          href: "/partners/sap-partners",
-          description: "SAP ecosystem partners",
-        },
-      ],
+      name: "Technology Partners",
+      href: "/partners/technology-partners",
+      description: "Strategic technology alliances",
+    },
+    {
+      name: "Integration Partners",
+      href: "/partners/integration-partners",
+      description: "System integration and consulting partners",
+    },
+    {
+      name: "Security Partners",
+      href: "/partners/security-partners",
+      description: "Cybersecurity and compliance experts",
+    },
+    {
+      name: "SAP Partners",
+      href: "/partners/sap-partners",
+      description: "SAP ecosystem partners",
     },
   ];
 
