@@ -507,10 +507,10 @@ const ViewAllServices = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Our Technology Stack
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 We leverage cutting-edge technologies and maintain partnerships
                 with leading vendors to deliver best-in-class solutions.
               </p>
@@ -522,14 +522,14 @@ const ViewAllServices = () => {
                   key={index}
                   className="bg-white/80 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white transition-all duration-300"
                 >
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-6">
+                  <h3 className="text-xl font-bold text-accenture-text-primary mb-6">
                     {stack.category}
                   </h3>
                   <div className="grid grid-cols-2 gap-3">
                     {stack.technologies.map((tech, techIndex) => (
                       <div
                         key={techIndex}
-                        className="text-sm text-tech-text-medium bg-gray-50 rounded px-3 py-2 text-center"
+                        className="text-sm text-gray-600 bg-gray-50 rounded px-3 py-2 text-center"
                       >
                         {tech}
                       </div>
