@@ -261,11 +261,11 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-3xl font-bold text-accenture-purple">
                     Our Mission
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-lg text-tech-text-medium leading-relaxed font-medium">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
