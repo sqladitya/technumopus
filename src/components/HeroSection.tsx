@@ -377,8 +377,8 @@ const HeroSection = () => {
           </svg>
         </button>
 
-        {/* Enhanced Scroll Indicator - Adjusted Position */}
-        <div className="absolute bottom-10 left-96 z-30 text-white/70">
+        {/* Enhanced Scroll Indicator - Moved Lower */}
+        <div className="absolute bottom-6 left-96 z-30 text-white/70">
           <div className="flex flex-col items-center gap-3 animate-bounce">
             <span className="text-body-sm uppercase tracking-wider font-medium">
               Explore
