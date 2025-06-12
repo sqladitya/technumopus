@@ -19,7 +19,7 @@ export const ContentCardsSection = () => (
   <section className="py-12 md:py-16 bg-white">
     <div className="max-w-7xl mx-auto px-4">
       <div className="max-w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               category: "TRANSFORMATION",
@@ -65,10 +65,10 @@ export const ContentCardsSection = () => (
             <Link
               key={index}
               to={card.href}
-              className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
+              className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left w-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+              <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden w-full">
                 <img
                   src={card.image}
                   alt={card.title}
@@ -85,11 +85,11 @@ export const ContentCardsSection = () => (
                   </span>
                 </div>
               </div>
-              <div className="p-4">
-                <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+              <div className="p-6 w-full">
+                <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2">
                   {card.title}
                 </h3>
-                <p className="text-accenture-text-tertiary leading-relaxed">
+                <p className="text-accenture-text-tertiary leading-relaxed text-sm line-clamp-3">
                   {card.description}
                 </p>
               </div>
