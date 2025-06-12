@@ -419,40 +419,38 @@ const ViewAllServices = () => {
       </section>
 
       {/* Service Statistics */}
-      <SectionBackground variant="gradient">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Proven Track Record
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our success is measured by the success of our clients. Here are
-                some key metrics that showcase our commitment to excellence.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {serviceStats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-8 text-center border border-white/20 hover:bg-white transition-all duration-300"
-                >
-                  <div className="text-4xl md:text-5xl font-bold text-accenture-purple mb-4">
-                    {stat.number}
-                  </div>
-                  <div className="text-xl font-semibold text-accenture-text-primary mb-3">
-                    {stat.label}
-                  </div>
-                  <div className="text-gray-600 text-sm">
-                    {stat.description}
-                  </div>
-                </div>
-              ))}
-            </div>
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Proven Track Record
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              Our success is measured by the success of our clients. Here are
+              some key metrics that showcase our commitment to excellence.
+            </p>
           </div>
-        </section>
-      </SectionBackground>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {serviceStats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-8 text-center border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-accenture-purple mb-4">
+                  {stat.number}
+                </div>
+                <div className="text-xl font-semibold text-accenture-text-primary mb-3">
+                  {stat.label}
+                </div>
+                <div className="text-accenture-text-secondary text-sm">
+                  {stat.description}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Industries We Serve */}
       <SectionBackground variant="light">
