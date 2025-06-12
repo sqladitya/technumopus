@@ -478,7 +478,7 @@ const Navigation = () => {
               <button
                 onClick={openSearch}
                 className="flex items-center gap-2 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 group"
-                title="Search (Cmd+K)"
+                title="Search"
               >
                 <svg
                   className="w-4 h-4 group-hover:scale-110 transition-transform duration-200"
@@ -496,9 +496,6 @@ const Navigation = () => {
                 <span className="hidden xl:inline text-sm font-medium">
                   Search
                 </span>
-                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-white/20 rounded border border-white/30">
-                  ⌘K
-                </kbd>
               </button>
             </div>
 

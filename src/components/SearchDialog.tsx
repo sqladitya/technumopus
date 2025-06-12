@@ -92,7 +92,7 @@ const SearchDialog = () => {
         Type your search query and press Enter or click on a result to navigate.
       </DialogDescription>
       <CommandInput
-        placeholder="Search pages, services, and more... (Cmd+K)"
+        placeholder="Search pages, services, and more..."
         value={query}
         onValueChange={setQuery}
         className="text-base"
@@ -150,11 +150,6 @@ const SearchDialog = () => {
               <div className="text-xs text-muted-foreground">
                 💡 Try searching for "SAP", "cloud", "partners", "careers", or
                 any service
-              </div>
-            </CommandItem>
-            <CommandItem disabled className="opacity-75">
-              <div className="text-xs text-muted-foreground">
-                ⌨️ Use Cmd+K (Mac) or Ctrl+K (Windows) to open search anytime
               </div>
             </CommandItem>
           </CommandGroup>
