@@ -214,7 +214,34 @@ const SearchDialog = () => {
         {/* Show all page suggestions when no query */}
         {!query.trim() && (
           <>
-            {/* Popular pages first */}
+            {/* AI Assistant first */}
+            <CommandGroup heading="✨ AI Assistant">
+              {searchCategories
+                .find((cat) => cat.name === "AI Assistant")
+                ?.items.slice(0, 3)
+                .map((item) => (
+                  <CommandItem
+                    key={item.id}
+                    value={item.id}
+                    onSelect={() => handleSelect(item)}
+                    className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200 border border-purple-200 bg-purple-50/50"
+                  >
+                    <span className="text-lg mt-0.5">
+                      {getCategoryIcon(item.category)}
+                    </span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <p className="text-sm font-medium text-foreground leading-none">
+                        {item.title}
+                      </p>
+                      <p className="text-xs text-muted-foreground line-clamp-2">
+                        {item.description}
+                      </p>
+                    </div>
+                  </CommandItem>
+                ))}
+            </CommandGroup>
+
+            {/* Popular pages */}
             <CommandGroup heading="Popular Pages">
               {[
                 searchCategories.find((cat) => cat.name === "Pages")?.items[0], // Home
