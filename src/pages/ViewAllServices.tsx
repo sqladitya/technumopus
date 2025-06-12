@@ -303,12 +303,11 @@ const ViewAllServices = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
+    <div className="bg-white">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-accenture-purple/20 via-purple-600/15 to-slate-900/95" />
+      <section className="relative pt-24 pb-16 bg-accenture-black">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             All Our Services
@@ -321,13 +320,13 @@ const ViewAllServices = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="px-8 py-4 bg-accenture-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
             >
               Get Started Today
             </a>
             <a
               href="/services"
-              className="px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
+              className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
             >
               Browse Services
             </a>
