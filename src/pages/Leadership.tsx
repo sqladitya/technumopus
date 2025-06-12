@@ -254,9 +254,7 @@ const Leadership = () => {
                 <div className="text-4xl font-bold text-tech-primary mb-2">
                   150+
                 </div>
-                <div className="text-tech-text-medium">
-                  Combined Years Experience
-                </div>
+                <div className="text-gray-600">Combined Years Experience</div>
               </div>
               <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
                 <div className="text-4xl font-bold text-tech-primary mb-2">
