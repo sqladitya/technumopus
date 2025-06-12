@@ -184,7 +184,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+                    className="w-full bg-gradient-to-r from-accenture-purple to-accenture-purple-light text-white py-4 px-6 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-accenture-purple/25 transition-all duration-300 hover:scale-105"
                   >
                     Send Message
                   </button>
@@ -194,12 +194,12 @@ const Contact = () => {
               {/* Contact Information */}
               <div className="space-y-8">
                 <div>
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-4 py-2 mb-4">
-                    <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accenture-purple/20 to-accenture-purple-light/20 rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                       Contact Info
                     </span>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-3xl font-bold text-white mb-4">
                     Get In Touch
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-8">
