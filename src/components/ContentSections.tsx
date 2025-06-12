@@ -745,7 +745,7 @@ export const AboutSection = () => (
         <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
           Technology meets human ingenuity
         </h2>
-        <p className="text-body-xl text-accenture-text-tertiary mb-8 leading-relaxed">
+        <p className="text-body-xl text-gray-400 mb-8 leading-relaxed">
           We are a global professional services company with leading
           capabilities in digital, cloud and security. Combining unmatched
           experience and specialized skills across more than 40 industries, we
