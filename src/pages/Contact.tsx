@@ -202,7 +202,7 @@ const Contact = () => {
                   <h2 className="text-3xl font-bold text-white mb-4">
                     Get In Touch
                   </h2>
-                  <p className="text-gray-600 leading-relaxed mb-8">
+                  <p className="text-white/80 leading-relaxed mb-8">
                     Have questions about our services? Need a custom solution?
                     Our team is here to help you succeed.
                   </p>
@@ -212,17 +212,17 @@ const Contact = () => {
                   {contactInfo.map((info, index) => (
                     <div
                       key={index}
-                      className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                      className="bg-accenture-black/50 rounded-xl shadow-lg p-6 border border-white/10 hover:shadow-xl hover:bg-accenture-black/70 transition-all duration-300"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg flex items-center justify-center text-white">
+                        <div className="w-12 h-12 bg-gradient-to-r from-accenture-purple to-accenture-purple-light rounded-lg flex items-center justify-center text-white">
                           {info.icon}
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-lg font-semibold text-gray-900 mb-1">
+                          <h4 className="text-lg font-semibold text-white mb-1">
                             {info.title}
                           </h4>
-                          <p className="text-sm text-gray-600 mb-2">
+                          <p className="text-sm text-white/60 mb-2">
                             {info.description}
                           </p>
                           <div className="space-y-1">
