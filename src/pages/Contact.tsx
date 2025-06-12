@@ -199,10 +199,10 @@ const Contact = () => {
                       Contact Info
                     </span>
                   </div>
-                  <h2 className="text-3xl font-bold text-accenture-purple mb-4">
+                  <h2 className="text-3xl font-bold text-white mb-4">
                     Get In Touch
                   </h2>
-                  <p className="text-accenture-purple-light leading-relaxed mb-8">
+                  <p className="text-white/80 leading-relaxed mb-8">
                     Have questions about our services? Need a custom solution?
                     Our team is here to help you succeed.
                   </p>
