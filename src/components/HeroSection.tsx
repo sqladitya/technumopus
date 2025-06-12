@@ -2,147 +2,112 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
-const slides = [
+const heroSlides = [
   {
     id: 1,
-    category: "DIGITAL TRANSFORMATION",
-    title: "Perpetually Adaptive Enterprise",
-    subtitle: "Navigate disruption with confidence",
+    category: "STRATEGY & TECHNOLOGY",
+    title: "360° VALUE",
+    subtitle: "Starts with you",
     description:
-      "Enterprises that embrace agility and innovation can navigate the shifting global environment with confidence, and redefine success for the digital age.",
-    buttonText: "Explore Our Approach",
-    buttonLink: "/services/digital-transformation",
-    backgroundGradient:
-      "from-corporate-black via-corporate-gray-800 to-corporate-gray-700",
-    accentColor: "corporate-blue",
+      "We create 360° value for our clients by helping them transform their businesses, embrace innovation, and unlock sustainable growth.",
+    image: "/api/placeholder/1920/1080",
+    cta: {
+      primary: { text: "Explore our approach", href: "/about/approach" },
+      secondary: { text: "Watch the film", href: "/insights/360-value" },
+    },
   },
   {
     id: 2,
-    category: "TECHNOLOGY INNOVATION",
-    title: "Future-Ready Solutions",
-    subtitle: "Transform possibilities into reality",
+    category: "DIGITAL TRANSFORMATION",
+    title: "CHANGE THAT MATTERS",
+    subtitle: "For you and your business",
     description:
-      "We help organizations reimagine their operations, modernize legacy systems, and unlock new sources of innovation and sustainable growth.",
-    buttonText: "Discover Solutions",
-    buttonLink: "/services",
-    backgroundGradient:
-      "from-corporate-purple via-purple-900 to-corporate-gray-800",
-    accentColor: "corporate-purple",
+      "Reinvent your organization with the power of data, artificial intelligence and human ingenuity to create lasting impact.",
+    image: "/api/placeholder/1920/1080",
+    cta: {
+      primary: { text: "See how we help", href: "/services" },
+      secondary: { text: "Client stories", href: "/insights/case-studies" },
+    },
   },
   {
     id: 3,
-    category: "BUSINESS EXCELLENCE",
-    title: "360° Value Creation",
-    subtitle: "Drive measurable outcomes",
+    category: "INNOVATION",
+    title: "TECHNOLOGY VISION",
+    subtitle: "The human+ difference",
     description:
-      "From strategy to execution, we deliver comprehensive solutions that drive measurable business outcomes and competitive advantage.",
-    buttonText: "Start Your Journey",
-    buttonLink: "/contact",
-    backgroundGradient:
-      "from-corporate-blue-dark via-corporate-blue to-corporate-gray-700",
-    accentColor: "corporate-blue-accent",
+      "Discover how emerging technologies will reshape business and society in the next three to five years.",
+    image: "/api/placeholder/1920/1080",
+    cta: {
+      primary: { text: "Read the report", href: "/insights/technology-vision" },
+      secondary: { text: "Interactive version", href: "/insights/interactive" },
+    },
   },
 ];
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setProgress(0);
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 6000);
 
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) return 0;
-        return prev + 100 / 600; // 6 seconds = 600 intervals of 10ms
-      });
-    }, 10);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(progressInterval);
-    };
-  }, [isAutoPlaying, currentSlide]);
+    return () => clearInterval(interval);
+  }, [isPlaying]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-    setProgress(0);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setProgress(0);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    setProgress(0);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+    setIsPlaying(false);
+    setTimeout(() => setIsPlaying(true), 8000);
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen overflow-hidden bg-corporate-black"
-    >
-      {/* Hero Carousel */}
-      <div className="relative h-screen">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={cn(
-              "absolute inset-0 transition-all duration-1000 ease-in-out",
-              index === currentSlide
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-105",
-            )}
-          >
-            {/* Background Gradient */}
+    <section className="relative min-h-screen bg-accenture-black overflow-hidden">
+      {/* Hero Slides */}
+      {heroSlides.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={cn(
+            "absolute inset-0 transition-all duration-1000 ease-in-out",
+            index === currentSlide
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-105",
+          )}
+        >
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/80 to-transparent z-10" />
             <div
-              className={cn(
-                "absolute inset-0 bg-gradient-to-br",
-                slide.backgroundGradient,
-              )}
+              className="w-full h-full bg-cover bg-center bg-accenture-gray-800"
+              style={{
+                backgroundImage: `url(${slide.image})`,
+                filter: "brightness(0.4) contrast(1.1)",
+              }}
             />
+          </div>
 
-            {/* Pattern Overlay */}
-            <div className="absolute inset-0 bg-hero-pattern opacity-60" />
-
-            {/* Subtle Animation Elements */}
-            <div className="absolute inset-0">
-              <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float" />
-              <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-2xl animate-pulse-soft" />
-            </div>
-
-            {/* Content */}
-            <div className="relative z-20 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8">
-              <div className="text-center max-w-6xl mx-auto">
+          {/* Content */}
+          <div className="relative z-20 flex items-center min-h-screen">
+            <div className="max-w-7xl mx-auto px-6 py-20">
+              <div className="max-w-4xl">
                 {/* Category */}
                 <div className="mb-6 animate-fade-in">
-                  <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-semibold text-white uppercase tracking-wider">
+                  <span className="inline-block px-0 py-2 text-accenture-purple text-body-sm font-bold uppercase tracking-wider">
                     {slide.category}
                   </span>
                 </div>
 
-                {/* Main Title */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-tight animate-slide-up">
+                {/* Main Title - Accenture's signature large typography */}
+                <h1 className="text-hero font-heading text-white mb-8 leading-none animate-slide-up">
                   {slide.title}
                 </h1>
 
                 {/* Subtitle */}
                 <h2
-                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-8 font-medium animate-slide-up"
+                  className="text-heading-xl text-white/90 mb-8 font-medium animate-slide-up"
                   style={{ animationDelay: "0.2s" }}
                 >
                   {slide.subtitle}
@@ -150,7 +115,7 @@ const HeroSection = () => {
 
                 {/* Description */}
                 <p
-                  className="text-lg sm:text-xl md:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-up"
+                  className="text-body-xl text-white/80 mb-12 max-w-3xl leading-relaxed animate-slide-up"
                   style={{ animationDelay: "0.4s" }}
                 >
                   {slide.description}
@@ -158,14 +123,14 @@ const HeroSection = () => {
 
                 {/* CTA Buttons */}
                 <div
-                  className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up"
+                  className="flex flex-col sm:flex-row gap-6 animate-slide-up"
                   style={{ animationDelay: "0.6s" }}
                 >
                   <Link
-                    to={slide.buttonLink}
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-corporate-black rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-corporate-lg text-lg"
+                    to={slide.cta.primary.href}
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 shadow-purple text-lg"
                   >
-                    {slide.buttonText}
+                    {slide.cta.primary.text}
                     <svg
                       className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
@@ -180,122 +145,117 @@ const HeroSection = () => {
                       />
                     </svg>
                   </Link>
-                  <Link
-                    to="/about"
-                    className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-white/80 text-white rounded-lg font-semibold hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-lg"
-                  >
-                    Learn More
+
+                  <button className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-white/60 text-white rounded-lg font-semibold hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-lg">
                     <svg
-                      className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
+                      className="w-6 h-6"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
+                      <path d="M8 5v14l11-7z" />
                     </svg>
-                  </Link>
+                    {slide.cta.secondary.text}
+                  </button>
                 </div>
               </div>
             </div>
-
-            {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-corporate-black/50 to-transparent" />
           </div>
-        ))}
+        </div>
+      ))}
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-black/30 hover:bg-black/50 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group"
-        >
-          <svg
-            className="w-6 h-6 transition-transform duration-300 group-hover:-translate-x-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-black/30 hover:bg-black/50 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group"
-        >
-          <svg
-            className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-
+      {/* Slide Controls */}
+      <div className="absolute bottom-8 left-6 z-30 flex items-center gap-4">
         {/* Slide Indicators */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-4">
-          {slides.map((slide, index) => (
+        <div className="flex gap-3">
+          {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
               className={cn(
-                "relative w-12 h-1 rounded-full transition-all duration-300",
+                "w-12 h-1 rounded-full transition-all duration-300",
                 index === currentSlide
-                  ? "bg-white"
+                  ? "bg-accenture-purple"
                   : "bg-white/30 hover:bg-white/50",
               )}
-            >
-              {index === currentSlide && (
-                <div
-                  className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-100 ease-linear"
-                  style={{ width: `${progress}%` }}
-                />
-              )}
-            </button>
+            />
           ))}
         </div>
 
-        {/* Slide Info */}
-        <div className="absolute bottom-8 left-8 z-30 text-white">
-          <div className="text-sm opacity-70">
-            {String(currentSlide + 1).padStart(2, "0")} /{" "}
-            {String(slides.length).padStart(2, "0")}
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 right-8 z-30 text-white">
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <span className="text-sm opacity-70">Scroll</span>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
+        {/* Play/Pause Button */}
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="p-2 text-white/70 hover:text-white transition-colors"
+        >
+          {isPlaying ? (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
-          </div>
+          ) : (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={() =>
+          goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)
+        }
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+      <button
+        onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 right-6 z-30 text-white/70">
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-body-sm uppercase tracking-wider">Scroll</span>
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
         </div>
       </div>
     </section>

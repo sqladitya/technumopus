@@ -4,13 +4,9 @@ import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
-  const [isCompanyOpen, setIsCompanyOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const industriesRef = useRef<HTMLDivElement>(null);
-  const companyRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,75 +17,51 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      const target = event.target as Node;
-
-      if (window.innerWidth >= 1024) {
-        const isOutsideServices =
-          servicesRef.current && !servicesRef.current.contains(target);
-        const isOutsideIndustries =
-          industriesRef.current && !industriesRef.current.contains(target);
-        const isOutsideCompany =
-          companyRef.current && !companyRef.current.contains(target);
-
-        if (isOutsideServices) setIsServicesOpen(false);
-        if (isOutsideIndustries) setIsIndustriesOpen(false);
-        if (isOutsideCompany) setIsCompanyOpen(false);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setActiveDropdown(null);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
-
-  const closeAllDropdowns = () => {
-    setIsServicesOpen(false);
-    setIsIndustriesOpen(false);
-    setIsCompanyOpen(false);
+  const handleDropdownEnter = (dropdown: string) => {
+    setActiveDropdown(dropdown);
   };
 
-  const closeMobileMenu = () => {
-    closeAllDropdowns();
-    setIsMobileMenuOpen(false);
+  const handleDropdownLeave = () => {
+    setActiveDropdown(null);
   };
 
   const services = [
     {
-      category: "TRANSFORMATION",
+      category: "STRATEGY & CONSULTING",
       items: [
         {
-          name: "Digital Transformation",
-          href: "/services/digital-transformation",
-          description: "End-to-end business transformation",
+          name: "Business Strategy",
+          href: "/services/business-strategy",
+          description: "Strategic transformation for sustainable growth",
         },
         {
-          name: "Cloud Migration",
-          href: "/services/cloud-architecture",
-          description: "Secure cloud infrastructure",
+          name: "Technology Strategy",
+          href: "/services/technology-strategy",
+          description: "Technology-led business innovation",
         },
         {
-          name: "Data & Analytics",
-          href: "/services/data-analytics",
-          description: "AI-powered insights",
+          name: "Operations",
+          href: "/services/operations",
+          description: "Operational excellence and efficiency",
+        },
+        {
+          name: "Sustainability",
+          href: "/services/sustainability",
+          description: "Sustainable business transformation",
         },
       ],
     },
@@ -97,45 +69,116 @@ const Navigation = () => {
       category: "TECHNOLOGY",
       items: [
         {
-          name: "SAP Consulting",
-          href: "/services/sap-consulting",
-          description: "Enterprise SAP solutions",
+          name: "Application Services",
+          href: "/services/application-services",
+          description: "End-to-end application development",
         },
         {
-          name: "Application Development",
-          href: "/services/saas-development",
-          description: "Custom software solutions",
+          name: "Cloud Solutions",
+          href: "/services/cloud-solutions",
+          description: "Cloud-first transformation",
+        },
+        {
+          name: "Data & AI",
+          href: "/services/data-ai",
+          description: "Intelligent data solutions",
         },
         {
           name: "Infrastructure",
-          href: "/services/hardware-infrastructure",
-          description: "IT infrastructure management",
+          href: "/services/infrastructure",
+          description: "Modern IT infrastructure",
+        },
+      ],
+    },
+    {
+      category: "INTERACTIVE",
+      items: [
+        {
+          name: "Customer Experience",
+          href: "/services/customer-experience",
+          description: "Human-centered design",
+        },
+        {
+          name: "Digital Marketing",
+          href: "/services/digital-marketing",
+          description: "Personalized customer engagement",
+        },
+        {
+          name: "Commerce",
+          href: "/services/commerce",
+          description: "Connected commerce experiences",
         },
       ],
     },
   ];
 
   const industries = [
+    { name: "Automotive", href: "/industries/automotive" },
+    { name: "Banking", href: "/industries/banking" },
+    { name: "Capital Markets", href: "/industries/capital-markets" },
+    { name: "Communications", href: "/industries/communications" },
+    { name: "Consumer Goods", href: "/industries/consumer-goods" },
+    { name: "Energy", href: "/industries/energy" },
     {
-      name: "Financial Services",
-      href: "/industries/financial-services",
-      icon: "🏦",
+      name: "Health & Public Service",
+      href: "/industries/health-public-service",
     },
-    { name: "Healthcare", href: "/industries/healthcare", icon: "🏥" },
-    { name: "Manufacturing", href: "/industries/manufacturing", icon: "🏭" },
-    { name: "Retail", href: "/industries/retail", icon: "🛍️" },
-    { name: "Energy", href: "/industries/energy", icon: "⚡" },
-    { name: "Government", href: "/industries/government", icon: "🏛️" },
+    { name: "High Tech", href: "/industries/high-tech" },
+    { name: "Industrial", href: "/industries/industrial" },
+    { name: "Insurance", href: "/industries/insurance" },
+    { name: "Life Sciences", href: "/industries/life-sciences" },
+    { name: "Media & Entertainment", href: "/industries/media-entertainment" },
+    { name: "Natural Resources", href: "/industries/natural-resources" },
+    { name: "Retail", href: "/industries/retail" },
+    { name: "Software & Platforms", href: "/industries/software-platforms" },
+    { name: "Travel", href: "/industries/travel" },
+    { name: "Utilities", href: "/industries/utilities" },
   ];
 
-  const companyLinks = [
-    { name: "About Us", href: "/about", description: "Our story and mission" },
-    { name: "Leadership", href: "/leadership", description: "Executive team" },
+  const insights = [
+    {
+      name: "Research & Insights",
+      href: "/insights/research",
+      description: "Latest thinking and research",
+    },
+    {
+      name: "Blogs",
+      href: "/insights/blogs",
+      description: "Expert perspectives and analysis",
+    },
+    {
+      name: "Case Studies",
+      href: "/insights/case-studies",
+      description: "Real-world success stories",
+    },
+    {
+      name: "Podcasts",
+      href: "/insights/podcasts",
+      description: "Conversations with industry leaders",
+    },
+  ];
+
+  const about = [
+    {
+      name: "What We Believe",
+      href: "/about/what-we-believe",
+      description: "Our purpose and values",
+    },
+    {
+      name: "Leadership",
+      href: "/about/leadership",
+      description: "Meet our leadership team",
+    },
     { name: "Careers", href: "/careers", description: "Join our team" },
     {
-      name: "News & Insights",
-      href: "/news-insights",
-      description: "Latest updates",
+      name: "Newsroom",
+      href: "/newsroom",
+      description: "Latest news and updates",
+    },
+    {
+      name: "Investor Relations",
+      href: "/investors",
+      description: "Financial information",
     },
   ];
 
@@ -144,34 +187,24 @@ const Navigation = () => {
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
-          onClick={closeMobileMenu}
+          className="fixed inset-0 bg-black/80 z-40 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
       {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden",
+          "fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white z-50 transform transition-transform duration-300 ease-in-out lg:hidden",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        {/* Mobile Header */}
-        <div className="flex items-center justify-between p-6 bg-corporate-black text-white">
-          <Link
-            to="/"
-            onClick={closeMobileMenu}
-            className="flex items-center gap-3"
-          >
-            <img
-              src="/logo.png"
-              alt="TECHNUM OPUS"
-              className="w-8 h-8 object-contain"
-            />
-            <span className="text-lg font-bold">TECHNUM OPUS</span>
+        <div className="flex items-center justify-between p-6 bg-accenture-black text-white">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+            <span className="text-xl font-bold">TECHNUM OPUS</span>
           </Link>
           <button
-            onClick={closeMobileMenu}
+            onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 hover:bg-white/10 rounded-lg transition-colors"
           >
             <svg
@@ -190,191 +223,85 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-6 overflow-y-auto">
           <Link
             to="/"
-            onClick={closeMobileMenu}
-            className="block py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
           >
             Home
           </Link>
-
-          <div>
-            <button
-              onClick={() => setIsServicesOpen(!isServicesOpen)}
-              className="flex items-center justify-between w-full py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
-            >
-              Services
-              <svg
-                className={cn(
-                  "w-4 h-4 transition-transform",
-                  isServicesOpen && "rotate-180",
-                )}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {isServicesOpen && (
-              <div className="ml-4 mt-2 space-y-2">
-                {services
-                  .flatMap((category) => category.items)
-                  .map((service) => (
-                    <Link
-                      key={service.name}
-                      to={service.href}
-                      onClick={closeMobileMenu}
-                      className="block py-2 text-sm text-corporate-text-secondary hover:text-corporate-blue"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-              </div>
-            )}
-          </div>
-
-          <div>
-            <button
-              onClick={() => setIsIndustriesOpen(!isIndustriesOpen)}
-              className="flex items-center justify-between w-full py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
-            >
-              Industries
-              <svg
-                className={cn(
-                  "w-4 h-4 transition-transform",
-                  isIndustriesOpen && "rotate-180",
-                )}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {isIndustriesOpen && (
-              <div className="ml-4 mt-2 space-y-2">
-                {industries.map((industry) => (
-                  <Link
-                    key={industry.name}
-                    to={industry.href}
-                    onClick={closeMobileMenu}
-                    className="block py-2 text-sm text-corporate-text-secondary hover:text-corporate-blue"
-                  >
-                    {industry.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div>
-            <button
-              onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-              className="flex items-center justify-between w-full py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
-            >
-              Company
-              <svg
-                className={cn(
-                  "w-4 h-4 transition-transform",
-                  isCompanyOpen && "rotate-180",
-                )}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {isCompanyOpen && (
-              <div className="ml-4 mt-2 space-y-2">
-                {companyLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    onClick={closeMobileMenu}
-                    className="block py-2 text-sm text-corporate-text-secondary hover:text-corporate-blue"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
+          <Link
+            to="/services"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
+          >
+            Services
+          </Link>
+          <Link
+            to="/industries"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
+          >
+            Industries
+          </Link>
+          <Link
+            to="/insights"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
+          >
+            Insights
+          </Link>
+          <Link
+            to="/careers"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
+          >
+            Careers
+          </Link>
+          <Link
+            to="/about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
+          >
+            About
+          </Link>
           <Link
             to="/contact"
-            onClick={closeMobileMenu}
-            className="block py-3 text-corporate-text-primary hover:text-corporate-blue font-medium"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
           >
             Contact
           </Link>
-
-          <div className="pt-4">
-            <Link
-              to="/contact"
-              onClick={closeMobileMenu}
-              className="block w-full px-6 py-3 bg-corporate-blue text-white text-center rounded-lg font-semibold hover:bg-corporate-blue-dark transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
+      {/* Main Navigation - Accenture Style */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-          isScrolled
-            ? "bg-corporate-black/95 backdrop-blur-md shadow-corporate"
-            : "bg-corporate-black",
+          "fixed top-0 left-0 right-0 z-40 bg-accenture-black transition-all duration-300",
+          isScrolled ? "shadow-accenture" : "",
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 z-50">
-              <img
-                src="/logo.png"
-                alt="TECHNUM OPUS"
-                className="w-8 h-8 object-contain"
-              />
-              <span className="text-xl font-bold text-white">TECHNUM OPUS</span>
+            <Link to="/" className="flex items-center">
+              <span className="text-xl font-bold text-white tracking-tight">
+                TECHNUM OPUS
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              <Link
-                to="/"
-                onMouseEnter={closeAllDropdowns}
-                className="text-white hover:text-corporate-blue font-medium transition-colors duration-200"
-              >
-                Home
-              </Link>
-
+            <div
+              className="hidden lg:flex items-center space-x-8"
+              ref={dropdownRef}
+            >
               {/* Services Mega Menu */}
-              <div className="relative" ref={servicesRef}>
+              <div className="relative">
                 <button
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  className="flex items-center gap-1 text-white hover:text-corporate-blue font-medium transition-colors duration-200"
+                  onMouseEnter={() => handleDropdownEnter("services")}
+                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Services
                   <svg
@@ -394,18 +321,18 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-corporate-xl border transition-all duration-300 transform origin-top-left",
-                    isServicesOpen
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    activeDropdown === "services"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
                   )}
-                  onMouseLeave={closeAllDropdowns}
+                  onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6">
-                    <div className="grid grid-cols-2 gap-8 min-w-[600px]">
+                  <div className="p-8">
+                    <div className="grid grid-cols-3 gap-12 min-w-[800px]">
                       {services.map((category) => (
                         <div key={category.category}>
-                          <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
+                          <div className="text-xs font-bold text-accenture-text-tertiary uppercase tracking-wider mb-4">
                             {category.category}
                           </div>
                           <div className="space-y-3">
@@ -413,13 +340,13 @@ const Navigation = () => {
                               <Link
                                 key={service.name}
                                 to={service.href}
-                                onClick={closeAllDropdowns}
-                                className="block group p-3 rounded-lg hover:bg-corporate-bg-secondary transition-colors duration-200"
+                                onClick={() => setActiveDropdown(null)}
+                                className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                               >
-                                <div className="font-semibold text-corporate-text-primary group-hover:text-corporate-blue mb-1">
+                                <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
                                   {service.name}
                                 </div>
-                                <div className="text-sm text-corporate-text-secondary">
+                                <div className="text-sm text-accenture-text-tertiary">
                                   {service.description}
                                 </div>
                               </Link>
@@ -428,37 +355,15 @@ const Navigation = () => {
                         </div>
                       ))}
                     </div>
-                    <div className="border-t mt-6 pt-4">
-                      <Link
-                        to="/services"
-                        onClick={closeAllDropdowns}
-                        className="inline-flex items-center gap-2 px-4 py-2 text-corporate-blue hover:text-corporate-blue-dark font-semibold transition-colors"
-                      >
-                        View All Services
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Industries Dropdown */}
-              <div className="relative" ref={industriesRef}>
+              <div className="relative">
                 <button
-                  onMouseEnter={() => setIsIndustriesOpen(true)}
-                  className="flex items-center gap-1 text-white hover:text-corporate-blue font-medium transition-colors duration-200"
+                  onMouseEnter={() => handleDropdownEnter("industries")}
+                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Industries
                   <svg
@@ -478,29 +383,23 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-corporate-xl border transition-all duration-300 transform origin-top-left",
-                    isIndustriesOpen
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    activeDropdown === "industries"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
                   )}
-                  onMouseLeave={closeAllDropdowns}
+                  onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6 min-w-[320px]">
-                    <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
-                      INDUSTRIES
-                    </div>
+                  <div className="p-6 max-w-md">
                     <div className="grid grid-cols-2 gap-3">
                       {industries.map((industry) => (
                         <Link
                           key={industry.name}
                           to={industry.href}
-                          onClick={closeAllDropdowns}
-                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-corporate-bg-secondary transition-colors duration-200 group"
+                          onClick={() => setActiveDropdown(null)}
+                          className="block p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200 text-accenture-text-primary hover:text-accenture-purple font-medium"
                         >
-                          <span className="text-lg">{industry.icon}</span>
-                          <span className="font-medium text-corporate-text-primary group-hover:text-corporate-blue">
-                            {industry.name}
-                          </span>
+                          {industry.name}
                         </Link>
                       ))}
                     </div>
@@ -508,13 +407,13 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* Company Dropdown */}
-              <div className="relative" ref={companyRef}>
+              {/* Insights Dropdown */}
+              <div className="relative">
                 <button
-                  onMouseEnter={() => setIsCompanyOpen(true)}
-                  className="flex items-center gap-1 text-white hover:text-corporate-blue font-medium transition-colors duration-200"
+                  onMouseEnter={() => handleDropdownEnter("insights")}
+                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
-                  Company
+                  Insights
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -532,30 +431,87 @@ const Navigation = () => {
 
                 <div
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-xl shadow-corporate-xl border transition-all duration-300 transform origin-top-left",
-                    isCompanyOpen
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    activeDropdown === "insights"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
                   )}
-                  onMouseLeave={closeAllDropdowns}
+                  onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6 min-w-[280px]">
-                    <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
-                      COMPANY
-                    </div>
+                  <div className="p-6 min-w-[320px]">
                     <div className="space-y-3">
-                      {companyLinks.map((link) => (
+                      {insights.map((insight) => (
                         <Link
-                          key={link.name}
-                          to={link.href}
-                          onClick={closeAllDropdowns}
-                          className="block p-3 rounded-lg hover:bg-corporate-bg-secondary transition-colors duration-200 group"
+                          key={insight.name}
+                          to={insight.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
-                          <div className="font-semibold text-corporate-text-primary group-hover:text-corporate-blue mb-1">
-                            {link.name}
+                          <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
+                            {insight.name}
                           </div>
-                          <div className="text-sm text-corporate-text-secondary">
-                            {link.description}
+                          <div className="text-sm text-accenture-text-tertiary">
+                            {insight.description}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                to="/careers"
+                className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+              >
+                Careers
+              </Link>
+
+              {/* About Dropdown */}
+              <div className="relative">
+                <button
+                  onMouseEnter={() => handleDropdownEnter("about")}
+                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                >
+                  About
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    activeDropdown === "about"
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95",
+                  )}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <div className="p-6 min-w-[320px]">
+                    <div className="space-y-3">
+                      {about.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                        >
+                          <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
+                            {item.name}
+                          </div>
+                          <div className="text-sm text-accenture-text-tertiary">
+                            {item.description}
                           </div>
                         </Link>
                       ))}
@@ -566,25 +522,33 @@ const Navigation = () => {
 
               <Link
                 to="/contact"
-                onMouseEnter={closeAllDropdowns}
-                className="text-white hover:text-corporate-blue font-medium transition-colors duration-200"
+                className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
               >
                 Contact
               </Link>
 
-              {/* CTA Button */}
-              <Link
-                to="/contact"
-                className="px-6 py-2 bg-corporate-blue hover:bg-corporate-blue-dark text-white rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-corporate"
-              >
-                Get Started
-              </Link>
+              {/* Search Button */}
+              <button className="p-2 text-white hover:text-accenture-purple transition-colors duration-200">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:text-corporate-blue transition-colors"
+              className="lg:hidden p-2 text-white hover:text-accenture-purple transition-colors"
             >
               <svg
                 className="w-6 h-6"

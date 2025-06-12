@@ -52,59 +52,53 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Corporate Consulting Theme Colors
-        corporate: {
-          // TCS-inspired colors
+        // Accenture Theme Colors
+        accenture: {
+          // Primary blacks - Accenture's signature color
           black: "#000000",
-          "black-light": "#1a1a1a",
-          "black-lighter": "#2a2a2a",
+          "black-light": "#0a0a0a",
+          "black-lighter": "#1a1a1a",
 
-          // Accenture-inspired colors
-          purple: "#a100ff",
-          "purple-dark": "#8b00e6",
+          // Accenture purple - their brand color
+          purple: "#a600ff",
+          "purple-dark": "#8b00d9",
           "purple-light": "#b84dff",
+          "purple-bright": "#ff00ff",
 
-          // Wipro-inspired colors
-          blue: "#297f94",
-          "blue-dark": "#1b6aa8",
-          "blue-light": "#2f98b3",
-          "blue-accent": "#0065f0",
+          // Accent colors for variety
+          red: "#e2062e",
+          blue: "#0041f0",
+          violet: "#460073",
 
           // Professional grays
           gray: {
-            50: "#f9fafb",
-            100: "#f3f4f6",
-            200: "#e5e7eb",
-            300: "#d1d5db",
-            400: "#9ca3af",
-            500: "#6b7280",
-            600: "#4b5563",
-            700: "#374151",
-            800: "#1f2937",
-            900: "#111827",
+            50: "#f1f1ef",
+            100: "#e5e5e3",
+            200: "#d1d1cf",
+            300: "#a2a2a0",
+            400: "#6b6b69",
+            500: "#4b4b49",
+            600: "#2b2b2b",
+            700: "#202020",
+            800: "#1a1a1a",
+            900: "#0a0a0a",
           },
-
-          // Success and accent colors
-          green: "#059669",
-          orange: "#ea580c",
-          red: "#dc2626",
 
           // Text colors
           text: {
-            primary: "#111827",
-            secondary: "#4b5563",
-            tertiary: "#6b7280",
-            light: "#9ca3af",
+            primary: "#000000",
+            secondary: "#2b2b2b",
+            tertiary: "#4b4b49",
+            light: "#a2a2a0",
             inverse: "#ffffff",
           },
 
           // Background colors
           bg: {
             primary: "#ffffff",
-            secondary: "#f9fafb",
-            tertiary: "#f3f4f6",
-            dark: "#111827",
-            darker: "#000000",
+            secondary: "#f1f1ef",
+            dark: "#000000",
+            darker: "#0a0a0a",
           },
         },
       },
@@ -114,75 +108,93 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        // Corporate fonts similar to consulting firms
-        corporate: ["Inter", "system-ui", "sans-serif"],
-        heading: ["Inter", "system-ui", "sans-serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        // Accenture fonts - Graphik as primary
+        sans: ["Graphik", "Inter", "system-ui", "sans-serif"],
+        heading: ["GT Sectra Fine", "Palatino", "serif"],
+        body: ["Graphik", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        // Corporate typography scale
-        hero: ["4rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        display: ["3rem", { lineHeight: "1.2", letterSpacing: "-0.02em" }],
+        // Accenture typography scale
+        hero: [
+          "6.25rem",
+          { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "500" },
+        ], // 100px
+        display: [
+          "5rem",
+          { lineHeight: "1.1", letterSpacing: "-0.025em", fontWeight: "500" },
+        ], // 80px
         "heading-xl": [
           "2.5rem",
-          { lineHeight: "1.2", letterSpacing: "-0.01em" },
-        ],
-        "heading-lg": ["2rem", { lineHeight: "1.3", letterSpacing: "-0.01em" }],
-        "heading-md": ["1.5rem", { lineHeight: "1.4" }],
-        "heading-sm": ["1.25rem", { lineHeight: "1.4" }],
-        "body-xl": ["1.25rem", { lineHeight: "1.6" }],
-        "body-lg": ["1.125rem", { lineHeight: "1.6" }],
-        body: ["1rem", { lineHeight: "1.6" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
-        caption: ["0.75rem", { lineHeight: "1.4" }],
+          { lineHeight: "1.2", letterSpacing: "-0.075em", fontWeight: "500" },
+        ], // 40px
+        "heading-lg": [
+          "2rem",
+          { lineHeight: "1.25", letterSpacing: "-0.04em", fontWeight: "500" },
+        ], // 32px
+        "heading-md": [
+          "1.75rem",
+          { lineHeight: "1.3", letterSpacing: "-0.035em", fontWeight: "500" },
+        ], // 28px
+        "body-xl": [
+          "1.25rem",
+          { lineHeight: "1.6", letterSpacing: "-0.025em", fontWeight: "500" },
+        ], // 20px
+        "body-lg": ["1rem", { lineHeight: "1.5", letterSpacing: "-0.005em" }], // 16px
+        "body-sm": [
+          "0.875rem",
+          { lineHeight: "1.5", letterSpacing: "0.0175em", fontWeight: "500" },
+        ], // 14px
       },
       spacing: {
-        // Corporate spacing system
-        "18": "4.5rem",
+        // Accenture spacing system
+        "15": "3.75rem", // 60px
+        "18": "4.5rem", // 72px
+        "20": "5rem", // 80px
+        "22": "5.5rem", // 88px
         "88": "22rem",
         "128": "32rem",
         "144": "36rem",
       },
       backgroundImage: {
-        // Corporate gradients
-        "gradient-corporate":
-          "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%)",
-        "gradient-purple": "linear-gradient(135deg, #a100ff 0%, #8b00e6 100%)",
-        "gradient-blue": "linear-gradient(135deg, #297f94 0%, #1b6aa8 100%)",
-        "gradient-dark": "linear-gradient(135deg, #111827 0%, #374151 100%)",
-        "gradient-light": "linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)",
-        "hero-pattern":
-          "radial-gradient(circle at 20% 80%, rgba(161, 0, 255, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(41, 127, 148, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(17, 24, 39, 0.8) 0%, transparent 50%)",
+        // Accenture gradients
+        "accenture-gradient":
+          "linear-gradient(135deg, #000000 0%, #a600ff 100%)",
+        "accenture-purple": "linear-gradient(135deg, #a600ff 0%, #8b00d9 100%)",
+        "accenture-dark": "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
+        "hero-overlay":
+          "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(166,0,255,0.6) 100%)",
       },
       boxShadow: {
-        // Corporate shadows
-        corporate: "0 4px 20px -2px rgba(0, 0, 0, 0.1)",
-        "corporate-lg": "0 10px 40px -4px rgba(0, 0, 0, 0.15)",
-        "corporate-xl": "0 20px 60px -8px rgba(0, 0, 0, 0.25)",
-        card: "0 2px 8px -1px rgba(0, 0, 0, 0.1)",
+        // Accenture shadows
+        accenture: "0 4px 20px -2px rgba(0, 0, 0, 0.15)",
+        "accenture-lg": "0 10px 40px -4px rgba(0, 0, 0, 0.2)",
+        "accenture-xl": "0 20px 60px -8px rgba(0, 0, 0, 0.25)",
+        purple: "0 8px 32px -4px rgba(166, 0, 255, 0.3)",
+        card: "0 2px 12px -1px rgba(0, 0, 0, 0.1)",
         "card-hover": "0 8px 32px -4px rgba(0, 0, 0, 0.15)",
       },
       animation: {
-        // Corporate animations
-        "fade-in": "fadeIn 0.6s ease-out",
-        "slide-up": "slideUp 0.6s ease-out",
-        "slide-down": "slideDown 0.6s ease-out",
-        "scale-in": "scaleIn 0.4s ease-out",
-        float: "float 6s ease-in-out infinite",
-        "pulse-soft": "pulseSoft 4s ease-in-out infinite",
+        // Accenture animations
+        "fade-in": "fadeIn 0.8s ease-out",
+        "slide-up": "slideUp 0.8s ease-out",
+        "slide-in-right": "slideInRight 0.8s ease-out",
+        "scale-in": "scaleIn 0.6s ease-out",
+        float: "float 8s ease-in-out infinite",
+        "pulse-glow": "pulseGlow 4s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
       keyframes: {
         fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        slideUp: {
           "0%": { opacity: "0", transform: "translateY(30px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        slideDown: {
-          "0%": { opacity: "0", transform: "translateY(-30px)" },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(50px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideInRight: {
+          "0%": { opacity: "0", transform: "translateX(50px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
         },
         scaleIn: {
           "0%": { opacity: "0", transform: "scale(0.9)" },
@@ -190,15 +202,16 @@ export default {
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-30px)" },
         },
-        pulseSoft: {
-          "0%, 100%": { opacity: "0.8" },
-          "50%": { opacity: "0.4" },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.8", transform: "scale(1)" },
+          "50%": { opacity: "0.4", transform: "scale(1.05)" },
         },
-      },
-      backdropBlur: {
-        xs: "2px",
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
     },
   },
