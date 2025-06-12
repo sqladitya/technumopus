@@ -101,11 +101,11 @@ export const ContentCardsSection = () => (
               {/* Content area with responsive padding */}
               <div className="p-4 sm:p-5 lg:p-6 w-full bg-white">
                 {/* Title with line clamping and responsive sizing */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-900 mb-2 sm:mb-3 group-hover:text-purple-600 transition-colors line-clamp-2 leading-tight tracking-tight">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-accenture-text-primary mb-2 sm:mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2 leading-tight tracking-tight">
                   {card.title}
                 </h3>
                 {/* Description with proper line height and clamping */}
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
+                <p className="text-gray-400 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
                   {card.description}
                 </p>
               </div>
@@ -236,10 +236,10 @@ export const ClientStoriesSection = () => {
         {stories.map((story, index) => (
           <div
             key={index}
-            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
+            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left h-full flex flex-col"
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+            <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden flex-shrink-0">
               <img
                 src={story.image}
                 alt={story.title}
@@ -251,14 +251,14 @@ export const ClientStoriesSection = () => {
                 </span>
               </div>
             </div>
-            <div className="p-4">
+            <div className="p-4 flex flex-col flex-grow">
               <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
                 {story.title}
               </h3>
-              <p className="text-accenture-text-tertiary mb-4 leading-relaxed">
+              <p className="text-gray-400 mb-4 leading-relaxed flex-grow">
                 {story.description}
               </p>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mt-auto">
                 <div className="text-body-xl font-bold text-accenture-purple">
                   {story.results}
                 </div>
@@ -346,23 +346,28 @@ export const AwardsSection = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+    <section className="bg-white relative overflow-hidden">
+      {/* Section Header - Separate container for desktop */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="w-full max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in relative z-10">
-            <div className="text-sm sm:text-base font-bold text-purple-600 uppercase tracking-wider mb-4 sm:mb-6">
+          <div className="text-center animate-fade-in relative z-20">
+            <div className="text-sm sm:text-base font-bold text-accenture-purple uppercase tracking-wider mb-4 sm:mb-6">
               RECOGNITION
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 sm:mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-accenture-text-primary mb-6 sm:mb-8 leading-tight">
               Awards and accolades
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
               Recognition from industry leaders for our innovation, workplace
               culture, and commitment to creating 360° value
             </p>
           </div>
+        </div>
+      </div>
 
+      {/* Awards Content - Separate container */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Mobile: Single Column Layout */}
           <div className="block sm:hidden">
             <div className="space-y-6">
@@ -392,6 +397,7 @@ export const AwardsSection = () => {
               ))}
             </div>
           </div>
+
           {/* Tablet: Two Column Grid */}
           <div className="hidden sm:block lg:hidden">
             <div className="grid grid-cols-2 gap-6 md:gap-8">
@@ -423,18 +429,18 @@ export const AwardsSection = () => {
               ))}
             </div>
           </div>
-          {/* Desktop: Floating Cards Layout */}
-          <div className="hidden lg:block relative min-h-screen">
-            <div className="relative w-full h-full">
+
+          {/* Desktop: Simple Grid Layout instead of floating cards */}
+          <div className="hidden lg:block">
+            <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
               {awards.map((award, index) => (
                 <div
                   key={index}
                   className={cn(
-                    `absolute w-80 xl:w-96 bg-gradient-to-br ${award.color} rounded-2xl p-8 xl:p-10 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-float ${award.position} border border-white/30`,
+                    `bg-gradient-to-br ${award.color} rounded-2xl p-8 xl:p-10 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-slide-in-left border border-white/30`,
                   )}
                   style={{
-                    animationDelay: `${index * 0.5}s`,
-                    animationDuration: `${8 + index}s`,
+                    animationDelay: `${index * 0.2}s`,
                   }}
                 >
                   <div className="flex items-start justify-between mb-6 xl:mb-8">
@@ -454,10 +460,8 @@ export const AwardsSection = () => {
                 </div>
               ))}
             </div>
-
-            {/* Add some spacing for the floating cards */}
-            <div className="h-96"></div>
           </div>
+
           {/* View All Recognition Button (Mobile/Tablet only) */}
           <div className="mt-12 sm:mt-16 text-center lg:hidden">
             <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
@@ -656,7 +660,7 @@ export const ServicesSection = () => (
       <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
         SERVICES
       </div>
-      <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+      <h2 className="text-heading-xl font-semibold text-accenture-purple mb-6">
         How we help
       </h2>
       <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
@@ -722,9 +726,7 @@ export const ServicesSection = () => (
           <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
             {service.title}
           </h3>
-          <p className="text-accenture-text-tertiary leading-relaxed">
-            {service.description}
-          </p>
+          <p className="text-gray-400 leading-relaxed">{service.description}</p>
         </Link>
       ))}
     </div>
@@ -743,7 +745,7 @@ export const AboutSection = () => (
         <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
           Technology meets human ingenuity
         </h2>
-        <p className="text-body-xl text-accenture-text-tertiary mb-8 leading-relaxed">
+        <p className="text-body-xl text-gray-400 mb-8 leading-relaxed">
           We are a global professional services company with leading
           capabilities in digital, cloud and security. Combining unmatched
           experience and specialized skills across more than 40 industries, we
