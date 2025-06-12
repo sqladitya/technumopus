@@ -128,7 +128,7 @@ const ViewAllServices = () => {
       ],
     },
     {
-      title: "Digital Innovation",
+      title: "Digital Transformation",
       description: "Comprehensive transformation and modernization services",
       services: [
         {
