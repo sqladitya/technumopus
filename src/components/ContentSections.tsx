@@ -39,7 +39,7 @@ export const ContentCardsSection = () => (
               image:
                 "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               href: "/insights/ai-maturity",
-              color: "accenture-red",
+              color: "accenture-purple",
             },
             {
               category: "CASE STUDY",
@@ -49,7 +49,7 @@ export const ContentCardsSection = () => (
               image:
                 "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               href: "/insights/digital-banking",
-              color: "accenture-blue",
+              color: "accenture-purple",
             },
             {
               category: "REPORT",
@@ -59,8 +59,9 @@ export const ContentCardsSection = () => (
               image:
                 "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               href: "/insights/future-of-work",
-              color: "accenture-violet",
+              color: "accenture-purple",
             },
+          ]
           ].map((card, index) => (
             <Link
               key={index}
