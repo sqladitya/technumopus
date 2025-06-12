@@ -45,7 +45,52 @@ const SearchDialog = () => {
   }, [isOpen, closeSearch, openSearch]);
 
   const handleSelect = (item: SearchItem) => {
-    navigate(item.href);
+    // Handle AI Assistant actions differently
+    if (item.category === "AI Assistant") {
+      switch (item.id) {
+        case "ai-chat":
+          // Open AI chat interface
+          alert(
+            "AI Chat Assistant: Hello! How can I help you today? (This would open an AI chat interface)",
+          );
+          break;
+        case "ai-search":
+          // Enhance current search with AI
+          alert(
+            "AI-Powered Search: Try asking me questions like 'What services do you offer for cloud migration?' (This would enable AI search mode)",
+          );
+          break;
+        case "ai-recommendations":
+          // Show service recommendations
+          alert(
+            "AI Service Recommendations: Based on your interests, I recommend checking out our SAP Consulting and Cloud Architecture services. (This would show personalized recommendations)",
+          );
+          break;
+        case "ai-solutions":
+          // Open AI solutions advisor
+          alert(
+            "AI Solutions Advisor: I can help you understand how AI can benefit your business. What industry are you in? (This would open an AI advisory session)",
+          );
+          break;
+        case "ai-insights":
+          // Show business insights
+          alert(
+            "AI Business Insights: Did you know that 70% of businesses see ROI within 18 months of AI implementation? (This would show AI-powered insights)",
+          );
+          break;
+        case "ai-feedback":
+          // Open smart feedback form
+          alert(
+            "Smart Feedback Assistant: I'll help you provide detailed feedback with intelligent suggestions. (This would open an AI-enhanced feedback form)",
+          );
+          break;
+        default:
+          break;
+      }
+    } else {
+      // Regular navigation for non-AI items
+      navigate(item.href);
+    }
     closeSearch();
     setQuery("");
   };
