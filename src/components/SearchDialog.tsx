@@ -177,8 +177,8 @@ const SearchDialog = () => {
               No results found for "{query}"
             </p>
             <p className="text-xs text-muted-foreground text-center">
-              Try searching for "SAP", "cloud", "partners", "careers", or any
-              service name
+              Try searching for "SAP", "cloud", "AI assistant", "partners",
+              "careers", or any service name
             </p>
           </div>
         </CommandEmpty>
