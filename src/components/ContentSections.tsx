@@ -101,11 +101,11 @@ export const ContentCardsSection = () => (
               {/* Content area with responsive padding */}
               <div className="p-4 sm:p-5 lg:p-6 w-full bg-white">
                 {/* Title with line clamping and responsive sizing */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-900 mb-2 sm:mb-3 group-hover:text-purple-600 transition-colors line-clamp-2 leading-tight tracking-tight">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-accenture-text-primary mb-2 sm:mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2 leading-tight tracking-tight">
                   {card.title}
                 </h3>
                 {/* Description with proper line height and clamping */}
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
+                <p className="text-accenture-text-tertiary leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
                   {card.description}
                 </p>
               </div>
