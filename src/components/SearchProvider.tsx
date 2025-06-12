@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import SearchCommand from "./SearchCommand";
+import SearchDialog from "./SearchDialog";
 
 interface SearchContextType {
   isOpen: boolean;
@@ -71,7 +71,7 @@ export function SearchProvider({ children }: SearchProviderProps) {
   return (
     <SearchContext.Provider value={value}>
       {children}
-      <SearchCommand />
+      <SearchDialog />
     </SearchContext.Provider>
   );
 }
