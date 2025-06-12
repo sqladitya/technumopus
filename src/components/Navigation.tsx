@@ -744,8 +744,18 @@ const Navigation = () => {
                   }}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-8">
-                    <div className="grid grid-cols-2 gap-12 min-w-[600px]">
+                  <div
+                    className={cn(
+                      "p-8",
+                      dropdownPositions.partners?.maxWidth && "overflow-auto",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "grid grid-cols-2 gap-12 min-w-[600px]",
+                        dropdownPositions.partners?.maxWidth && "min-w-0",
+                      )}
+                    >
                       {partners.map((category) => (
                         <div key={category.category}>
                           <div className="text-xs font-bold text-accenture-text-tertiary uppercase tracking-wider mb-4">
