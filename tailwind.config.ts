@@ -92,19 +92,6 @@ export default {
             light: "#a2a2a0",
             inverse: "#ffffff",
           },
-        },
-
-        // Tech color system for compatibility
-        tech: {
-          primary: "#a600ff", // Maps to accenture-purple
-          secondary: "#000000", // Maps to accenture-black
-          tertiary: "#4b4b49", // Maps to accenture-gray-500
-          gradient: "linear-gradient(135deg, #a600ff 0%, #8b00d9 100%)",
-          text: {
-            dark: "#1f2937", // Dark grey for better readability
-            medium: "#9ca3af", // Light grey as requested by user
-            light: "#d1d5db", // Very light grey for subtle text
-          },
 
           // Background colors
           bg: {
