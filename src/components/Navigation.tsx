@@ -10,7 +10,13 @@ const Navigation = () => {
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
   >(null);
+  const [dropdownPositions, setDropdownPositions] = useState<{
+    [key: string]: { left?: number; right?: number; maxWidth?: number };
+  }>({});
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const companyDropdownRef = useRef<HTMLDivElement>(null);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const partnersDropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { openSearch } = useSearchContext();
 
