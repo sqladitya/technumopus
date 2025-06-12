@@ -25,9 +25,22 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
+    const handleResize = () => {
+      // Reset dropdown positions when window resizes
+      setDropdownPositions({});
+      if (activeDropdown) {
+        // Recalculate if dropdown is currently open
+        handleDropdownEnter(activeDropdown);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [activeDropdown]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
