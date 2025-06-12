@@ -430,25 +430,25 @@ export const AwardsSection = () => {
                 <div
                   key={index}
                   className={cn(
-                    `absolute w-80 xl:w-96 bg-gradient-to-br ${award.color} rounded-lg p-6 xl:p-8 text-white shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
+                    `absolute w-80 xl:w-96 bg-gradient-to-br ${award.color} rounded-2xl p-8 xl:p-10 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-float ${award.position} border border-white/30`,
                   )}
                   style={{
                     animationDelay: `${index * 0.5}s`,
                     animationDuration: `${8 + index}s`,
                   }}
                 >
-                  <div className="flex items-start justify-between mb-4 xl:mb-6">
-                    <div className="text-4xl xl:text-5xl opacity-20">🏆</div>
+                  <div className="flex items-start justify-between mb-6 xl:mb-8">
+                    <div className="text-5xl xl:text-6xl opacity-30">🏆</div>
                     <div className="text-right">
-                      <div className="text-2xl xl:text-3xl font-bold">
+                      <div className="text-2xl xl:text-3xl font-bold bg-white/25 px-4 py-2 rounded-full">
                         {award.year}
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-xl xl:text-2xl font-bold mb-2 xl:mb-3 leading-tight">
+                  <h3 className="text-2xl xl:text-3xl font-bold mb-4 xl:mb-5 leading-tight text-white">
                     {award.title}
                   </h3>
-                  <p className="text-white/90 text-base xl:text-lg">
+                  <p className="text-white/95 text-lg xl:text-xl leading-relaxed">
                     {award.organization}
                   </p>
                 </div>
@@ -458,7 +458,6 @@ export const AwardsSection = () => {
             {/* Add some spacing for the floating cards */}
             <div className="h-96"></div>
           </div>
-
           {/* View All Recognition Button (Mobile/Tablet only) */}
           <div className="mt-8 sm:mt-12 text-center lg:hidden">
             <button className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto">
