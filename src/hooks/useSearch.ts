@@ -10,8 +10,14 @@ export interface UseSearchReturn {
 export function useSearch(): UseSearchReturn {
   const [isOpen, setIsOpen] = useState(false);
 
-  const open = useCallback(() => setIsOpen(true), []);
-  const close = useCallback(() => setIsOpen(false), []);
+  const open = useCallback(() => {
+    console.log("Search opened");
+    setIsOpen(true);
+  }, []);
+  const close = useCallback(() => {
+    console.log("Search closed");
+    setIsOpen(false);
+  }, []);
   const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
 
   useEffect(() => {
