@@ -240,6 +240,63 @@ export const searchData: SearchItem[] = [
     keywords: ["all partners", "directory", "complete", "list"],
   },
 
+  // AI Assistant
+  {
+    id: "ai-chat",
+    title: "AI Chat Assistant",
+    description:
+      "Get instant help and answers with our AI-powered chat assistant",
+    href: "#ai-chat",
+    category: "AI Assistant",
+    icon: Bot,
+    keywords: ["ai", "chat", "assistant", "help", "bot", "support"],
+  },
+  {
+    id: "ai-search",
+    title: "AI-Powered Search",
+    description: "Search with natural language and get intelligent suggestions",
+    href: "#ai-search",
+    category: "AI Assistant",
+    icon: Search,
+    keywords: ["ai search", "smart search", "intelligent", "natural language"],
+  },
+  {
+    id: "ai-recommendations",
+    title: "AI Service Recommendations",
+    description: "Get personalized service recommendations based on your needs",
+    href: "#ai-recommendations",
+    category: "AI Assistant",
+    icon: Lightbulb,
+    keywords: ["ai recommendations", "suggestions", "personalized", "services"],
+  },
+  {
+    id: "ai-solutions",
+    title: "AI Solutions Advisor",
+    description: "Get expert guidance on AI and machine learning solutions",
+    href: "#ai-solutions",
+    category: "AI Assistant",
+    icon: Brain,
+    keywords: ["ai solutions", "machine learning", "advisor", "expert"],
+  },
+  {
+    id: "ai-insights",
+    title: "AI Business Insights",
+    description: "Discover how AI can transform your business operations",
+    href: "#ai-insights",
+    category: "AI Assistant",
+    icon: Sparkles,
+    keywords: ["ai insights", "business", "transformation", "analytics"],
+  },
+  {
+    id: "ai-feedback",
+    title: "Smart Feedback Assistant",
+    description: "Provide feedback and suggestions with AI-enhanced forms",
+    href: "#ai-feedback",
+    category: "AI Assistant",
+    icon: MessageSquare,
+    keywords: ["ai feedback", "smart forms", "suggestions", "enhancement"],
+  },
+
   // Legal & Policies
   {
     id: "contact",
