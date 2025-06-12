@@ -338,6 +338,10 @@ export const searchData: SearchItem[] = [
 
 export const searchCategories: SearchCategory[] = [
   {
+    name: "AI Assistant",
+    items: searchData.filter((item) => item.category === "AI Assistant"),
+  },
+  {
     name: "Pages",
     items: searchData.filter((item) => item.category === "Pages"),
   },
