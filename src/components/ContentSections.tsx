@@ -14,12 +14,12 @@ export const Section = ({ children, className, id }: SectionProps) => (
   </section>
 );
 
-// Content Cards Grid - Accenture Style
+// Content Cards Grid - Accenture Style - Fully Responsive
 export const ContentCardsSection = () => (
-  <section className="py-8 sm:py-12 md:py-16 bg-white">
+  <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
     <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
       <div className="w-full max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
           {[
             {
               category: "TRANSFORMATION",
@@ -68,7 +68,7 @@ export const ContentCardsSection = () => (
               className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 sm:hover:-translate-y-2 animate-slide-in-left w-full touch-manipulation"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-video sm:aspect-video bg-accenture-gray-100 relative overflow-hidden w-full">
+              <div className="aspect-[16/9] sm:aspect-video bg-accenture-gray-100 relative overflow-hidden w-full">
                 <img
                   src={card.image}
                   alt={card.title}
@@ -77,24 +77,23 @@ export const ContentCardsSection = () => (
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                   <span
                     className={cn(
-                      "inline-block px-2 py-1 sm:px-3 sm:py-1 text-white text-xs sm:text-body-sm font-bold uppercase tracking-wider rounded",
+                      "inline-block px-2 py-1 sm:px-3 sm:py-1.5 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded shadow-sm",
                       `bg-${card.color}`,
                     )}
-                    style={{ color: 'white' }}
+                    style={{ color: "white" }}
                   >
                     {card.category}
                   </span>
                 </div>
               </div>
-              <div className="p-4 sm:p-6 w-full">
-                <h3 className="text-lg sm:text-heading-md font-semibold text-accenture-text-primary mb-2 sm:mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2 leading-tight">
+              <div className="p-4 sm:p-5 lg:p-6 w-full">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-accenture-text-primary mb-2 sm:mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2 leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-accenture-text-tertiary leading-relaxed text-sm sm:text-base line-clamp-3">
+                <p className="text-accenture-text-tertiary leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4">
                   {card.description}
                 </p>
               </div>
-            </Link>
             </Link>
           ))}
         </div>
