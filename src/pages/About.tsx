@@ -5,7 +5,7 @@ import SectionBackground from "@/components/SectionBackground";
 
 const About = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
       <Navigation />
 
       {/* Hero Section */}
@@ -68,14 +68,14 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <SectionBackground variant="light" className="py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
                 500+
               </div>
-              <div className="text-gray-600 font-medium">
+              <div className="text-gray-700 font-medium">
                 Projects Delivered
               </div>
             </div>
@@ -83,23 +83,23 @@ const About = () => {
               <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
                 150+
               </div>
-              <div className="text-gray-600 font-medium">Happy Clients</div>
+              <div className="text-gray-700 font-medium">Happy Clients</div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
                 50+
               </div>
-              <div className="text-gray-600 font-medium">Team Members</div>
+              <div className="text-gray-700 font-medium">Team Members</div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
                 8+
               </div>
-              <div className="text-gray-600 font-medium">Years Experience</div>
+              <div className="text-gray-700 font-medium">Years Experience</div>
             </div>
           </div>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* Our Story Section */}
       <section className="py-20 bg-gray-50">
