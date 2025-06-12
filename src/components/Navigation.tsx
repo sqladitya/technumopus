@@ -354,7 +354,7 @@ const Navigation = () => {
           {/* Mobile Search Button */}
           <button
             onClick={() => {
-              setIsSearchOpen(true);
+              search.open();
               setIsMobileMenuOpen(false);
             }}
             className="flex items-center gap-3 w-full text-lg font-medium text-accenture-text-primary hover:text-accenture-purple py-2"
@@ -373,6 +373,9 @@ const Navigation = () => {
               />
             </svg>
             Search
+            <kbd className="ml-auto px-2 py-1 bg-accenture-gray-100 text-accenture-text-tertiary rounded text-xs">
+              ⌘K
+            </kbd>
           </button>
         </div>
       </div>
