@@ -91,17 +91,17 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div className="bg-accenture-black rounded-2xl shadow-xl p-8">
                 <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-4 py-2 mb-4">
-                    <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accenture-purple to-accenture-purple-light rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-white uppercase tracking-wider">
                       Send Message
                     </span>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-3xl font-bold text-white mb-4">
                     Tell Us About Your Project
                   </h2>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-white/80 leading-relaxed">
                     Fill out the form below and we'll get back to you within 24
                     hours to discuss your requirements.
                   </p>
