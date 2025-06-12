@@ -136,23 +136,24 @@ const Navigation = () => {
       let triggerElement: HTMLElement | null = null;
       let dropdownWidth = 0;
 
+      // Find the correct dropdown element and trigger
       if (dropdown === "company" && companyDropdownRef.current) {
         dropdownElement = companyDropdownRef.current;
-        triggerElement = dropdownElement.parentElement?.querySelector(
-          "button",
-        ) as HTMLElement;
+        triggerElement = dropdownElement
+          .closest(".relative")
+          ?.querySelector("button") as HTMLElement;
         dropdownWidth = 320; // min-w-[320px]
       } else if (dropdown === "services" && servicesDropdownRef.current) {
         dropdownElement = servicesDropdownRef.current;
-        triggerElement = dropdownElement.parentElement?.querySelector(
-          "button",
-        ) as HTMLElement;
+        triggerElement = dropdownElement
+          .closest(".relative")
+          ?.querySelector("button") as HTMLElement;
         dropdownWidth = 400; // min-w-[400px]
       } else if (dropdown === "partners" && partnersDropdownRef.current) {
         dropdownElement = partnersDropdownRef.current;
-        triggerElement = dropdownElement.parentElement?.querySelector(
-          "button",
-        ) as HTMLElement;
+        triggerElement = dropdownElement
+          .closest(".relative")
+          ?.querySelector("button") as HTMLElement;
         dropdownWidth = 500; // Reduced width for smaller partner list
       }
 
@@ -167,7 +168,7 @@ const Navigation = () => {
           [dropdown]: position,
         }));
       }
-    }, 10);
+    }, 50); // Increased delay to ensure proper DOM measurement
   };
 
   const handleDropdownLeave = () => {
