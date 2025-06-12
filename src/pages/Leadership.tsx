@@ -100,10 +100,10 @@ const Leadership = () => {
       <SectionBackground variant="gradient">
         <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Meet Our Leadership Team
             </h1>
-            <p className="text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
               Experienced leaders driving innovation and excellence in
               technology solutions
             </p>
@@ -116,10 +116,10 @@ const Leadership = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Executive Leadership
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
                 Our executive team brings decades of combined experience in
                 technology, business strategy, and operational excellence.
               </p>
@@ -141,17 +141,17 @@ const Leadership = () => {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-tech-text-dark mb-2">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
                         {leader.name}
                       </h3>
-                      <p className="text-tech-primary font-semibold mb-4">
+                      <p className="text-blue-600 font-semibold mb-4">
                         {leader.title}
                       </p>
-                      <p className="text-tech-text-medium mb-6 leading-relaxed">
+                      <p className="text-gray-600 mb-6 leading-relaxed">
                         {leader.bio}
                       </p>
                       <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-tech-text-dark mb-2">
+                        <h4 className="text-sm font-semibold text-gray-700 mb-2">
                           Specialties:
                         </h4>
                         <div className="flex flex-wrap gap-2">
@@ -182,10 +182,10 @@ const Leadership = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Department Leaders
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
                 Department heads who ensure excellence in their respective areas
                 of expertise.
               </p>
@@ -205,13 +205,13 @@ const Leadership = () => {
                         .join("")}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {leader.name}
                   </h3>
-                  <p className="text-tech-primary font-semibold mb-4">
+                  <p className="text-blue-600 font-semibold mb-4">
                     {leader.title}
                   </p>
-                  <p className="text-tech-text-medium text-sm mb-4 leading-relaxed">
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                     {leader.bio}
                   </p>
                   <div className="mb-4">
@@ -241,10 +241,10 @@ const Leadership = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-semibold text-accenture-text-primary mb-6">
+              <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
                 Leadership Excellence
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
                 Our leadership team's collective impact and achievements
               </p>
             </div>
@@ -260,21 +260,17 @@ const Leadership = () => {
                 <div className="text-4xl font-bold text-tech-primary mb-2">
                   25+
                 </div>
-                <div className="text-tech-text-medium">
-                  Industry Certifications
-                </div>
+                <div className="text-gray-600">Industry Certifications</div>
               </div>
               <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="text-4xl font-bold text-tech-primary mb-2">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
                   500+
                 </div>
-                <div className="text-tech-text-medium">Projects Led</div>
+                <div className="text-gray-600">Projects Led</div>
               </div>
               <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="text-4xl font-bold text-tech-primary mb-2">
-                  98%
-                </div>
-                <div className="text-tech-text-medium">Client Satisfaction</div>
+                <div className="text-4xl font-bold text-blue-600 mb-2">98%</div>
+                <div className="text-gray-600">Client Satisfaction</div>
               </div>
             </div>
           </div>
