@@ -255,7 +255,7 @@ export const ClientStoriesSection = () => {
               <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
                 {story.title}
               </h3>
-              <p className="text-accenture-text-tertiary mb-4 leading-relaxed flex-grow">
+              <p className="text-gray-400 mb-4 leading-relaxed flex-grow">
                 {story.description}
               </p>
               <div className="flex items-center justify-between mt-auto">
