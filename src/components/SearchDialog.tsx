@@ -346,7 +346,7 @@ const SearchDialog = () => {
             {/* AI Mode - No Query */}
             {!query.trim() && (
               <>
-                <CommandGroup heading="🤖 Ask AI Assistant">
+                <CommandGroup heading="Ask AI Assistant">
                   <div className="p-4 text-center">
                     <p className="text-sm text-muted-foreground mb-3">
                       Ask me anything about our services, company, or how we can
