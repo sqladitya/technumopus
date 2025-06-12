@@ -426,10 +426,10 @@ const ViewAllServices = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Proven Track Record
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Our success is measured by the success of our clients. Here are
                 some key metrics that showcase our commitment to excellence.
               </p>
@@ -441,13 +441,13 @@ const ViewAllServices = () => {
                   key={index}
                   className="bg-white/80 backdrop-blur-sm rounded-xl p-8 text-center border border-white/20 hover:bg-white transition-all duration-300"
                 >
-                  <div className="text-4xl md:text-5xl font-bold text-tech-primary mb-4">
+                  <div className="text-4xl md:text-5xl font-bold text-accenture-purple mb-4">
                     {stat.number}
                   </div>
-                  <div className="text-xl font-semibold text-tech-text-dark mb-3">
+                  <div className="text-xl font-semibold text-accenture-text-primary mb-3">
                     {stat.label}
                   </div>
-                  <div className="text-tech-text-medium text-sm">
+                  <div className="text-gray-600 text-sm">
                     {stat.description}
                   </div>
                 </div>
