@@ -83,6 +83,9 @@ const SearchDialog = () => {
 
   return (
     <CommandDialog open={isOpen} onOpenChange={closeSearch}>
+      <DialogTitle className="sr-only">
+        Search Technum Opus - Find pages, services, and more
+      </DialogTitle>
       <CommandInput
         placeholder="Search pages, services, and more... (Cmd+K)"
         value={query}
