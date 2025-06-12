@@ -127,12 +127,27 @@ const SearchDialog = () => {
     }
   };
 
-  // Reset query when dialog closes
+  // Reset state when dialog closes
   useEffect(() => {
     if (!isOpen) {
       setQuery("");
+      setIsAIMode(false);
+      setAiResponse(null);
     }
   }, [isOpen]);
+
+  // Handle AI search when query changes in AI mode
+  useEffect(() => {
+    if (isAIMode && query.trim()) {
+      const timeoutId = setTimeout(() => {
+        handleAISearch(query);
+      }, 300); // Debounce AI search
+
+      return () => clearTimeout(timeoutId);
+    } else if (isAIMode && !query.trim()) {
+      setAiResponse(null);
+    }
+  }, [query, isAIMode]);
 
   const filteredResults = query.length > 0 ? searchItems(query) : [];
 
