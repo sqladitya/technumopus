@@ -193,7 +193,7 @@ const Contact = () => {
 
               {/* Contact Information */}
               <div className="space-y-8">
-                <div>
+                <div className="bg-black rounded-xl p-6">
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accenture-purple/20 to-accenture-purple-light/20 rounded-full px-4 py-2 mb-4">
                     <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                       Contact Info
@@ -239,27 +239,6 @@ const Contact = () => {
                       </div>
                     </div>
                   ))}
-                </div>
-
-                {/* Business Hours */}
-                <div className="bg-accenture-black/50 rounded-xl shadow-lg p-6 border border-white/10">
-                  <h3 className="text-lg font-semibold text-white mb-4">
-                    Business Hours
-                  </h3>
-                  <div className="space-y-2 text-white/80">
-                    <div className="flex justify-between">
-                      <span>Monday - Friday</span>
-                      <span className="font-medium">9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Saturday</span>
-                      <span className="font-medium">10:00 AM - 4:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sunday</span>
-                      <span className="font-medium">Closed</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
