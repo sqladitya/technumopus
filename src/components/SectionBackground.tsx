@@ -14,7 +14,7 @@ const SectionBackground = ({
       case "light":
         return "bg-gradient-to-br from-gray-50 via-white to-gray-100/50 relative overflow-hidden";
       case "dark":
-        return "bg-gradient-to-br from-slate-100 via-gray-50 to-slate-200/50 relative overflow-hidden";
+        return "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden";
       case "gradient":
         return "bg-gradient-to-br from-blue-50/30 via-white to-purple-50/30 relative overflow-hidden";
       default:
