@@ -674,12 +674,27 @@ const Navigation = () => {
                 </button>
 
                 <div
+                  ref={partnersDropdownRef}
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    "absolute top-full mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform",
                     activeDropdown === "partners"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
+                    dropdownPositions.partners?.right !== undefined
+                      ? "origin-top-right"
+                      : "origin-top-left",
                   )}
+                  style={{
+                    left:
+                      dropdownPositions.partners?.left !== undefined
+                        ? dropdownPositions.partners.left
+                        : undefined,
+                    right:
+                      dropdownPositions.partners?.right !== undefined
+                        ? dropdownPositions.partners.right
+                        : undefined,
+                    maxWidth: dropdownPositions.partners?.maxWidth,
+                  }}
                   onMouseLeave={handleDropdownLeave}
                 >
                   <div className="p-8">
