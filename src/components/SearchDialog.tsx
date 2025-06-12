@@ -210,11 +210,42 @@ const SearchDialog = () => {
         </DialogDescription>
       </VisuallyHidden>
 
-      <CommandInput
-        placeholder="Search pages, services, or ask AI for help..."
-        value={query}
-        onValueChange={setQuery}
-      />
+      <div className="flex items-center gap-2 p-2 border-b">
+        <div className="flex-1">
+          <CommandInput
+            placeholder={
+              isAIMode
+                ? "Ask me anything about our services..."
+                : "Search pages, services, or ask AI for help..."
+            }
+            value={query}
+            onValueChange={setQuery}
+            className="border-0 focus:ring-0"
+          />
+        </div>
+        <Button
+          variant={isAIMode ? "default" : "outline"}
+          size="sm"
+          onClick={() => {
+            setIsAIMode(!isAIMode);
+            setQuery("");
+            setAiResponse(null);
+          }}
+          className="flex items-center gap-1 shrink-0"
+        >
+          {isAIMode ? (
+            <>
+              <Sparkles className="w-3 h-3" />
+              AI
+            </>
+          ) : (
+            <>
+              <Search className="w-3 h-3" />
+              Search
+            </>
+          )}
+        </Button>
+      </div>
 
       <CommandList>
         <CommandEmpty>
