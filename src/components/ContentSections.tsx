@@ -430,18 +430,17 @@ export const AwardsSection = () => {
             </div>
           </div>
 
-          {/* Desktop: Floating Cards Layout - Cards only in dedicated space */}
+          {/* Desktop: Simple Grid Layout instead of floating cards */}
           <div className="hidden lg:block">
-            <div className="relative w-full h-screen">
+            <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
               {awards.map((award, index) => (
                 <div
                   key={index}
                   className={cn(
-                    `absolute w-80 xl:w-96 bg-gradient-to-br ${award.color} rounded-2xl p-8 xl:p-10 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-float ${award.position} border border-white/30`,
+                    `bg-gradient-to-br ${award.color} rounded-2xl p-8 xl:p-10 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-slide-in-left border border-white/30`,
                   )}
                   style={{
-                    animationDelay: `${index * 0.5}s`,
-                    animationDuration: `${8 + index}s`,
+                    animationDelay: `${index * 0.2}s`,
                   }}
                 >
                   <div className="flex items-start justify-between mb-6 xl:mb-8">
