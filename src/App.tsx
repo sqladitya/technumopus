@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
-import About from "./pages/About";
+import AboutUs from "./pages/About";
 import Leadership from "./pages/Leadership";
 import Careers from "./pages/Careers";
 import NewsInsights from "./pages/NewsInsights";
@@ -26,10 +26,10 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import WhatWeBelieve from "./pages/WhatWeBelieve";
-import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import DevHelper from "@/components/DevHelper";
-import SearchCommand from "@/components/SearchCommand";
+import SearchProvider from "@/components/SearchProvider";
+import PageTextFixer from "@/components/PageTextFixer";
 
 const queryClient = new QueryClient();
 
@@ -39,56 +39,63 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
-        <SearchCommand />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/leadership" element={<Leadership />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/news-insights" element={<NewsInsights />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/services" element={<ViewAllServices />} />
-          <Route path="/services/sap-consulting" element={<SAPConsulting />} />
-          <Route
-            path="/services/saas-development"
-            element={<SAASDevelopment />}
-          />
-          <Route
-            path="/services/cloud-architecture"
-            element={<CloudArchitecture />}
-          />
-          <Route
-            path="/services/hardware-infrastructure"
-            element={<HardwareInfrastructure />}
-          />
-          <Route
-            path="/services/digital-transformation"
-            element={<DigitalTransformation />}
-          />
-          <Route path="/partners/cloud-partners" element={<CloudPartners />} />
-          <Route
-            path="/partners/technology-partners"
-            element={<TechnologyPartners />}
-          />
-          <Route
-            path="/partners/security-partners"
-            element={<SecurityPartners />}
-          />
-          <Route
-            path="/partners/integration-partners"
-            element={<IntegrationPartners />}
-          />
-          <Route path="/partners/view-all" element={<ViewAllPartners />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/about/what-we-believe" element={<WhatWeBelieve />} />
-          <Route path="/search" element={<Search />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <SearchProvider>
+          <PageTextFixer />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/leadership" element={<Leadership />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/news-insights" element={<NewsInsights />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/partners" element={<Partners />} />
+            <Route path="/services" element={<ViewAllServices />} />
+            <Route
+              path="/services/sap-consulting"
+              element={<SAPConsulting />}
+            />
+            <Route
+              path="/services/saas-development"
+              element={<SAASDevelopment />}
+            />
+            <Route
+              path="/services/cloud-architecture"
+              element={<CloudArchitecture />}
+            />
+            <Route
+              path="/services/hardware-infrastructure"
+              element={<HardwareInfrastructure />}
+            />
+            <Route
+              path="/services/digital-transformation"
+              element={<DigitalTransformation />}
+            />
+            <Route
+              path="/partners/cloud-partners"
+              element={<CloudPartners />}
+            />
+            <Route
+              path="/partners/technology-partners"
+              element={<TechnologyPartners />}
+            />
+            <Route
+              path="/partners/security-partners"
+              element={<SecurityPartners />}
+            />
+            <Route
+              path="/partners/integration-partners"
+              element={<IntegrationPartners />}
+            />
+            <Route path="/partners/view-all" element={<ViewAllPartners />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/about/what-we-believe" element={<WhatWeBelieve />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </SearchProvider>
       </BrowserRouter>
       <DevHelper />
     </TooltipProvider>
