@@ -61,7 +61,6 @@ export const ContentCardsSection = () => (
               href: "/insights/future-of-work",
               color: "accenture-purple",
             },
-          ]
           ].map((card, index) => (
             <Link
               key={index}
