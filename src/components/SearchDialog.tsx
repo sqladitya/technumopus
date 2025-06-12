@@ -17,8 +17,9 @@ const SearchDialog = () => {
     filteredResults,
     closeSearch,
     handleSelect,
-    openSearch,
   } = useSearch();
+
+  const { openSearch } = useSearchContext();
 
   // Handle keyboard shortcuts
   useEffect(() => {
