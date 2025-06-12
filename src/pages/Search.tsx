@@ -136,20 +136,36 @@ const Search = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <SectionBackground variant="light">
-        <section className="pt-24 pb-12">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-6">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[50vh] flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
               Search Results
-            </h1>
-            {query && (
-              <p className="text-xl text-tech-text-medium mb-8">
-                Results for: <span className="font-semibold">"{query}"</span>
-              </p>
-            )}
+            </span>
           </div>
-        </section>
-      </SectionBackground>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-none">
+            Find What You're
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+              Looking For
+            </span>
+          </h1>
+
+          {query && (
+            <p className="text-xl md:text-2xl font-light text-white/80 mb-8 leading-relaxed">
+              Results for: <span className="font-semibold">"{query}"</span>
+            </p>
+          )}
+        </div>
+      </section>
 
       {/* Results Section */}
       <SectionBackground variant="light">
@@ -157,7 +173,7 @@ const Search = () => {
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
             {isLoading ? (
               <div className="flex items-center justify-center py-16">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tech-primary"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
               </div>
             ) : !query ? (
               <div className="text-center py-16">
@@ -174,10 +190,10 @@ const Search = () => {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
-                <h2 className="text-2xl font-bold text-tech-text-dark mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Start Your Search
                 </h2>
-                <p className="text-tech-text-medium">
+                <p className="text-gray-600">
                   Enter a search term to find relevant content across our
                   services, solutions, and insights.
                 </p>
@@ -197,23 +213,23 @@ const Search = () => {
                     d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m-3-16v6.5"
                   />
                 </svg>
-                <h2 className="text-2xl font-bold text-tech-text-dark mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   No Results Found
                 </h2>
-                <p className="text-tech-text-medium mb-6">
+                <p className="text-gray-600 mb-6">
                   We couldn't find anything matching "{query}". Try a different
                   search term or explore our main sections.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     to="/services"
-                    className="px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                    className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
                   >
                     Browse Services
                   </Link>
                   <Link
                     to="/about"
-                    className="px-6 py-3 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
+                    className="px-6 py-3 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-all duration-300"
                   >
                     Learn About Us
                   </Link>
@@ -222,7 +238,7 @@ const Search = () => {
             ) : (
               <div>
                 <div className="mb-8">
-                  <p className="text-tech-text-medium">
+                  <p className="text-gray-600">
                     Found {results.length} result
                     {results.length !== 1 ? "s" : ""}
                   </p>
@@ -231,7 +247,7 @@ const Search = () => {
                 <div className="space-y-8">
                   {Object.entries(groupedResults).map(([category, items]) => (
                     <div key={category}>
-                      <h3 className="text-lg font-bold text-tech-text-dark mb-4 border-l-4 border-tech-primary pl-4">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4 border-l-4 border-purple-600 pl-4">
                         {category}
                       </h3>
                       <div className="space-y-4">
@@ -239,15 +255,15 @@ const Search = () => {
                           <Link
                             key={index}
                             to={result.href}
-                            className="block group bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-lg hover:border-tech-primary/30 transition-all duration-300"
+                            className="block group bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-lg hover:border-purple-600/30 transition-all duration-300"
                           >
-                            <h4 className="text-xl font-semibold text-tech-text-dark group-hover:text-tech-primary transition-colors mb-2">
+                            <h4 className="text-xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors mb-2">
                               {result.title}
                             </h4>
-                            <p className="text-tech-text-medium leading-relaxed">
+                            <p className="text-gray-600 leading-relaxed">
                               {result.description}
                             </p>
-                            <div className="flex items-center gap-2 mt-4 text-tech-primary group-hover:text-tech-primary-dark transition-colors">
+                            <div className="flex items-center gap-2 mt-4 text-purple-600 group-hover:text-purple-700 transition-colors">
                               <span className="text-sm font-medium">
                                 Learn more
                               </span>
