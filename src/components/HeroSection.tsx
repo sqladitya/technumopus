@@ -287,8 +287,8 @@ const HeroSection = () => {
           </div>
         ))}
 
-        {/* Enhanced Slide Controls - Shifted Right */}
-        <div className="absolute bottom-10 left-12 z-30 flex items-center gap-6">
+        {/* Enhanced Slide Controls - Moved Lower */}
+        <div className="absolute bottom-6 left-12 z-30 flex items-center gap-6">
           {/* Slide Indicators with Progress */}
           <div className="flex gap-4">
             {heroSlides.map((_, index) => (
