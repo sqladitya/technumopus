@@ -386,6 +386,36 @@
   .heading-purple {
     color: #a600ff !important;
   }
+
+  /* Final comprehensive text visibility fixes */
+  body:not(.index-page) .text-gray-900,
+  body:not(.index-page) .text-gray-800,
+  body:not(.index-page) .text-gray-700 {
+    color: #1f2937 !important;
+  }
+
+  body:not(.index-page) .text-gray-600,
+  body:not(.index-page) .text-gray-500 {
+    color: #9ca3af !important;
+  }
+
+  /* Ensure accenture purple is always visible */
+  .text-accenture-purple {
+    color: #a600ff !important;
+  }
+
+  /* Force visible text colors on light backgrounds */
+  .bg-white .text-gray-900,
+  .bg-gray-50 .text-gray-900,
+  .bg-gray-100 .text-gray-900 {
+    color: #1f2937 !important;
+  }
+
+  .bg-white .text-gray-700,
+  .bg-gray-50 .text-gray-700,
+  .bg-gray-100 .text-gray-700 {
+    color: #9ca3af !important;
+  }
 }
 
 /* Accenture animations - Left-aligned */
