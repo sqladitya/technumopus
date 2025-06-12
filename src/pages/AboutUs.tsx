@@ -59,7 +59,7 @@ const AboutUs = () => {
               </div>
               <div className="space-y-8">
                 <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                     Our Vision
                   </h3>
                   <p className="text-tech-text-medium leading-relaxed">
