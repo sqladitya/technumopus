@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { useSearch } from "@/hooks/useSearch";
+import { useSearchContext } from "@/components/SearchProvider";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
