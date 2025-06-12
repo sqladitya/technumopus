@@ -80,6 +80,7 @@ export const ContentCardsSection = () => (
                       "inline-block px-3 py-1 text-white text-body-sm font-bold uppercase tracking-wider rounded",
                       `bg-${card.color}`,
                     )}
+                    style={{ color: "white" }}
                   >
                     {card.category}
                   </span>
