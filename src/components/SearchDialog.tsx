@@ -149,9 +149,10 @@ const SearchDialog = () => {
     }
   }, [query, isAIMode]);
 
-  const filteredResults = query.length > 0 ? searchItems(query) : [];
+  const filteredResults =
+    !isAIMode && query.length > 0 ? searchItems(query) : [];
 
-  // Group results by category
+  // Group results by category (for regular search)
   const groupedResults = filteredResults.reduce(
     (acc, item) => {
       if (!acc[item.category]) {
