@@ -352,10 +352,10 @@ const ViewAllServices = () => {
             {serviceCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-16">
                 <div className="text-center mb-12">
-                  <h3 className="text-3xl font-bold text-tech-text-dark mb-4">
+                  <h3 className="text-3xl font-bold text-accenture-text-primary mb-4">
                     {category.title}
                   </h3>
-                  <p className="text-lg text-tech-text-medium max-w-2xl mx-auto">
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                     {category.description}
                   </p>
                 </div>
