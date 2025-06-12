@@ -240,27 +240,6 @@ const Contact = () => {
                     </div>
                   ))}
                 </div>
-
-                {/* Business Hours */}
-                <div className="bg-accenture-black/50 rounded-xl shadow-lg p-6 border border-white/10">
-                  <h3 className="text-lg font-semibold text-white mb-4">
-                    Business Hours
-                  </h3>
-                  <div className="space-y-2 text-white/80">
-                    <div className="flex justify-between">
-                      <span>Monday - Friday</span>
-                      <span className="font-medium">9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Saturday</span>
-                      <span className="font-medium">10:00 AM - 4:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sunday</span>
-                      <span className="font-medium">Closed</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
