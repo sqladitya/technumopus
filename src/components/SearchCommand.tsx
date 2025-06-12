@@ -22,6 +22,11 @@ export function SearchCommand({ className }: SearchCommandProps) {
   const [selectedItem, setSelectedItem] = useState<SearchItem | null>(null);
   const navigate = useNavigate();
 
+  // Debug logging
+  useEffect(() => {
+    console.log("SearchCommand isOpen state:", isOpen);
+  }, [isOpen]);
+
   const handleSelect = (item: SearchItem) => {
     close();
     navigate(item.href);
