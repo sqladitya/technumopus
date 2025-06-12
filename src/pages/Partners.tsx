@@ -1,17 +1,18 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
+import { Link } from "react-router-dom";
 
 const Partners = () => {
   const partnerCategories = [
     {
       title: "Cloud Partners",
       description:
-        "Leading cloud platform providers for scalable infrastructure",
+        "Leading cloud service providers that power our scalable solutions",
       href: "/partners/cloud-partners",
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -24,21 +25,16 @@ const Partners = () => {
           />
         </svg>
       ),
-      partners: ["AWS", "Microsoft Azure", "Google Cloud Platform"],
-      benefits: [
-        "Enterprise-grade cloud solutions",
-        "Multi-cloud expertise",
-        "Cost optimization strategies",
-        "24/7 cloud support",
-      ],
+      partners: ["AWS", "Microsoft Azure", "Google Cloud", "IBM Cloud"],
     },
     {
       title: "Technology Partners",
-      description: "Industry-leading hardware and infrastructure solutions",
+      description:
+        "Strategic technology alliances that enhance our service delivery",
       href: "/partners/technology-partners",
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -51,21 +47,16 @@ const Partners = () => {
           />
         </svg>
       ),
-      partners: ["Cisco", "Dell Technologies", "HP Enterprise", "Lenovo"],
-      benefits: [
-        "Enterprise hardware solutions",
-        "Network infrastructure",
-        "Server & storage systems",
-        "Professional services",
-      ],
+      partners: ["Oracle", "SAP", "Salesforce", "VMware"],
     },
     {
       title: "Security Partners",
-      description: "Advanced cybersecurity and threat protection solutions",
+      description:
+        "Cybersecurity specialists ensuring robust protection for our clients",
       href: "/partners/security-partners",
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -78,26 +69,16 @@ const Partners = () => {
           />
         </svg>
       ),
-      partners: [
-        "Palo Alto Networks",
-        "SentinelOne",
-        "CrowdStrike",
-        "Fortinet",
-      ],
-      benefits: [
-        "Next-gen firewall solutions",
-        "Endpoint protection",
-        "Threat intelligence",
-        "Security monitoring",
-      ],
+      partners: ["CrowdStrike", "Palo Alto", "Fortinet", "Check Point"],
     },
     {
       title: "Integration Partners",
-      description: "Specialized solutions for seamless system integration",
+      description:
+        "Specialized integration experts for seamless system connectivity",
       href: "/partners/integration-partners",
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-8 h-8"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -106,22 +87,40 @@ const Partners = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+            d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
           />
         </svg>
       ),
-      partners: [
-        "Zebra Technologies",
-        "Honeywell",
-        "Motorola Solutions",
-        "Datalogic",
-      ],
-      benefits: [
-        "IoT and mobility solutions",
-        "Barcode & RFID systems",
-        "Data capture solutions",
-        "Warehouse automation",
-      ],
+      partners: ["MuleSoft", "Boomi", "Zapier", "Microsoft Power Platform"],
+    },
+  ];
+
+  const partnerStats = [
+    { number: "50+", label: "Global Partners" },
+    { number: "15+", label: "Years Partnership" },
+    { number: "99%", label: "Partner Satisfaction" },
+  ];
+
+  const certifications = [
+    {
+      partner: "AWS",
+      level: "Advanced Consulting Partner",
+      description: "Certified in cloud architecture and migration services",
+    },
+    {
+      partner: "Microsoft",
+      level: "Gold Partner",
+      description: "Expertise in Azure cloud and Office 365 solutions",
+    },
+    {
+      partner: "SAP",
+      level: "Certified Solution Provider",
+      description: "Specialized in SAP S/4HANA implementations",
+    },
+    {
+      partner: "Google Cloud",
+      level: "Premier Partner",
+      description: "Advanced capabilities in data analytics and AI",
     },
   ];
 
@@ -130,15 +129,34 @@ const Partners = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/20 via-purple-600/15 to-slate-900/95" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Our Partners
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[80vh] flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+              Our Partners
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-none">
+            Strategic
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+              Partnerships
+            </span>
+            <br />
+            That Drive Success
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+
+          <p className="text-xl md:text-2xl font-light text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
             We collaborate with industry leaders to deliver cutting-edge
-            solutions and exceptional value to our clients
+            solutions and exceptional value to our clients worldwide.
           </p>
         </div>
       </section>
@@ -148,10 +166,15 @@ const Partners = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-6">
-                Partnership Categories
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  Partnership Categories
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Our Partner Ecosystem
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
                 Our strategic partnerships with leading technology providers
                 enable us to offer comprehensive solutions across all aspects of
                 enterprise technology.
@@ -165,27 +188,27 @@ const Partners = () => {
                   className="group bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-20 h-20 bg-tech-gradient rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                       {category.icon}
                     </div>
 
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-tech-text-dark mb-3 group-hover:text-tech-primary transition-colors duration-300">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
                         {category.title}
                       </h3>
-                      <p className="text-tech-text-medium mb-4 leading-relaxed">
+                      <p className="text-gray-600 mb-4 leading-relaxed">
                         {category.description}
                       </p>
 
-                      <div className="mb-4">
-                        <h4 className="font-semibold text-tech-text-dark mb-2">
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-2">
                           Key Partners:
                         </h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 mb-6">
                           {category.partners.map((partner, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1 bg-tech-primary/10 text-tech-primary text-sm rounded-full"
+                              className="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full"
                             >
                               {partner}
                             </span>
@@ -193,23 +216,11 @@ const Partners = () => {
                         </div>
                       </div>
 
-                      <ul className="space-y-2 mb-6">
-                        {category.benefits.map((benefit, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-center gap-2 text-tech-text-medium"
-                          >
-                            <div className="w-2 h-2 bg-tech-primary rounded-full flex-shrink-0" />
-                            {benefit}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <a
-                        href={category.href}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                      <Link
+                        to={category.href}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
                       >
-                        View Partners
+                        Explore Partners
                         <svg
                           className="w-4 h-4"
                           fill="none"
@@ -223,7 +234,7 @@ const Partners = () => {
                             d="M17 8l4 4m0 0l-4 4m4-4H3"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -233,152 +244,142 @@ const Partners = () => {
         </section>
       </SectionBackground>
 
-      {/* Partnership Benefits */}
+      {/* Partner Stats */}
       <SectionBackground variant="gradient">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-                Partnership Benefits
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Partnership Excellence
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                Our strategic alliances provide you with access to the best
-                technologies and expertise
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                Building strong relationships that deliver exceptional results
+                for our clients
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {partnerStats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100"
+                >
+                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-700 font-medium">{stat.label}</div>
                 </div>
-                <h3 className="text-lg font-bold text-tech-text-dark mb-3">
-                  Certified Expertise
-                </h3>
-                <p className="text-tech-text-medium">
-                  Our team holds premier certifications from all major
-                  technology partners
-                </p>
-              </div>
-
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-tech-text-dark mb-3">
-                  Cost Savings
-                </h3>
-                <p className="text-tech-text-medium">
-                  Partner discounts and volume pricing passed directly to our
-                  clients
-                </p>
-              </div>
-
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-tech-text-dark mb-3">
-                  Latest Technology
-                </h3>
-                <p className="text-tech-text-medium">
-                  Early access to cutting-edge solutions and beta programs
-                </p>
-              </div>
-
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-tech-text-dark mb-3">
-                  24/7 Support
-                </h3>
-                <p className="text-tech-text-medium">
-                  Extended support networks and escalation paths for critical
-                  issues
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
       </SectionBackground>
 
-      {/* Become a Partner */}
+      {/* Certifications */}
       <SectionBackground variant="light">
         <section className="py-20">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
-              Interested in Partnering with Us?
-            </h2>
-            <p className="text-xl text-tech-text-medium mb-8">
-              We're always looking for strategic partnerships that bring value
-              to our clients
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="px-8 py-4 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                Partner With Us
-              </a>
-              <a
-                href="/about"
-                className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
-              >
-                Learn More
-              </a>
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  Certifications
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Recognized Excellence
+              </h2>
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                Our certified expertise across leading technology platforms
+                ensures the highest quality service delivery.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {certifications.map((cert, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-8 h-8 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {cert.partner}
+                      </h3>
+                      <p className="text-purple-600 font-semibold">
+                        {cert.level}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    {cert.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </SectionBackground>
+
+      {/* CTA Section */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Leverage Our Partner Network?
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Discover how our strategic partnerships can accelerate your digital
+            transformation and unlock new possibilities for your business.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="/contact"
+              className="group relative overflow-hidden px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+            >
+              <span className="relative z-10">Start Your Project</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
+            <Link
+              to="/partners/view-all"
+              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+            >
+              View All Partners
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

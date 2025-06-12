@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
+import { Link } from "react-router-dom";
 
 const Careers = () => {
   const benefits = [
@@ -81,125 +82,196 @@ const Careers = () => {
         </svg>
       ),
       title: "Flexible Work",
+      description: "Remote work options, flexible hours, and work-life balance",
+    },
+    {
+      icon: (
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
+      ),
+      title: "Team Culture",
       description:
-        "Remote work options, flexible hours, and work-life balance support",
+        "Collaborative environment, team events, and inclusive culture",
+    },
+    {
+      icon: (
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+          />
+        </svg>
+      ),
+      title: "Innovation Time",
+      description:
+        "20% time for personal projects and exploring new technologies",
     },
   ];
 
   const openPositions = [
     {
-      title: "Senior SAP Consultant",
-      department: "SAP Practice",
-      location: "Remote / Hybrid",
+      title: "Senior Software Engineer",
+      department: "Engineering",
+      location: "San Francisco, CA / Remote",
       type: "Full-time",
       description:
-        "Lead SAP S/4HANA implementations and guide clients through digital transformation initiatives.",
+        "Join our engineering team to build scalable SaaS platforms and enterprise solutions.",
       requirements: [
-        "5+ years SAP consulting experience",
-        "S/4HANA certification preferred",
-        "Strong client communication skills",
+        "5+ years of software development experience",
+        "Proficiency in React, Node.js, and cloud platforms",
+        "Experience with microservices architecture",
+        "Strong problem-solving skills",
       ],
     },
     {
-      title: "Cloud Solutions Architect",
-      department: "Cloud Services",
-      location: "Remote / Hybrid",
+      title: "SAP Consultant",
+      department: "Consulting",
+      location: "New York, NY / Remote",
       type: "Full-time",
       description:
-        "Design and implement scalable cloud architectures for enterprise clients across AWS, Azure, and GCP.",
+        "Lead SAP implementation projects and provide expert consulting to enterprise clients.",
       requirements: [
-        "Cloud architecture certification",
-        "5+ years enterprise experience",
-        "Multi-cloud expertise",
+        "SAP certification (S/4HANA preferred)",
+        "3+ years of SAP implementation experience",
+        "Strong client-facing skills",
+        "Experience with business process optimization",
       ],
     },
     {
-      title: "Full Stack Developer",
-      department: "Software Development",
-      location: "Remote / Hybrid",
+      title: "Cloud Architect",
+      department: "Architecture",
+      location: "Seattle, WA / Remote",
       type: "Full-time",
       description:
-        "Develop modern web applications and SAAS platforms using cutting-edge technologies.",
+        "Design and implement enterprise cloud architectures for our diverse client base.",
       requirements: [
-        "React/Node.js expertise",
-        "3+ years development experience",
-        "API design knowledge",
+        "AWS/Azure/GCP certifications",
+        "5+ years of cloud architecture experience",
+        "Infrastructure as Code expertise",
+        "Security and compliance knowledge",
       ],
     },
     {
       title: "DevOps Engineer",
-      department: "Infrastructure",
-      location: "Remote / Hybrid",
+      department: "Operations",
+      location: "Austin, TX / Remote",
       type: "Full-time",
       description:
-        "Build and maintain CI/CD pipelines, infrastructure automation, and monitoring systems.",
+        "Build and maintain CI/CD pipelines and infrastructure automation.",
       requirements: [
-        "Kubernetes/Docker experience",
-        "Infrastructure as Code",
-        "Monitoring and logging tools",
-      ],
-    },
-    {
-      title: "Business Development Manager",
-      department: "Sales",
-      location: "Remote / Hybrid",
-      type: "Full-time",
-      description:
-        "Identify and develop new business opportunities with enterprise clients.",
-      requirements: [
-        "B2B sales experience",
-        "Technology sector knowledge",
-        "Relationship building skills",
+        "3+ years of DevOps experience",
+        "Kubernetes and Docker expertise",
+        "CI/CD pipeline management",
+        "Monitoring and observability tools",
       ],
     },
   ];
 
+  const workCulture = [
+    {
+      title: "Innovation First",
+      description:
+        "We encourage creative thinking and provide time for exploring new technologies and solutions.",
+    },
+    {
+      title: "Growth Mindset",
+      description:
+        "Continuous learning and development opportunities to advance your career and skills.",
+    },
+    {
+      title: "Work-Life Balance",
+      description:
+        "Flexible schedules and remote work options to maintain a healthy work-life balance.",
+    },
+  ];
+
   return (
-    <SectionBackground variant="light">
+    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
       <Navigation />
 
       {/* Hero Section */}
-      <SectionBackground variant="gradient">
-        <section className="pt-24 pb-16">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
-              Join Our Team
-            </h1>
-            <p className="text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto">
-              Be part of a team that's shaping the future of technology and
-              transforming businesses worldwide.
-            </p>
-          </div>
-        </section>
-      </SectionBackground>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[80vh] flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
 
-      {/* Why Join Us Section */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+              Join Our Team
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-none">
+            Build Your
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+              Future
+            </span>
+            <br />
+            With Us
+          </h1>
+
+          <p className="text-xl md:text-2xl font-light text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
+            Be part of a team that's shaping the future of technology and
+            transforming businesses worldwide through innovation and excellence.
+          </p>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
       <SectionBackground variant="light">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
-                Why Choose Technum Opus?
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  Benefits & Perks
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Why Work With Us
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                Join a culture of innovation, growth, and excellence where your
-                contributions make a real impact.
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                We believe in investing in our people with comprehensive
+                benefits and a culture that promotes growth and innovation.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 text-center"
                 >
-                  <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6 text-white">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center text-white mx-auto mb-6">
                     {benefit.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-4 text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {benefit.title}
                   </h3>
-                  <p className="text-tech-text-medium text-center leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -209,64 +281,92 @@ const Careers = () => {
         </section>
       </SectionBackground>
 
-      {/* Open Positions Section */}
+      {/* Open Positions */}
       <SectionBackground variant="gradient">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
-                Open Positions
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  Open Positions
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Current Opportunities
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                Explore opportunities to grow your career with us
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                Explore our current job openings and find the perfect role to
+                advance your career in technology.
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {openPositions.map((position, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100"
+                  className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                    <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-4 mb-4">
-                        <h3 className="text-2xl font-bold text-tech-text-dark">
+                        <h3 className="text-2xl font-bold text-gray-900">
                           {position.title}
                         </h3>
-                        <span className="px-3 py-1 bg-tech-primary/10 text-tech-primary rounded-full text-sm font-medium">
+                        <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                          {position.department}
+                        </span>
+                        <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
                           {position.type}
                         </span>
                       </div>
-                      <div className="flex flex-wrap gap-4 mb-4 text-sm text-tech-text-medium">
-                        <span>📍 {position.location}</span>
-                        <span>🏢 {position.department}</span>
-                      </div>
-                      <p className="text-tech-text-medium mb-6 leading-relaxed">
+
+                      <p className="text-gray-600 mb-4 flex items-center gap-2">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                        </svg>
+                        {position.location}
+                      </p>
+
+                      <p className="text-gray-700 mb-6 leading-relaxed">
                         {position.description}
                       </p>
+
                       <div>
-                        <h4 className="font-semibold text-tech-text-dark mb-3">
+                        <h4 className="font-semibold text-gray-900 mb-3">
                           Requirements:
                         </h4>
                         <ul className="space-y-2">
                           {position.requirements.map((req, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-center gap-2 text-tech-text-medium"
-                            >
-                              <span className="w-2 h-2 bg-tech-primary rounded-full"></span>
-                              {req}
+                            <li key={idx} className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
+                              <span className="text-gray-700">{req}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
-                    <div className="lg:col-span-1 flex flex-col justify-center">
-                      <button className="w-full bg-tech-gradient text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 mb-4">
+
+                    <div className="flex flex-col gap-3 lg:w-48">
+                      <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
                         Apply Now
                       </button>
-                      <button className="w-full border-2 border-tech-primary text-tech-primary py-3 px-6 rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300">
+                      <button className="px-6 py-3 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-all duration-300">
                         Learn More
                       </button>
                     </div>
@@ -274,58 +374,103 @@ const Careers = () => {
                 </div>
               ))}
             </div>
+
+            <div className="text-center mt-12">
+              <p className="text-gray-600 mb-6">
+                Don't see a role that fits? We're always looking for talented
+                individuals.
+              </p>
+              <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
+                Send Your Resume
+              </button>
+            </div>
           </div>
         </section>
       </SectionBackground>
 
-      {/* Culture Section */}
+      {/* Work Culture */}
       <SectionBackground variant="light">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
-                Our Culture
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  Our Culture
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                What Makes Us Different
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                Building an environment where innovation thrives and people grow
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                Our culture is built on collaboration, innovation, and a shared
+                commitment to excellence in everything we do.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
-                  Innovation First
-                </h3>
-                <p className="text-tech-text-medium">
-                  We encourage creative thinking and provide the resources to
-                  turn ideas into reality.
-                </p>
-              </div>
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
-                  Continuous Learning
-                </h3>
-                <p className="text-tech-text-medium">
-                  Stay ahead with ongoing training, certifications, and skill
-                  development opportunities.
-                </p>
-              </div>
-              <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
-                  Work-Life Balance
-                </h3>
-                <p className="text-tech-text-medium">
-                  Flexible work arrangements that support your personal and
-                  professional growth.
-                </p>
-              </div>
+              {workCulture.map((culture, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 text-center hover:shadow-xl transition-all duration-300"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {culture.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {culture.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </SectionBackground>
 
+      {/* CTA Section */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Join Our Team?
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Take the next step in your career and become part of a team that's
+            making a real impact in the world of technology.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="group relative overflow-hidden px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
+              <span className="relative z-10">View Open Positions</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+            >
+              Contact HR
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
-    </SectionBackground>
+    </div>
   );
 };
 

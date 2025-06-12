@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
-import AboutUs from "./pages/AboutUs";
+import About from "./pages/About";
 import Leadership from "./pages/Leadership";
 import Careers from "./pages/Careers";
 import NewsInsights from "./pages/NewsInsights";
@@ -26,6 +26,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import WhatWeBelieve from "./pages/WhatWeBelieve";
+import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import DevHelper from "@/components/DevHelper";
 
@@ -40,7 +41,7 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutUs />} />
+          <Route path="/about" element={<About />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/news-insights" element={<NewsInsights />} />
@@ -82,6 +83,7 @@ const App = () => (
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/about/what-we-believe" element={<WhatWeBelieve />} />
+          <Route path="/search" element={<Search />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
