@@ -236,10 +236,10 @@ export const ClientStoriesSection = () => {
         {stories.map((story, index) => (
           <div
             key={index}
-            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
+            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left h-full flex flex-col"
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+            <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden flex-shrink-0">
               <img
                 src={story.image}
                 alt={story.title}
@@ -251,14 +251,14 @@ export const ClientStoriesSection = () => {
                 </span>
               </div>
             </div>
-            <div className="p-4">
+            <div className="p-4 flex flex-col flex-grow">
               <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
                 {story.title}
               </h3>
-              <p className="text-accenture-text-tertiary mb-4 leading-relaxed">
+              <p className="text-accenture-text-tertiary mb-4 leading-relaxed flex-grow">
                 {story.description}
               </p>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mt-auto">
                 <div className="text-body-xl font-bold text-accenture-purple">
                   {story.results}
                 </div>
