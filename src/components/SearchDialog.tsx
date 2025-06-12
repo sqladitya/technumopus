@@ -107,17 +107,19 @@ const SearchDialog = () => {
                   " ",
                 )}`}
                 onSelect={() => handleSelect(item)}
-                className="flex items-start gap-3 p-4 cursor-pointer"
+                className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
               >
-                <div className="text-lg mt-0.5">
+                <div className="text-lg mt-1 flex-shrink-0">
                   {getCategoryIcon(item.category)}
                 </div>
-                <div className="flex-1 space-y-1">
-                  <div className="font-medium text-sm">{item.title}</div>
-                  <div className="text-xs text-muted-foreground line-clamp-2 overflow-hidden">
+                <div className="flex-1 space-y-1 min-w-0">
+                  <div className="font-medium text-sm text-foreground group-hover:text-accent-foreground">
+                    {item.title}
+                  </div>
+                  <div className="text-xs text-muted-foreground line-clamp-2 overflow-hidden leading-relaxed">
                     {item.description}
                   </div>
-                  <div className="text-xs text-muted-foreground opacity-60">
+                  <div className="text-xs text-muted-foreground/60 font-mono">
                     {item.url}
                   </div>
                 </div>
