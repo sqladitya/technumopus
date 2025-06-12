@@ -44,13 +44,11 @@ export function SearchCommand({ className }: SearchCommandProps) {
   const filteredItems = query.length > 0 ? searchItems(query) : [];
   const hasResults = filteredItems.length > 0;
 
-  if (!isOpen) return null;
-
   return (
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent
         className={cn(
-          "max-w-2xl p-0 gap-0 overflow-hidden z-[9999]",
+          "max-w-2xl p-0 gap-0 overflow-hidden",
           "bg-white dark:bg-gray-900",
           className,
         )}
