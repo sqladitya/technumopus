@@ -342,82 +342,81 @@ const ViewAllServices = () => {
               Our Service Portfolio
             </h2>
             <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
-              Organized by solution type to help you find exactly what you
-              need for your business transformation.
+              Organized by solution type to help you find exactly what you need
+              for your business transformation.
             </p>
           </div>
 
-            {serviceCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="mb-16">
-                <div className="text-center mb-12">
-                  <h3 className="text-3xl font-bold text-accenture-text-primary mb-4">
-                    {category.title}
-                  </h3>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    {category.description}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {category.services.map((service, serviceIndex) => (
-                    <div
-                      key={serviceIndex}
-                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
-                    >
-                      <div className="w-16 h-16 bg-accenture-purple/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accenture-purple/20 transition-colors duration-300">
-                        <div className="text-accenture-purple">
-                          {service.icon}
-                        </div>
-                      </div>
-
-                      <h4 className="text-2xl font-bold text-accenture-text-primary mb-4">
-                        {service.name}
-                      </h4>
-                      <p className="text-gray-600 mb-6">
-                        {service.description}
-                      </p>
-
-                      <div className="space-y-3 mb-8">
-                        {service.features.map((feature, featureIndex) => (
-                          <div
-                            key={featureIndex}
-                            className="flex items-start gap-3"
-                          >
-                            <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-gray-600 text-sm">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <Link
-                        to={service.href}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
-                      >
-                        Learn More
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
+          {serviceCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="mb-16">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold text-accenture-text-primary mb-4">
+                  {category.title}
+                </h3>
+                <p className="text-lg text-accenture-text-secondary max-w-2xl mx-auto">
+                  {category.description}
+                </p>
               </div>
-            ))}
-          </div>
-        </section>
-      </SectionBackground>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {category.services.map((service, serviceIndex) => (
+                  <div
+                    key={serviceIndex}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                  >
+                    <div className="w-16 h-16 bg-accenture-purple/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accenture-purple/20 transition-colors duration-300">
+                      <div className="text-accenture-purple">
+                        {service.icon}
+                      </div>
+                    </div>
+
+                    <h4 className="text-2xl font-bold text-accenture-text-primary mb-4">
+                      {service.name}
+                    </h4>
+                    <p className="text-accenture-text-secondary mb-6">
+                      {service.description}
+                    </p>
+
+                    <div className="space-y-3 mb-8">
+                      {service.features.map((feature, featureIndex) => (
+                        <div
+                          key={featureIndex}
+                          className="flex items-start gap-3"
+                        >
+                          <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-accenture-text-secondary text-sm">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Link
+                      to={service.href}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+                    >
+                      Learn More
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Service Statistics */}
       <SectionBackground variant="gradient">
