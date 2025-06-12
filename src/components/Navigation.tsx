@@ -429,24 +429,22 @@ const Navigation = () => {
             </button>
             {activeMobileDropdown === "partners" && (
               <div className="pl-4 mt-2 space-y-2">
-                {partners
-                  .flatMap((category) => category.items)
-                  .map((partner) => (
-                    <Link
-                      key={partner.name}
-                      to={partner.href}
-                      onClick={handleMobileLinkClick}
-                      className="block text-base text-accenture-text-secondary hover:text-accenture-purple py-2"
-                    >
-                      {partner.name}
-                    </Link>
-                  ))}
+                {partners.map((partner) => (
+                  <Link
+                    key={partner.name}
+                    to={partner.href}
+                    onClick={handleMobileLinkClick}
+                    className="block text-base text-accenture-text-secondary hover:text-accenture-purple py-2"
+                  >
+                    {partner.name}
+                  </Link>
+                ))}
                 <Link
-                  to="/services"
+                  to="/partners"
                   onClick={handleMobileLinkClick}
                   className="block text-base text-accenture-purple hover:text-accenture-purple-dark py-2 font-medium"
                 >
-                  View All Services
+                  View All Partners
                 </Link>
               </div>
             )}
