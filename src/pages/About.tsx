@@ -112,7 +112,7 @@ const About = () => {
                   >
                     {stat.number}
                   </div>
-                  <div className="text-gray-700 font-semibold text-lg">
+                  <div className="text-gray-400 font-semibold text-lg">
                     {stat.label}
                   </div>
                 </div>
@@ -265,7 +265,7 @@ const About = () => {
                     Our Mission
                   </h3>
                 </div>
-                <p className="text-body-xl text-gray-600 leading-relaxed">
+                <p className="text-body-xl text-gray-400 leading-relaxed">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
