@@ -738,13 +738,13 @@ const Navigation = () => {
                   )}
                   style={{
                     left:
-                      dropdownPositions.partners?.left !== undefined
-                        ? dropdownPositions.partners.left
-                        : undefined,
+                      dropdownPositions.partners?.right === undefined
+                        ? (dropdownPositions.partners?.left ?? 0)
+                        : "auto",
                     right:
                       dropdownPositions.partners?.right !== undefined
                         ? dropdownPositions.partners.right
-                        : undefined,
+                        : "auto",
                     maxWidth: dropdownPositions.partners?.maxWidth,
                   }}
                   onMouseLeave={handleDropdownLeave}
