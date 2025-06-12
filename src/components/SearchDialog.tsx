@@ -73,6 +73,8 @@ const SearchDialog = () => {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
+      case "AI Assistant":
+        return "🤖";
       case "Pages":
         return "🏠";
       case "Quick Actions":
@@ -91,6 +93,10 @@ const SearchDialog = () => {
         return "📚";
       case "Contact":
         return "📧";
+      case "Support":
+        return "🛠️";
+      case "Legal":
+        return "⚖️";
       default:
         return "📄";
     }
