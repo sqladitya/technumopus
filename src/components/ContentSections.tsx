@@ -20,12 +20,12 @@ export const ContentCardsSection = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {[
         {
-          category: "RESEARCH",
-          title: "Technology Vision 2024",
+          category: "TRANSFORMATION",
+          title: "Change That Matters",
           description:
-            "Four trends that will shape the way humans and technology work together",
+            "Discover how we help organizations create lasting impact through human ingenuity and technology innovation",
           image: "/api/placeholder/400/300",
-          href: "/insights/technology-vision-2024",
+          href: "/insights/change-that-matters",
           color: "accenture-purple",
         },
         {
