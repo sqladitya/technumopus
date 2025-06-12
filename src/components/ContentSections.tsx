@@ -394,36 +394,35 @@ export const AwardsSection = () => {
           </div>
           {/* Tablet: Two Column Grid */}
           <div className="hidden sm:block lg:hidden">
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 gap-6 md:gap-8">
               {awards.map((award, index) => (
                 <div
                   key={index}
                   className={cn(
-                    `bg-gradient-to-br ${award.color} rounded-lg p-4 md:p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full animate-slide-in-left`,
+                    `bg-gradient-to-br ${award.color} rounded-xl p-6 md:p-8 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full animate-slide-in-left border border-white/20`,
                   )}
                   style={{
                     animationDelay: `${index * 0.1}s`,
                   }}
                 >
-                  <div className="flex items-start justify-between mb-3 md:mb-4">
-                    <div className="text-2xl md:text-3xl opacity-20">🏆</div>
+                  <div className="flex items-start justify-between mb-4 md:mb-6">
+                    <div className="text-3xl md:text-4xl opacity-30">🏆</div>
                     <div className="text-right">
-                      <div className="text-lg md:text-xl font-bold">
+                      <div className="text-xl md:text-2xl font-bold bg-white/20 px-3 py-1 rounded-full">
                         {award.year}
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-sm md:text-base font-bold mb-2 leading-tight">
+                  <h3 className="text-base md:text-lg font-bold mb-3 md:mb-4 leading-tight text-white">
                     {award.title}
                   </h3>
-                  <p className="text-white/90 text-xs md:text-sm">
+                  <p className="text-white/95 text-sm md:text-base leading-relaxed">
                     {award.organization}
                   </p>
                 </div>
               ))}
             </div>
           </div>
-
           {/* Desktop: Floating Cards Layout */}
           <div className="hidden lg:block relative min-h-screen">
             <div className="relative w-full h-full">
