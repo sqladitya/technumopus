@@ -374,7 +374,7 @@ const SearchDialog = () => {
             {query.trim() && !aiResponse && (
               <CommandEmpty>
                 <div className="flex flex-col items-center gap-2 py-6">
-                  <span className="text-2xl">🤖</span>
+                  <Bot className="w-8 h-8 text-purple-600" />
                   <p className="text-sm font-medium">
                     Processing your question...
                   </p>
