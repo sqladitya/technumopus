@@ -154,7 +154,7 @@ const Navigation = () => {
         triggerElement = dropdownElement
           .closest(".relative")
           ?.querySelector("button") as HTMLElement;
-        dropdownWidth = 500; // Reduced width for smaller partner list
+        dropdownWidth = 320; // Same width as company dropdown
       }
 
       if (dropdownElement && triggerElement) {
