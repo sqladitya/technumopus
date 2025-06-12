@@ -327,7 +327,7 @@ const ViewAllServices = () => {
             </a>
             <a
               href="/services"
-              className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
+              className="px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
             >
               Browse Services
             </a>
