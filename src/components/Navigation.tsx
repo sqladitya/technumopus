@@ -354,7 +354,7 @@ const Navigation = () => {
           {/* Mobile Search Button */}
           <button
             onClick={() => {
-              search.open();
+              openSearch();
               setIsMobileMenuOpen(false);
             }}
             className="flex items-center gap-3 w-full text-lg font-medium text-accenture-text-primary hover:text-accenture-purple py-2"
