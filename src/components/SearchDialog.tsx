@@ -57,10 +57,11 @@ const SearchDialog = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, closeSearch, openSearch]);
 
-  const handleSelect = (item: SearchItem) => {
+  const handleSelect = (item: SearchItem | AISearchResult) => {
     // Handle AI Assistant actions differently
-    if (item.category === "AI Assistant") {
-      switch (item.id) {
+    if ("category" in item && item.category === "AI Assistant") {
+      const searchItem = item as SearchItem;
+      switch (searchItem.id) {
         case "ai-chat":
           // Open AI chat interface
           alert(
@@ -68,11 +69,10 @@ const SearchDialog = () => {
           );
           break;
         case "ai-search":
-          // Enhance current search with AI
-          alert(
-            "AI-Powered Search: Try asking me questions like 'What services do you offer for cloud migration?' (This would enable AI search mode)",
-          );
-          break;
+          // Enable AI search mode
+          setIsAIMode(true);
+          setQuery("");
+          return; // Don't close search, switch to AI mode
         case "ai-recommendations":
           // Show service recommendations
           alert(
@@ -101,11 +101,30 @@ const SearchDialog = () => {
           break;
       }
     } else {
-      // Regular navigation for non-AI items
-      navigate(item.href);
+      // Regular navigation for both SearchItem and AISearchResult
+      const href = "href" in item ? item.href : (item as SearchItem).href;
+      if (href && !href.startsWith("#")) {
+        navigate(href);
+      }
     }
     closeSearch();
     setQuery("");
+    setIsAIMode(false);
+    setAiResponse(null);
+  };
+
+  const handleSuggestionSelect = (suggestion: string) => {
+    setQuery(suggestion);
+    handleAISearch(suggestion);
+  };
+
+  const handleAISearch = (searchQuery: string) => {
+    if (searchQuery.trim()) {
+      const response = processAIQuery(searchQuery);
+      setAiResponse(response);
+    } else {
+      setAiResponse(null);
+    }
   };
 
   // Reset query when dialog closes
