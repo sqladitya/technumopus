@@ -19,13 +19,7 @@ const Footer = () => {
       { name: "Energy", href: "/industries/energy" },
       { name: "View all", href: "/industries" },
     ],
-    insights: [
-      { name: "Research & Insights", href: "/insights/research" },
-      { name: "Case Studies", href: "/insights/case-studies" },
-      { name: "Blogs", href: "/insights/blogs" },
-      { name: "Podcasts", href: "/insights/podcasts" },
-      { name: "Technology Vision", href: "/insights/technology-vision" },
-    ],
+
     about: [
       { name: "What We Believe", href: "/about/what-we-believe" },
       { name: "Leadership", href: "/about/leadership" },
@@ -94,7 +88,7 @@ const Footer = () => {
     <footer className="bg-accenture-black text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
@@ -150,25 +144,6 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {footerLinks.industries.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Insights */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-              INSIGHTS
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.insights.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
