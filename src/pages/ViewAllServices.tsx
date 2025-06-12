@@ -335,18 +335,17 @@ const ViewAllServices = () => {
       </section>
 
       {/* Service Categories */}
-      <SectionBackground variant="light">
-        <section id="services" className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Our Service Portfolio
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Organized by solution type to help you find exactly what you
-                need for your business transformation.
-              </p>
-            </div>
+      <section id="services" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Our Service Portfolio
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              Organized by solution type to help you find exactly what you
+              need for your business transformation.
+            </p>
+          </div>
 
             {serviceCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-16">
