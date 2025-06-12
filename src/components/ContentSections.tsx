@@ -62,7 +62,7 @@ export const ContentCardsSection = () => (
         <Link
           key={index}
           to={card.href}
-          className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-fade-in"
+          className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
@@ -192,7 +192,7 @@ export const ClientStoriesSection = () => {
         {stories.map((story, index) => (
           <div
             key={index}
-            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
+            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
@@ -573,7 +573,7 @@ export const ServicesSection = () => (
         <Link
           key={index}
           to={service.href}
-          className="group block bg-white rounded-lg p-6 shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
+          className="group block bg-white rounded-lg p-6 shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -596,7 +596,7 @@ export const PartnersSection = () => <PartnersLogos />;
 export const AboutSection = () => (
   <Section className="bg-white">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-      <div className="animate-slide-up">
+      <div className="animate-slide-in-left">
         <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
           ABOUT TECHNUM OPUS
         </div>
