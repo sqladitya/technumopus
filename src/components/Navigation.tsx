@@ -477,11 +477,11 @@ const Navigation = () => {
               {/* Search Button */}
               <button
                 onClick={openSearch}
-                className="p-2 text-white hover:text-accenture-purple transition-colors duration-200 group"
+                className="flex items-center gap-2 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 group"
                 title="Search (Cmd+K)"
               >
                 <svg
-                  className="w-5 h-5 group-hover:scale-110 transition-transform duration-200"
+                  className="w-4 h-4 group-hover:scale-110 transition-transform duration-200"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -493,6 +493,12 @@ const Navigation = () => {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
+                <span className="hidden xl:inline text-sm font-medium">
+                  Search
+                </span>
+                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-white/20 rounded border border-white/30">
+                  ⌘K
+                </kbd>
               </button>
             </div>
 
