@@ -17,6 +17,7 @@ const SearchDialog = () => {
     filteredResults,
     closeSearch,
     handleSelect,
+    openSearch,
   } = useSearch();
 
   // Handle keyboard shortcuts
@@ -26,7 +27,6 @@ const SearchDialog = () => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         if (!isOpen) {
-          const { openSearch } = require("@/hooks/useSearch");
           openSearch();
         }
       }
@@ -39,7 +39,7 @@ const SearchDialog = () => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, closeSearch]);
+  }, [isOpen, closeSearch, openSearch]);
 
   // Group results by category
   const groupedResults = filteredResults.reduce(
