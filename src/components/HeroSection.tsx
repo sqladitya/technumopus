@@ -5,15 +5,15 @@ import { cn } from "@/lib/utils";
 const heroSlides = [
   {
     id: 1,
-    category: "STRATEGY & TECHNOLOGY",
-    title: "360° VALUE",
-    subtitle: "Starts with you",
+    category: "TRANSFORMATION",
+    title: "CHANGE THAT MATTERS",
+    subtitle: "For you and your business",
     description:
-      "We create 360° value for our clients by helping them transform their businesses, embrace innovation, and unlock sustainable growth.",
+      "Reinvent your organization with the power of data, artificial intelligence and human ingenuity to create lasting impact that drives sustainable growth.",
     image: "/api/placeholder/1920/1080",
     cta: {
-      primary: { text: "Explore our approach", href: "/about/approach" },
-      secondary: { text: "Watch the film", href: "/insights/360-value" },
+      primary: { text: "See how we help", href: "/services" },
+      secondary: { text: "Client stories", href: "/insights/case-studies" },
     },
   },
   {
