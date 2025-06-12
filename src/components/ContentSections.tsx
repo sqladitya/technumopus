@@ -346,11 +346,11 @@ export const AwardsSection = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+    <section className="bg-white relative overflow-hidden">
+      {/* Section Header - Separate container for desktop */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="w-full max-w-7xl mx-auto">
-          {/* Section Header - Always at top */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in relative z-10">
+          <div className="text-center animate-fade-in relative z-20">
             <div className="text-sm sm:text-base font-bold text-gray-400 uppercase tracking-wider mb-4 sm:mb-6">
               RECOGNITION
             </div>
@@ -362,7 +362,12 @@ export const AwardsSection = () => {
               culture, and commitment to creating 360° value
             </p>
           </div>
+        </div>
+      </div>
 
+      {/* Awards Content - Separate container */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Mobile: Single Column Layout */}
           <div className="block sm:hidden">
             <div className="space-y-6">
@@ -425,7 +430,7 @@ export const AwardsSection = () => {
             </div>
           </div>
 
-          {/* Desktop: Floating Cards Layout - Cards only */}
+          {/* Desktop: Floating Cards Layout - Cards only in dedicated space */}
           <div className="hidden lg:block">
             <div className="relative w-full h-screen">
               {awards.map((award, index) => (
