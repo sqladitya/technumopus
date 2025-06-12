@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import SearchCommand from "./SearchCommand";
+import SearchDialog from "./SearchDialog";
 
 interface SearchContextType {
   isOpen: boolean;
