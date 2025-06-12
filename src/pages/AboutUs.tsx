@@ -46,7 +46,7 @@ const AboutUs = () => {
                   innovative solutions.
                 </p>
                 <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                     Our Mission
                   </h3>
                   <p className="text-tech-text-medium leading-relaxed">
@@ -59,7 +59,7 @@ const AboutUs = () => {
               </div>
               <div className="space-y-8">
                 <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                     Our Vision
                   </h3>
                   <p className="text-tech-text-medium leading-relaxed">
@@ -122,7 +122,7 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">I</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                   Innovation
                 </h3>
                 <p className="text-tech-text-medium">
@@ -135,7 +135,7 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">E</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                   Excellence
                 </h3>
                 <p className="text-tech-text-medium">
@@ -148,7 +148,7 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">I</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                   Integrity
                 </h3>
                 <p className="text-tech-text-medium">
@@ -161,7 +161,7 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">C</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                   Collaboration
                 </h3>
                 <p className="text-tech-text-medium">

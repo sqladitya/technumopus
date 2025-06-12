@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useSearch } from "@/hooks/useSearch";
+import SearchDialog from "@/components/SearchDialog";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { openSearch } = useSearch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,6 +138,9 @@ const Navigation = () => {
 
   return (
     <>
+      {/* Search Dialog */}
+      <SearchDialog />
+
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
@@ -210,6 +216,30 @@ const Navigation = () => {
           >
             Contact
           </Link>
+
+          {/* Mobile Search Button */}
+          <button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              openSearch();
+            }}
+            className="flex items-center gap-3 text-lg font-medium text-accenture-text-primary hover:text-accenture-purple transition-colors"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            Search
+          </button>
         </div>
       </div>
 
@@ -445,9 +475,13 @@ const Navigation = () => {
               </Link>
 
               {/* Search Button */}
-              <button className="p-2 text-white hover:text-accenture-purple transition-colors duration-200">
+              <button
+                onClick={openSearch}
+                className="flex items-center gap-2 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 group"
+                title="Search (Cmd+K)"
+              >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 group-hover:scale-110 transition-transform duration-200"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -459,6 +493,12 @@ const Navigation = () => {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
+                <span className="hidden xl:inline text-sm font-medium">
+                  Search
+                </span>
+                <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-white/20 rounded border border-white/30">
+                  ⌘K
+                </kbd>
               </button>
             </div>
 

@@ -261,11 +261,11 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-3xl font-bold text-accenture-purple">
                     Our Mission
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-lg text-tech-text-medium leading-relaxed font-medium">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
@@ -299,11 +299,11 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-3xl font-bold text-accenture-purple">
                     Our Vision
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-lg text-tech-text-medium leading-relaxed font-medium">
                   To be the trusted technology partner that organizations turn
                   to when they want to transform possibilities into reality,
                   creating lasting impact through innovative solutions.
@@ -362,10 +362,10 @@ const About = () => {
               <div key={index} className="group">
                 <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 text-center h-full">
                   <div className="text-4xl mb-6">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl font-bold text-accenture-purple mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-tech-text-medium leading-relaxed">
                     {value.description}
                   </p>
                 </div>

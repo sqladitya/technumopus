@@ -271,6 +271,151 @@
     );
     animation: shimmer 1.5s infinite;
   }
+
+  /* Line clamp utility with fallback */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Fallback for browsers that don't support line-clamp */
+  @supports not (-webkit-line-clamp: 2) {
+    .line-clamp-2 {
+      display: block;
+      max-height: 2.4em; /* Assuming 1.2em line-height */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  /* Screen reader only utility - for accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Tech color utilities for better browser compatibility */
+  .text-tech-text-dark {
+    color: #1f2937; /* Dark grey instead of pure black for better readability */
+  }
+
+  .text-tech-text-medium {
+    color: #9ca3af; /* Light grey as requested by user */
+  }
+
+  .text-tech-text-light {
+    color: #d1d5db; /* Very light grey for subtle text */
+  }
+
+  .text-tech-primary {
+    color: #a600ff;
+  }
+
+  .bg-tech-primary {
+    background-color: #a600ff;
+  }
+
+  .border-tech-primary {
+    border-color: #a600ff;
+  }
+
+  .hover\:text-tech-primary:hover {
+    color: #a600ff;
+  }
+
+  .hover\:bg-tech-primary:hover {
+    background-color: #a600ff;
+  }
+
+  .hover\:border-tech-primary:hover {
+    border-color: #a600ff;
+  }
+
+  /* Additional text visibility fixes */
+  .text-tech-text-dark {
+    color: #1f2937 !important;
+  }
+
+  .text-tech-text-medium {
+    color: #9ca3af !important;
+  }
+
+  .text-tech-text-light {
+    color: #d1d5db !important;
+  }
+
+  /* Ensure paragraph text is visible */
+  p.text-tech-text-medium {
+    color: #9ca3af !important;
+  }
+
+  /* Ensure heading text is visible */
+  h1.text-tech-text-dark,
+  h2.text-tech-text-dark,
+  h3.text-tech-text-dark,
+  h4.text-tech-text-dark,
+  h5.text-tech-text-dark,
+  h6.text-tech-text-dark {
+    color: #1f2937 !important;
+  }
+
+  /* Global fixes for text visibility on non-home pages */
+  .text-gray-900 {
+    color: #1f2937 !important;
+  }
+
+  .text-gray-700 {
+    color: #9ca3af !important;
+  }
+
+  .text-gray-600 {
+    color: #9ca3af !important;
+  }
+
+  /* Purple headings utility class */
+  .heading-purple {
+    color: #a600ff !important;
+  }
+
+  /* Final comprehensive text visibility fixes */
+  body:not(.index-page) .text-gray-900,
+  body:not(.index-page) .text-gray-800,
+  body:not(.index-page) .text-gray-700 {
+    color: #1f2937 !important;
+  }
+
+  body:not(.index-page) .text-gray-600,
+  body:not(.index-page) .text-gray-500 {
+    color: #9ca3af !important;
+  }
+
+  /* Ensure accenture purple is always visible */
+  .text-accenture-purple {
+    color: #a600ff !important;
+  }
+
+  /* Force visible text colors on light backgrounds */
+  .bg-white .text-gray-900,
+  .bg-gray-50 .text-gray-900,
+  .bg-gray-100 .text-gray-900 {
+    color: #1f2937 !important;
+  }
+
+  .bg-white .text-gray-700,
+  .bg-gray-50 .text-gray-700,
+  .bg-gray-100 .text-gray-700 {
+    color: #9ca3af !important;
+  }
 }
 
 /* Accenture animations - Left-aligned */
