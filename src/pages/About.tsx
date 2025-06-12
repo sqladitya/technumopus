@@ -126,7 +126,7 @@ const About = () => {
                     Our Story
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Built on a Foundation of
                   <span className="text-accenture-purple"> Innovation</span>
                 </h2>
@@ -365,7 +365,7 @@ const About = () => {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-accenture-text-primary mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
               Why Organizations Choose
               <span className="bg-gradient-to-r from-accenture-purple to-accenture-purple-light bg-clip-text text-transparent">
                 {" "}
