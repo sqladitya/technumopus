@@ -365,30 +365,33 @@ export const AwardsSection = () => {
 
           {/* Mobile: Single Column Layout */}
           <div className="block sm:hidden">
-            <div className="space-y-4">
+            <div className="space-y-6">
               {awards.map((award, index) => (
                 <div
                   key={index}
                   className={cn(
-                    `bg-gradient-to-r ${award.color} rounded-lg p-4 text-white shadow-lg w-full animate-slide-in-left`,
+                    `bg-gradient-to-r ${award.color} rounded-xl p-6 text-white shadow-xl w-full animate-slide-in-left border border-white/20`,
                   )}
                   style={{
                     animationDelay: `${index * 0.1}s`,
                   }}
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="text-2xl">🏆</div>
-                    <div className="text-lg font-bold">{award.year}</div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-3xl">🏆</div>
+                    <div className="text-xl font-bold bg-white/20 px-3 py-1 rounded-full">
+                      {award.year}
+                    </div>
                   </div>
-                  <h3 className="text-base font-bold mb-1 leading-tight">
+                  <h3 className="text-lg font-bold mb-3 leading-tight text-white">
                     {award.title}
                   </h3>
-                  <p className="text-white/90 text-sm">{award.organization}</p>
+                  <p className="text-white/95 text-base leading-relaxed">
+                    {award.organization}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-
           {/* Tablet: Two Column Grid */}
           <div className="hidden sm:block lg:hidden">
             <div className="grid grid-cols-2 gap-4 md:gap-6">
@@ -677,7 +680,7 @@ export const ServicesSection = () => (
           title: "Technology",
           description:
             "Cloud-first solutions that modernize operations and enhance customer experiences",
-          icon: "���",
+          icon: "⚡",
           href: "/services/technology",
         },
         {
