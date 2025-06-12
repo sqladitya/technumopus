@@ -18,6 +18,12 @@ import {
   Eye,
   Lock,
   Cookie,
+  Brain,
+  Bot,
+  Sparkles,
+  MessageSquare,
+  Search,
+  Lightbulb,
 } from "lucide-react";
 
 export interface SearchItem {
