@@ -108,7 +108,7 @@ const SearchDialog = () => {
                 </div>
                 <div className="flex-1 space-y-1">
                   <div className="font-medium text-sm">{item.title}</div>
-                  <div className="text-xs text-muted-foreground line-clamp-2">
+                  <div className="text-xs text-muted-foreground overflow-hidden text-ellipsis line-clamp-2">
                     {item.description}
                   </div>
                   <div className="text-xs text-muted-foreground opacity-60">
