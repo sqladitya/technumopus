@@ -145,7 +145,7 @@ const Navigation = () => {
         triggerElement = dropdownElement.parentElement?.querySelector(
           "button",
         ) as HTMLElement;
-        dropdownWidth = 600; // min-w-[600px]
+        dropdownWidth = 500; // Reduced width for smaller partner list
       }
 
       if (dropdownElement && triggerElement) {
