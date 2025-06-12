@@ -1,6 +1,10 @@
 // API client for backend communication
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+// In development, try localhost backend, in production, use a fallback or show helpful message
+const isDevelopment = import.meta.env.VITE_DEV_MODE === "true";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (isDevelopment ? "http://localhost:3001" : "https://your-backend-url.com");
 
 export interface SubscriptionRequest {
   email: string;
@@ -84,7 +88,15 @@ class ApiClient {
 
       return await response.json();
     } catch (error) {
+      // Enhanced error handling with debugging info
       if (error instanceof Error) {
+        if (error.name === "TypeError" && error.message === "Failed to fetch") {
+          throw new Error(
+            `Backend server not available at ${this.baseURL}. ` +
+              `Please ensure the backend server is running on port 3001. ` +
+              `In development, run: cd backend && npm run dev`,
+          );
+        }
         throw error;
       }
       throw new Error("An unexpected error occurred");
