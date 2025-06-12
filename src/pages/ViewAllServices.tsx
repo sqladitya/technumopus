@@ -453,49 +453,48 @@ const ViewAllServices = () => {
       </section>
 
       {/* Industries We Serve */}
-      <SectionBackground variant="light">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Industries We Serve
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our solutions are tailored to meet the specific requirements and
-                compliance needs of various industries.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {industries.map((industry, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                >
-                  <h3 className="text-xl font-bold text-accenture-text-primary mb-3">
-                    {industry.name}
-                  </h3>
-                  <p className="text-gray-600 mb-6">{industry.description}</p>
-                  <div className="space-y-2">
-                    <div className="text-sm font-semibold text-accenture-text-primary mb-3">
-                      Key Services:
-                    </div>
-                    {industry.services.map((service, serviceIndex) => (
-                      <div
-                        key={serviceIndex}
-                        className="flex items-start gap-2"
-                      >
-                        <div className="w-1.5 h-1.5 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-sm text-gray-600">{service}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Industries We Serve
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              Our solutions are tailored to meet the specific requirements and
+              compliance needs of various industries.
+            </p>
           </div>
-        </section>
-      </SectionBackground>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {industries.map((industry, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              >
+                <h3 className="text-xl font-bold text-accenture-text-primary mb-3">
+                  {industry.name}
+                </h3>
+                <p className="text-accenture-text-secondary mb-6">
+                  {industry.description}
+                </p>
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-accenture-text-primary mb-3">
+                    Key Services:
+                  </div>
+                  {industry.services.map((service, serviceIndex) => (
+                    <div key={serviceIndex} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-sm text-accenture-text-secondary">
+                        {service}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Technology Stack */}
       <SectionBackground variant="gradient">
