@@ -30,7 +30,6 @@ import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import DevHelper from "@/components/DevHelper";
 import SearchCommand from "@/components/SearchCommand";
-import { TestSearchButton } from "@/components/TestSearchButton";
 
 const queryClient = new QueryClient();
 
