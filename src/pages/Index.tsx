@@ -50,7 +50,7 @@ const Index = () => {
           <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
             Industry expertise that drives results
           </h2>
-          <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
             We combine deep industry knowledge with technology innovation to
             solve complex business challenges
           </p>
@@ -94,13 +94,13 @@ const Index = () => {
             <Link
               key={index}
               to={industry.href}
-              className="group flex flex-col items-center p-4 bg-accenture-gray-50 rounded-lg hover:bg-white hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              className="group flex flex-col items-center p-6 bg-gradient-to-br from-white to-gray-50 border border-accenture-purple/30 rounded-xl hover:from-accenture-purple/10 hover:to-accenture-purple/20 hover:border-accenture-purple/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300 filter group-hover:drop-shadow-lg">
                 {industry.icon}
               </div>
-              <span className="text-accenture-text-primary font-medium text-center group-hover:text-accenture-purple transition-colors">
+              <span className="text-gray-700 font-semibold text-center group-hover:text-accenture-purple transition-colors text-sm">
                 {industry.name}
               </span>
             </Link>

@@ -25,6 +25,7 @@ import ViewAllPartners from "./pages/partners/ViewAllPartners";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
+import WhatWeBelieve from "./pages/WhatWeBelieve";
 import NotFound from "./pages/NotFound";
 import DevHelper from "@/components/DevHelper";
 
@@ -80,6 +81,7 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/about/what-we-believe" element={<WhatWeBelieve />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

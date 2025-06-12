@@ -174,12 +174,12 @@ const NewsInsights = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <SectionBackground variant="light">
       <Navigation />
 
       {/* Hero Section */}
       <SectionBackground variant="gradient">
-        <section className="py-20">
+        <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-tech-text-dark mb-6">
               News & <span className="text-tech-primary">Insights</span>
@@ -203,7 +203,7 @@ const NewsInsights = () => {
       </SectionBackground>
 
       {/* Featured Articles */}
-      <SectionBackground variant="white">
+      <SectionBackground variant="light">
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -261,7 +261,7 @@ const NewsInsights = () => {
       </SectionBackground>
 
       {/* Insights Categories */}
-      <SectionBackground variant="light">
+      <SectionBackground variant="gradient">
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -294,7 +294,7 @@ const NewsInsights = () => {
       </SectionBackground>
 
       {/* Recent News */}
-      <SectionBackground variant="white">
+      <SectionBackground variant="light">
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -389,7 +389,7 @@ const NewsInsights = () => {
       </SectionBackground>
 
       <Footer />
-    </div>
+    </SectionBackground>
   );
 };
 
