@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSearch } from "@/hooks/useSearch";
+import { useSearchContext } from "@/components/SearchProvider";
 import {
   CommandDialog,
   CommandEmpty,
