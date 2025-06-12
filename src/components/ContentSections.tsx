@@ -24,7 +24,8 @@ export const ContentCardsSection = () => (
           title: "Change That Matters",
           description:
             "Discover how we help organizations create lasting impact through human ingenuity and technology innovation",
-          image: "/api/placeholder/400/300",
+          image:
+            "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
           href: "/insights/change-that-matters",
           color: "accenture-purple",
         },
@@ -33,7 +34,8 @@ export const ContentCardsSection = () => (
           title: "The Art of AI Maturity",
           description:
             "How to move from AI experimentation to enterprise-wide transformation",
-          image: "/api/placeholder/400/300",
+          image:
+            "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
           href: "/insights/ai-maturity",
           color: "accenture-red",
         },
@@ -42,7 +44,8 @@ export const ContentCardsSection = () => (
           title: "Digital Banking Revolution",
           description:
             "How we helped a global bank transform customer experience",
-          image: "/api/placeholder/400/300",
+          image:
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
           href: "/insights/digital-banking",
           color: "accenture-blue",
         },
@@ -50,7 +53,8 @@ export const ContentCardsSection = () => (
           category: "REPORT",
           title: "Future of Work",
           description: "Reimagining work through human + machine collaboration",
-          image: "/api/placeholder/400/300",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
           href: "/insights/future-of-work",
           color: "accenture-violet",
         },
@@ -143,7 +147,8 @@ export const ClientStoriesSection = () => {
       client: "Leading Global Retailer",
       description:
         "How we helped transform customer experience and drive 40% increase in digital sales",
-      image: "/api/placeholder/600/400",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       results: "40% increase in digital sales",
       industry: "RETAIL",
     },
@@ -152,7 +157,8 @@ export const ClientStoriesSection = () => {
       client: "Major Financial Institution",
       description:
         "Cloud transformation that reduced costs by 30% while improving scalability",
-      image: "/api/placeholder/600/400",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       results: "30% cost reduction",
       industry: "BANKING",
     },
@@ -160,7 +166,8 @@ export const ClientStoriesSection = () => {
       title: "Smart manufacturing revolution",
       client: "Industrial Manufacturing Leader",
       description: "IoT and AI implementation that increased efficiency by 25%",
-      image: "/api/placeholder/600/400",
+      image:
+        "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       results: "25% efficiency gain",
       industry: "MANUFACTURING",
     },
@@ -342,7 +349,8 @@ export const CultureSection = () => (
       <div
         className="w-full h-full bg-cover bg-center opacity-30"
         style={{
-          backgroundImage: "url(/api/placeholder/1920/1080)",
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)",
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/80 to-transparent" />
