@@ -448,9 +448,13 @@ const Navigation = () => {
               </Link>
 
               {/* Search Button */}
-              <button className="p-2 text-white hover:text-accenture-purple transition-colors duration-200">
+              <button
+                onClick={openSearch}
+                className="p-2 text-white hover:text-accenture-purple transition-colors duration-200 group"
+                title="Search (Cmd+K)"
+              >
                 <svg
-                  className="w-5 h-5"
+                  className="w-5 h-5 group-hover:scale-110 transition-transform duration-200"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
