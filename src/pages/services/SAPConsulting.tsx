@@ -78,7 +78,7 @@ const SAPConsulting = () => {
                         />
                       </svg>
                     </div>
-                    text-gray-200
+                    text-gray-200 text-gray-600
                     <p className="text-tech-text-medium font-medium">
                       Enterprise SAP Architecture
                     </p>
@@ -171,7 +171,7 @@ const SAPConsulting = () => {
                     />
                   </svg>
                 </div>
-                text-white text-gray-900
+                text-white text-gray-900 text-gray-900
                 <h3 className="text-xl font-bold text-tech-text-dark mb-4">
                   Performance Optimization
                 </h3>
