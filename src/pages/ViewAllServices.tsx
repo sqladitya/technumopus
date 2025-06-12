@@ -308,7 +308,7 @@ const ViewAllServices = () => {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/20 via-purple-600/15 to-slate-900/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-accenture-purple/20 via-purple-600/15 to-slate-900/95" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             All Our Services
