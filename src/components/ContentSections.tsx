@@ -14,11 +14,15 @@ export const Section = ({ children, className, id }: SectionProps) => (
   </section>
 );
 
-// Content Cards Grid - Accenture Style - Fully Responsive
+// Content Cards Grid - Accenture Style Mobile/Tablet Layout
 export const ContentCardsSection = () => (
   <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
+    {/* Mobile: Single column with full width cards */}
+    {/* Tablet: Two columns with equal width cards */}
+    {/* Desktop: Four columns with equal width cards */}
     <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
       <div className="w-full max-w-7xl mx-auto">
+        {/* Mobile-first grid that expands progressively */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
           {[
             {
@@ -65,37 +69,71 @@ export const ContentCardsSection = () => (
             <Link
               key={index}
               to={card.href}
-              className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 sm:hover:-translate-y-2 animate-slide-in-left w-full touch-manipulation"
+              className="group block bg-white rounded-none sm:rounded-lg overflow-hidden shadow-none sm:shadow-card hover:shadow-card-hover transition-all duration-300 sm:hover:-translate-y-1 animate-slide-in-left w-full touch-manipulation"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-[16/9] sm:aspect-video bg-accenture-gray-100 relative overflow-hidden w-full">
+              {/* Mobile: Full width image with 16:9 aspect ratio */}
+              {/* Tablet+: Standard video aspect ratio */}
+              <div className="aspect-[16/9] sm:aspect-video bg-gray-100 relative overflow-hidden w-full">
                 <img
                   src={card.image}
                   alt={card.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
+                {/* Category badge positioned in top-left */}
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                   <span
                     className={cn(
-                      "inline-block px-2 py-1 sm:px-3 sm:py-1.5 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded shadow-sm",
+                      "inline-block px-2 py-1 sm:px-3 sm:py-1.5 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none sm:rounded shadow-sm",
                       `bg-${card.color}`,
                     )}
-                    style={{ color: "white" }}
+                    style={{
+                      color: "white",
+                      backgroundColor: "rgb(166, 0, 255)", // Accenture purple
+                    }}
                   >
                     {card.category}
                   </span>
                 </div>
               </div>
-              <div className="p-4 sm:p-5 lg:p-6 w-full">
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-accenture-text-primary mb-2 sm:mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2 leading-tight">
+
+              {/* Content area with responsive padding */}
+              <div className="p-4 sm:p-5 lg:p-6 w-full bg-white">
+                {/* Title with line clamping and responsive sizing */}
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-900 mb-2 sm:mb-3 group-hover:text-purple-600 transition-colors line-clamp-2 leading-tight tracking-tight">
                   {card.title}
                 </h3>
-                <p className="text-accenture-text-tertiary leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4">
+                {/* Description with proper line height and clamping */}
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
                   {card.description}
                 </p>
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Mobile: Show "View All" button below cards */}
+        <div className="mt-8 sm:mt-12 text-center">
+          <Link
+            to="/insights"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-none sm:rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
+          >
+            View all insights
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </div>
