@@ -410,21 +410,7 @@ const NewsInsights = () => {
               Subscribe to our newsletter for the latest insights, trends, and
               company updates delivered to your inbox.
             </p>
-            <div className="max-w-md mx-auto">
-              <div className="flex gap-4">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tech-primary focus:border-transparent"
-                />
-                <button className="px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  Subscribe
-                </button>
-              </div>
-              <p className="text-tech-text-medium text-sm mt-3">
-                No spam. Unsubscribe at any time.
-              </p>
-            </div>
+            <NewsletterSubscriptionForm />
           </div>
         </section>
       </SectionBackground>

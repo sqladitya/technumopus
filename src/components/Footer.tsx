@@ -1,5 +1,54 @@
 import { Link } from "react-router-dom";
 
+// Subscription form component
+const FooterSubscriptionForm = () => {
+  const [email, setEmail] = useState("");
+  const { subscribe, isLoading, isSuccess, isError, error, reset } =
+    useSubscription();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      toast.error("Please enter your email address");
+      return;
+    }
+
+    try {
+      await subscribe(email, "footer");
+      toast.success("Successfully subscribed to our newsletter!");
+      setEmail("");
+      // Reset after 3 seconds
+      setTimeout(reset, 3000);
+    } catch (err) {
+      // Error is handled by the hook and displayed in toast
+      if (error) {
+        toast.error(error);
+      }
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
+      <input
+        type="email"
+        placeholder="Enter your email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        disabled={isLoading}
+        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accenture-purple focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+      />
+      <button
+        type="submit"
+        disabled={isLoading || !email.trim()}
+        className="px-8 py-3 bg-accenture-purple hover:bg-accenture-purple-dark text-white rounded-lg font-semibold transition-all duration-300 hover:scale-105 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+      >
+        {isLoading ? "Subscribing..." : "Subscribe"}
+      </button>
+    </form>
+  );
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -212,16 +261,7 @@ const Footer = () => {
                 innovations, and business transformation strategies.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accenture-purple focus:border-transparent"
-              />
-              <button className="px-8 py-3 bg-accenture-purple hover:bg-accenture-purple-dark text-white rounded-lg font-semibold transition-all duration-300 hover:scale-105 whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
+            <FooterSubscriptionForm />
           </div>
         </div>
       </div>
