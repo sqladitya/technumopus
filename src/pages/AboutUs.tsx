@@ -122,7 +122,7 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">I</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-purple mb-4">
                   Innovation
                 </h3>
                 <p className="text-tech-text-medium">
