@@ -17,10 +17,9 @@ export const Section = ({ children, className, id }: SectionProps) => (
 // Content Cards Grid - Accenture Style
 export const ContentCardsSection = () => (
   <Section className="bg-white">
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="max-w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {[
+    <div className="max-w-5xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {[
         {
           category: "TRANSFORMATION",
           title: "Change That Matters",
