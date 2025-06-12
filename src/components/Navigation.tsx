@@ -80,61 +80,47 @@ const Navigation = () => {
   ) => {
     const triggerRect = triggerElement.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
-    const padding = 24; // Space from viewport edge
+    const padding = 20; // Space from viewport edge
 
     // Default position (left-aligned)
     let position: { left?: number; right?: number; maxWidth?: number } = {};
 
-    // For very small screens, always constrain width and center
+    // For very small screens, always constrain width
     if (viewportWidth < 768) {
       position.maxWidth = Math.min(dropdownWidth, viewportWidth - padding * 2);
       position.left = 0;
       return position;
     }
 
-    // For tablet screens, be more conservative with positioning
-    if (viewportWidth < 1024) {
-      const availableSpace = viewportWidth - triggerRect.left - padding;
-      if (dropdownWidth > availableSpace) {
-        // Not enough space on the right, try right-alignment
-        const rightSpace = triggerRect.right - padding;
-        if (dropdownWidth <= rightSpace) {
-          position.right = viewportWidth - triggerRect.right;
-        } else {
-          // Constrain width and use left alignment
-          position.left = 0;
-          position.maxWidth = Math.min(availableSpace, rightSpace);
-        }
-      } else {
-        position.left = 0;
-      }
-      return position;
-    }
+    // Calculate available space on both sides
+    const availableLeft = triggerRect.left - padding;
+    const availableRight = viewportWidth - triggerRect.right - padding;
+    const spaceFromLeftEdge = viewportWidth - triggerRect.left - padding;
 
-    // Desktop positioning logic
-    // Check if dropdown would go off the right edge
+    // Check if dropdown would overflow on the right
     const wouldOverflowRight =
       triggerRect.left + dropdownWidth > viewportWidth - padding;
 
     if (wouldOverflowRight) {
-      // Try right-alignment first
-      const rightOffset = viewportWidth - triggerRect.right;
-      const rightSpace = triggerRect.right - padding;
+      // Check if we can fit it by right-aligning to the trigger button
+      const rightAlignedSpace = triggerRect.right - padding;
 
-      if (dropdownWidth <= rightSpace) {
-        // Right-aligned positioning works
-        position.right = rightOffset;
-      } else {
-        // Neither left nor right alignment works well, center and constrain
-        const maxPossibleWidth = Math.max(
-          viewportWidth - triggerRect.left - padding,
-          triggerRect.right - padding,
-        );
+      if (dropdownWidth <= rightAlignedSpace) {
+        // Right-align the dropdown to the trigger button
+        position.right = viewportWidth - triggerRect.right;
+      } else if (dropdownWidth <= spaceFromLeftEdge) {
+        // Keep left-aligned but constrain width if needed
         position.left = 0;
-        position.maxWidth = Math.min(dropdownWidth, maxPossibleWidth);
+        if (spaceFromLeftEdge < dropdownWidth) {
+          position.maxWidth = spaceFromLeftEdge;
+        }
+      } else {
+        // Constrain width and center between the trigger and viewport edge
+        position.left = 0;
+        position.maxWidth = Math.min(dropdownWidth, spaceFromLeftEdge);
       }
     } else {
-      // Default left-aligned position works
+      // Default left-aligned position - enough space on the right
       position.left = 0;
     }
 
@@ -501,7 +487,7 @@ const Navigation = () => {
             </svg>
             Search
             <kbd className="ml-auto px-2 py-1 bg-accenture-gray-100 text-accenture-text-tertiary rounded text-xs">
-              ⌘K
+              ��K
             </kbd>
           </button>
         </div>
