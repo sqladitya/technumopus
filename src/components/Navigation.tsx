@@ -745,49 +745,35 @@ const Navigation = () => {
                 >
                   <div
                     className={cn(
-                      "p-6",
+                      "p-6 min-w-[320px]",
                       dropdownPositions.partners?.maxWidth && "overflow-auto",
                     )}
                   >
-                    <div
-                      className={cn(
-                        "grid grid-cols-2 gap-8 min-w-[500px]",
-                        dropdownPositions.partners?.maxWidth && "min-w-0",
-                      )}
-                    >
-                      {partners.map((category) => (
-                        <div key={category.category}>
-                          <div className="text-xs font-bold text-accenture-text-tertiary uppercase tracking-wider mb-4">
-                            {category.category}
+                    <div className="space-y-3">
+                      {partners.map((partner) => (
+                        <Link
+                          key={partner.name}
+                          to={partner.href}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setDropdownPositions({});
+                          }}
+                          className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                        >
+                          <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
+                            {partner.name}
                           </div>
-                          <div className="space-y-3">
-                            {category.items.map((partner) => (
-                              <Link
-                                key={partner.name}
-                                to={partner.href}
-                                onClick={() => {
-                                  setActiveDropdown(null);
-                                  setDropdownPositions({});
-                                }}
-                                className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
-                              >
-                                <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
-                                  {partner.name}
-                                </div>
-                                <div className="text-sm text-accenture-text-tertiary">
-                                  {partner.description}
-                                </div>
-                              </Link>
-                            ))}
+                          <div className="text-sm text-accenture-text-tertiary">
+                            {partner.description}
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
 
-                    {/* View All Services Link */}
+                    {/* View All Partners Link */}
                     <div className="pt-4 border-t border-accenture-gray-200 mt-6">
                       <Link
-                        to="/services"
+                        to="/partners"
                         onClick={() => {
                           setActiveDropdown(null);
                           setDropdownPositions({});
@@ -795,7 +781,7 @@ const Navigation = () => {
                         className="group flex items-center gap-2 p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                       >
                         <span className="font-semibold text-accenture-purple group-hover:text-accenture-purple-dark transition-colors">
-                          View All Services
+                          View All Partners
                         </span>
                         <svg
                           className="w-4 h-4 text-accenture-purple group-hover:text-accenture-purple-dark transition-all duration-200 group-hover:translate-x-1"
