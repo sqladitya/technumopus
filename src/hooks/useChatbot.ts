@@ -1,10 +1,10 @@
 import { useState, useCallback } from "react";
 import {
-  performWebSearch,
+  performRealWebSearch,
   extractSearchQuery,
   shouldPerformWebSearch,
   type SearchResult,
-} from "@/lib/webSearch";
+} from "@/lib/realWebSearch";
 
 export interface ChatMessage {
   id: string;
@@ -315,8 +315,8 @@ export function useChatbot(): UseChatbotReturn {
         // Extract search query
         const searchQuery = extractSearchQuery(content);
 
-        // Perform web search using the real service
-        const searchResponse = await performWebSearch(searchQuery);
+        // Perform web search using the enhanced real service
+        const searchResponse = await performRealWebSearch(searchQuery);
 
         // Remove loading message and add search results
         setMessages((prev) => prev.filter((msg) => msg.type !== "loading"));
