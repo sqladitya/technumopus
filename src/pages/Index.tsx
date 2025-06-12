@@ -3,233 +3,223 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import {
   Section,
-  ServicesSection,
-  PartnersSection,
-  AboutSection,
+  ContentCardsSection,
+  ValuePropositionSection,
   ClientStoriesSection,
+  AwardsSection,
+  CultureSection,
+  NewsSection,
+  ServicesSection,
+  AboutSection,
 } from "@/components/ContentSections";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="bg-corporate-bg-primary">
+    <div className="bg-white">
       <Navigation />
       <HeroSection />
 
-      {/* Services Section */}
-      <Section className="bg-corporate-bg-primary" id="services">
-        <ServicesSection />
-      </Section>
+      {/* Content Cards Grid - Accenture's signature layout */}
+      <ContentCardsSection />
 
-      {/* Client Success Stories */}
+      {/* 360° Value - Accenture's core message */}
+      <ValuePropositionSection />
+
+      {/* Client Stories Carousel */}
       <ClientStoriesSection />
 
-      {/* Value Proposition Section */}
-      <Section className="bg-corporate-bg-primary">
-        <div className="text-center py-24 animate-fade-in">
-          <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-corporate-text-primary mb-10 leading-tight">
-            360° VALUE
-          </h2>
-          <p className="text-2xl md:text-3xl text-corporate-text-secondary max-w-5xl mx-auto mb-16 leading-relaxed">
-            We help organizations reinvent themselves through technology,
-            strategy, and innovation to create lasting value for all
-            stakeholders and drive sustainable competitive advantage.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            <Link
-              to="/services"
-              className="group inline-flex items-center gap-4 px-12 py-6 bg-corporate-blue text-white rounded-xl font-semibold hover:bg-corporate-blue-dark transition-all duration-300 hover:scale-105 shadow-corporate-lg text-xl"
-            >
-              Explore Our Capabilities
-              <svg
-                className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-4 px-12 py-6 border-2 border-corporate-blue text-corporate-blue rounded-xl font-semibold hover:bg-corporate-blue hover:text-white transition-all duration-300 text-xl"
-            >
-              Start Your Transformation
-              <svg
-                className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </Section>
+      {/* Services Overview */}
+      <ServicesSection />
+
+      {/* Awards Section with floating cards */}
+      <AwardsSection />
 
       {/* About Section */}
-      <Section className="bg-corporate-bg-secondary" id="about">
-        <AboutSection />
-      </Section>
+      <AboutSection />
 
-      {/* Partners Section */}
-      <Section className="bg-corporate-bg-primary" id="partners">
-        <div className="text-center mb-20 animate-fade-in">
-          <div className="text-sm font-semibold text-corporate-blue uppercase tracking-wider mb-6">
-            STRATEGIC PARTNERSHIPS
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-corporate-text-primary mb-8">
-            Powered by Industry Leaders
-          </h2>
-          <p className="text-xl md:text-2xl text-corporate-text-secondary max-w-4xl mx-auto">
-            We collaborate with the world's leading technology providers to
-            deliver comprehensive, best-in-class solutions that drive business
-            value.
-          </p>
-        </div>
-        <PartnersSection />
-      </Section>
+      {/* Culture Section */}
+      <CultureSection />
 
-      {/* Industry Focus Section */}
-      <Section className="bg-corporate-bg-secondary">
-        <div className="text-center mb-20 animate-fade-in">
-          <div className="text-sm font-semibold text-corporate-blue uppercase tracking-wider mb-6">
-            INDUSTRY EXPERTISE
+      {/* Industries Section */}
+      <Section className="bg-white">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+            INDUSTRIES
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-corporate-text-primary mb-8">
-            Select Your Industry.
-            <span className="block text-corporate-blue">
-              Discover Our Impact.
-            </span>
+          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+            Industry expertise that drives results
           </h2>
-          <p className="text-xl text-corporate-text-secondary max-w-4xl mx-auto">
-            Deep industry knowledge combined with cutting-edge technology
-            solutions across multiple sectors
+          <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+            We combine deep industry knowledge with technology innovation to
+            solve complex business challenges
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {[
-            { name: "Financial Services", icon: "🏦", color: "corporate-blue" },
-            { name: "Healthcare", icon: "🏥", color: "corporate-green" },
-            { name: "Manufacturing", icon: "🏭", color: "corporate-purple" },
+            { name: "Banking", icon: "🏦", href: "/industries/banking" },
+            { name: "Healthcare", icon: "🏥", href: "/industries/healthcare" },
             {
-              name: "Retail & Consumer",
-              icon: "🛍️",
-              color: "corporate-orange",
+              name: "Manufacturing",
+              icon: "🏭",
+              href: "/industries/manufacturing",
             },
-            { name: "Energy & Utilities", icon: "⚡", color: "corporate-blue" },
-            { name: "Government", icon: "🏛️", color: "corporate-green" },
+            { name: "Retail", icon: "🛍️", href: "/industries/retail" },
+            { name: "Energy", icon: "⚡", href: "/industries/energy" },
             {
-              name: "Telecommunications",
+              name: "Automotive",
+              icon: "🚗",
+              href: "/industries/automotive",
+            },
+            {
+              name: "Communications",
               icon: "📡",
-              color: "corporate-purple",
+              href: "/industries/communications",
             },
-            { name: "Education", icon: "🎓", color: "corporate-orange" },
+            { name: "Insurance", icon: "🛡️", href: "/industries/insurance" },
+            {
+              name: "Life Sciences",
+              icon: "🧬",
+              href: "/industries/life-sciences",
+            },
+            { name: "Travel", icon: "✈️", href: "/industries/travel" },
+            {
+              name: "Consumer Goods",
+              icon: "📦",
+              href: "/industries/consumer-goods",
+            },
+            { name: "High Tech", icon: "💻", href: "/industries/high-tech" },
           ].map((industry, index) => (
             <Link
               key={index}
-              to={`/industries/${industry.name.toLowerCase().replace(/\s+/g, "-")}`}
-              className="group bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-500 cursor-pointer hover:-translate-y-2 text-center animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              to={industry.href}
+              className="group flex flex-col items-center p-6 bg-accenture-gray-50 rounded-lg hover:bg-white hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
                 {industry.icon}
               </div>
-              <h3 className="text-lg font-bold text-corporate-text-primary group-hover:text-corporate-blue transition-colors duration-300">
+              <span className="text-accenture-text-primary font-medium text-center group-hover:text-accenture-purple transition-colors">
                 {industry.name}
-              </h3>
+              </span>
             </Link>
           ))}
         </div>
+
+        <div className="text-center mt-16">
+          <Link
+            to="/industries"
+            className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
+          >
+            View all industries
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
       </Section>
 
-      {/* Awards and Recognition Section */}
-      <Section className="bg-corporate-bg-primary">
-        <div className="text-center mb-20 animate-fade-in">
-          <div className="text-sm font-semibold text-corporate-blue uppercase tracking-wider mb-6">
-            AWARDS & RECOGNITION
+      {/* Technology Innovation Section */}
+      <Section className="bg-accenture-black text-white">
+        <div className="max-w-4xl mx-auto text-center animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
+            INNOVATION
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-corporate-text-primary mb-8">
-            Industry Recognition
+          <h2 className="text-heading-xl font-semibold text-white mb-8">
+            The technologies that will reshape business
           </h2>
-        </div>
+          <p className="text-body-xl text-white/80 mb-12 leading-relaxed">
+            From artificial intelligence to quantum computing, we help
+            organizations harness emerging technologies to create competitive
+            advantage and drive growth.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              title: "Digital Innovator",
-              organization: "Tech Excellence Awards",
-              year: "2024",
-              color: "from-corporate-blue to-corporate-blue-dark",
-            },
-            {
-              title: "Top Consulting Firm",
-              organization: "Industry Leaders",
-              year: "2024",
-              color: "from-corporate-purple to-purple-600",
-            },
-            {
-              title: "Cloud Excellence",
-              organization: "Cloud Awards",
-              year: "2023",
-              color: "from-corporate-green to-green-600",
-            },
-            {
-              title: "Innovation Leader",
-              organization: "Technology Review",
-              year: "2023",
-              color: "from-corporate-orange to-red-600",
-            },
-          ].map((award, index) => (
-            <div
-              key={index}
-              className={`relative bg-gradient-to-br ${award.color} rounded-2xl p-8 text-white shadow-corporate-lg hover:shadow-corporate-xl transition-all duration-500 hover:-translate-y-2 animate-scale-in`}
-              style={{ animationDelay: `${index * 0.2}s` }}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                title: "Artificial Intelligence",
+                description: "AI that amplifies human potential",
+                icon: "🤖",
+              },
+              {
+                title: "Cloud Computing",
+                description: "Cloud-first transformation",
+                icon: "☁️",
+              },
+              {
+                title: "Quantum Computing",
+                description: "Quantum advantage for business",
+                icon: "⚛️",
+              },
+            ].map((tech, index) => (
+              <div
+                key={index}
+                className="animate-slide-up"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <div className="text-4xl mb-4">{tech.icon}</div>
+                <h3 className="text-heading-md font-semibold text-white mb-3">
+                  {tech.title}
+                </h3>
+                <p className="text-white/70">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            to="/insights/technology-vision"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+          >
+            Explore Technology Vision
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <div className="absolute top-4 right-4 text-4xl opacity-20">
-                🏆
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-3">{award.title}</h3>
-                <p className="text-white/80 mb-4">{award.organization}</p>
-                <div className="text-2xl font-bold">{award.year}</div>
-              </div>
-            </div>
-          ))}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
         </div>
       </Section>
 
-      {/* Call to Action Section */}
-      <Section className="bg-corporate-black text-white">
-        <div className="text-center py-24 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            Ready to Transform Your Business?
+      {/* News Section */}
+      <NewsSection />
+
+      {/* Career CTA Section */}
+      <Section className="bg-accenture-purple text-white">
+        <div className="text-center py-16 animate-fade-in">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
+            Join us. Shape the future.
           </h2>
-          <p className="text-xl md:text-2xl text-white/80 mb-16 max-w-4xl mx-auto">
-            Join thousands of organizations that trust Technum Opus to drive
-            their digital transformation and achieve sustainable competitive
-            advantage.
+          <p className="text-body-xl text-white/90 mb-12 max-w-3xl mx-auto">
+            Be part of a team that's creating 360° value for clients, people,
+            shareholders, partners and communities.
           </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              to="/contact"
-              className="group inline-flex items-center gap-4 px-12 py-6 bg-corporate-blue text-white rounded-xl font-semibold hover:bg-corporate-blue-dark transition-all duration-300 hover:scale-105 shadow-corporate-lg text-xl"
+              to="/careers"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-accenture-purple rounded-lg font-semibold hover:bg-accenture-gray-50 transition-all duration-300 hover:scale-105 text-xl"
             >
-              Get Started Today
+              Explore careers
               <svg
-                className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -243,23 +233,10 @@ const Index = () => {
               </svg>
             </Link>
             <Link
-              to="/about"
-              className="group inline-flex items-center gap-4 px-12 py-6 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-corporate-black transition-all duration-300 text-xl"
+              to="/about/life-at-accenture"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
             >
-              Learn About Our Approach
-              <svg
-                className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+              Life at Technum Opus
             </Link>
           </div>
         </div>

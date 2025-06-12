@@ -72,46 +72,110 @@
   }
 
   body {
-    @apply bg-background text-foreground font-corporate;
+    @apply bg-background text-foreground font-sans;
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
+    line-height: 1.6;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  /* Custom scrollbar */
+  /* Accenture-style scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-corporate-gray-100;
+    @apply bg-accenture-gray-100;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-corporate-gray-400 rounded-full;
+    @apply bg-accenture-purple rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-corporate-gray-500;
+    @apply bg-accenture-purple-dark;
   }
 }
 
-/* Corporate Theme Utilities */
+/* Accenture Theme Utilities */
 @layer utilities {
-  .text-gradient-corporate {
-    @apply bg-gradient-to-r from-corporate-blue to-corporate-purple bg-clip-text text-transparent;
+  /* Typography utilities */
+  .text-hero {
+    font-size: 6.25rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 500;
   }
 
-  .shadow-glow {
-    box-shadow: 0 0 20px rgba(41, 127, 148, 0.3);
+  .text-display {
+    font-size: 5rem;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 500;
   }
 
-  .shadow-glow-purple {
-    box-shadow: 0 0 20px rgba(161, 0, 255, 0.3);
+  .text-heading-xl {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.075em;
+    font-weight: 500;
+  }
+
+  .text-heading-lg {
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  .text-heading-md {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+  }
+
+  .text-body-xl {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+
+  .text-body-lg {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  .text-body-sm {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    letter-spacing: 0.0175em;
+    font-weight: 500;
+  }
+
+  /* Responsive typography */
+  @media (max-width: 768px) {
+    .text-hero {
+      font-size: 3.5rem;
+    }
+
+    .text-display {
+      font-size: 2.5rem;
+    }
+
+    .text-heading-xl {
+      font-size: 2rem;
+    }
+
+    .text-heading-lg {
+      font-size: 1.75rem;
+    }
   }
 
   /* Animation utilities */
@@ -123,59 +187,89 @@
     animation: slideUp 0.8s ease-out forwards;
   }
 
-  .animate-slide-down {
-    animation: slideDown 0.8s ease-out forwards;
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
   }
 
   .animate-scale-in {
     animation: scaleIn 0.6s ease-out forwards;
   }
 
-  /* Corporate button styles */
-  .btn-corporate {
-    @apply px-8 py-4 bg-corporate-blue text-white rounded-xl font-semibold hover:bg-corporate-blue-dark transition-all duration-300 hover:scale-105 shadow-corporate;
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
   }
 
-  .btn-corporate-outline {
-    @apply px-8 py-4 border-2 border-corporate-blue text-corporate-blue rounded-xl font-semibold hover:bg-corporate-blue hover:text-white transition-all duration-300;
+  .animate-pulse-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Accenture button styles */
+  .btn-accenture {
+    @apply px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 shadow-purple;
+  }
+
+  .btn-accenture-outline {
+    @apply px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300;
   }
 
   /* Card styles */
-  .card-corporate {
-    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-corporate-gray-200 p-8 transition-all duration-500 hover:-translate-y-2;
-  }
-
-  /* Text styles */
-  .text-corporate-primary {
-    @apply text-5xl md:text-6xl lg:text-7xl font-bold text-corporate-text-primary;
-  }
-
-  .text-corporate-secondary {
-    @apply text-xl md:text-2xl text-corporate-text-secondary;
+  .card-accenture {
+    @apply bg-white rounded-lg shadow-card hover:shadow-card-hover border border-accenture-gray-200 p-6 transition-all duration-500 hover:-translate-y-2;
   }
 
   /* Background patterns */
-  .bg-pattern-corporate {
+  .bg-pattern-accenture {
     background-image:
       radial-gradient(
         circle at 20% 80%,
-        rgba(41, 127, 148, 0.1) 0%,
+        rgba(166, 0, 255, 0.1) 0%,
         transparent 50%
       ),
       radial-gradient(
         circle at 80% 20%,
-        rgba(161, 0, 255, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 40% 40%,
-        rgba(17, 24, 39, 0.05) 0%,
+        rgba(0, 0, 0, 0.05) 0%,
         transparent 50%
       );
   }
+
+  /* Gradient text */
+  .text-gradient-accenture {
+    @apply bg-gradient-to-r from-accenture-purple to-accenture-purple-light bg-clip-text text-transparent;
+  }
+
+  /* Shadow utilities */
+  .shadow-glow-purple {
+    box-shadow: 0 0 20px rgba(166, 0, 255, 0.3);
+  }
+
+  /* Loading animation */
+  .loading-accenture {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loading-accenture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(166, 0, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
 }
 
-/* Corporate animations */
+/* Accenture animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -198,14 +292,14 @@
   }
 }
 
-@keyframes slideDown {
+@keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
@@ -226,54 +320,34 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
 }
 
-@keyframes pulseSoft {
+@keyframes pulseGlow {
   0%,
   100% {
     opacity: 0.8;
+    transform: scale(1);
   }
   50% {
     opacity: 0.4;
+    transform: scale(1.05);
   }
 }
 
-/* Enhanced focus styles for accessibility */
-.focus-corporate:focus {
-  @apply outline-none ring-4 ring-corporate-blue/20 ring-offset-2;
-}
-
-/* Loading animation */
-.loading-corporate {
-  position: relative;
-  overflow: hidden;
-}
-
-.loading-corporate::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(41, 127, 148, 0.4),
-    transparent
-  );
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
+@keyframes shimmer {
   0% {
-    left: -100%;
+    transform: translateX(-100%);
   }
   100% {
-    left: 100%;
+    transform: translateX(100%);
   }
+}
+
+/* Focus styles for accessibility */
+.focus-accenture:focus {
+  @apply outline-none ring-4 ring-accenture-purple/20 ring-offset-2;
 }
 
 /* Print styles */
@@ -292,5 +366,27 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-accenture-text-tertiary {
+    @apply text-accenture-text-secondary;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .bg-white {
+    @apply bg-accenture-gray-900;
+  }
+
+  .text-accenture-text-primary {
+    @apply text-white;
+  }
+
+  .text-accenture-text-secondary {
+    @apply text-accenture-gray-300;
   }
 }

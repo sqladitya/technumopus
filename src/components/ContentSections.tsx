@@ -9,323 +9,109 @@ interface SectionProps {
 }
 
 export const Section = ({ children, className, id }: SectionProps) => (
-  <section id={id} className={cn("py-20 md:py-28", className)}>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+  <section id={id} className={cn("py-20 md:py-32", className)}>
+    <div className="max-w-7xl mx-auto px-6">{children}</div>
   </section>
 );
 
-export const ServicesSection = () => (
-  <div className="animate-fade-in">
-    <div className="text-center mb-20">
-      <div className="text-sm font-semibold text-corporate-blue uppercase tracking-wider mb-6">
-        SERVICES
-      </div>
-      <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-corporate-text-primary mb-8 leading-tight">
-        Transform Your Business with
-        <span className="block text-corporate-blue">Advanced Technologies</span>
-      </h2>
-      <p className="text-xl md:text-2xl text-corporate-text-secondary max-w-5xl mx-auto leading-relaxed">
-        From digital transformation to cloud architecture, we deliver
-        cutting-edge solutions that drive measurable business outcomes and
-        competitive advantage across all industries.
-      </p>
-    </div>
-
+// Content Cards Grid - Accenture Style
+export const ContentCardsSection = () => (
+  <Section className="bg-white">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {/* Digital Transformation */}
-      <div className="group relative">
+      {[
+        {
+          category: "RESEARCH",
+          title: "Technology Vision 2024",
+          description:
+            "Four trends that will shape the way humans and technology work together",
+          image: "/api/placeholder/400/300",
+          href: "/insights/technology-vision-2024",
+          color: "accenture-purple",
+        },
+        {
+          category: "PERSPECTIVE",
+          title: "The Art of AI Maturity",
+          description:
+            "How to move from AI experimentation to enterprise-wide transformation",
+          image: "/api/placeholder/400/300",
+          href: "/insights/ai-maturity",
+          color: "accenture-red",
+        },
+        {
+          category: "CASE STUDY",
+          title: "Digital Banking Revolution",
+          description:
+            "How we helped a global bank transform customer experience",
+          image: "/api/placeholder/400/300",
+          href: "/insights/digital-banking",
+          color: "accenture-blue",
+        },
+        {
+          category: "REPORT",
+          title: "Future of Work",
+          description: "Reimagining work through human + machine collaboration",
+          image: "/api/placeholder/400/300",
+          href: "/insights/future-of-work",
+          color: "accenture-violet",
+        },
+      ].map((card, index) => (
         <Link
-          to="/services/digital-transformation"
-          className="block bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-corporate-gray-200 p-8 transition-all duration-500 cursor-pointer hover:-translate-y-2 h-full"
+          key={index}
+          to={card.href}
+          className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-fade-in"
+          style={{ animationDelay: `${index * 0.1}s` }}
         >
-          <div className="w-16 h-16 bg-gradient-corporate rounded-2xl mb-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
+          <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+            <img
+              src={card.image}
+              alt={card.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute top-4 left-4">
+              <span
+                className={cn(
+                  "inline-block px-3 py-1 text-white text-body-sm font-bold uppercase tracking-wider rounded",
+                  `bg-${card.color}`,
+                )}
+              >
+                {card.category}
+              </span>
+            </div>
           </div>
-          <h3 className="text-xl font-bold text-corporate-text-primary mb-4 group-hover:text-corporate-blue transition-colors duration-300">
-            Digital Transformation
-          </h3>
-          <p className="text-corporate-text-secondary leading-relaxed mb-6">
-            End-to-end business transformation strategies that modernize
-            operations, enhance customer experiences, and unlock new revenue
-            streams through technology innovation.
-          </p>
-          <div className="flex items-center text-corporate-blue font-semibold group-hover:translate-x-2 transition-transform duration-300">
-            Learn more
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
+          <div className="p-6">
+            <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+              {card.title}
+            </h3>
+            <p className="text-accenture-text-tertiary leading-relaxed">
+              {card.description}
+            </p>
           </div>
         </Link>
-      </div>
-
-      {/* Cloud Architecture */}
-      <div className="group relative">
-        <Link
-          to="/services/cloud-architecture"
-          className="block bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-corporate-gray-200 p-8 transition-all duration-500 cursor-pointer hover:-translate-y-2 h-full"
-        >
-          <div className="w-16 h-16 bg-gradient-blue rounded-2xl mb-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-              />
-            </svg>
-          </div>
-          <h3 className="text-xl font-bold text-corporate-text-primary mb-4 group-hover:text-corporate-blue transition-colors duration-300">
-            Cloud Architecture
-          </h3>
-          <p className="text-corporate-text-secondary leading-relaxed mb-6">
-            Scalable, secure cloud infrastructure designed for performance,
-            reliability, and cost optimization across multi-cloud environments
-            and hybrid deployments.
-          </p>
-          <div className="flex items-center text-corporate-blue font-semibold group-hover:translate-x-2 transition-transform duration-300">
-            Learn more
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </div>
-        </Link>
-      </div>
-
-      {/* SAP Consulting */}
-      <div className="group relative">
-        <Link
-          to="/services/sap-consulting"
-          className="block bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-corporate-gray-200 p-8 transition-all duration-500 cursor-pointer hover:-translate-y-2 h-full"
-        >
-          <div className="w-16 h-16 bg-gradient-purple rounded-2xl mb-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-          </div>
-          <h3 className="text-xl font-bold text-corporate-text-primary mb-4 group-hover:text-corporate-blue transition-colors duration-300">
-            SAP Consulting
-          </h3>
-          <p className="text-corporate-text-secondary leading-relaxed mb-6">
-            Comprehensive SAP implementations, migrations, and optimizations
-            that streamline business processes, maximize ROI, and accelerate
-            digital transformation.
-          </p>
-          <div className="flex items-center text-corporate-blue font-semibold group-hover:translate-x-2 transition-transform duration-300">
-            Learn more
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </div>
-        </Link>
-      </div>
-
-      {/* Application Development */}
-      <div className="group relative">
-        <Link
-          to="/services/saas-development"
-          className="block bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-corporate-gray-200 p-8 transition-all duration-500 cursor-pointer hover:-translate-y-2 h-full"
-        >
-          <div className="w-16 h-16 bg-gradient-to-br from-corporate-orange to-red-600 rounded-2xl mb-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-              />
-            </svg>
-          </div>
-          <h3 className="text-xl font-bold text-corporate-text-primary mb-4 group-hover:text-corporate-blue transition-colors duration-300">
-            Application Development
-          </h3>
-          <p className="text-corporate-text-secondary leading-relaxed mb-6">
-            Custom software-as-a-service platforms and enterprise applications
-            built with modern frameworks, designed for scale, security, and
-            exceptional user experience.
-          </p>
-          <div className="flex items-center text-corporate-blue font-semibold group-hover:translate-x-2 transition-transform duration-300">
-            Learn more
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </div>
-        </Link>
-      </div>
+      ))}
     </div>
-
-    {/* View All Services Button */}
-    <div className="text-center mt-20">
-      <Link
-        to="/services"
-        className="group inline-flex items-center gap-3 px-10 py-5 bg-corporate-blue text-white rounded-xl font-semibold hover:bg-corporate-blue-dark transition-all duration-300 hover:scale-105 shadow-corporate-lg hover:shadow-corporate-xl text-lg"
-      >
-        View All Services
-        <svg
-          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 8l4 4m0 0l-4 4m4-4H3"
-          />
-        </svg>
-      </Link>
-    </div>
-  </div>
+  </Section>
 );
 
-export const PartnersSection = () => <PartnersLogos />;
-
-export const AboutSection = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-    {/* Text Content */}
-    <div className="animate-slide-up">
-      <div className="text-sm font-semibold text-corporate-blue uppercase tracking-wider mb-6">
-        ABOUT TECHNUM OPUS
-      </div>
-      <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-corporate-text-primary mb-8 leading-tight">
-        Driving Business
-        <span className="block text-corporate-blue">Outcomes</span>
-        with Innovation
+// 360° Value Section - Accenture's signature section
+export const ValuePropositionSection = () => (
+  <Section className="bg-accenture-black text-white">
+    <div className="text-center py-20 animate-fade-in">
+      <h2 className="text-display font-heading text-white mb-8 leading-tight">
+        360° VALUE
       </h2>
-      <p className="text-xl md:text-2xl text-corporate-text-secondary mb-10 leading-relaxed">
-        We are a global technology consulting firm that helps enterprises
-        navigate digital transformation with confidence. Our proven
-        methodologies and deep industry expertise enable sustainable business
-        growth and competitive advantage.
+      <p className="text-body-xl text-white/80 max-w-4xl mx-auto mb-16 leading-relaxed">
+        We create 360° value for our clients, their customers, our people, our
+        partners, our shareholders and our communities. It's a bold commitment
+        to shared success, and it's how we create a positive, enduring impact.
       </p>
-
-      <div className="space-y-8 mb-12">
-        {[
-          {
-            title: "360° Value Creation",
-            description:
-              "Comprehensive solutions that drive measurable business impact across all dimensions of your organization",
-          },
-          {
-            title: "Industry Leadership",
-            description:
-              "Recognized expertise across multiple industry verticals and cutting-edge technology domains",
-          },
-          {
-            title: "Global Scale, Local Delivery",
-            description:
-              "Worldwide presence with deep local market knowledge and cultural understanding for seamless execution",
-          },
-        ].map((item, index) => (
-          <div key={index} className="flex items-start gap-6">
-            <div className="w-10 h-10 bg-corporate-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-corporate-text-primary mb-3">
-                {item.title}
-              </h3>
-              <p className="text-corporate-text-secondary leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row gap-6">
+      <div className="flex flex-col sm:flex-row gap-8 justify-center">
         <Link
-          to="/about"
-          className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-corporate-blue text-white rounded-xl font-semibold hover:bg-corporate-blue-dark transition-all duration-300 hover:scale-105 shadow-corporate"
+          to="/about/360-value"
+          className="group inline-flex items-center gap-4 px-10 py-5 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 shadow-purple text-xl"
         >
-          Discover Our Story
+          Learn about 360° value
           <svg
-            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -338,182 +124,113 @@ export const AboutSection = () => (
             />
           </svg>
         </Link>
-        <Link
-          to="/leadership"
-          className="group inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-corporate-blue text-corporate-blue rounded-xl font-semibold hover:bg-corporate-blue hover:text-white transition-all duration-300"
-        >
-          Meet Our Leaders
-          <svg
-            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-            />
+        <button className="group inline-flex items-center gap-4 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl">
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
           </svg>
-        </Link>
+          Watch the film
+        </button>
       </div>
     </div>
-
-    {/* Stats and Visual Content */}
-    <div className="relative animate-scale-in">
-      <div className="bg-gradient-light rounded-3xl p-10 shadow-corporate-xl border border-corporate-gray-200">
-        <div className="grid grid-cols-2 gap-8">
-          {/* Stats Cards */}
-          <div className="bg-white rounded-2xl p-8 text-center shadow-card border border-corporate-gray-100">
-            <div className="text-5xl font-bold text-corporate-blue mb-3">
-              500+
-            </div>
-            <div className="text-corporate-text-secondary font-medium">
-              Projects Delivered
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl p-8 text-center shadow-card border border-corporate-gray-100">
-            <div className="text-5xl font-bold text-corporate-green mb-3">
-              99%
-            </div>
-            <div className="text-corporate-text-secondary font-medium">
-              Client Satisfaction
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl p-8 text-center shadow-card border border-corporate-gray-100">
-            <div className="text-5xl font-bold text-corporate-purple mb-3">
-              25+
-            </div>
-            <div className="text-corporate-text-secondary font-medium">
-              Countries Served
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl p-8 text-center shadow-card border border-corporate-gray-100">
-            <div className="text-5xl font-bold text-corporate-orange mb-3">
-              24/7
-            </div>
-            <div className="text-corporate-text-secondary font-medium">
-              Global Support
-            </div>
-          </div>
-        </div>
-
-        {/* Central Achievement Badge */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="w-28 h-28 bg-gradient-corporate rounded-full flex items-center justify-center shadow-corporate-xl animate-float">
-            <svg
-              className="w-14 h-14 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </Section>
 );
 
-// Client Success Stories Section
-export const ClientStoriesSection = () => (
-  <div className="bg-corporate-bg-secondary py-20">
-    <Section>
-      <div className="text-center mb-20 animate-fade-in">
-        <div className="text-sm font-semibold text-corporate-blue uppercase tracking-wider mb-6">
-          CLIENT SUCCESS STORIES
+// Client Stories Carousel - Accenture Style
+export const ClientStoriesSection = () => {
+  const stories = [
+    {
+      title: "Reinventing retail for the digital age",
+      client: "Leading Global Retailer",
+      description:
+        "How we helped transform customer experience and drive 40% increase in digital sales",
+      image: "/api/placeholder/600/400",
+      results: "40% increase in digital sales",
+      industry: "RETAIL",
+    },
+    {
+      title: "Banking on the cloud",
+      client: "Major Financial Institution",
+      description:
+        "Cloud transformation that reduced costs by 30% while improving scalability",
+      image: "/api/placeholder/600/400",
+      results: "30% cost reduction",
+      industry: "BANKING",
+    },
+    {
+      title: "Smart manufacturing revolution",
+      client: "Industrial Manufacturing Leader",
+      description: "IoT and AI implementation that increased efficiency by 25%",
+      image: "/api/placeholder/600/400",
+      results: "25% efficiency gain",
+      industry: "MANUFACTURING",
+    },
+  ];
+
+  return (
+    <Section className="bg-accenture-gray-50">
+      <div className="text-center mb-16 animate-fade-in">
+        <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+          CLIENT STORIES
         </div>
-        <h2 className="text-5xl md:text-6xl font-bold text-corporate-text-primary mb-8">
-          Transforming Businesses
+        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+          Real impact for real business
         </h2>
-        <p className="text-xl md:text-2xl text-corporate-text-secondary max-w-4xl mx-auto">
-          See how we help global enterprises achieve breakthrough results and
-          sustainable competitive advantage
+        <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+          See how we help organizations create lasting value through technology
+          and human ingenuity
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          {
-            title: "Global Retailer Modernizes Supply Chain",
-            description:
-              "35% reduction in operational costs through AI-powered logistics optimization and real-time supply chain visibility",
-            industry: "Retail & Consumer",
-            results: "35% cost reduction",
-            metric: "$2.4M annual savings",
-            color: "from-corporate-blue to-corporate-blue-dark",
-          },
-          {
-            title: "Financial Services Cloud Migration",
-            description:
-              "99.9% uptime achieved with secure multi-cloud architecture and automated disaster recovery",
-            industry: "Financial Services",
-            results: "99.9% uptime",
-            metric: "Zero data breaches",
-            color: "from-corporate-green to-green-600",
-          },
-          {
-            title: "Manufacturing Digital Twin Implementation",
-            description:
-              "50% increase in production efficiency with IoT sensors, predictive analytics, and digital twin technology",
-            industry: "Manufacturing",
-            results: "50% efficiency gain",
-            metric: "18-month ROI",
-            color: "from-corporate-purple to-purple-600",
-          },
-        ].map((story, index) => (
+        {stories.map((story, index) => (
           <div
             key={index}
-            className="group bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
+            className="group bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            <div className="text-xs font-semibold text-corporate-text-tertiary uppercase tracking-wider mb-4">
-              {story.industry}
+            <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+              <img
+                src={story.image}
+                alt={story.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute top-4 left-4">
+                <span className="inline-block px-3 py-1 bg-accenture-purple text-white text-body-sm font-bold uppercase tracking-wider rounded">
+                  {story.industry}
+                </span>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-corporate-text-primary mb-4 group-hover:text-corporate-blue transition-colors">
-              {story.title}
-            </h3>
-            <p className="text-corporate-text-secondary mb-8 leading-relaxed">
-              {story.description}
-            </p>
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-3xl font-bold text-corporate-blue mb-1">
+            <div className="p-6">
+              <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+                {story.title}
+              </h3>
+              <p className="text-accenture-text-tertiary mb-4 leading-relaxed">
+                {story.description}
+              </p>
+              <div className="flex items-center justify-between">
+                <div className="text-body-xl font-bold text-accenture-purple">
                   {story.results}
                 </div>
-                <div className="text-sm text-corporate-text-tertiary">
-                  {story.metric}
-                </div>
-              </div>
-              <Link
-                to="/case-studies"
-                className="group inline-flex items-center gap-2 text-corporate-blue hover:text-corporate-blue-dark font-semibold transition-colors"
-              >
-                Read more
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <Link
+                  to="/insights/case-studies"
+                  className="group inline-flex items-center gap-2 text-accenture-purple hover:text-accenture-purple-dark font-semibold transition-colors"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+                  Read more
+                  <svg
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         ))}
@@ -521,10 +238,10 @@ export const ClientStoriesSection = () => (
 
       <div className="text-center mt-16">
         <Link
-          to="/case-studies"
-          className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-corporate-blue text-corporate-blue rounded-xl font-semibold hover:bg-corporate-blue hover:text-white transition-all duration-300"
+          to="/insights/case-studies"
+          className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
         >
-          View All Case Studies
+          View all client stories
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"
@@ -541,5 +258,401 @@ export const ClientStoriesSection = () => (
         </Link>
       </div>
     </Section>
-  </div>
+  );
+};
+
+// Awards Section - Accenture's floating award cards
+export const AwardsSection = () => {
+  const awards = [
+    {
+      title: "Leader in Digital Services",
+      organization: "Gartner Magic Quadrant",
+      year: "2024",
+      color: "from-accenture-purple to-accenture-purple-dark",
+      position: "top-6 left-12",
+    },
+    {
+      title: "Top Employer",
+      organization: "Top Employers Institute",
+      year: "2024",
+      color: "from-accenture-red to-red-600",
+      position: "top-20 right-16",
+    },
+    {
+      title: "AI Innovation Award",
+      organization: "AI Excellence Awards",
+      year: "2023",
+      color: "from-accenture-blue to-blue-600",
+      position: "bottom-20 left-8",
+    },
+    {
+      title: "Sustainability Leader",
+      organization: "Dow Jones Index",
+      year: "2023",
+      color: "from-accenture-violet to-purple-600",
+      position: "bottom-12 right-12",
+    },
+  ];
+
+  return (
+    <Section className="bg-white relative overflow-hidden min-h-screen flex items-center">
+      <div className="text-center mb-16 animate-fade-in relative z-10">
+        <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+          RECOGNITION
+        </div>
+        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+          Awards and accolades
+        </h2>
+        <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+          Recognition from industry leaders for our innovation, workplace
+          culture, and commitment to creating 360° value
+        </p>
+      </div>
+
+      {/* Floating Award Cards */}
+      {awards.map((award, index) => (
+        <div
+          key={index}
+          className={cn(
+            `absolute w-80 bg-gradient-to-br ${award.color} rounded-lg p-6 text-white shadow-accenture-lg hover:shadow-accenture-xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
+          )}
+          style={{
+            animationDelay: `${index * 0.5}s`,
+            animationDuration: `${8 + index}s`,
+          }}
+        >
+          <div className="flex items-start justify-between mb-4">
+            <div className="text-4xl opacity-20">🏆</div>
+            <div className="text-right">
+              <div className="text-2xl font-bold">{award.year}</div>
+            </div>
+          </div>
+          <h3 className="text-heading-md font-bold mb-2">{award.title}</h3>
+          <p className="text-white/90">{award.organization}</p>
+        </div>
+      ))}
+    </Section>
+  );
+};
+
+// Culture Section - Accenture Style
+export const CultureSection = () => (
+  <Section className="bg-accenture-black text-white relative overflow-hidden">
+    <div className="absolute inset-0">
+      <div
+        className="w-full h-full bg-cover bg-center opacity-30"
+        style={{
+          backgroundImage: "url(/api/placeholder/1920/1080)",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/80 to-transparent" />
+    </div>
+
+    <div className="relative z-10 max-w-4xl animate-fade-in">
+      <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
+        CULTURE & VALUES
+      </div>
+      <h2 className="text-heading-xl font-semibold text-white mb-8">
+        Our core values shape everything we do
+      </h2>
+      <p className="text-body-xl text-white/80 mb-12 leading-relaxed">
+        We believe in the power of technology to transform businesses and
+        improve lives. Our commitment to innovation, inclusion, and shared
+        success drives us to create lasting impact for all stakeholders.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {[
+          {
+            title: "Client Value Creation",
+            description: "Delivering superior value to our clients",
+          },
+          {
+            title: "One Global Network",
+            description: "Leveraging the power of our diverse team",
+          },
+          {
+            title: "Respect for the Individual",
+            description: "Fostering an inclusive, caring environment",
+          },
+        ].map((value, index) => (
+          <div
+            key={index}
+            className="animate-slide-up"
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
+            <h3 className="text-heading-md font-semibold text-white mb-3">
+              {value.title}
+            </h3>
+            <p className="text-white/70">{value.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <Link
+        to="/about/culture"
+        className="group inline-flex items-center gap-3 px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+      >
+        Learn about our culture
+        <svg
+          className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </Link>
+    </div>
+  </Section>
+);
+
+// News Carousel - Accenture Style
+export const NewsSection = () => {
+  const news = [
+    {
+      category: "PRESS RELEASE",
+      title: "Technum Opus Named a Leader in Digital Transformation Services",
+      date: "March 15, 2024",
+      excerpt:
+        "Recognition highlights our commitment to delivering innovative solutions that drive business value.",
+      href: "/newsroom/digital-transformation-leader",
+    },
+    {
+      category: "ANNOUNCEMENT",
+      title: "New AI Innovation Center Opens in Silicon Valley",
+      date: "March 10, 2024",
+      excerpt:
+        "State-of-the-art facility to accelerate AI research and development for enterprise clients.",
+      href: "/newsroom/ai-innovation-center",
+    },
+    {
+      category: "AWARD",
+      title: "Recognized as Top Employer for Technology Professionals",
+      date: "March 5, 2024",
+      excerpt:
+        "Award reflects our commitment to creating an inclusive, innovative workplace culture.",
+      href: "/newsroom/top-employer-award",
+    },
+  ];
+
+  return (
+    <Section className="bg-white">
+      <div className="text-center mb-16 animate-fade-in">
+        <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+          NEWSROOM
+        </div>
+        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+          Latest news and insights
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {news.map((item, index) => (
+          <Link
+            key={index}
+            to={item.href}
+            className="group block bg-white border border-accenture-gray-200 rounded-lg p-6 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 animate-slide-up"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-3">
+              {item.category}
+            </div>
+            <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+              {item.title}
+            </h3>
+            <p className="text-accenture-text-tertiary mb-4 leading-relaxed">
+              {item.excerpt}
+            </p>
+            <div className="text-body-sm text-accenture-text-light">
+              {item.date}
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="text-center mt-16">
+        <Link
+          to="/newsroom"
+          className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
+        >
+          View all news
+          <svg
+            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
+      </div>
+    </Section>
+  );
+};
+
+// Services Section
+export const ServicesSection = () => (
+  <Section className="bg-accenture-gray-50">
+    <div className="text-center mb-16 animate-fade-in">
+      <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+        SERVICES
+      </div>
+      <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+        How we help
+      </h2>
+      <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+        We combine deep industry knowledge with cutting-edge technology to
+        deliver transformative solutions
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Strategy & Consulting",
+          description:
+            "Strategic transformation that drives sustainable growth and competitive advantage",
+          icon: "🎯",
+          href: "/services/strategy-consulting",
+        },
+        {
+          title: "Technology",
+          description:
+            "Cloud-first solutions that modernize operations and enhance customer experiences",
+          icon: "⚡",
+          href: "/services/technology",
+        },
+        {
+          title: "Interactive",
+          description:
+            "Human-centered design that creates meaningful digital experiences",
+          icon: "🎨",
+          href: "/services/interactive",
+        },
+        {
+          title: "Operations",
+          description:
+            "Intelligent automation that improves efficiency and reduces costs",
+          icon: "⚙️",
+          href: "/services/operations",
+        },
+        {
+          title: "Industry X",
+          description:
+            "Digital transformation for manufacturing and industrial companies",
+          icon: "🏭",
+          href: "/services/industry-x",
+        },
+        {
+          title: "Song",
+          description:
+            "Creative solutions that bring brands to life through technology",
+          icon: "🎵",
+          href: "/services/song",
+        },
+      ].map((service, index) => (
+        <Link
+          key={index}
+          to={service.href}
+          className="group block bg-white rounded-lg p-8 shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            {service.icon}
+          </div>
+          <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+            {service.title}
+          </h3>
+          <p className="text-accenture-text-tertiary leading-relaxed">
+            {service.description}
+          </p>
+        </Link>
+      ))}
+    </div>
+  </Section>
+);
+
+export const PartnersSection = () => <PartnersLogos />;
+
+export const AboutSection = () => (
+  <Section className="bg-white">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="animate-slide-up">
+        <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+          ABOUT TECHNUM OPUS
+        </div>
+        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+          Technology meets human ingenuity
+        </h2>
+        <p className="text-body-xl text-accenture-text-tertiary mb-8 leading-relaxed">
+          We are a global professional services company with leading
+          capabilities in digital, cloud and security. Combining unmatched
+          experience and specialized skills across more than 40 industries, we
+          offer Strategy and Consulting, Interactive, Technology and Operations
+          services.
+        </p>
+        <Link
+          to="/about"
+          className="group inline-flex items-center gap-3 px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+        >
+          Learn more about us
+          <svg
+            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
+      </div>
+
+      <div className="relative animate-scale-in">
+        <div className="bg-accenture-gray-50 rounded-lg p-8">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-accenture-purple mb-2">
+                500K+
+              </div>
+              <div className="text-accenture-text-tertiary">People</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-accenture-purple mb-2">
+                120+
+              </div>
+              <div className="text-accenture-text-tertiary">Countries</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-accenture-purple mb-2">
+                40+
+              </div>
+              <div className="text-accenture-text-tertiary">Industries</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-accenture-purple mb-2">
+                #1
+              </div>
+              <div className="text-accenture-text-tertiary">Fortune 500</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
 );
