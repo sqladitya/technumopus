@@ -40,6 +40,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <SearchCommand />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
