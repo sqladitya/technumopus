@@ -118,9 +118,11 @@ const SapConsulting = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
+                text-white
                 <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
                   Transform Your Business with SAP
                 </h2>
+                text-gray-200
                 <div className="space-y-6 text-lg text-tech-text-medium leading-relaxed">
                   <p>
                     As certified SAP partners, we bring deep expertise in
