@@ -10,7 +10,7 @@ import {
   searchItems,
   type SearchItem,
 } from "@/lib/searchData";
-import { useSearch } from "@/hooks/useSearch";
+import { useSearchContext } from "./SearchProvider";
 import { Search, FileText } from "lucide-react";
 
 interface SearchCommandProps {
