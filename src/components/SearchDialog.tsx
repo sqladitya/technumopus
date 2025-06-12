@@ -28,6 +28,12 @@ import { Sparkles, Search } from "lucide-react";
 const SearchDialog = () => {
   const { isOpen, closeSearch, openSearch } = useSearchContext();
   const [query, setQuery] = useState("");
+  const [isAIMode, setIsAIMode] = useState(false);
+  const [aiResponse, setAiResponse] = useState<{
+    results: AISearchResult[];
+    interpretation: string;
+    suggestions: string[];
+  } | null>(null);
   const navigate = useNavigate();
 
   // Handle keyboard shortcuts
@@ -136,7 +142,7 @@ const SearchDialog = () => {
       case "Company":
         return "🏢";
       case "Partners":
-        return "���";
+        return "🤝";
       case "Industries":
         return "🏭";
       case "Technologies":
