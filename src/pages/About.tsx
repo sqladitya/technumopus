@@ -102,7 +102,7 @@ const About = () => {
       </SectionBackground>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-gray-50">
+      <SectionBackground variant="gradient" className="py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -112,13 +112,13 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Innovation that drives results
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Founded with a vision to bridge the gap between complex
                 technology and business success, Technum Opus has grown from a
                 small consultancy to a comprehensive technology partner serving
                 enterprises across industries.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 Our journey began with a simple belief: that technology should
                 empower businesses, not complicate them. Today, we continue to
                 uphold this principle while delivering cutting-edge solutions
@@ -162,7 +162,7 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <p className="text-gray-700 font-semibold text-lg">
+                  <p className="text-gray-800 font-semibold text-lg">
                     Building the Future Together
                   </p>
                 </div>
@@ -172,7 +172,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* Mission & Vision */}
       <section className="py-20 bg-white">
