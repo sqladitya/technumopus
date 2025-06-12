@@ -91,17 +91,17 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div className="bg-accenture-black rounded-2xl shadow-xl p-8">
                 <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-4 py-2 mb-4">
-                    <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accenture-purple to-accenture-purple-light rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-white uppercase tracking-wider">
                       Send Message
                     </span>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-3xl font-bold text-white mb-4">
                     Tell Us About Your Project
                   </h2>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-white/80 leading-relaxed">
                     Fill out the form below and we'll get back to you within 24
                     hours to discuss your requirements.
                   </p>
@@ -111,28 +111,9 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      className="block text-sm font-medium text-white mb-2"
                     >
                       Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
-                      placeholder="Your full name"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-900 mb-2"
-                    >
-                      Email *
                     </label>
                     <input
                       type="email"
@@ -141,7 +122,7 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -149,7 +130,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="company"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      className="block text-sm font-medium text-white mb-2"
                     >
                       Company
                     </label>
@@ -159,33 +140,51 @@ const Contact = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                       placeholder="Your company name"
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-white mb-2"
                     >
-                      Message *
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="Your phone number"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-white mb-2"
+                    >
+                      Project Details *
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       required
+                      rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors resize-none text-white placeholder:text-white/60"
                       placeholder="Tell us about your project requirements..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+                    className="w-full bg-gradient-to-r from-accenture-purple to-accenture-purple-light text-white py-4 px-6 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-accenture-purple/25 transition-all duration-300 hover:scale-105"
                   >
                     Send Message
                   </button>
@@ -195,15 +194,15 @@ const Contact = () => {
               {/* Contact Information */}
               <div className="space-y-8">
                 <div>
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-4 py-2 mb-4">
-                    <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accenture-purple/20 to-accenture-purple-light/20 rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                       Contact Info
                     </span>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-3xl font-bold text-white mb-4">
                     Get In Touch
                   </h2>
-                  <p className="text-gray-600 leading-relaxed mb-8">
+                  <p className="text-white/80 leading-relaxed mb-8">
                     Have questions about our services? Need a custom solution?
                     Our team is here to help you succeed.
                   </p>
@@ -213,24 +212,24 @@ const Contact = () => {
                   {contactInfo.map((info, index) => (
                     <div
                       key={index}
-                      className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                      className="bg-accenture-black/50 rounded-xl shadow-lg p-6 border border-white/10 hover:shadow-xl hover:bg-accenture-black/70 transition-all duration-300"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg flex items-center justify-center text-white">
+                        <div className="w-12 h-12 bg-gradient-to-r from-accenture-purple to-accenture-purple-light rounded-lg flex items-center justify-center text-white">
                           {info.icon}
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-lg font-semibold text-gray-900 mb-1">
+                          <h4 className="text-lg font-semibold text-white mb-1">
                             {info.title}
                           </h4>
-                          <p className="text-sm text-gray-600 mb-2">
+                          <p className="text-sm text-white/60 mb-2">
                             {info.description}
                           </p>
                           <div className="space-y-1">
                             {info.details.map((detail, idx) => (
                               <p
                                 key={idx}
-                                className="text-purple-600 font-medium"
+                                className="text-accenture-purple font-medium"
                               >
                                 {detail}
                               </p>
@@ -243,11 +242,11 @@ const Contact = () => {
                 </div>
 
                 {/* Business Hours */}
-                <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <div className="bg-accenture-black/50 rounded-xl shadow-lg p-6 border border-white/10">
+                  <h3 className="text-lg font-semibold text-white mb-4">
                     Business Hours
                   </h3>
-                  <div className="space-y-2 text-gray-600">
+                  <div className="space-y-2 text-white/80">
                     <div className="flex justify-between">
                       <span>Monday - Friday</span>
                       <span className="font-medium">9:00 AM - 6:00 PM</span>
