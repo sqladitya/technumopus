@@ -4,7 +4,7 @@ import SectionBackground from "@/components/SectionBackground";
 
 const About = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
       <Navigation />
 
       {/* Hero Section */}
