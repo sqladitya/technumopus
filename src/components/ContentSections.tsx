@@ -16,87 +16,89 @@ export const Section = ({ children, className, id }: SectionProps) => (
 
 // Content Cards Grid - Accenture Style
 export const ContentCardsSection = () => (
-  <Section className="bg-white">
-    <div className="max-w-5xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        {[
-          {
-            category: "TRANSFORMATION",
-            title: "Change That Matters",
-            description:
-              "Discover how we help organizations create lasting impact through human ingenuity and technology innovation",
-            image:
-              "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            href: "/insights/change-that-matters",
-            color: "accenture-purple",
-          },
-          {
-            category: "PERSPECTIVE",
-            title: "The Art of AI Maturity",
-            description:
-              "How to move from AI experimentation to enterprise-wide transformation",
-            image:
-              "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            href: "/insights/ai-maturity",
-            color: "accenture-red",
-          },
-          {
-            category: "CASE STUDY",
-            title: "Digital Banking Revolution",
-            description:
-              "How we helped a global bank transform customer experience",
-            image:
-              "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            href: "/insights/digital-banking",
-            color: "accenture-blue",
-          },
-          {
-            category: "REPORT",
-            title: "Future of Work",
-            description:
-              "Reimagining work through human + machine collaboration",
-            image:
-              "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            href: "/insights/future-of-work",
-            color: "accenture-violet",
-          },
-        ].map((card, index) => (
-          <Link
-            key={index}
-            to={card.href}
-            className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
-              <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute top-4 left-4">
-                <span
-                  className={cn(
-                    "inline-block px-3 py-1 text-white text-body-sm font-bold uppercase tracking-wider rounded",
-                    `bg-${card.color}`,
-                  )}
-                >
-                  {card.category}
-                </span>
+  <section className="py-12 md:py-16 bg-white">
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {[
+            {
+              category: "TRANSFORMATION",
+              title: "Change That Matters",
+              description:
+                "Discover how we help organizations create lasting impact through human ingenuity and technology innovation",
+              image:
+                "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+              href: "/insights/change-that-matters",
+              color: "accenture-purple",
+            },
+            {
+              category: "PERSPECTIVE",
+              title: "The Art of AI Maturity",
+              description:
+                "How to move from AI experimentation to enterprise-wide transformation",
+              image:
+                "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+              href: "/insights/ai-maturity",
+              color: "accenture-red",
+            },
+            {
+              category: "CASE STUDY",
+              title: "Digital Banking Revolution",
+              description:
+                "How we helped a global bank transform customer experience",
+              image:
+                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+              href: "/insights/digital-banking",
+              color: "accenture-blue",
+            },
+            {
+              category: "REPORT",
+              title: "Future of Work",
+              description:
+                "Reimagining work through human + machine collaboration",
+              image:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+              href: "/insights/future-of-work",
+              color: "accenture-violet",
+            },
+          ].map((card, index) => (
+            <Link
+              key={index}
+              to={card.href}
+              className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-4 left-4">
+                  <span
+                    className={cn(
+                      "inline-block px-3 py-1 text-white text-body-sm font-bold uppercase tracking-wider rounded",
+                      `bg-${card.color}`,
+                    )}
+                  >
+                    {card.category}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="p-4">
-              <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
-                {card.title}
-              </h3>
-              <p className="text-accenture-text-tertiary leading-relaxed">
-                {card.description}
-              </p>
-            </div>
-          </Link>
-        ))}
+              <div className="p-4">
+                <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+                  {card.title}
+                </h3>
+                <p className="text-accenture-text-tertiary leading-relaxed">
+                  {card.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
-  </Section>
+  </section>
 );
 
 // 360° Value Section - Accenture's signature section
