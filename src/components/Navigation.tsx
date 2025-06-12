@@ -37,27 +37,13 @@ const Navigation = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Focus search input when search is opened
-  useEffect(() => {
-    if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isSearchOpen]);
-
-  // Handle keyboard shortcuts
+  // Handle keyboard shortcuts for dropdowns and mobile menu
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Escape key closes search and dropdowns
+      // Escape key closes dropdowns and mobile menu
       if (event.key === "Escape") {
-        setIsSearchOpen(false);
         setActiveDropdown(null);
         setIsMobileMenuOpen(false);
-      }
-
-      // Ctrl/Cmd + K opens search
-      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-        event.preventDefault();
-        setIsSearchOpen(true);
       }
     };
 
