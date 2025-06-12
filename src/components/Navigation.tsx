@@ -736,13 +736,13 @@ const Navigation = () => {
                 >
                   <div
                     className={cn(
-                      "p-8",
+                      "p-6",
                       dropdownPositions.partners?.maxWidth && "overflow-auto",
                     )}
                   >
                     <div
                       className={cn(
-                        "grid grid-cols-2 gap-12 min-w-[600px]",
+                        "grid grid-cols-2 gap-8 min-w-[500px]",
                         dropdownPositions.partners?.maxWidth && "min-w-0",
                       )}
                     >
@@ -773,6 +773,35 @@ const Navigation = () => {
                           </div>
                         </div>
                       ))}
+                    </div>
+
+                    {/* View All Services Link */}
+                    <div className="pt-4 border-t border-accenture-gray-200 mt-6">
+                      <Link
+                        to="/services"
+                        onClick={() => {
+                          setActiveDropdown(null);
+                          setDropdownPositions({});
+                        }}
+                        className="group flex items-center gap-2 p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                      >
+                        <span className="font-semibold text-accenture-purple group-hover:text-accenture-purple-dark transition-colors">
+                          View All Services
+                        </span>
+                        <svg
+                          className="w-4 h-4 text-accenture-purple group-hover:text-accenture-purple-dark transition-all duration-200 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </Link>
                     </div>
                   </div>
                 </div>
