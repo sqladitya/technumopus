@@ -49,11 +49,12 @@ const AboutUs = () => {
                   <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
                     Our Mission
                   </h3>
-                  <p className="text-tech-text-medium leading-relaxed">
-                    To empower organizations with transformative technology
-                    solutions that drive innovation, efficiency, and sustainable
-                    growth while maintaining the highest standards of quality
-                    and integrity.
+                  <p className="text-body-xl text-gray-600 leading-relaxed">
+                    To empower organizations worldwide with transformative
+                    technology solutions that drive sustainable growth,
+                    operational excellence, and competitive advantage. We
+                    believe in technology that serves humanity, creating value
+                    that extends far beyond code and systems.
                   </p>
                 </div>
               </div>
