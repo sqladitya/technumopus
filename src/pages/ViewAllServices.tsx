@@ -497,44 +497,42 @@ const ViewAllServices = () => {
       </section>
 
       {/* Technology Stack */}
-      <SectionBackground variant="gradient">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Our Technology Stack
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We leverage cutting-edge technologies and maintain partnerships
-                with leading vendors to deliver best-in-class solutions.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {technologyStack.map((stack, index) => (
-                <div
-                  key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white transition-all duration-300"
-                >
-                  <h3 className="text-xl font-bold text-accenture-text-primary mb-6">
-                    {stack.category}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {stack.technologies.map((tech, techIndex) => (
-                      <div
-                        key={techIndex}
-                        className="text-sm text-gray-600 bg-gray-50 rounded px-3 py-2 text-center"
-                      >
-                        {tech}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Our Technology Stack
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              We leverage cutting-edge technologies and maintain partnerships
+              with leading vendors to deliver best-in-class solutions.
+            </p>
           </div>
-        </section>
-      </SectionBackground>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {technologyStack.map((stack, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-8 border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-xl font-bold text-accenture-text-primary mb-6">
+                  {stack.category}
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {stack.technologies.map((tech, techIndex) => (
+                    <div
+                      key={techIndex}
+                      className="text-sm text-accenture-text-secondary bg-gray-50 rounded px-3 py-2 text-center"
+                    >
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
