@@ -31,7 +31,6 @@ import NotFound from "./pages/NotFound";
 import DevHelper from "@/components/DevHelper";
 import SearchProvider from "@/components/SearchProvider";
 import PageTextFixer from "@/components/PageTextFixer";
-import AIChatbot from "@/components/AIChatbot";
 
 const queryClient = new QueryClient();
 
@@ -99,7 +98,6 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </SearchProvider>
-        <AIChatbot />
       </BrowserRouter>
       <DevHelper />
     </TooltipProvider>
