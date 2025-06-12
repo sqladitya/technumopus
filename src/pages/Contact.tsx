@@ -116,32 +116,13 @@ const Contact = () => {
                       Full Name *
                     </label>
                     <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                      placeholder="Your full name"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-white mb-2"
-                    >
-                      Email *
-                    </label>
-                    <input
                       type="email"
                       id="email"
                       name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -149,7 +130,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="company"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      className="block text-sm font-medium text-white mb-2"
                     >
                       Company
                     </label>
@@ -159,26 +140,44 @@ const Contact = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                       placeholder="Your company name"
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-white mb-2"
                     >
-                      Message *
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="Your phone number"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-white mb-2"
+                    >
+                      Project Details *
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       required
+                      rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors resize-none text-white placeholder:text-white/60"
                       placeholder="Tell us about your project requirements..."
                     />
                   </div>
