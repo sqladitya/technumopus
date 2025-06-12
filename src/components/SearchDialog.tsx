@@ -433,7 +433,7 @@ const SearchDialog = () => {
             {!query.trim() && (
               <>
                 {/* AI Assistant first */}
-                <CommandGroup heading="✨ AI Assistant">
+                <CommandGroup heading="AI Assistant">
                   {searchCategories
                     .find((cat) => cat.name === "AI Assistant")
                     ?.items.slice(0, 3)
