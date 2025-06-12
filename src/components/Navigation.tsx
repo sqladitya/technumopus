@@ -639,7 +639,12 @@ const Navigation = () => {
                   }}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6 min-w-[400px]">
+                  <div
+                    className={cn(
+                      "p-6 min-w-[400px]",
+                      dropdownPositions.services?.maxWidth && "overflow-auto",
+                    )}
+                  >
                     <div className="space-y-4">
                       {services.map((service) => (
                         <Link
