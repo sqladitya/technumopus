@@ -439,7 +439,7 @@ const About = () => {
                   {reason.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                      <span className="text-gray-600 font-medium">
+                      <span className="text-gray-400 font-medium">
                         {feature}
                       </span>
                     </li>
