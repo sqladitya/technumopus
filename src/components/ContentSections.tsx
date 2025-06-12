@@ -350,14 +350,14 @@ export const AwardsSection = () => {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="w-full max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in relative z-10">
-            <div className="text-xs sm:text-sm font-bold text-purple-600 uppercase tracking-wider mb-3 sm:mb-4">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in relative z-10">
+            <div className="text-sm sm:text-base font-bold text-purple-600 uppercase tracking-wider mb-4 sm:mb-6">
               RECOGNITION
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 sm:mb-8 leading-tight">
               Awards and accolades
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
               Recognition from industry leaders for our innovation, workplace
               culture, and commitment to creating 360° value
             </p>
@@ -677,7 +677,7 @@ export const ServicesSection = () => (
           title: "Technology",
           description:
             "Cloud-first solutions that modernize operations and enhance customer experiences",
-          icon: "⚡",
+          icon: "���",
           href: "/services/technology",
         },
         {
