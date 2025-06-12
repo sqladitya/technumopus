@@ -618,9 +618,7 @@ export const NewsSection = () => {
             <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
               {item.title}
             </h3>
-            <p className="text-accenture-text-tertiary mb-4 leading-relaxed">
-              {item.excerpt}
-            </p>
+            <p className="text-gray-400 mb-4 leading-relaxed">{item.excerpt}</p>
             <div className="text-body-sm text-accenture-text-light">
               {item.date}
             </div>
