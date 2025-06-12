@@ -46,7 +46,7 @@ const Navigation = () => {
       description: "Enterprise SAP implementations and optimization",
     },
     {
-      name: "SAAS Platform Development",
+      name: "Software Development Platform",
       href: "/services/saas-development",
       description: "Scalable cloud-based software solutions",
     },
