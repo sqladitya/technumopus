@@ -180,31 +180,31 @@ const SearchDialog = () => {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "AI Assistant":
-        return "🤖";
+        return <Bot className="w-4 h-4" />;
       case "Pages":
-        return "🏠";
+        return <Home className="w-4 h-4" />;
       case "Quick Actions":
-        return "⚡";
+        return <Zap className="w-4 h-4" />;
       case "Services":
-        return "⚙️";
+        return <Settings className="w-4 h-4" />;
       case "Company":
-        return "🏢";
+        return <Building className="w-4 h-4" />;
       case "Partners":
-        return "🤝";
+        return <Users className="w-4 h-4" />;
       case "Industries":
-        return "🏭";
+        return <Building className="w-4 h-4" />;
       case "Technologies":
-        return "🚀";
+        return <Settings className="w-4 h-4" />;
       case "Resources":
-        return "📚";
+        return <FileText className="w-4 h-4" />;
       case "Contact":
-        return "📧";
+        return <HeadphonesIcon className="w-4 h-4" />;
       case "Support":
-        return "🛠️";
+        return <HeadphonesIcon className="w-4 h-4" />;
       case "Legal":
-        return "⚖️";
+        return <Scale className="w-4 h-4" />;
       default:
-        return "📄";
+        return <FileText className="w-4 h-4" />;
     }
   };
 
