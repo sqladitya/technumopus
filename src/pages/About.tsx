@@ -276,7 +276,7 @@ const About = () => {
             </div>
 
             <div className="relative">
-              <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 h-full">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
                     <svg
@@ -303,12 +303,10 @@ const About = () => {
                     Our Vision
                   </h3>
                 </div>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  To be the world's most trusted technology partner, known for
-                  turning ambitious visions into reality through innovative
-                  solutions. We envision a future where technology seamlessly
-                  enhances human capability, driving progress that benefits
-                  businesses, communities, and society as a whole.
+                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                  To be the trusted technology partner that organizations turn
+                  to when they want to transform possibilities into reality,
+                  creating lasting impact through innovative solutions.
                 </p>
               </div>
             </div>
