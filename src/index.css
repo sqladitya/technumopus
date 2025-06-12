@@ -306,15 +306,15 @@
 
   /* Tech color utilities for better browser compatibility */
   .text-tech-text-dark {
-    color: #000000;
+    color: #1f2937; /* Dark grey instead of pure black for better readability */
   }
 
   .text-tech-text-medium {
-    color: #4b4b49;
+    color: #9ca3af; /* Light grey as requested by user */
   }
 
   .text-tech-text-light {
-    color: #a2a2a0;
+    color: #d1d5db; /* Very light grey for subtle text */
   }
 
   .text-tech-primary {
