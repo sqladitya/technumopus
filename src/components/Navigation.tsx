@@ -243,11 +243,6 @@ const Navigation = () => {
           href: "/partners/technology-partners",
           description: "Strategic technology alliances",
         },
-        {
-          name: "Integration Partners",
-          href: "/partners/integration-partners",
-          description: "System integration specialists",
-        },
       ],
     },
     {
@@ -262,11 +257,6 @@ const Navigation = () => {
           name: "SAP Partners",
           href: "/partners/sap-partners",
           description: "SAP ecosystem partners",
-        },
-        {
-          name: "View All Partners",
-          href: "/partners/view-all",
-          description: "Complete partner directory",
         },
       ],
     },
