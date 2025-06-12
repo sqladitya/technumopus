@@ -241,9 +241,8 @@ const searchData: SearchItem[] = [
 ];
 
 export const useSearch = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+  const { isOpen, query, setQuery, openSearch, closeSearch, handleSelect } =
+    useSearchContext();
 
   const filteredResults = useMemo(() => {
     if (!query.trim()) return searchData;
@@ -286,17 +285,6 @@ export const useSearch = () => {
         return aIndex - bIndex;
       });
   }, [query]);
-
-  const openSearch = () => setIsOpen(true);
-  const closeSearch = () => {
-    setIsOpen(false);
-    setQuery("");
-  };
-
-  const handleSelect = (item: SearchItem) => {
-    navigate(item.url);
-    closeSearch();
-  };
 
   return {
     isOpen,
