@@ -244,7 +244,7 @@ const About = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="relative">
-              <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 h-full">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-lg">
                     <svg
@@ -265,7 +265,7 @@ const About = () => {
                     Our Mission
                   </h3>
                 </div>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-lg text-gray-900 leading-relaxed font-medium">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
