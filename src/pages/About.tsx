@@ -362,10 +362,10 @@ const About = () => {
               <div key={index} className="group">
                 <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 text-center h-full">
                   <div className="text-4xl mb-6">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-body-lg text-gray-600 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
