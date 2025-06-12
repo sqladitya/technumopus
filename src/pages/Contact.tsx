@@ -229,7 +229,7 @@ const Contact = () => {
                             {info.details.map((detail, idx) => (
                               <p
                                 key={idx}
-                                className="text-purple-600 font-medium"
+                                className="text-accenture-purple font-medium"
                               >
                                 {detail}
                               </p>
@@ -242,11 +242,11 @@ const Contact = () => {
                 </div>
 
                 {/* Business Hours */}
-                <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <div className="bg-accenture-black/50 rounded-xl shadow-lg p-6 border border-white/10">
+                  <h3 className="text-lg font-semibold text-white mb-4">
                     Business Hours
                   </h3>
-                  <div className="space-y-2 text-gray-600">
+                  <div className="space-y-2 text-white/80">
                     <div className="flex justify-between">
                       <span>Monday - Friday</span>
                       <span className="font-medium">9:00 AM - 6:00 PM</span>
