@@ -44,9 +44,14 @@ const Navigation = () => {
       category: "STRATEGY & CONSULTING",
       items: [
         {
-          name: "Business Strategy",
-          href: "/services/business-strategy",
-          description: "Strategic transformation for sustainable growth",
+          name: "SAP Consulting",
+          href: "/services/sap-consulting",
+          description: "SAP S/4HANA transformation and consulting",
+        },
+        {
+          name: "Digital Transformation",
+          href: "/services/digital-transformation",
+          description: "End-to-end digital transformation",
         },
         {
           name: "Technology Strategy",
@@ -58,104 +63,123 @@ const Navigation = () => {
           href: "/services/operations",
           description: "Operational excellence and efficiency",
         },
-        {
-          name: "Sustainability",
-          href: "/services/sustainability",
-          description: "Sustainable business transformation",
-        },
       ],
     },
     {
       category: "TECHNOLOGY",
       items: [
         {
+          name: "SAAS Development",
+          href: "/services/saas-development",
+          description: "Scalable software-as-a-service solutions",
+        },
+        {
+          name: "Cloud Architecture",
+          href: "/services/cloud-architecture",
+          description: "Modern cloud infrastructure solutions",
+        },
+        {
+          name: "Hardware Infrastructure",
+          href: "/services/hardware-infrastructure",
+          description: "Enterprise hardware and infrastructure",
+        },
+        {
           name: "Application Services",
           href: "/services/application-services",
           description: "End-to-end application development",
         },
-        {
-          name: "Cloud Solutions",
-          href: "/services/cloud-solutions",
-          description: "Cloud-first transformation",
-        },
+      ],
+    },
+    {
+      category: "SPECIALIZED",
+      items: [
         {
           name: "Data & AI",
           href: "/services/data-ai",
           description: "Intelligent data solutions",
         },
         {
-          name: "Infrastructure",
-          href: "/services/infrastructure",
-          description: "Modern IT infrastructure",
-        },
-      ],
-    },
-    {
-      category: "INTERACTIVE",
-      items: [
-        {
-          name: "Customer Experience",
-          href: "/services/customer-experience",
-          description: "Human-centered design",
+          name: "Cybersecurity",
+          href: "/services/cybersecurity",
+          description: "Comprehensive security solutions",
         },
         {
-          name: "Digital Marketing",
-          href: "/services/digital-marketing",
-          description: "Personalized customer engagement",
-        },
-        {
-          name: "Commerce",
-          href: "/services/commerce",
-          description: "Connected commerce experiences",
+          name: "Integration",
+          href: "/services/integration",
+          description: "Seamless system integration",
         },
       ],
     },
   ];
 
-  const industries = [
-    { name: "Automotive", href: "/industries/automotive" },
-    { name: "Banking", href: "/industries/banking" },
-    { name: "Capital Markets", href: "/industries/capital-markets" },
-    { name: "Communications", href: "/industries/communications" },
-    { name: "Consumer Goods", href: "/industries/consumer-goods" },
-    { name: "Energy", href: "/industries/energy" },
+  const company = [
     {
-      name: "Health & Public Service",
-      href: "/industries/health-public-service",
-    },
-    { name: "High Tech", href: "/industries/high-tech" },
-    { name: "Industrial", href: "/industries/industrial" },
-    { name: "Insurance", href: "/industries/insurance" },
-    { name: "Life Sciences", href: "/industries/life-sciences" },
-    { name: "Media & Entertainment", href: "/industries/media-entertainment" },
-    { name: "Natural Resources", href: "/industries/natural-resources" },
-    { name: "Retail", href: "/industries/retail" },
-    { name: "Software & Platforms", href: "/industries/software-platforms" },
-    { name: "Travel", href: "/industries/travel" },
-    { name: "Utilities", href: "/industries/utilities" },
-  ];
-
-  const about = [
-    {
-      name: "What We Believe",
-      href: "/about/what-we-believe",
-      description: "Our purpose and values",
+      name: "About Us",
+      href: "/about",
+      description: "Our story and mission",
     },
     {
       name: "Leadership",
-      href: "/about/leadership",
+      href: "/leadership",
       description: "Meet our leadership team",
     },
-    { name: "Careers", href: "/careers", description: "Join our team" },
     {
-      name: "Newsroom",
-      href: "/newsroom",
-      description: "Latest news and updates",
+      name: "Careers",
+      href: "/careers",
+      description: "Join our team",
     },
     {
-      name: "Investor Relations",
-      href: "/investors",
-      description: "Financial information",
+      name: "News & Insights",
+      href: "/news-insights",
+      description: "Latest news and thought leadership",
+    },
+    {
+      name: "What We Believe",
+      href: "/about/what-we-believe",
+      description: "Our values and principles",
+    },
+  ];
+
+  const partners = [
+    {
+      category: "TECHNOLOGY PARTNERS",
+      items: [
+        {
+          name: "Cloud Partners",
+          href: "/partners/cloud-partners",
+          description: "Leading cloud service providers",
+        },
+        {
+          name: "Technology Partners",
+          href: "/partners/technology-partners",
+          description: "Strategic technology alliances",
+        },
+        {
+          name: "Integration Partners",
+          href: "/partners/integration-partners",
+          description: "System integration specialists",
+        },
+      ],
+    },
+    {
+      category: "INDUSTRY PARTNERS",
+      items: [
+        {
+          name: "Security Partners",
+          href: "/partners/security-partners",
+          description: "Cybersecurity and compliance experts",
+        },
+        {
+          name: "SAP Partners",
+          href: "/partners/sap-partners",
+          description: "SAP ecosystem partners",
+        },
+        {
+          name: "View All Partners",
+          href: "/partners/view-all",
+          description: "Complete partner directory",
+        },
+      ],
     },
   ];
 
@@ -209,6 +233,13 @@ const Navigation = () => {
             Home
           </Link>
           <Link
+            to="/about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
+          >
+            Company
+          </Link>
+          <Link
             to="/services"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
@@ -216,19 +247,11 @@ const Navigation = () => {
             Services
           </Link>
           <Link
-            to="/industries"
+            to="/partners"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
           >
-            Industries
-          </Link>
-
-          <Link
-            to="/about"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
-          >
-            About
+            Partners
           </Link>
           <Link
             to="/contact"
@@ -240,7 +263,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Main Navigation - Accenture Style */}
+      {/* Main Navigation - Updated Structure */}
       <nav
         className={cn(
           "fixed top-0 left-0 right-0 z-40 bg-accenture-black transition-all duration-300",
@@ -261,6 +284,67 @@ const Navigation = () => {
               className="hidden lg:flex items-center space-x-8"
               ref={dropdownRef}
             >
+              {/* Home */}
+              <Link
+                to="/"
+                className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+              >
+                Home
+              </Link>
+
+              {/* Company Dropdown */}
+              <div className="relative">
+                <button
+                  onMouseEnter={() => handleDropdownEnter("company")}
+                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                >
+                  Company
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  className={cn(
+                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    activeDropdown === "company"
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95",
+                  )}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <div className="p-6 min-w-[320px]">
+                    <div className="space-y-3">
+                      {company.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                        >
+                          <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
+                            {item.name}
+                          </div>
+                          <div className="text-sm text-accenture-text-tertiary">
+                            {item.description}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Services Mega Menu */}
               <div className="relative">
                 <button
@@ -323,13 +407,13 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* Industries Dropdown */}
+              {/* Partners Dropdown */}
               <div className="relative">
                 <button
-                  onMouseEnter={() => handleDropdownEnter("industries")}
+                  onMouseEnter={() => handleDropdownEnter("partners")}
                   className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
-                  Industries
+                  Partners
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -348,82 +432,44 @@ const Navigation = () => {
                 <div
                   className={cn(
                     "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
-                    activeDropdown === "industries"
+                    activeDropdown === "partners"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
                   )}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6 max-w-md">
-                    <div className="grid grid-cols-2 gap-3">
-                      {industries.map((industry) => (
-                        <Link
-                          key={industry.name}
-                          to={industry.href}
-                          onClick={() => setActiveDropdown(null)}
-                          className="block p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200 text-accenture-text-primary hover:text-accenture-purple font-medium"
-                        >
-                          {industry.name}
-                        </Link>
+                  <div className="p-8">
+                    <div className="grid grid-cols-2 gap-12 min-w-[600px]">
+                      {partners.map((category) => (
+                        <div key={category.category}>
+                          <div className="text-xs font-bold text-accenture-text-tertiary uppercase tracking-wider mb-4">
+                            {category.category}
+                          </div>
+                          <div className="space-y-3">
+                            {category.items.map((partner) => (
+                              <Link
+                                key={partner.name}
+                                to={partner.href}
+                                onClick={() => setActiveDropdown(null)}
+                                className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                              >
+                                <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
+                                  {partner.name}
+                                </div>
+                                <div className="text-sm text-accenture-text-tertiary">
+                                  {partner.description}
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* About Dropdown */}
-              <div className="relative">
-                <button
-                  onMouseEnter={() => handleDropdownEnter("about")}
-                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
-                >
-                  About
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                <div
-                  className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
-                    activeDropdown === "about"
-                      ? "opacity-100 visible scale-100"
-                      : "opacity-0 invisible scale-95",
-                  )}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <div className="p-6 min-w-[320px]">
-                    <div className="space-y-3">
-                      {about.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          onClick={() => setActiveDropdown(null)}
-                          className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
-                        >
-                          <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
-                            {item.name}
-                          </div>
-                          <div className="text-sm text-accenture-text-tertiary">
-                            {item.description}
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              {/* Contact */}
               <Link
                 to="/contact"
                 className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
