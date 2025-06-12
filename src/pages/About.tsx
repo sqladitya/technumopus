@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SectionBackground from "@/components/SectionBackground";
 
 const About = () => {
   return (
