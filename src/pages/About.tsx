@@ -432,7 +432,7 @@ const About = () => {
                 <h3 className="text-2xl font-semibold text-accenture-text-primary mb-4">
                   {reason.title}
                 </h3>
-                <p className="text-body-xl text-gray-600 mb-6 leading-relaxed">
+                <p className="text-body-xl text-gray-400 mb-6 leading-relaxed">
                   {reason.description}
                 </p>
                 <ul className="space-y-3">
