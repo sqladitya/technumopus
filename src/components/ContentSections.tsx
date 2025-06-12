@@ -312,7 +312,7 @@ export const ClientStoriesSection = () => {
   );
 };
 
-// Awards Section - Responsive for Mobile/Tablet
+// Awards Section - Responsive for All Views
 export const AwardsSection = () => {
   const awards = [
     {
@@ -347,47 +347,73 @@ export const AwardsSection = () => {
 
   return (
     <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
-      <div className="w-full px-4 sm:px-6 md:px-8">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="w-full max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12 animate-fade-in relative z-10">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in relative z-10">
             <div className="text-xs sm:text-sm font-bold text-purple-600 uppercase tracking-wider mb-3 sm:mb-4">
               RECOGNITION
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 sm:mb-6">
               Awards and accolades
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Recognition from industry leaders for our innovation, workplace
               culture, and commitment to creating 360° value
             </p>
           </div>
 
-          {/* Mobile/Tablet: Grid Layout */}
-          <div className="block lg:hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          {/* Mobile: Single Column Layout */}
+          <div className="block sm:hidden">
+            <div className="space-y-4">
               {awards.map((award, index) => (
                 <div
                   key={index}
                   className={cn(
-                    `bg-gradient-to-br ${award.color} rounded-lg p-4 sm:p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full`,
+                    `bg-gradient-to-r ${award.color} rounded-lg p-4 text-white shadow-lg w-full animate-slide-in-left`,
                   )}
                   style={{
                     animationDelay: `${index * 0.1}s`,
                   }}
                 >
-                  <div className="flex items-start justify-between mb-3 sm:mb-4">
-                    <div className="text-2xl sm:text-3xl opacity-20">🏆</div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="text-2xl">🏆</div>
+                    <div className="text-lg font-bold">{award.year}</div>
+                  </div>
+                  <h3 className="text-base font-bold mb-1 leading-tight">
+                    {award.title}
+                  </h3>
+                  <p className="text-white/90 text-sm">{award.organization}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tablet: Two Column Grid */}
+          <div className="hidden sm:block lg:hidden">
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
+              {awards.map((award, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    `bg-gradient-to-br ${award.color} rounded-lg p-4 md:p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full animate-slide-in-left`,
+                  )}
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                  }}
+                >
+                  <div className="flex items-start justify-between mb-3 md:mb-4">
+                    <div className="text-2xl md:text-3xl opacity-20">🏆</div>
                     <div className="text-right">
-                      <div className="text-lg sm:text-xl font-bold">
+                      <div className="text-lg md:text-xl font-bold">
                         {award.year}
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold mb-2 leading-tight">
+                  <h3 className="text-sm md:text-base font-bold mb-2 leading-tight">
                     {award.title}
                   </h3>
-                  <p className="text-white/90 text-sm sm:text-base">
+                  <p className="text-white/90 text-xs md:text-sm">
                     {award.organization}
                   </p>
                 </div>
@@ -397,34 +423,64 @@ export const AwardsSection = () => {
 
           {/* Desktop: Floating Cards Layout */}
           <div className="hidden lg:block relative min-h-screen">
-            {awards.map((award, index) => (
-              <div
-                key={index}
-                className={cn(
-                  `absolute w-80 bg-gradient-to-br ${award.color} rounded-lg p-6 text-white shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
-                )}
-                style={{
-                  animationDelay: `${index * 0.5}s`,
-                  animationDuration: `${8 + index}s`,
-                }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl opacity-20">🏆</div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold">{award.year}</div>
+            <div className="relative w-full h-full">
+              {awards.map((award, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    `absolute w-80 xl:w-96 bg-gradient-to-br ${award.color} rounded-lg p-6 xl:p-8 text-white shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
+                  )}
+                  style={{
+                    animationDelay: `${index * 0.5}s`,
+                    animationDuration: `${8 + index}s`,
+                  }}
+                >
+                  <div className="flex items-start justify-between mb-4 xl:mb-6">
+                    <div className="text-4xl xl:text-5xl opacity-20">🏆</div>
+                    <div className="text-right">
+                      <div className="text-2xl xl:text-3xl font-bold">
+                        {award.year}
+                      </div>
+                    </div>
                   </div>
+                  <h3 className="text-xl xl:text-2xl font-bold mb-2 xl:mb-3 leading-tight">
+                    {award.title}
+                  </h3>
+                  <p className="text-white/90 text-base xl:text-lg">
+                    {award.organization}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{award.title}</h3>
-                <p className="text-white/90">{award.organization}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Add some spacing for the floating cards */}
+            <div className="h-96"></div>
+          </div>
+
+          {/* View All Recognition Button (Mobile/Tablet only) */}
+          <div className="mt-8 sm:mt-12 text-center lg:hidden">
+            <button className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto">
+              View all recognition
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
     </section>
   );
 };
-
 // Culture Section - Accenture Style
 export const CultureSection = () => (
   <Section className="bg-accenture-black text-white relative overflow-hidden">
