@@ -383,7 +383,10 @@ const Navigation = () => {
                         <Link
                           key={service.name}
                           to={service.href}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(null);
+                          }}
                           className="block group p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <div className="font-bold text-accenture-text-primary group-hover:text-accenture-purple mb-2 transition-colors text-lg">
@@ -399,7 +402,10 @@ const Navigation = () => {
                       <div className="pt-4 border-t border-accenture-gray-200">
                         <Link
                           to="/services"
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(null);
+                          }}
                           className="group flex items-center gap-2 p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <span className="font-semibold text-accenture-purple group-hover:text-accenture-purple-dark transition-colors">
