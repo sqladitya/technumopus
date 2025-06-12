@@ -1,239 +1,229 @@
-# Technum Opus - Full Stack Application
+# Technum Opus Website
 
-A modern full-stack React application with Node.js/Express backend for newsletter subscriptions.
+A modern, responsive React website built with cutting-edge technologies and best practices.
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+
-- npm
-
-### Installation
-
-1. **Clone and install dependencies:**
+## ⚡ Quick Start
 
 ```bash
-npm run setup
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-2. **Set up environment variables:**
+Your app will be available at http://localhost:8080
 
-```bash
-# Frontend
-cp .env.example .env
+## 🛠️ Technology Stack
 
-# Backend
-cp backend/.env.example backend/.env
-```
+### Frontend
 
-3. **Start the full application:**
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **React Router** for navigation
+- **TailwindCSS** for styling
+- **Radix UI** components for accessibility
+- **Framer Motion** for animations
+- **Lucide React** for icons
 
-```bash
-npm run dev:full
-```
+### Development Tools
 
-This will start:
-
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:3001
+- **TypeScript** for type safety
+- **ESLint & Prettier** for code quality
+- **Vitest** for testing
 
 ## 📁 Project Structure
 
 ```
-├── src/                    # React frontend
-│   ├── components/         # Reusable UI components
-│   ├── pages/             # Route components
-│   ├── hooks/             # Custom React hooks
-│   ├── lib/               # Utilities and API client
+technum-opus/
+├── src/
+│   ├── components/        # Reusable UI components
+│   │   ├── ui/           # Base UI components (buttons, inputs, etc.)
+│   │   └── ...           # Feature-specific components
+│   ├── pages/            # Page components
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility functions and configurations
 │   └── ...
-├── backend/               # Node.js/Express backend
-│   ├── routes/            # API routes
-│   ├── models/            # Database models
-│   ├── middleware/        # Express middleware
-│   ├── config/            # Configuration files
-│   └── scripts/           # Utility scripts
-└── ...
+├── public/               # Static assets
+├── tailwind.config.ts    # TailwindCSS configuration
+├── vite.config.ts        # Vite configuration
+└── package.json
 ```
 
-## 🔧 Development
+## 🚀 Scripts
 
-### Frontend Only
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run test` - Run tests
+- `npm run typecheck` - Type checking
+- `npm run format.fix` - Fix code formatting
 
-```bash
-npm run dev
-```
+## 🎨 Design System
 
-### Backend Only
+The project uses a comprehensive design system with:
 
-```bash
-npm run backend:dev
-```
+- **Custom Color Palette**: Based on Accenture's brand colors
+- **Typography Scale**: Responsive typography with proper hierarchy
+- **Component Library**: Pre-built accessible components
+- **Animation System**: Smooth, performant animations
 
-### Full Stack
+### Key Design Features
 
-```bash
-npm run dev:full
-```
+- **Responsive Design**: Mobile-first approach with breakpoints
+- **Dark Mode Support**: Built-in theme switching
+- **Accessibility**: WCAG compliant components
+- **Performance**: Optimized animations and lazy loading
 
-## 📧 Newsletter Subscription API
+## 📱 Features
 
-### Endpoints
+### User Interface
 
-- `POST /api/subscriptions` - Subscribe to newsletter
-- `GET /api/subscriptions` - Get all subscriptions (admin)
-- `POST /api/subscriptions/unsubscribe` - Unsubscribe
-- `GET /api/subscriptions/check/:email` - Check subscription status
-- `GET /api/subscriptions/stats` - Get subscription statistics
+- **Modern Navigation**: Responsive navigation with dropdown menus
+- **Hero Section**: Eye-catching landing area with animations
+- **Service Pages**: Detailed service offerings
+- **Company Information**: About, Leadership, and Values pages
+- **Partner Showcase**: Technology and industry partner pages
+- **Contact Forms**: Functional contact and newsletter signup
+- **Search Functionality**: Site-wide search with keyboard shortcuts
 
-### Example Usage
+### Technical Features
 
-```javascript
-// Subscribe
-const response = await fetch("http://localhost:3001/api/subscriptions", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    email: "user@example.com",
-    source: "website",
-  }),
-});
-```
+- **TypeScript**: Full type safety throughout the application
+- **Component Architecture**: Modular, reusable components
+- **State Management**: React hooks and context for state
+- **Performance**: Code splitting and optimization
+- **SEO Ready**: Proper meta tags and semantic HTML
 
-## 🗄️ Database
+## 🎯 Demo Features
 
-The application uses SQLite for simplicity with the following schema:
+Since this is a frontend-only project, certain features operate in demo mode:
 
-### Subscriptions Table
+- **Newsletter Subscription**: Shows success messages but doesn't store data
+- **Contact Forms**: Display confirmation but don't send emails
+- **Search**: Works with pre-defined content
 
-- `id` - Primary key
-- `email` - Unique email address
-- `subscribed_at` - Subscription timestamp
-- `is_active` - Subscription status
-- `source` - Subscription source (website, footer, newsletter, etc.)
-- `ip_address` - User's IP address
-- `user_agent` - User's browser information
+## 🚀 Development
 
-## 🛡️ Security Features
+### Prerequisites
 
-- **Rate Limiting**: Prevents spam and abuse
-  - Global: 1000 requests per 15 minutes
-  - Subscriptions: 5 attempts per hour per IP
-  - Email-specific: 3 attempts per day per email
-- **Input Validation**: Server-side validation with Joi
-- **CORS Protection**: Configured for development and production
-- **Security Headers**: Helmet.js for security headers
-- **SQL Injection Protection**: Parameterized queries
+- Node.js 18+
+- npm or yarn
 
-## 🎯 Features
+### Getting Started
 
-- **Newsletter Subscription**: Email collection with validation
-- **Duplicate Prevention**: Handles already subscribed emails
-- **Unsubscribe**: Self-service unsubscription
-- **Admin Dashboard**: View subscription statistics
-- **Email Validation**: Client and server-side validation
-- **Loading States**: User-friendly loading indicators
-- **Error Handling**: Comprehensive error messages
-- **Toast Notifications**: Real-time user feedback
+1. **Clone and install:**
 
-## 📊 Admin Features
-
-- View subscription statistics
-- Export subscriber lists
-- Check subscription status
-- Manage subscriptions
-
-Access admin endpoints:
-
-- `GET /api/subscriptions/stats` - Subscription statistics
-- `GET /api/subscriptions` - All subscriptions with pagination
-
-## 🚀 Production Deployment
-
-### Backend Deployment
-
-1. Set environment variables:
-
-   ```
-   NODE_ENV=production
-   DATABASE_PATH=/app/data/subscriptions.db
-   FRONTEND_URL=https://your-domain.com
-   ```
-
-2. Build and start:
    ```bash
-   cd backend
-   npm start
+   git clone <your-repo>
+   cd technum-opus
+   npm install
    ```
 
-### Frontend Deployment
+2. **Start development:**
 
-1. Set API URL:
-
-   ```
-   VITE_API_URL=https://your-api-domain.com
+   ```bash
+   npm run dev
    ```
 
-2. Build:
+3. **Build for production:**
    ```bash
    npm run build
    ```
 
-## 🔧 Configuration
+### Code Quality
+
+The project includes comprehensive tooling for code quality:
+
+```bash
+# Type checking
+npm run typecheck
+
+# Formatting
+npm run format.fix
+
+# Testing
+npm run test
+```
+
+## 🏗️ Build & Deployment
+
+### Production Build
+
+```bash
+npm run build
+```
+
+Creates an optimized build in the `dist/` directory.
+
+### Deployment Options
+
+This is a static React application that can be deployed to:
+
+- **Vercel** (recommended)
+- **Netlify**
+- **GitHub Pages**
+- **AWS S3 + CloudFront**
+- Any static hosting service
 
 ### Environment Variables
 
-#### Frontend (.env)
+Create a `.env` file for environment-specific settings:
 
-- `VITE_API_URL` - Backend API URL
-- `VITE_DEV_MODE` - Development mode flag
+```bash
+# Development mode flag
+VITE_DEV_MODE=true
 
-#### Backend (backend/.env)
-
-- `NODE_ENV` - Environment (development/production)
-- `PORT` - Server port (default: 3001)
-- `FRONTEND_URL` - Frontend URL for CORS
-- `DATABASE_PATH` - SQLite database file path
-
-## 📝 Scripts
-
-- `npm run dev` - Start frontend development server
-- `npm run build` - Build frontend for production
-- `npm run backend:dev` - Start backend development server
-- `npm run backend:start` - Start backend production server
-- `npm run dev:full` - Start both frontend and backend
-- `npm run setup` - Install all dependencies
-- `npm test` - Run tests
-- `npm run typecheck` - TypeScript type checking
-
-## 🤝 API Integration
-
-The frontend uses a custom API client (`src/lib/api.ts`) and React hook (`src/hooks/useSubscription.ts`) for seamless backend integration:
-
-```javascript
-import { useSubscription } from "@/hooks/useSubscription";
-
-const { subscribe, isLoading, isSuccess, error } = useSubscription();
-
-// Subscribe to newsletter
-await subscribe("user@example.com", "website");
+# Other custom environment variables
+VITE_SITE_URL=https://technumopus.com
 ```
+
+## 📦 Available Scripts
+
+- `npm run dev` - Start development server with HMR
+- `npm run build` - Create production build
+- `npm run test` - Run test suite
+- `npm run typecheck` - Validate TypeScript types
+- `npm run format.fix` - Auto-fix code formatting
+
+## 🔧 Customization
+
+### Styling
+
+- Modify `tailwind.config.ts` for design system changes
+- Update CSS custom properties in `src/index.css`
+- Component styles use TailwindCSS classes
+
+### Content
+
+- Page content is in `src/pages/` directory
+- Update navigation in `src/components/Navigation.tsx`
+- Modify footer content in `src/components/Footer.tsx`
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **CORS errors**: Check `FRONTEND_URL` in backend `.env`
-2. **Database errors**: Ensure `data/` directory is writable
-3. **Port conflicts**: Change `PORT` in backend `.env`
-4. **API not found**: Verify backend is running on correct port
+1. **Build errors**: Run `npm run typecheck` to catch TypeScript issues
+2. **Styling issues**: Check TailwindCSS classes and configuration
+3. **Performance**: Use React DevTools Profiler to identify bottlenecks
 
-### Health Check
+### Development Tips
 
-```bash
-curl http://localhost:3001/health
-```
+- Use the TypeScript compiler for real-time error checking
+- Leverage the component library for consistent UI
+- Follow the established patterns for new components
 
 ## 📄 License
 
-This project is proprietary and confidential.
+This project is proprietary software for Technum Opus.
+
+## 🤝 Contributing
+
+1. Follow the existing code style and patterns
+2. Ensure TypeScript types are properly defined
+3. Test components thoroughly before submitting
+4. Update documentation as needed
+
+---
+
+Built with ❤️ using React, TypeScript, and modern web technologies.
