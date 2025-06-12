@@ -80,40 +80,62 @@ const Navigation = () => {
   ) => {
     const triggerRect = triggerElement.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
-    const padding = 20; // Space from viewport edge
+    const padding = 24; // Space from viewport edge
 
     // Default position (left-aligned)
     let position: { left?: number; right?: number; maxWidth?: number } = {};
 
-    // For very small screens, always constrain width
+    // For very small screens, always constrain width and center
     if (viewportWidth < 768) {
       position.maxWidth = Math.min(dropdownWidth, viewportWidth - padding * 2);
       position.left = 0;
       return position;
     }
 
+    // For tablet screens, be more conservative with positioning
+    if (viewportWidth < 1024) {
+      const availableSpace = viewportWidth - triggerRect.left - padding;
+      if (dropdownWidth > availableSpace) {
+        // Not enough space on the right, try right-alignment
+        const rightSpace = triggerRect.right - padding;
+        if (dropdownWidth <= rightSpace) {
+          position.right = viewportWidth - triggerRect.right;
+        } else {
+          // Constrain width and use left alignment
+          position.left = 0;
+          position.maxWidth = Math.min(availableSpace, rightSpace);
+        }
+      } else {
+        position.left = 0;
+      }
+      return position;
+    }
+
+    // Desktop positioning logic
     // Check if dropdown would go off the right edge
     const wouldOverflowRight =
       triggerRect.left + dropdownWidth > viewportWidth - padding;
 
     if (wouldOverflowRight) {
-      // Position right-aligned to the trigger
+      // Try right-alignment first
       const rightOffset = viewportWidth - triggerRect.right;
-      position.right = rightOffset;
+      const rightSpace = triggerRect.right - padding;
 
-      // If still too wide, constrain the width
-      const maxPossibleWidth = triggerRect.right - padding;
-      if (dropdownWidth > maxPossibleWidth) {
-        position.maxWidth = maxPossibleWidth;
+      if (dropdownWidth <= rightSpace) {
+        // Right-aligned positioning works
+        position.right = rightOffset;
+      } else {
+        // Neither left nor right alignment works well, center and constrain
+        const maxPossibleWidth = Math.max(
+          viewportWidth - triggerRect.left - padding,
+          triggerRect.right - padding,
+        );
+        position.left = 0;
+        position.maxWidth = Math.min(dropdownWidth, maxPossibleWidth);
       }
     } else {
-      // Default left-aligned position
+      // Default left-aligned position works
       position.left = 0;
-
-      // Still check if it would overflow to the right and constrain if needed
-      if (triggerRect.left + dropdownWidth > viewportWidth - padding) {
-        position.maxWidth = viewportWidth - triggerRect.left - padding;
-      }
     }
 
     return position;
