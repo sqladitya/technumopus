@@ -238,6 +238,71 @@ const searchData: SearchItem[] = [
     url: "/industries/energy",
     keywords: ["energy", "power", "utilities", "smart grid"],
   },
+
+  // Quick Actions and Frequently Searched
+  {
+    id: "get-quote",
+    title: "Get a Quote",
+    description: "Request a consultation and quote for our services",
+    category: "Quick Actions",
+    url: "/contact",
+    keywords: ["quote", "consultation", "pricing", "estimate", "proposal"],
+  },
+  {
+    id: "case-studies",
+    title: "Case Studies",
+    description: "Success stories and client implementations",
+    category: "Resources",
+    url: "/news-insights",
+    keywords: [
+      "case studies",
+      "success stories",
+      "implementations",
+      "examples",
+    ],
+  },
+  {
+    id: "ai-solutions",
+    title: "AI & Machine Learning",
+    description: "Artificial intelligence and machine learning solutions",
+    category: "Technologies",
+    url: "/services",
+    keywords: [
+      "ai",
+      "artificial intelligence",
+      "machine learning",
+      "ml",
+      "automation",
+    ],
+  },
+  {
+    id: "cybersecurity",
+    title: "Cybersecurity Services",
+    description: "Comprehensive cybersecurity and data protection",
+    category: "Services",
+    url: "/partners/security-partners",
+    keywords: [
+      "cybersecurity",
+      "security",
+      "data protection",
+      "compliance",
+      "privacy",
+    ],
+  },
+  {
+    id: "support",
+    title: "Support & Maintenance",
+    description: "Ongoing support and system maintenance services",
+    category: "Services",
+    url: "/contact",
+    keywords: [
+      "support",
+      "maintenance",
+      "help",
+      "assistance",
+      "technical support",
+    ],
+  },
 ];
 
 export const useSearch = () => {
