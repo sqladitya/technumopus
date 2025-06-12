@@ -628,7 +628,10 @@ const Navigation = () => {
                         <Link
                           key={service.name}
                           to={service.href}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setDropdownPositions({});
+                          }}
                           className="block group p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <div className="font-bold text-accenture-text-primary group-hover:text-accenture-purple mb-2 transition-colors text-lg">
