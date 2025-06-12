@@ -40,6 +40,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SearchProvider>
+          <PageTextFixer />
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
