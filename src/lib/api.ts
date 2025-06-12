@@ -1,10 +1,4 @@
-// API client for backend communication
-
-// In development, try localhost backend, in production, use a fallback or show helpful message
-const isDevelopment = import.meta.env.VITE_DEV_MODE === "true";
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL ||
-  (isDevelopment ? "http://localhost:3001" : "https://your-backend-url.com");
+// Disabled API client - backend removed from project
 
 export interface SubscriptionRequest {
   email: string;
@@ -52,93 +46,63 @@ export interface SubscriptionCheckResponse {
 }
 
 class ApiClient {
-  private baseURL: string;
+  private async mockRequest<T>(endpoint: string): Promise<T> {
+    // Simulate a successful response for demo purposes
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-  constructor(baseURL: string = API_BASE_URL) {
-    this.baseURL = baseURL;
-  }
-
-  private async request<T>(
-    endpoint: string,
-    options: RequestInit = {},
-  ): Promise<T> {
-    const url = `${this.baseURL}${endpoint}`;
-
-    const defaultHeaders = {
-      "Content-Type": "application/json",
-    };
-
-    const config: RequestInit = {
-      headers: {
-        ...defaultHeaders,
-        ...options.headers,
-      },
-      ...options,
-    };
-
-    try {
-      const response = await fetch(url, config);
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.message || `HTTP error! status: ${response.status}`,
-        );
-      }
-
-      return await response.json();
-    } catch (error) {
-      // Enhanced error handling with debugging info
-      if (error instanceof Error) {
-        if (error.name === "TypeError" && error.message === "Failed to fetch") {
-          throw new Error(
-            `Backend server not available at ${this.baseURL}. ` +
-              `Please ensure the backend server is running on port 3001. ` +
-              `In development, run: cd backend && npm run dev`,
-          );
-        }
-        throw error;
-      }
-      throw new Error("An unexpected error occurred");
+    if (endpoint.includes("/api/subscriptions")) {
+      return {
+        success: true,
+        message:
+          "This is a demo response - backend has been removed from this project.",
+      } as T;
     }
+
+    if (endpoint.includes("/health")) {
+      return {
+        status: "demo",
+        timestamp: new Date().toISOString(),
+        uptime: 0,
+      } as T;
+    }
+
+    return {
+      success: true,
+      message: "Demo mode - no backend connected",
+    } as T;
   }
 
-  // Subscribe to newsletter
+  // Subscribe to newsletter (mock)
   async subscribe(data: SubscriptionRequest): Promise<SubscriptionResponse> {
-    return this.request<SubscriptionResponse>("/api/subscriptions", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    return this.mockRequest<SubscriptionResponse>("/api/subscriptions");
   }
 
-  // Unsubscribe from newsletter
+  // Unsubscribe from newsletter (mock)
   async unsubscribe(email: string): Promise<UnsubscribeResponse> {
-    return this.request<UnsubscribeResponse>("/api/subscriptions/unsubscribe", {
-      method: "POST",
-      body: JSON.stringify({ email }),
-    });
-  }
-
-  // Check subscription status
-  async checkSubscription(email: string): Promise<SubscriptionCheckResponse> {
-    const encodedEmail = encodeURIComponent(email);
-    return this.request<SubscriptionCheckResponse>(
-      `/api/subscriptions/check/${encodedEmail}`,
+    return this.mockRequest<UnsubscribeResponse>(
+      "/api/subscriptions/unsubscribe",
     );
   }
 
-  // Get subscription statistics (admin)
-  async getStats(): Promise<any> {
-    return this.request("/api/subscriptions/stats");
+  // Check subscription status (mock)
+  async checkSubscription(email: string): Promise<SubscriptionCheckResponse> {
+    return this.mockRequest<SubscriptionCheckResponse>(
+      "/api/subscriptions/check",
+    );
   }
 
-  // Health check
+  // Get subscription statistics (mock)
+  async getStats(): Promise<any> {
+    return this.mockRequest("/api/subscriptions/stats");
+  }
+
+  // Health check (mock)
   async healthCheck(): Promise<{
     status: string;
     timestamp: string;
     uptime: number;
   }> {
-    return this.request("/health");
+    return this.mockRequest("/health");
   }
 }
 
