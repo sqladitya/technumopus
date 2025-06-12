@@ -265,7 +265,7 @@ const About = () => {
                     Our Mission
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-body-xl text-gray-600 leading-relaxed">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
