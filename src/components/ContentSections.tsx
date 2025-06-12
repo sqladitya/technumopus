@@ -351,13 +351,13 @@ export const AwardsSection = () => {
         <div className="w-full max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in relative z-10">
-            <div className="text-sm sm:text-base font-bold text-purple-600 uppercase tracking-wider mb-4 sm:mb-6">
+            <div className="text-sm sm:text-base font-bold text-gray-400 uppercase tracking-wider mb-4 sm:mb-6">
               RECOGNITION
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 sm:mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-400 mb-6 sm:mb-8 leading-tight">
               Awards and accolades
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
               Recognition from industry leaders for our innovation, workplace
               culture, and commitment to creating 360° value
             </p>
