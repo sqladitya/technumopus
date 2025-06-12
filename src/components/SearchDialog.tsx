@@ -23,7 +23,20 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Search } from "lucide-react";
+import {
+  Sparkles,
+  Search,
+  Home,
+  Building,
+  Settings,
+  Users,
+  HeadphonesIcon,
+  Scale,
+  Bot,
+  Lightbulb,
+  FileText,
+  Zap,
+} from "lucide-react";
 
 const SearchDialog = () => {
   const { isOpen, closeSearch, openSearch } = useSearchContext();
