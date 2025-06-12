@@ -27,42 +27,91 @@ const Contact = () => {
     // Handle form submission logic here
   };
 
+  const contactInfo = [
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: "Phone",
+      details: ["+1 (555) 123-4567", "+1 (555) 123-4568"],
+      description: "Call us during business hours",
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: "Email",
+      details: ["hello@technumopus.com", "support@technumopus.com"],
+      description: "Send us an email anytime",
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      title: "Office",
+      details: ["123 Innovation Drive", "San Francisco, CA 94105"],
+      description: "Visit our headquarters",
+    },
+  ];
+
   return (
-    <SectionBackground variant="light">
+    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
       <Navigation />
 
       {/* Hero Section */}
-      <SectionBackground variant="gradient">
-        <section className="pt-24 pb-12 sm:pt-28 sm:pb-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-4 sm:mb-6">
-                Get in Touch
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto px-4">
-                Ready to transform your business? Let's discuss your project and
-                explore how we can help you achieve your goals.
-              </p>
-            </div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[60vh] flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+              Get In Touch
+            </span>
           </div>
-        </section>
-      </SectionBackground>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-none">
+            Let's Build
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+              Something
+            </span>
+            <br />
+            Amazing Together
+          </h1>
+
+          <p className="text-xl md:text-2xl font-light text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
+            Ready to transform your business? Let's discuss your project and
+            explore how we can help you achieve your goals.
+          </p>
+        </div>
+      </section>
 
       {/* Contact Form Section */}
       <SectionBackground variant="light">
-        <section className="py-12 sm:py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-tech-text-dark mb-6">
-                  Send us a message
-                </h2>
+              <div className="bg-white rounded-2xl shadow-xl p-8">
+                <div className="mb-8">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                      Send Message
+                    </span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    Tell Us About Your Project
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed">
+                    Fill out the form below and we'll get back to you within 24
+                    hours to discuss your requirements.
+                  </p>
+                </div>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-tech-text-dark mb-2"
+                      className="block text-sm font-medium text-gray-900 mb-2"
                     >
                       Full Name *
                     </label>
@@ -73,7 +122,7 @@ const Contact = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
@@ -81,7 +130,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-tech-text-dark mb-2"
+                      className="block text-sm font-medium text-gray-900 mb-2"
                     >
                       Email *
                     </label>
@@ -92,7 +141,7 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -100,7 +149,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="company"
-                      className="block text-sm font-medium text-tech-text-dark mb-2"
+                      className="block text-sm font-medium text-gray-900 mb-2"
                     >
                       Company
                     </label>
@@ -110,7 +159,7 @@ const Contact = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                       placeholder="Your company name"
                     />
                   </div>
@@ -118,7 +167,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-tech-text-dark mb-2"
+                      className="block text-sm font-medium text-gray-900 mb-2"
                     >
                       Message *
                     </label>
@@ -126,17 +175,17 @@ const Contact = () => {
                       id="message"
                       name="message"
                       required
-                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-primary focus:border-transparent transition-colors resize-none"
-                      placeholder="Tell us about your project..."
+                      rows={6}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none"
+                      placeholder="Tell us about your project requirements..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-tech-gradient text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
                   >
                     Send Message
                   </button>
@@ -144,67 +193,72 @@ const Contact = () => {
               </div>
 
               {/* Contact Information */}
-              <div className="space-y-6 lg:space-y-8">
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center">
-                        <Phone className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-tech-text-dark mb-2">
-                        Phone
-                      </h3>
-                      <p className="text-tech-text-medium">+1 (555) 123-4567</p>
-                      <p className="text-sm text-tech-text-light mt-1">
-                        Monday - Friday, 9AM - 6PM EST
-                      </p>
-                    </div>
+              <div className="space-y-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                      Contact Info
+                    </span>
                   </div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    Get In Touch
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-8">
+                    Have questions about our services? Need a custom solution?
+                    Our team is here to help you succeed.
+                  </p>
                 </div>
 
-                {/* Email Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center">
-                        <Mail className="w-6 h-6 text-white" />
+                <div className="space-y-6">
+                  {contactInfo.map((info, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg flex items-center justify-center text-white">
+                          {info.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-1">
+                            {info.title}
+                          </h4>
+                          <p className="text-sm text-gray-600 mb-2">
+                            {info.description}
+                          </p>
+                          <div className="space-y-1">
+                            {info.details.map((detail, idx) => (
+                              <p
+                                key={idx}
+                                className="text-purple-600 font-medium"
+                              >
+                                {detail}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-tech-text-dark mb-2">
-                        Email Us
-                      </h3>
-                      <p className="text-tech-text-medium">
-                        hello@technumopus.com
-                      </p>
-                      <p className="text-sm text-tech-text-light mt-1">
-                        We'll respond within 24 hours
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Location Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-white" />
-                      </div>
+                {/* Business Hours */}
+                <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    Business Hours
+                  </h3>
+                  <div className="space-y-2 text-gray-600">
+                    <div className="flex justify-between">
+                      <span>Monday - Friday</span>
+                      <span className="font-medium">9:00 AM - 6:00 PM</span>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-tech-text-dark mb-2">
-                        Office
-                      </h3>
-                      <p className="text-tech-text-medium">
-                        123 Innovation Drive
-                        <br />
-                        Tech City, TC 12345
-                        <br />
-                        United States
-                      </p>
+                    <div className="flex justify-between">
+                      <span>Saturday</span>
+                      <span className="font-medium">10:00 AM - 4:00 PM</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Sunday</span>
+                      <span className="font-medium">Closed</span>
                     </div>
                   </div>
                 </div>
@@ -214,8 +268,96 @@ const Contact = () => {
         </section>
       </SectionBackground>
 
+      {/* FAQ Section */}
+      <SectionBackground variant="gradient">
+        <section className="py-20">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  FAQ
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-700">
+                Quick answers to questions you might have about our services
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  question: "How long does a typical project take?",
+                  answer:
+                    "Project timelines vary depending on scope and complexity. Simple implementations can take 2-4 weeks, while complex enterprise solutions may require 3-6 months. We'll provide a detailed timeline during our initial consultation.",
+                },
+                {
+                  question:
+                    "Do you provide ongoing support after project completion?",
+                  answer:
+                    "Yes, we offer comprehensive support packages including 24/7 monitoring, regular maintenance, updates, and technical support to ensure your systems continue to perform optimally.",
+                },
+                {
+                  question: "What industries do you specialize in?",
+                  answer:
+                    "We work across various industries including healthcare, finance, manufacturing, retail, and technology. Our solutions are tailored to meet specific industry requirements and compliance standards.",
+                },
+                {
+                  question: "Can you help with cloud migration?",
+                  answer:
+                    "Absolutely! We're certified partners with major cloud providers and specialize in seamless cloud migrations, ensuring minimal downtime and maximum performance improvement.",
+                },
+              ].map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-lg p-6 border border-gray-100"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </SectionBackground>
+
+      {/* CTA Section */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Don't wait to transform your business. Contact us today for a free
+            consultation and discover how we can help you achieve your goals.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="group relative overflow-hidden px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
+              <span className="relative z-10">Schedule Consultation</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
+            <a
+              href="tel:+15551234567"
+              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+            >
+              <Phone className="w-5 h-5" />
+              Call Now
+            </a>
+          </div>
+        </div>
+      </section>
+
       <Footer />
-    </SectionBackground>
+    </div>
   );
 };
 
