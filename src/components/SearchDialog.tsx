@@ -160,17 +160,92 @@ const SearchDialog = () => {
           </CommandGroup>
         ))}
 
-        {/* Search tips when no query */}
+        {/* Show all page suggestions when no query */}
         {!query.trim() && (
-          <CommandGroup>
-            <CommandItem className="flex flex-col items-center gap-2 py-6 cursor-default">
-              <span className="text-2xl">💡</span>
-              <p className="text-xs text-muted-foreground text-center">
-                Try searching for "SAP", "cloud", "partners", "careers", or any
-                service
-              </p>
-            </CommandItem>
-          </CommandGroup>
+          <>
+            {/* Popular pages first */}
+            <CommandGroup heading="Popular Pages">
+              {[
+                searchCategories.find((cat) => cat.name === "Pages")?.items[0], // Home
+                ...(searchCategories
+                  .find((cat) => cat.name === "Company")
+                  ?.items.slice(0, 2) || []), // About, Leadership
+                ...(searchCategories
+                  .find((cat) => cat.name === "Services")
+                  ?.items.slice(0, 2) || []), // All Services, SAP
+                searchCategories.find((cat) => cat.name === "Support")
+                  ?.items[0], // Contact
+              ]
+                .filter(Boolean)
+                .map((item) => (
+                  <CommandItem
+                    key={item!.id}
+                    value={item!.id}
+                    onSelect={() => handleSelect(item!)}
+                    className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                  >
+                    <span className="text-lg mt-0.5">
+                      {getCategoryIcon(item!.category)}
+                    </span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <p className="text-sm font-medium text-foreground leading-none">
+                        {item!.title}
+                      </p>
+                      <p className="text-xs text-muted-foreground line-clamp-2">
+                        {item!.description}
+                      </p>
+                    </div>
+                  </CommandItem>
+                ))}
+            </CommandGroup>
+
+            {/* All other categories */}
+            {searchCategories.map((category) => (
+              <CommandGroup
+                key={category.name}
+                heading={`${category.name} (${category.items.length})`}
+              >
+                {category.items.map((item) => (
+                  <CommandItem
+                    key={item.id}
+                    value={item.id}
+                    onSelect={() => handleSelect(item)}
+                    className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                  >
+                    <span className="text-lg mt-0.5">
+                      {getCategoryIcon(item.category)}
+                    </span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <p className="text-sm font-medium text-foreground leading-none">
+                        {item.title}
+                      </p>
+                      <p className="text-xs text-muted-foreground line-clamp-2">
+                        {item.description}
+                      </p>
+                      <p className="text-xs text-muted-foreground/60 font-mono">
+                        {item.href}
+                      </p>
+                    </div>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
+
+            {/* Search tips at the bottom */}
+            <CommandGroup>
+              <CommandItem className="flex flex-col items-center gap-2 py-4 cursor-default">
+                <span className="text-lg">💡</span>
+                <p className="text-xs text-muted-foreground text-center">
+                  Type to search or browse all{" "}
+                  {searchCategories.reduce(
+                    (acc, cat) => acc + cat.items.length,
+                    0,
+                  )}{" "}
+                  pages above
+                </p>
+              </CommandItem>
+            </CommandGroup>
+          </>
         )}
       </CommandList>
     </CommandDialog>
