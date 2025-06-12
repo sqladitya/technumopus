@@ -1,4 +1,17 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Logo from "./Logo";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
+import { useSubscription } from "@/hooks/useSubscription";
+import { toast } from "sonner";
 
 // Subscription form component
 const FooterSubscriptionForm = () => {
@@ -118,132 +131,119 @@ const Footer = () => {
       href: "https://instagram.com/technumopus",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.533l1.745-1.745c.394.394.938.638 1.533.638.595 0 1.139-.244 1.533-.638.394-.394.638-.938.638-1.533 0-.595-.244-1.139-.638-1.533-.394-.394-.938-.638-1.533-.638-.595 0-1.139.244-1.533.638L4.244 9.911c.757-.937 1.908-1.533 3.205-1.533 2.267 0 4.105 1.838 4.105 4.105s-1.838 4.105-4.105 4.105zm7.074-7.074c-.394.394-.938.638-1.533.638-.595 0-1.139-.244-1.533-.638-.394-.394-.638-.938-.638-1.533 0-.595.244-1.139.638-1.533.394-.394.938-.638 1.533-.638.595 0 1.139.244 1.533.638.394.394.638.938.638 1.533 0 .595-.244 1.139-.638 1.533z" />
-        </svg>
-      ),
-    },
-    {
-      name: "YouTube",
-      href: "https://youtube.com/technumopus",
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.986 11.988 11.986C18.634 23.973 24 18.605 24 11.987 24 5.367 18.634.001 12.017.001zm5.568 16.554c-.397 1.597-1.17 2.516-2.768 2.913-1.597.397-6.639.397-8.235 0-1.598-.397-2.372-1.316-2.769-2.913-.396-1.596-.396-6.639 0-8.235.397-1.597 1.171-2.516 2.769-2.913 1.596-.396 6.638-.396 8.235 0 1.598.397 2.371 1.316 2.768 2.913.397 1.596.397 6.639 0 8.235z" />
         </svg>
       ),
     },
   ];
 
   return (
-    <footer className="bg-accenture-black text-white">
+    <footer className="bg-gradient-to-br from-tech-dark via-tech-dark-secondary to-black text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Company Info - Smaller section */}
-          <div>
-            <Link to="/" className="inline-block mb-6">
-              <span className="text-2xl font-bold tracking-tight">
-                TECHNUM OPUS
-              </span>
-            </Link>
-            <p className="text-white/80 mb-6 leading-relaxed max-w-xs">
-              We create 360° value for our clients, their customers, our people,
-              our partners, our shareholders and our communities.
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          {/* Company Info */}
+          <div className="lg:col-span-2">
+            <div className="mb-6">
+              <Logo className="w-auto h-10" />
+            </div>
+            <p className="text-white/70 leading-relaxed mb-6">
+              Driving innovation and digital transformation across industries.
+              We help businesses navigate the complexities of modern technology
+              to achieve sustainable growth.
             </p>
-
-            {/* Social Links */}
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="p-2 bg-white/10 hover:bg-accenture-purple rounded-lg transition-all duration-300 hover:scale-110"
-                  aria-label={social.name}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {social.icon}
-                </a>
-              ))}
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-white/70">
+                <MapPin className="w-5 h-5 text-accenture-purple flex-shrink-0" />
+                <span className="text-sm">
+                  123 Innovation Drive, Tech City, TC 12345
+                </span>
+              </div>
+              <div className="flex items-center gap-3 text-white/70">
+                <Phone className="w-5 h-5 text-accenture-purple flex-shrink-0" />
+                <span className="text-sm">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center gap-3 text-white/70">
+                <Mail className="w-5 h-5 text-accenture-purple flex-shrink-0" />
+                <span className="text-sm">hello@technumopus.com</span>
+              </div>
             </div>
           </div>
 
-          {/* Links in One Line - Takes 2 columns for more width */}
-          <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {/* Services */}
-            <div>
-              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-                SERVICES
-              </h3>
-              <ul className="space-y-2">
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Services */}
+          <div>
+            <h3 className="text-heading-sm font-semibold text-white mb-6">
+              Services
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-accenture-purple transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Industries */}
-            <div>
-              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-                INDUSTRIES
-              </h3>
-              <ul className="space-y-2">
-                {footerLinks.industries.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Industries */}
+          <div>
+            <h3 className="text-heading-sm font-semibold text-white mb-6">
+              Industries
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.industries.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-accenture-purple transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Company */}
-            <div>
-              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-                COMPANY
-              </h3>
-              <ul className="space-y-2">
-                {footerLinks.about.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* About */}
+          <div>
+            <h3 className="text-heading-sm font-semibold text-white mb-6">
+              About
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.about.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-accenture-purple transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Support */}
-            <div>
-              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-                SUPPORT
-              </h3>
-              <ul className="space-y-2">
-                {footerLinks.support.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Support */}
+          <div>
+            <h3 className="text-heading-sm font-semibold text-white mb-6">
+              Support
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.support.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-accenture-purple transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
@@ -291,55 +291,26 @@ const Footer = () => {
                 >
                   Cookie Policy
                 </Link>
-                <Link
-                  to="/accessibility"
-                  className="hover:text-accenture-purple transition-colors"
-                >
-                  Accessibility
-                </Link>
               </div>
             </div>
 
-            {/* Language/Region Selector */}
-            <div className="flex items-center gap-2">
-              <button className="flex items-center gap-2 px-4 py-2 border border-white/20 rounded-lg text-white/70 hover:text-white hover:border-white/40 transition-all duration-200">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            {/* Social Links */}
+            <div className="flex gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-accenture-purple transition-colors p-2 hover:bg-white/5 rounded-lg"
+                  aria-label={social.name}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span className="text-sm">Global - English</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-accenture-purple/5 rounded-full blur-3xl animate-float" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accenture-purple/5 rounded-full blur-3xl animate-pulse-glow" />
       </div>
     </footer>
   );
