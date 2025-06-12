@@ -84,6 +84,7 @@ const App = () => (
               path="/partners/security-partners"
               element={<SecurityPartners />}
             />
+            <Route path="/partners/sap-partners" element={<SapPartners />} />
             <Route
               path="/partners/integration-partners"
               element={<IntegrationPartners />}
