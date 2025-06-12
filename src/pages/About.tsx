@@ -299,11 +299,11 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-3xl font-bold text-accenture-purple">
                     Our Vision
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-lg text-tech-text-medium leading-relaxed font-medium">
                   To be the trusted technology partner that organizations turn
                   to when they want to transform possibilities into reality,
                   creating lasting impact through innovative solutions.
