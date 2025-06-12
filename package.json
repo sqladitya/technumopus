@@ -8,13 +8,7 @@
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc",
-    "backend:install": "cd backend && npm install",
-    "backend:dev": "cd backend && npm run dev",
-    "backend:start": "cd backend && npm start",
-    "python-backend:setup": "cd backend_python && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
-    "python-backend:dev": "cd backend_python && source venv/bin/activate && python main.py",
-    "dev:full": "concurrently \"npm run dev\" \"npm run backend:dev\"",
-    "setup": "npm install && npm run backend:install"
+    "setup": "npm install"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
