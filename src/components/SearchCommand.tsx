@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Command } from "cmdk";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { cn } from "@/lib/utils";
 import {
   searchCategories,
