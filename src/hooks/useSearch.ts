@@ -338,10 +338,13 @@ export const useSearch = () => {
         // Then prioritize by category (Pages first, then Services, etc.)
         const categoryOrder = [
           "Pages",
+          "Quick Actions",
           "Services",
           "Company",
           "Partners",
           "Industries",
+          "Technologies",
+          "Resources",
           "Contact",
         ];
         const aIndex = categoryOrder.indexOf(a.category);
