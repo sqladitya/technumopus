@@ -88,8 +88,8 @@ const Footer = () => {
     <footer className="bg-accenture-black text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Company Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Company Info - Smaller section */}
           <div>
             <Link to="/" className="inline-block mb-6">
               <span className="text-2xl font-bold tracking-tight">
@@ -118,8 +118,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links in One Line */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* Links in One Line - Takes 2 columns for more width */}
+          <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-8">
             {/* Services */}
             <div>
               <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
