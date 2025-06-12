@@ -722,9 +722,7 @@ export const ServicesSection = () => (
           <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
             {service.title}
           </h3>
-          <p className="text-accenture-text-tertiary leading-relaxed">
-            {service.description}
-          </p>
+          <p className="text-gray-400 leading-relaxed">{service.description}</p>
         </Link>
       ))}
     </div>
