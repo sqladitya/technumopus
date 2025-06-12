@@ -71,31 +71,6 @@ const SearchDialog = () => {
     {} as Record<string, SearchItem[]>,
   );
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "Pages":
-        return "🏠";
-      case "Quick Actions":
-        return "⚡";
-      case "Services":
-        return "⚙️";
-      case "Company":
-        return "🏢";
-      case "Partners":
-        return "🤝";
-      case "Industries":
-        return "🏭";
-      case "Technologies":
-        return "🚀";
-      case "Resources":
-        return "📚";
-      case "Contact":
-        return "📧";
-      default:
-        return "📄";
-    }
-  };
-
   return (
     <CommandDialog open={isOpen} onOpenChange={closeSearch}>
       <VisuallyHidden>
