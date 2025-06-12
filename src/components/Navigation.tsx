@@ -459,6 +459,13 @@ const Navigation = () => {
                       {partner.name}
                     </Link>
                   ))}
+                <Link
+                  to="/services"
+                  onClick={handleMobileLinkClick}
+                  className="block text-base text-accenture-purple hover:text-accenture-purple-dark py-2 font-medium"
+                >
+                  View All Services
+                </Link>
               </div>
             )}
           </div>
