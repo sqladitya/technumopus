@@ -552,8 +552,9 @@ const Navigation = () => {
                     activeDropdown === "company"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
-                    dropdownPositions.company?.right !== undefined ? "origin-top-right" : "origin-top-left"
-                  )}
+                    dropdownPositions.company?.right !== undefined
+                      ? "origin-top-right"
+                      : "origin-top-left",
                   )}
                   style={{
                     left:
