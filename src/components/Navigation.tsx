@@ -137,6 +137,7 @@ const Navigation = () => {
 
   const handleDropdownLeave = () => {
     setActiveDropdown(null);
+    setDropdownPositions({});
   };
 
   const toggleMobileDropdown = (dropdown: string) => {
