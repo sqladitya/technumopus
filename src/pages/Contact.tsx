@@ -111,7 +111,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      className="block text-sm font-medium text-white mb-2"
                     >
                       Full Name *
                     </label>
@@ -122,7 +122,7 @@ const Contact = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                       placeholder="Your full name"
                     />
                   </div>
@@ -130,7 +130,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-900 mb-2"
+                      className="block text-sm font-medium text-white mb-2"
                     >
                       Email *
                     </label>
