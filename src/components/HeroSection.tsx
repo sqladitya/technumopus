@@ -376,29 +376,6 @@ const HeroSection = () => {
             />
           </svg>
         </button>
-
-        {/* Enhanced Scroll Indicator - Moved Lower */}
-        <div className="absolute bottom-6 left-96 z-30 text-white/70">
-          <div className="flex flex-col items-center gap-3 animate-bounce">
-            <span className="text-body-sm uppercase tracking-wider font-medium">
-              Explore
-            </span>
-            <div className="w-px h-8 bg-gradient-to-b from-white/70 to-transparent"></div>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </div>
       </div>
 
       {/* Subtle Grid Pattern Overlay */}
