@@ -57,8 +57,82 @@ const Navigation = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Calculate optimal dropdown position to prevent off-screen positioning
+  const calculateDropdownPosition = (
+    dropdownElement: HTMLElement,
+    triggerElement: HTMLElement,
+    dropdownWidth: number,
+  ) => {
+    const triggerRect = triggerElement.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const padding = 16; // Space from viewport edge
+
+    // Default position (left-aligned)
+    let position: { left?: number; right?: number; maxWidth?: number } = {};
+
+    // Check if dropdown would go off the right edge
+    const wouldOverflowRight =
+      triggerRect.left + dropdownWidth > viewportWidth - padding;
+
+    if (wouldOverflowRight) {
+      // Position right-aligned to the trigger
+      const rightOffset = viewportWidth - triggerRect.right;
+      position.right = rightOffset;
+
+      // If still too wide, constrain the width
+      const maxPossibleWidth = triggerRect.right - padding;
+      if (dropdownWidth > maxPossibleWidth) {
+        position.maxWidth = maxPossibleWidth;
+      }
+    } else {
+      // Default left-aligned position
+      position.left = 0;
+    }
+
+    return position;
+  };
+
   const handleDropdownEnter = (dropdown: string) => {
     setActiveDropdown(dropdown);
+
+    // Calculate position after a brief delay to ensure refs are ready
+    setTimeout(() => {
+      let dropdownElement: HTMLDivElement | null = null;
+      let triggerElement: HTMLElement | null = null;
+      let dropdownWidth = 0;
+
+      if (dropdown === "company" && companyDropdownRef.current) {
+        dropdownElement = companyDropdownRef.current;
+        triggerElement = dropdownElement.parentElement?.querySelector(
+          "button",
+        ) as HTMLElement;
+        dropdownWidth = 320; // min-w-[320px]
+      } else if (dropdown === "services" && servicesDropdownRef.current) {
+        dropdownElement = servicesDropdownRef.current;
+        triggerElement = dropdownElement.parentElement?.querySelector(
+          "button",
+        ) as HTMLElement;
+        dropdownWidth = 400; // min-w-[400px]
+      } else if (dropdown === "partners" && partnersDropdownRef.current) {
+        dropdownElement = partnersDropdownRef.current;
+        triggerElement = dropdownElement.parentElement?.querySelector(
+          "button",
+        ) as HTMLElement;
+        dropdownWidth = 600; // min-w-[600px]
+      }
+
+      if (dropdownElement && triggerElement) {
+        const position = calculateDropdownPosition(
+          dropdownElement,
+          triggerElement,
+          dropdownWidth,
+        );
+        setDropdownPositions((prev) => ({
+          ...prev,
+          [dropdown]: position,
+        }));
+      }
+    }, 10);
   };
 
   const handleDropdownLeave = () => {
