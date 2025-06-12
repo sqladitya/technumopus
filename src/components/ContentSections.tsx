@@ -105,7 +105,7 @@ export const ContentCardsSection = () => (
                   {card.title}
                 </h3>
                 {/* Description with proper line height and clamping */}
-                <p className="text-accenture-text-tertiary leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
+                <p className="text-gray-400 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
                   {card.description}
                 </p>
               </div>
