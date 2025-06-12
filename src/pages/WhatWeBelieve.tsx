@@ -129,10 +129,10 @@ const WhatWeBelieve = () => {
                   className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <div className="text-4xl mb-6 text-center">{belief.icon}</div>
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-4 text-center">
+                  <h3 className="text-xl font-semibold text-accenture-text-primary mb-4 text-center">
                     {belief.title}
                   </h3>
-                  <p className="text-tech-text-medium leading-relaxed text-center">
+                  <p className="text-body-lg text-gray-600 leading-relaxed text-center">
                     {belief.description}
                   </p>
                 </div>

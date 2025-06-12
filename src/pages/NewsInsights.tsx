@@ -282,10 +282,12 @@ const NewsInsights = () => {
                   <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center text-white mx-auto mb-4">
                     {insight.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-3">
+                  <h3 className="text-xl font-semibold text-accenture-text-primary mb-3">
                     {insight.title}
                   </h3>
-                  <p className="text-tech-text-medium">{insight.description}</p>
+                  <p className="text-body-lg text-gray-600">
+                    {insight.description}
+                  </p>
                 </div>
               ))}
             </div>

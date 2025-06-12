@@ -49,11 +49,12 @@ const AboutUs = () => {
                   <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
                     Our Mission
                   </h3>
-                  <p className="text-tech-text-medium leading-relaxed">
-                    To empower organizations with transformative technology
-                    solutions that drive innovation, efficiency, and sustainable
-                    growth while maintaining the highest standards of quality
-                    and integrity.
+                  <p className="text-body-xl text-gray-600 leading-relaxed">
+                    To empower organizations worldwide with transformative
+                    technology solutions that drive sustainable growth,
+                    operational excellence, and competitive advantage. We
+                    believe in technology that serves humanity, creating value
+                    that extends far beyond code and systems.
                   </p>
                 </div>
               </div>
@@ -62,7 +63,7 @@ const AboutUs = () => {
                   <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
                     Our Vision
                   </h3>
-                  <p className="text-tech-text-medium leading-relaxed">
+                  <p className="text-body-xl text-gray-600 leading-relaxed">
                     To be the trusted technology partner that organizations turn
                     to when they want to transform possibilities into reality,
                     creating lasting impact through innovative solutions.
@@ -135,10 +136,10 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">E</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                   Excellence
                 </h3>
-                <p className="text-tech-text-medium">
+                <p className="text-body-lg text-gray-600">
                   Maintaining the highest standards in everything we do, from
                   code quality to client service.
                 </p>
@@ -148,10 +149,10 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">I</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                   Integrity
                 </h3>
-                <p className="text-tech-text-medium">
+                <p className="text-body-lg text-gray-600">
                   Building trust through transparency, honesty, and ethical
                   business practices.
                 </p>

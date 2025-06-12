@@ -265,7 +265,7 @@ const About = () => {
                     Our Mission
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-body-xl text-gray-600 leading-relaxed">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
@@ -303,7 +303,7 @@ const About = () => {
                     Our Vision
                   </h3>
                 </div>
-                <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                <p className="text-body-xl text-gray-600 leading-relaxed">
                   To be the trusted technology partner that organizations turn
                   to when they want to transform possibilities into reality,
                   creating lasting impact through innovative solutions.
@@ -362,10 +362,10 @@ const About = () => {
               <div key={index} className="group">
                 <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 text-center h-full">
                   <div className="text-4xl mb-6">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-body-lg text-gray-600 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -429,17 +429,17 @@ const About = () => {
                 key={index}
                 className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-semibold text-accenture-text-primary mb-4">
                   {reason.title}
                 </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-body-xl text-gray-600 mb-6 leading-relaxed">
                   {reason.description}
                 </p>
                 <ul className="space-y-3">
                   {reason.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                      <span className="text-gray-700 font-medium">
+                      <span className="text-gray-600 font-medium">
                         {feature}
                       </span>
                     </li>
