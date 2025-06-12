@@ -245,7 +245,7 @@ const HeroSection = () => {
 
                   {/* Enhanced CTA Buttons */}
                   <div
-                    className="flex flex-col sm:flex-row gap-6 animate-slide-in-left justify-start"
+                    className="flex flex-col sm:flex-row gap-6 animate-slide-in-left justify-start mb-20"
                     style={{ animationDelay: "0.6s" }}
                   >
                     <Link
