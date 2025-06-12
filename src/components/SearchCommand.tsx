@@ -18,13 +18,13 @@ interface SearchCommandProps {
 }
 
 export function SearchCommand({ className }: SearchCommandProps) {
-  const { isOpen, close } = useSearch();
+  const { isOpen, closeSearch } = useSearchContext();
   const [query, setQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<SearchItem | null>(null);
   const navigate = useNavigate();
 
   const handleSelect = (item: SearchItem) => {
-    close();
+    closeSearch();
     navigate(item.href);
     setQuery("");
   };
