@@ -357,7 +357,7 @@ export const AwardsSection = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-accenture-text-primary mb-6 sm:mb-8 leading-tight">
               Awards and accolades
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-accenture-text-tertiary max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
               Recognition from industry leaders for our innovation, workplace
               culture, and commitment to creating 360° value
             </p>
