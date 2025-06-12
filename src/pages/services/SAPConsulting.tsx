@@ -171,7 +171,7 @@ const SAPConsulting = () => {
                     />
                   </svg>
                 </div>
-                text-white
+                text-white text-gray-900
                 <h3 className="text-xl font-bold text-tech-text-dark mb-4">
                   Performance Optimization
                 </h3>
