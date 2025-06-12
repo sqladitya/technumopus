@@ -11,6 +11,8 @@
     "backend:install": "cd backend && npm install",
     "backend:dev": "cd backend && npm run dev",
     "backend:start": "cd backend && npm start",
+    "python-backend:setup": "cd backend_python && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+    "python-backend:dev": "cd backend_python && source venv/bin/activate && python main.py",
     "dev:full": "concurrently \"npm run dev\" \"npm run backend:dev\"",
     "setup": "npm install && npm run backend:install"
   },
@@ -77,7 +79,6 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
-    "concurrently": "^9.1.2",
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
     "prettier": "^3.5.3",
