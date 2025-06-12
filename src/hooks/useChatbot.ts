@@ -1,4 +1,10 @@
 import { useState, useCallback } from "react";
+import {
+  performWebSearch,
+  extractSearchQuery,
+  shouldPerformWebSearch,
+  type SearchResult,
+} from "@/lib/webSearch";
 
 export interface ChatMessage {
   id: string;
@@ -7,13 +13,6 @@ export interface ChatMessage {
   timestamp: Date;
   searchResults?: SearchResult[];
   isStreaming?: boolean;
-}
-
-export interface SearchResult {
-  title: string;
-  url: string;
-  snippet: string;
-  source: string;
 }
 
 export interface UseChatbotReturn {
@@ -261,84 +260,6 @@ function getRandomResponse(responses: string[]): string {
   return responses[Math.floor(Math.random() * responses.length)];
 }
 
-function shouldSearchWeb(message: string, intent: string): boolean {
-  const normalizedMessage = message.toLowerCase();
-
-  // Always search if explicit search request
-  if (intent === "search-request") return true;
-
-  // Search for questions about current events, trends, news
-  const searchIndicators = [
-    "latest",
-    "current",
-    "recent",
-    "new",
-    "news",
-    "trends",
-    "2024",
-    "2025",
-    "price",
-    "cost",
-    "market",
-    "industry",
-    "update",
-    "release",
-    "announcement",
-  ];
-
-  return searchIndicators.some((indicator) =>
-    normalizedMessage.includes(indicator),
-  );
-}
-
-function extractSearchQuery(message: string): string {
-  const normalizedMessage = message.toLowerCase();
-
-  // Remove search trigger phrases
-  let query = message;
-  SEARCH_TRIGGERS.forEach((trigger) => {
-    const regex = new RegExp(trigger, "gi");
-    query = query.replace(regex, "").trim();
-  });
-
-  // Remove question words at the beginning if it's a direct question
-  query = query.replace(/^(what|how|when|where|why|who)\s+/i, "").trim();
-
-  return query || message;
-}
-
-// Simulate web search functionality (in a real app, this would call an actual search API)
-async function performWebSearch(query: string): Promise<SearchResult[]> {
-  // Simulate API delay
-  await new Promise((resolve) =>
-    setTimeout(resolve, 1500 + Math.random() * 1000),
-  );
-
-  // Mock search results (in production, this would be real search results)
-  const mockResults: SearchResult[] = [
-    {
-      title: `Latest Information on ${query}`,
-      url: "https://example.com/search-result-1",
-      snippet: `Here are the most recent developments and insights about ${query}. This information includes current trends, expert opinions, and relevant data points that help understand the topic better.`,
-      source: "TechNews Today",
-    },
-    {
-      title: `${query} - Industry Analysis & Trends`,
-      url: "https://example.com/search-result-2",
-      snippet: `Comprehensive analysis of ${query} including market trends, technical specifications, and future outlook. Expert insights and data-driven perspectives on current developments.`,
-      source: "Industry Weekly",
-    },
-    {
-      title: `Complete Guide to ${query}`,
-      url: "https://example.com/search-result-3",
-      snippet: `In-depth guide covering all aspects of ${query}. Includes best practices, implementation strategies, and real-world examples from leading organizations.`,
-      source: "Tech Authority",
-    },
-  ];
-
-  return mockResults;
-}
-
 export function useChatbot(): UseChatbotReturn {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -377,9 +298,10 @@ export function useChatbot(): UseChatbotReturn {
 
     try {
       const intent = detectIntent(content);
-      const shouldSearch = shouldSearchWeb(content, intent);
+      const shouldSearch =
+        shouldPerformWebSearch(content) || intent === "search-request";
 
-      if (shouldSearch || intent === "search-request") {
+      if (shouldSearch) {
         // Show loading message
         const loadingMessage: ChatMessage = {
           id: (Date.now() + 1).toString(),
@@ -393,8 +315,8 @@ export function useChatbot(): UseChatbotReturn {
         // Extract search query
         const searchQuery = extractSearchQuery(content);
 
-        // Perform web search
-        const searchResults = await performWebSearch(searchQuery);
+        // Perform web search using the real service
+        const searchResponse = await performWebSearch(searchQuery);
 
         // Remove loading message and add search results
         setMessages((prev) => prev.filter((msg) => msg.type !== "loading"));
@@ -402,16 +324,16 @@ export function useChatbot(): UseChatbotReturn {
         const searchResultMessage: ChatMessage = {
           id: (Date.now() + 2).toString(),
           type: "search-result",
-          content: `I found some current information about "${searchQuery}":`,
+          content: `I found ${searchResponse.results.length} current results about "${searchQuery}":`,
           timestamp: new Date(),
-          searchResults,
+          searchResults: searchResponse.results,
         };
 
         setMessages((prev) => [...prev, searchResultMessage]);
 
         // Add AI response after search
         setTimeout(() => {
-          const aiResponse = `Based on my search results, here's what I found about ${searchQuery}. The search results show current information and trends. Would you like me to search for more specific details or help you with anything else related to this topic?`;
+          const aiResponse = `Based on my web search, here's what I found about ${searchQuery}. The results include current information from reputable sources. Would you like me to search for more specific details, explain any of these topics in depth, or help you with something else?`;
 
           const aiMessage: ChatMessage = {
             id: (Date.now() + 3).toString(),
