@@ -308,7 +308,7 @@ const ViewAllServices = () => {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/20 via-purple-600/15 to-slate-900/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-accenture-purple/20 via-purple-600/15 to-slate-900/95" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             All Our Services
@@ -321,13 +321,13 @@ const ViewAllServices = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="px-8 py-4 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 bg-accenture-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
               Get Started Today
             </a>
             <a
               href="/services"
-              className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
+              className="px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
             >
               Browse Services
             </a>
@@ -340,12 +340,10 @@ const ViewAllServices = () => {
         <section id="services" className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              text-white text-white
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Our Service Portfolio
               </h2>
-              text-gray-200 text-gray-200
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Organized by solution type to help you find exactly what you
                 need for your business transformation.
               </p>
@@ -354,10 +352,10 @@ const ViewAllServices = () => {
             {serviceCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-16">
                 <div className="text-center mb-12">
-                  <h3 className="text-3xl font-bold text-tech-text-dark mb-4">
+                  <h3 className="text-3xl font-bold text-accenture-text-primary mb-4">
                     {category.title}
                   </h3>
-                  <p className="text-lg text-tech-text-medium max-w-2xl mx-auto">
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                     {category.description}
                   </p>
                 </div>
@@ -368,14 +366,16 @@ const ViewAllServices = () => {
                       key={serviceIndex}
                       className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
                     >
-                      <div className="w-16 h-16 bg-tech-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-tech-primary/20 transition-colors duration-300">
-                        <div className="text-tech-primary">{service.icon}</div>
+                      <div className="w-16 h-16 bg-accenture-purple/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accenture-purple/20 transition-colors duration-300">
+                        <div className="text-accenture-purple">
+                          {service.icon}
+                        </div>
                       </div>
 
-                      <h4 className="text-2xl font-bold text-tech-text-dark mb-4">
+                      <h4 className="text-2xl font-bold text-accenture-text-primary mb-4">
                         {service.name}
                       </h4>
-                      <p className="text-tech-text-medium mb-6">
+                      <p className="text-gray-600 mb-6">
                         {service.description}
                       </p>
 
@@ -385,8 +385,8 @@ const ViewAllServices = () => {
                             key={featureIndex}
                             className="flex items-start gap-3"
                           >
-                            <div className="w-2 h-2 bg-tech-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-tech-text-medium text-sm">
+                            <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-600 text-sm">
                               {feature}
                             </span>
                           </div>
@@ -395,7 +395,7 @@ const ViewAllServices = () => {
 
                       <Link
                         to={service.href}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
                       >
                         Learn More
                         <svg
@@ -426,10 +426,10 @@ const ViewAllServices = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Proven Track Record
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Our success is measured by the success of our clients. Here are
                 some key metrics that showcase our commitment to excellence.
               </p>
@@ -441,13 +441,13 @@ const ViewAllServices = () => {
                   key={index}
                   className="bg-white/80 backdrop-blur-sm rounded-xl p-8 text-center border border-white/20 hover:bg-white transition-all duration-300"
                 >
-                  <div className="text-4xl md:text-5xl font-bold text-tech-primary mb-4">
+                  <div className="text-4xl md:text-5xl font-bold text-accenture-purple mb-4">
                     {stat.number}
                   </div>
-                  <div className="text-xl font-semibold text-tech-text-dark mb-3">
+                  <div className="text-xl font-semibold text-accenture-text-primary mb-3">
                     {stat.label}
                   </div>
-                  <div className="text-tech-text-medium text-sm">
+                  <div className="text-gray-600 text-sm">
                     {stat.description}
                   </div>
                 </div>
@@ -462,10 +462,10 @@ const ViewAllServices = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Industries We Serve
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Our solutions are tailored to meet the specific requirements and
                 compliance needs of various industries.
               </p>
@@ -477,14 +477,12 @@ const ViewAllServices = () => {
                   key={index}
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
                 >
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-3">
+                  <h3 className="text-xl font-bold text-accenture-text-primary mb-3">
                     {industry.name}
                   </h3>
-                  <p className="text-tech-text-medium mb-6">
-                    {industry.description}
-                  </p>
+                  <p className="text-gray-600 mb-6">{industry.description}</p>
                   <div className="space-y-2">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3">
+                    <div className="text-sm font-semibold text-accenture-text-primary mb-3">
                       Key Services:
                     </div>
                     {industry.services.map((service, serviceIndex) => (
@@ -492,10 +490,8 @@ const ViewAllServices = () => {
                         key={serviceIndex}
                         className="flex items-start gap-2"
                       >
-                        <div className="w-1.5 h-1.5 bg-tech-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-sm text-tech-text-medium">
-                          {service}
-                        </span>
+                        <div className="w-1.5 h-1.5 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-sm text-gray-600">{service}</span>
                       </div>
                     ))}
                   </div>
@@ -511,10 +507,10 @@ const ViewAllServices = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Our Technology Stack
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 We leverage cutting-edge technologies and maintain partnerships
                 with leading vendors to deliver best-in-class solutions.
               </p>
@@ -526,14 +522,14 @@ const ViewAllServices = () => {
                   key={index}
                   className="bg-white/80 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white transition-all duration-300"
                 >
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-6">
+                  <h3 className="text-xl font-bold text-accenture-text-primary mb-6">
                     {stack.category}
                   </h3>
                   <div className="grid grid-cols-2 gap-3">
                     {stack.technologies.map((tech, techIndex) => (
                       <div
                         key={techIndex}
-                        className="text-sm text-tech-text-medium bg-gray-50 rounded px-3 py-2 text-center"
+                        className="text-sm text-gray-600 bg-gray-50 rounded px-3 py-2 text-center"
                       >
                         {tech}
                       </div>
@@ -560,7 +556,7 @@ const ViewAllServices = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
-              className="px-8 py-4 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
             >
               Schedule Consultation
             </a>
