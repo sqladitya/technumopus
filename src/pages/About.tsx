@@ -126,7 +126,7 @@ const About = () => {
                     Our Story
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Built on a Foundation of
                   <span className="text-accenture-purple"> Innovation</span>
                 </h2>
