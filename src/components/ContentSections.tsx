@@ -656,7 +656,7 @@ export const ServicesSection = () => (
       <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
         SERVICES
       </div>
-      <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+      <h2 className="text-heading-xl font-semibold text-accenture-purple mb-6">
         How we help
       </h2>
       <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
