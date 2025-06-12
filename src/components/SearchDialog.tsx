@@ -59,6 +59,8 @@ const SearchDialog = () => {
     switch (category) {
       case "Pages":
         return "🏠";
+      case "Quick Actions":
+        return "⚡";
       case "Services":
         return "⚙️";
       case "Company":
@@ -67,6 +69,10 @@ const SearchDialog = () => {
         return "🤝";
       case "Industries":
         return "🏭";
+      case "Technologies":
+        return "🚀";
+      case "Resources":
+        return "📚";
       case "Contact":
         return "📧";
       default:
