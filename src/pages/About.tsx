@@ -236,7 +236,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Driven by Purpose, Guided by Vision
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-800 max-w-3xl mx-auto font-medium">
               Our mission and vision shape every decision we make and every
               solution we deliver
             </p>
