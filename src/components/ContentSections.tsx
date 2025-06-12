@@ -349,7 +349,7 @@ export const AwardsSection = () => {
     <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="w-full max-w-7xl mx-auto">
-          {/* Section Header */}
+          {/* Section Header - Always at top */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in relative z-10">
             <div className="text-sm sm:text-base font-bold text-gray-400 uppercase tracking-wider mb-4 sm:mb-6">
               RECOGNITION
@@ -392,6 +392,7 @@ export const AwardsSection = () => {
               ))}
             </div>
           </div>
+
           {/* Tablet: Two Column Grid */}
           <div className="hidden sm:block lg:hidden">
             <div className="grid grid-cols-2 gap-6 md:gap-8">
@@ -423,10 +424,10 @@ export const AwardsSection = () => {
               ))}
             </div>
           </div>
-          {/* Desktop: Floating Cards Layout */}
+
+          {/* Desktop: Floating Cards Layout - Cards only */}
           <div className="hidden lg:block">
-            {/* Dedicated space for floating cards */}
-            <div className="relative w-full h-screen mt-20">
+            <div className="relative w-full h-screen">
               {awards.map((award, index) => (
                 <div
                   key={index}
@@ -456,6 +457,7 @@ export const AwardsSection = () => {
               ))}
             </div>
           </div>
+
           {/* View All Recognition Button (Mobile/Tablet only) */}
           <div className="mt-12 sm:mt-16 text-center lg:hidden">
             <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
