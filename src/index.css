@@ -340,6 +340,34 @@
   .hover\:border-tech-primary:hover {
     border-color: #a600ff;
   }
+
+  /* Additional text visibility fixes */
+  .text-tech-text-dark {
+    color: #1f2937 !important;
+  }
+
+  .text-tech-text-medium {
+    color: #9ca3af !important;
+  }
+
+  .text-tech-text-light {
+    color: #d1d5db !important;
+  }
+
+  /* Ensure paragraph text is visible */
+  p.text-tech-text-medium {
+    color: #9ca3af !important;
+  }
+
+  /* Ensure heading text is visible */
+  h1.text-tech-text-dark,
+  h2.text-tech-text-dark,
+  h3.text-tech-text-dark,
+  h4.text-tech-text-dark,
+  h5.text-tech-text-dark,
+  h6.text-tech-text-dark {
+    color: #1f2937 !important;
+  }
 }
 
 /* Accenture animations - Left-aligned */
