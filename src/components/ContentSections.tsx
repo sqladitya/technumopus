@@ -312,77 +312,116 @@ export const ClientStoriesSection = () => {
   );
 };
 
-// Awards Section - Accenture's floating award cards
+// Awards Section - Responsive for Mobile/Tablet
 export const AwardsSection = () => {
   const awards = [
     {
       title: "Leader in Digital Services",
       organization: "Gartner Magic Quadrant",
       year: "2024",
-      color: "from-accenture-purple to-accenture-purple-dark",
+      color: "from-purple-600 to-purple-800",
       position: "top-6 left-12",
     },
     {
       title: "Top Employer",
       organization: "Top Employers Institute",
       year: "2024",
-      color: "from-accenture-red to-red-600",
+      color: "from-red-600 to-red-800",
       position: "top-20 right-16",
     },
     {
       title: "AI Innovation Award",
       organization: "AI Excellence Awards",
       year: "2023",
-      color: "from-accenture-blue to-blue-600",
+      color: "from-blue-600 to-blue-800",
       position: "bottom-20 left-8",
     },
     {
       title: "Sustainability Leader",
       organization: "Dow Jones Index",
       year: "2023",
-      color: "from-accenture-violet to-purple-600",
+      color: "from-violet-600 to-violet-800",
       position: "bottom-12 right-12",
     },
   ];
 
   return (
-    <Section className="bg-white relative overflow-hidden min-h-screen flex items-center">
-      <div className="text-center mb-16 animate-fade-in relative z-10">
-        <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
-          RECOGNITION
-        </div>
-        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
-          Awards and accolades
-        </h2>
-        <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
-          Recognition from industry leaders for our innovation, workplace
-          culture, and commitment to creating 360° value
-        </p>
-      </div>
+    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
+      <div className="w-full px-4 sm:px-6 md:px-8">
+        <div className="w-full max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-8 sm:mb-12 animate-fade-in relative z-10">
+            <div className="text-xs sm:text-sm font-bold text-purple-600 uppercase tracking-wider mb-3 sm:mb-4">
+              RECOGNITION
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 mb-4 sm:mb-6">
+              Awards and accolades
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+              Recognition from industry leaders for our innovation, workplace
+              culture, and commitment to creating 360° value
+            </p>
+          </div>
 
-      {/* Floating Award Cards */}
-      {awards.map((award, index) => (
-        <div
-          key={index}
-          className={cn(
-            `absolute w-80 bg-gradient-to-br ${award.color} rounded-lg p-6 text-white shadow-accenture-lg hover:shadow-accenture-xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
-          )}
-          style={{
-            animationDelay: `${index * 0.5}s`,
-            animationDuration: `${8 + index}s`,
-          }}
-        >
-          <div className="flex items-start justify-between mb-4">
-            <div className="text-4xl opacity-20">🏆</div>
-            <div className="text-right">
-              <div className="text-2xl font-bold">{award.year}</div>
+          {/* Mobile/Tablet: Grid Layout */}
+          <div className="block lg:hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              {awards.map((award, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    `bg-gradient-to-br ${award.color} rounded-lg p-4 sm:p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full`,
+                  )}
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                  }}
+                >
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="text-2xl sm:text-3xl opacity-20">🏆</div>
+                    <div className="text-right">
+                      <div className="text-lg sm:text-xl font-bold">
+                        {award.year}
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold mb-2 leading-tight">
+                    {award.title}
+                  </h3>
+                  <p className="text-white/90 text-sm sm:text-base">
+                    {award.organization}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-          <h3 className="text-heading-md font-bold mb-2">{award.title}</h3>
-          <p className="text-white/90">{award.organization}</p>
+
+          {/* Desktop: Floating Cards Layout */}
+          <div className="hidden lg:block relative min-h-screen">
+            {awards.map((award, index) => (
+              <div
+                key={index}
+                className={cn(
+                  `absolute w-80 bg-gradient-to-br ${award.color} rounded-lg p-6 text-white shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
+                )}
+                style={{
+                  animationDelay: `${index * 0.5}s`,
+                  animationDuration: `${8 + index}s`,
+                }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl opacity-20">🏆</div>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold">{award.year}</div>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2">{award.title}</h3>
+                <p className="text-white/90">{award.organization}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </Section>
+      </div>
+    </section>
   );
 };
 
