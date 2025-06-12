@@ -49,6 +49,7 @@ const Navigation = () => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setActiveDropdown(null);
+        setDropdownPositions({});
       }
     };
 
