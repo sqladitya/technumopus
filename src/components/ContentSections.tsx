@@ -424,8 +424,9 @@ export const AwardsSection = () => {
             </div>
           </div>
           {/* Desktop: Floating Cards Layout */}
-          <div className="hidden lg:block relative min-h-screen">
-            <div className="relative w-full h-full">
+          <div className="hidden lg:block">
+            {/* Dedicated space for floating cards */}
+            <div className="relative w-full h-screen mt-20">
               {awards.map((award, index) => (
                 <div
                   key={index}
@@ -454,9 +455,6 @@ export const AwardsSection = () => {
                 </div>
               ))}
             </div>
-
-            {/* Add some spacing for the floating cards */}
-            <div className="h-96"></div>
           </div>
           {/* View All Recognition Button (Mobile/Tablet only) */}
           <div className="mt-12 sm:mt-16 text-center lg:hidden">
