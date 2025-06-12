@@ -224,13 +224,6 @@ const Navigation = () => {
           </Link>
 
           <Link
-            to="/careers"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
-          >
-            Careers
-          </Link>
-          <Link
             to="/about"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
@@ -377,13 +370,6 @@ const Navigation = () => {
                   </div>
                 </div>
               </div>
-
-              <Link
-                to="/careers"
-                className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
-              >
-                Careers
-              </Link>
 
               {/* About Dropdown */}
               <div className="relative">
