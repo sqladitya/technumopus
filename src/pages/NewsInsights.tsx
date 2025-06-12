@@ -1,6 +1,80 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import {
+  Calendar,
+  ArrowRight,
+  TrendingUp,
+  Lightbulb,
+  Users,
+  Award,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SectionBackground from "@/components/SectionBackground";
+import { useSubscription } from "@/hooks/useSubscription";
+import { toast } from "sonner";
+
+// Newsletter subscription form component
+const NewsletterSubscriptionForm = () => {
+  const [email, setEmail] = useState("");
+  const { subscribe, isLoading, isSuccess, isError, error, reset } =
+    useSubscription();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      toast.error("Please enter your email address");
+      return;
+    }
+
+    try {
+      await subscribe(email, "newsletter");
+      toast.success("Successfully subscribed to our newsletter!");
+      setEmail("");
+      // Reset after 3 seconds
+      setTimeout(reset, 3000);
+    } catch (err) {
+      // Error is handled by the hook and displayed in toast
+      if (error) {
+        toast.error(error);
+      }
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto">
+      <form onSubmit={handleSubmit} className="flex gap-4">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
+          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tech-primary focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+        />
+        <button
+          type="submit"
+          disabled={isLoading || !email.trim()}
+          className="px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+        >
+          {isLoading ? "Subscribing..." : "Subscribe"}
+        </button>
+      </form>
+      <p className="text-tech-text-medium text-sm mt-3">
+        No spam. Unsubscribe at any time.
+      </p>
+      {isSuccess && (
+        <p className="text-green-600 text-sm mt-2 font-medium">
+          ✓ Successfully subscribed!
+        </p>
+      )}
+      {isError && error && (
+        <p className="text-red-600 text-sm mt-2 font-medium">{error}</p>
+      )}
+    </div>
+  );
+};
 
 const NewsInsights = () => {
   const featuredArticles = [
@@ -28,10 +102,10 @@ const NewsInsights = () => {
     },
     {
       id: 3,
-      title: "Multi-Cloud Strategy: Benefits and Implementation",
+      title: "Cloud Infrastructure Security: Best Practices for 2024",
       excerpt:
-        "How enterprises are adopting multi-cloud strategies to avoid vendor lock-in and optimize costs while maintaining performance.",
-      author: "Mike Chen",
+        "Comprehensive guide to securing cloud infrastructure with zero-trust architecture and advanced threat detection.",
+      author: "Michael Chen",
       date: "March 5, 2024",
       readTime: "6 min read",
       category: "Cloud Architecture",
@@ -39,149 +113,144 @@ const NewsInsights = () => {
     },
   ];
 
-  const recentNews = [
+  const insights = [
     {
-      id: 4,
-      title: "Technum Opus Achieves AWS Advanced Consulting Partner Status",
-      date: "March 12, 2024",
-      category: "Company News",
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Market Trends",
+      description:
+        "Stay updated with the latest technology trends and market insights that shape the future of business.",
     },
     {
-      id: 5,
-      title: "New Partnership with Microsoft for Azure Solutions",
-      date: "March 8, 2024",
-      category: "Partnerships",
+      icon: <Lightbulb className="w-6 h-6" />,
+      title: "Innovation Stories",
+      description:
+        "Discover how we help businesses innovate and transform through cutting-edge technology solutions.",
     },
     {
-      id: 6,
-      title: "Expansion into European Markets Announced",
-      date: "March 3, 2024",
-      category: "Business Growth",
+      icon: <Users className="w-6 h-6" />,
+      title: "Client Success",
+      description:
+        "Read about our clients' success stories and how we've helped them achieve their digital transformation goals.",
     },
     {
-      id: 7,
-      title: "Q1 2024 Customer Success Stories Released",
-      date: "February 28, 2024",
-      category: "Customer Success",
+      icon: <Award className="w-6 h-6" />,
+      title: "Industry Recognition",
+      description:
+        "Learn about our industry awards, certifications, and recognition for excellence in technology consulting.",
     },
   ];
 
-  const insights = [
+  const categories = [
+    "All",
+    "SAP Consulting",
+    "SAAS Development",
+    "Cloud Architecture",
+    "Digital Transformation",
+    "Industry Insights",
+    "Technology Trends",
+  ];
+
+  const recentNews = [
     {
-      id: 8,
-      title: "5 Key Trends in Enterprise Digital Transformation",
-      excerpt:
-        "Analyzing the major trends shaping how enterprises approach digital transformation in 2024.",
-      author: "Dr. Lisa Wang",
-      date: "March 1, 2024",
-      readTime: "8 min read",
+      title: "Technum Opus Wins 2024 Digital Innovation Award",
+      date: "March 20, 2024",
+      category: "Company News",
     },
     {
-      id: 9,
-      title: "Cybersecurity in the Cloud: Essential Best Practices",
-      excerpt:
-        "Comprehensive guide to implementing robust security measures for cloud-based enterprise applications.",
-      author: "Robert Davis",
-      date: "February 25, 2024",
-      readTime: "10 min read",
+      title: "New Partnership with Leading Cloud Provider",
+      date: "March 18, 2024",
+      category: "Partnerships",
     },
     {
-      id: 10,
-      title: "ROI Measurement for IT Infrastructure Investments",
-      excerpt:
-        "Framework for measuring and demonstrating return on investment for enterprise IT infrastructure projects.",
-      author: "Jennifer Martinez",
-      date: "February 20, 2024",
-      readTime: "6 min read",
+      title: "Q1 2024 Technology Predictions Report Released",
+      date: "March 15, 2024",
+      category: "Research",
+    },
+    {
+      title: "Expansion into European Markets Announced",
+      date: "March 12, 2024",
+      category: "Company News",
     },
   ];
 
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-white">
       <Navigation />
 
       {/* Hero Section */}
       <SectionBackground variant="gradient">
-        <section className="pt-24 pb-16">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
-                News & Insights
-              </h1>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                Stay informed with the latest technology trends, industry
-                insights, and company updates from Technum Opus.
-              </p>
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-tech-text-dark mb-6">
+              News & <span className="text-tech-primary">Insights</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto mb-8">
+              Stay informed with the latest technology trends, industry
+              insights, and innovation stories from Technum Opus
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className="px-4 py-2 rounded-full border border-tech-primary text-tech-primary hover:bg-tech-primary hover:text-white transition-all duration-300"
+                >
+                  {category}
+                </button>
+              ))}
             </div>
           </div>
         </section>
       </SectionBackground>
 
       {/* Featured Articles */}
-      <SectionBackground variant="light">
+      <SectionBackground variant="white">
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-4">
                 Featured Articles
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                In-depth analysis and thought leadership on enterprise
-                technology
+              <p className="text-xl text-tech-text-medium">
+                Deep insights and expert perspectives on technology and business
+                transformation
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredArticles.map((article) => (
                 <article
                   key={article.id}
-                  className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300"
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-tech-primary/10 to-purple-500/10 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg
-                          className="w-8 h-8 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                          />
-                        </svg>
-                      </div>
-                      <p className="text-tech-text-medium text-sm">
-                        {article.category}
-                      </p>
-                    </div>
-                  </div>
+                  <div className="h-48 bg-gray-200"></div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="px-3 py-1 bg-tech-primary/10 text-tech-primary rounded-full text-xs font-medium">
+                      <span className="px-3 py-1 bg-tech-primary/10 text-tech-primary text-sm rounded-full font-medium">
                         {article.category}
                       </span>
-                      <span className="text-tech-text-medium text-xs">
+                      <span className="text-tech-text-light text-sm">
                         {article.readTime}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-tech-text-dark mb-3 line-clamp-2">
+                    <h3 className="text-xl font-semibold text-tech-text-dark mb-3 line-clamp-2">
                       {article.title}
                     </h3>
                     <p className="text-tech-text-medium mb-4 line-clamp-3">
                       {article.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
-                      <div className="text-sm text-tech-text-medium">
-                        <div>{article.author}</div>
-                        <div>{article.date}</div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-tech-text-light" />
+                        <span className="text-tech-text-light text-sm">
+                          {article.date}
+                        </span>
                       </div>
-                      <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                        Read More →
-                      </button>
+                      <Link
+                        to={`/insights/${article.id}`}
+                        className="flex items-center gap-2 text-tech-primary hover:text-tech-primary-dark font-medium"
+                      >
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -191,208 +260,112 @@ const NewsInsights = () => {
         </section>
       </SectionBackground>
 
-      {/* Recent News and Insights */}
-      <SectionBackground variant="gradient">
+      {/* Insights Categories */}
+      <SectionBackground variant="light">
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Recent News */}
-              <div>
-                <h2 className="text-3xl font-bold text-tech-text-dark mb-8">
-                  Recent News
-                </h2>
-                <div className="space-y-6">
-                  {recentNews.map((news) => (
-                    <div
-                      key={news.id}
-                      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                          {news.category}
-                        </span>
-                        <span className="text-tech-text-medium text-sm">
-                          {news.date}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold text-tech-text-dark mb-2">
-                        {news.title}
-                      </h3>
-                      <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                        Read More →
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-4">
+                What You'll Find Here
+              </h2>
+              <p className="text-xl text-tech-text-medium">
+                Comprehensive coverage of technology, business, and innovation
+              </p>
+            </div>
 
-              {/* Industry Insights */}
-              <div>
-                <h2 className="text-3xl font-bold text-tech-text-dark mb-8">
-                  Industry Insights
-                </h2>
-                <div className="space-y-6">
-                  {insights.map((insight) => (
-                    <div
-                      key={insight.id}
-                      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
-                    >
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-tech-text-medium text-xs">
-                          {insight.readTime}
-                        </span>
-                        <span className="text-tech-text-medium text-xs">•</span>
-                        <span className="text-tech-text-medium text-xs">
-                          {insight.date}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold text-tech-text-dark mb-2">
-                        {insight.title}
-                      </h3>
-                      <p className="text-tech-text-medium mb-3 line-clamp-2">
-                        {insight.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-tech-text-medium text-sm">
-                          By {insight.author}
-                        </span>
-                        <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                          Read More →
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {insights.map((insight, index) => (
+                <div
+                  key={index}
+                  className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-12 h-12 bg-tech-gradient rounded-lg flex items-center justify-center text-white mx-auto mb-4">
+                    {insight.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-tech-text-dark mb-3">
+                    {insight.title}
+                  </h3>
+                  <p className="text-tech-text-medium">{insight.description}</p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
       </SectionBackground>
 
-      {/* Categories */}
-      <SectionBackground variant="light">
+      {/* Recent News */}
+      <SectionBackground variant="white">
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-4">
-                Explore by Category
-              </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
-                Find content that matters to your business and industry
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-center">
-                <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-8">
+                  Latest News
+                </h2>
+                <div className="space-y-6">
+                  {recentNews.map((news, index) => (
+                    <article
+                      key={index}
+                      className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+                    >
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="px-2 py-1 bg-tech-primary/10 text-tech-primary text-xs rounded-full font-medium">
+                            {news.category}
+                          </span>
+                          <span className="text-tech-text-light text-sm">
+                            {news.date}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-tech-text-dark mb-2">
+                          {news.title}
+                        </h3>
+                      </div>
+                      <ArrowRight className="w-5 h-5 text-tech-primary" />
+                    </article>
+                  ))}
                 </div>
-                <h3 className="text-xl font-bold text-tech-text-dark mb-3">
-                  SAP Consulting
-                </h3>
-                <p className="text-tech-text-medium text-sm mb-4">
-                  Latest trends and best practices in SAP implementation and
-                  optimization.
-                </p>
-                <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                  View Articles →
-                </button>
               </div>
 
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-tech-text-dark mb-3">
-                  SAAS Development
+              <div>
+                <h3 className="text-2xl font-bold text-tech-text-dark mb-6">
+                  Stay Connected
                 </h3>
-                <p className="text-tech-text-medium text-sm mb-4">
-                  Insights on building scalable and secure software-as-a-service
-                  platforms.
-                </p>
-                <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                  View Articles →
-                </button>
-              </div>
+                <div className="bg-tech-gradient rounded-xl p-6 text-white mb-6">
+                  <h4 className="text-lg font-semibold mb-2">
+                    Subscribe to Our Newsletter
+                  </h4>
+                  <p className="text-white/90 text-sm mb-4">
+                    Get weekly updates on technology trends, industry insights,
+                    and company news.
+                  </p>
+                  <button className="w-full bg-white text-tech-primary py-2 px-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Subscribe Now
+                  </button>
+                </div>
 
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                    />
-                  </svg>
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-tech-text-dark mb-4">
+                    Popular Topics
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "SAP Migration",
+                      "Cloud Security",
+                      "Digital Innovation",
+                      "AI Integration",
+                      "Data Analytics",
+                      "Automation",
+                    ].map((topic) => (
+                      <span
+                        key={topic}
+                        className="px-3 py-1 bg-white text-tech-text-medium text-sm rounded-full border border-gray-200 hover:border-tech-primary hover:text-tech-primary cursor-pointer transition-colors"
+                      >
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-tech-text-dark mb-3">
-                  Cloud Architecture
-                </h3>
-                <p className="text-tech-text-medium text-sm mb-4">
-                  Cloud strategy, migration, and optimization insights for
-                  modern enterprises.
-                </p>
-                <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                  View Articles →
-                </button>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-tech-text-dark mb-3">
-                  Infrastructure
-                </h3>
-                <p className="text-tech-text-medium text-sm mb-4">
-                  Hardware infrastructure trends, deployment strategies, and
-                  optimization tips.
-                </p>
-                <button className="text-tech-primary hover:text-tech-primary-dark font-medium text-sm">
-                  View Articles →
-                </button>
               </div>
             </div>
           </div>
@@ -410,21 +383,7 @@ const NewsInsights = () => {
               Subscribe to our newsletter for the latest insights, trends, and
               company updates delivered to your inbox.
             </p>
-            <div className="max-w-md mx-auto">
-              <div className="flex gap-4">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tech-primary focus:border-transparent"
-                />
-                <button className="px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  Subscribe
-                </button>
-              </div>
-              <p className="text-tech-text-medium text-sm mt-3">
-                No spam. Unsubscribe at any time.
-              </p>
-            </div>
+            <NewsletterSubscriptionForm />
           </div>
         </section>
       </SectionBackground>
