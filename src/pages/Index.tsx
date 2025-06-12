@@ -50,7 +50,7 @@ const Index = () => {
           <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
             Industry expertise that drives results
           </h2>
-          <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
             We combine deep industry knowledge with technology innovation to
             solve complex business challenges
           </p>
