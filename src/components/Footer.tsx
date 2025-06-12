@@ -96,7 +96,7 @@ const Footer = () => {
                 TECHNUM OPUS
               </span>
             </Link>
-            <p className="text-white/80 mb-6 leading-relaxed max-w-md">
+            <p className="text-white/80 mb-6 leading-relaxed max-w-xs">
               We create 360° value for our clients, their customers, our people,
               our partners, our shareholders and our communities.
             </p>
