@@ -14,130 +14,86 @@ export const Section = ({ children, className, id }: SectionProps) => (
   </section>
 );
 
-// Content Cards Grid - Accenture Style Mobile/Tablet Layout
+// Content Cards Grid - Accenture Style
 export const ContentCardsSection = () => (
-  <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
-    {/* Mobile: Single column with full width cards */}
-    {/* Tablet: Two columns with equal width cards */}
-    {/* Desktop: Four columns with equal width cards */}
-    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-      <div className="w-full max-w-7xl mx-auto">
-        {/* Mobile-first grid that expands progressively */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
-          {[
-            {
-              category: "TRANSFORMATION",
-              title: "Change That Matters",
-              description:
-                "Discover how we help organizations create lasting impact through human ingenuity and technology innovation",
-              image:
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              href: "/insights/change-that-matters",
-              color: "accenture-purple",
-            },
-            {
-              category: "PERSPECTIVE",
-              title: "The Art of AI Maturity",
-              description:
-                "How to move from AI experimentation to enterprise-wide transformation",
-              image:
-                "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              href: "/insights/ai-maturity",
-              color: "accenture-purple",
-            },
-            {
-              category: "CASE STUDY",
-              title: "Digital Banking Revolution",
-              description:
-                "How we helped a global bank transform customer experience",
-              image:
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              href: "/insights/digital-banking",
-              color: "accenture-purple",
-            },
-            {
-              category: "REPORT",
-              title: "Future of Work",
-              description:
-                "Reimagining work through human + machine collaboration",
-              image:
-                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-              href: "/insights/future-of-work",
-              color: "accenture-purple",
-            },
-          ].map((card, index) => (
-            <Link
-              key={index}
-              to={card.href}
-              className="group block bg-white rounded-none sm:rounded-lg overflow-hidden shadow-none sm:shadow-card hover:shadow-card-hover transition-all duration-300 sm:hover:-translate-y-1 animate-slide-in-left w-full touch-manipulation"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Mobile: Full width image with 16:9 aspect ratio */}
-              {/* Tablet+: Standard video aspect ratio */}
-              <div className="aspect-[16/9] sm:aspect-video bg-gray-100 relative overflow-hidden w-full">
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-                {/* Category badge positioned in top-left */}
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                  <span
-                    className={cn(
-                      "inline-block px-2 py-1 sm:px-3 sm:py-1.5 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none sm:rounded shadow-sm",
-                      `bg-${card.color}`,
-                    )}
-                    style={{
-                      color: "white",
-                      backgroundColor: "rgb(166, 0, 255)", // Accenture purple
-                    }}
-                  >
-                    {card.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content area with responsive padding */}
-              <div className="p-4 sm:p-5 lg:p-6 w-full bg-white">
-                {/* Title with line clamping and responsive sizing */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-900 mb-2 sm:mb-3 group-hover:text-purple-600 transition-colors line-clamp-2 leading-tight tracking-tight">
-                  {card.title}
-                </h3>
-                {/* Description with proper line height and clamping */}
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 tracking-tight">
-                  {card.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile: Show "View All" button below cards */}
-        <div className="mt-8 sm:mt-12 text-center">
-          <Link
-            to="/insights"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-none sm:rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
-          >
-            View all insights
-            <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
-        </div>
-      </div>
+  <Section className="bg-white">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {[
+        {
+          category: "TRANSFORMATION",
+          title: "Change That Matters",
+          description:
+            "Discover how we help organizations create lasting impact through human ingenuity and technology innovation",
+          image:
+            "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          href: "/insights/change-that-matters",
+          color: "accenture-purple",
+        },
+        {
+          category: "PERSPECTIVE",
+          title: "The Art of AI Maturity",
+          description:
+            "How to move from AI experimentation to enterprise-wide transformation",
+          image:
+            "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          href: "/insights/ai-maturity",
+          color: "accenture-red",
+        },
+        {
+          category: "CASE STUDY",
+          title: "Digital Banking Revolution",
+          description:
+            "How we helped a global bank transform customer experience",
+          image:
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          href: "/insights/digital-banking",
+          color: "accenture-blue",
+        },
+        {
+          category: "REPORT",
+          title: "Future of Work",
+          description: "Reimagining work through human + machine collaboration",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          href: "/insights/future-of-work",
+          color: "accenture-violet",
+        },
+      ].map((card, index) => (
+        <Link
+          key={index}
+          to={card.href}
+          className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden">
+            <img
+              src={card.image}
+              alt={card.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute top-4 left-4">
+              <span
+                className={cn(
+                  "inline-block px-3 py-1 text-white text-body-sm font-bold uppercase tracking-wider rounded",
+                  `bg-${card.color}`,
+                )}
+              >
+                {card.category}
+              </span>
+            </div>
+          </div>
+          <div className="p-4">
+            <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
+              {card.title}
+            </h3>
+            <p className="text-accenture-text-tertiary leading-relaxed">
+              {card.description}
+            </p>
+          </div>
+        </Link>
+      ))}
     </div>
-  </section>
+  </Section>
 );
 
 // 360° Value Section - Accenture's signature section
@@ -223,7 +179,7 @@ export const ClientStoriesSection = () => {
         <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
           CLIENT STORIES
         </div>
-        <h2 className="text-heading-xl font-semibold text-purple-600 mb-6">
+        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
           Real impact for real business
         </h2>
         <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
@@ -312,176 +268,80 @@ export const ClientStoriesSection = () => {
   );
 };
 
-// Awards Section - Responsive for All Views
+// Awards Section - Accenture's floating award cards
 export const AwardsSection = () => {
   const awards = [
     {
       title: "Leader in Digital Services",
       organization: "Gartner Magic Quadrant",
       year: "2024",
-      color: "from-purple-600 to-purple-800",
+      color: "from-accenture-purple to-accenture-purple-dark",
       position: "top-6 left-12",
     },
     {
       title: "Top Employer",
       organization: "Top Employers Institute",
       year: "2024",
-      color: "from-red-600 to-red-800",
+      color: "from-accenture-red to-red-600",
       position: "top-20 right-16",
     },
     {
       title: "AI Innovation Award",
       organization: "AI Excellence Awards",
       year: "2023",
-      color: "from-blue-600 to-blue-800",
+      color: "from-accenture-blue to-blue-600",
       position: "bottom-20 left-8",
     },
     {
       title: "Sustainability Leader",
       organization: "Dow Jones Index",
       year: "2023",
-      color: "from-violet-600 to-violet-800",
+      color: "from-accenture-violet to-purple-600",
       position: "bottom-12 right-12",
     },
   ];
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
-        <div className="w-full max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in relative z-10">
-            <div className="text-sm sm:text-base font-bold text-purple-600 uppercase tracking-wider mb-4 sm:mb-6">
-              RECOGNITION
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 sm:mb-8 leading-tight">
-              Awards and accolades
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6">
-              Recognition from industry leaders for our innovation, workplace
-              culture, and commitment to creating 360° value
-            </p>
-          </div>
-
-          {/* Mobile: Single Column Layout */}
-          <div className="block sm:hidden">
-            <div className="space-y-6">
-              {awards.map((award, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    `bg-gradient-to-r ${award.color} rounded-xl p-6 text-white shadow-xl w-full animate-slide-in-left border border-white/20`,
-                  )}
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="text-3xl">🏆</div>
-                    <div className="text-xl font-bold bg-white/20 px-3 py-1 rounded-full">
-                      {award.year}
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-bold mb-3 leading-tight text-white">
-                    {award.title}
-                  </h3>
-                  <p className="text-white/95 text-base leading-relaxed">
-                    {award.organization}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* Tablet: Two Column Grid */}
-          <div className="hidden sm:block lg:hidden">
-            <div className="grid grid-cols-2 gap-6 md:gap-8">
-              {awards.map((award, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    `bg-gradient-to-br ${award.color} rounded-xl p-6 md:p-8 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full animate-slide-in-left border border-white/20`,
-                  )}
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  <div className="flex items-start justify-between mb-4 md:mb-6">
-                    <div className="text-3xl md:text-4xl opacity-30">🏆</div>
-                    <div className="text-right">
-                      <div className="text-xl md:text-2xl font-bold bg-white/20 px-3 py-1 rounded-full">
-                        {award.year}
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="text-base md:text-lg font-bold mb-3 md:mb-4 leading-tight text-white">
-                    {award.title}
-                  </h3>
-                  <p className="text-white/95 text-sm md:text-base leading-relaxed">
-                    {award.organization}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* Desktop: Floating Cards Layout */}
-          <div className="hidden lg:block relative min-h-screen">
-            <div className="relative w-full h-full">
-              {awards.map((award, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    `absolute w-80 xl:w-96 bg-gradient-to-br ${award.color} rounded-2xl p-8 xl:p-10 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-float ${award.position} border border-white/30`,
-                  )}
-                  style={{
-                    animationDelay: `${index * 0.5}s`,
-                    animationDuration: `${8 + index}s`,
-                  }}
-                >
-                  <div className="flex items-start justify-between mb-6 xl:mb-8">
-                    <div className="text-5xl xl:text-6xl opacity-30">🏆</div>
-                    <div className="text-right">
-                      <div className="text-2xl xl:text-3xl font-bold bg-white/25 px-4 py-2 rounded-full">
-                        {award.year}
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="text-2xl xl:text-3xl font-bold mb-4 xl:mb-5 leading-tight text-white">
-                    {award.title}
-                  </h3>
-                  <p className="text-white/95 text-lg xl:text-xl leading-relaxed">
-                    {award.organization}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Add some spacing for the floating cards */}
-            <div className="h-96"></div>
-          </div>
-          {/* View All Recognition Button (Mobile/Tablet only) */}
-          <div className="mt-12 sm:mt-16 text-center lg:hidden">
-            <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
-              View all recognition
-              <svg
-                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </button>
-          </div>
+    <Section className="bg-white relative overflow-hidden min-h-screen flex items-center">
+      <div className="text-center mb-16 animate-fade-in relative z-10">
+        <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+          RECOGNITION
         </div>
+        <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+          Awards and accolades
+        </h2>
+        <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+          Recognition from industry leaders for our innovation, workplace
+          culture, and commitment to creating 360° value
+        </p>
       </div>
-    </section>
+
+      {/* Floating Award Cards */}
+      {awards.map((award, index) => (
+        <div
+          key={index}
+          className={cn(
+            `absolute w-80 bg-gradient-to-br ${award.color} rounded-lg p-6 text-white shadow-accenture-lg hover:shadow-accenture-xl transition-all duration-500 hover:scale-105 animate-float ${award.position}`,
+          )}
+          style={{
+            animationDelay: `${index * 0.5}s`,
+            animationDuration: `${8 + index}s`,
+          }}
+        >
+          <div className="flex items-start justify-between mb-4">
+            <div className="text-4xl opacity-20">🏆</div>
+            <div className="text-right">
+              <div className="text-2xl font-bold">{award.year}</div>
+            </div>
+          </div>
+          <h3 className="text-heading-md font-bold mb-2">{award.title}</h3>
+          <p className="text-white/90">{award.organization}</p>
+        </div>
+      ))}
+    </Section>
   );
 };
+
 // Culture Section - Accenture Style
 export const CultureSection = () => (
   <Section className="bg-accenture-black text-white relative overflow-hidden">
