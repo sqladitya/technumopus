@@ -462,10 +462,10 @@ const ViewAllServices = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
+              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
                 Industries We Serve
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Our solutions are tailored to meet the specific requirements and
                 compliance needs of various industries.
               </p>
@@ -477,14 +477,12 @@ const ViewAllServices = () => {
                   key={index}
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
                 >
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-3">
+                  <h3 className="text-xl font-bold text-accenture-text-primary mb-3">
                     {industry.name}
                   </h3>
-                  <p className="text-tech-text-medium mb-6">
-                    {industry.description}
-                  </p>
+                  <p className="text-gray-600 mb-6">{industry.description}</p>
                   <div className="space-y-2">
-                    <div className="text-sm font-semibold text-tech-text-dark mb-3">
+                    <div className="text-sm font-semibold text-accenture-text-primary mb-3">
                       Key Services:
                     </div>
                     {industry.services.map((service, serviceIndex) => (
@@ -492,10 +490,8 @@ const ViewAllServices = () => {
                         key={serviceIndex}
                         className="flex items-start gap-2"
                       >
-                        <div className="w-1.5 h-1.5 bg-tech-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-sm text-tech-text-medium">
-                          {service}
-                        </span>
+                        <div className="w-1.5 h-1.5 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-sm text-gray-600">{service}</span>
                       </div>
                     ))}
                   </div>
