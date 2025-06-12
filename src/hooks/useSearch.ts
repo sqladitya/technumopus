@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
+import { useSearchContext } from "@/components/SearchProvider";
 
 export interface SearchItem {
   id: string;
