@@ -63,7 +63,7 @@ const AboutUs = () => {
                   <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
                     Our Vision
                   </h3>
-                  <p className="text-tech-text-medium leading-relaxed">
+                  <p className="text-body-xl text-gray-600 leading-relaxed">
                     To be the trusted technology partner that organizations turn
                     to when they want to transform possibilities into reality,
                     creating lasting impact through innovative solutions.
