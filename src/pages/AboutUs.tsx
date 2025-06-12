@@ -11,9 +11,11 @@ const AboutUs = () => {
       <SectionBackground variant="gradient">
         <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            text-white
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
               About Technum Opus
             </h1>
+            text-gray-200
             <p className="text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto">
               Pioneering digital transformation with innovation, expertise, and
               unwavering commitment to excellence
