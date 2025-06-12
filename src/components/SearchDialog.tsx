@@ -330,7 +330,7 @@ const SearchDialog = () => {
                         onSelect={() => handleSuggestionSelect(suggestion)}
                         className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
                       >
-                        <span className="text-lg mt-0.5">💡</span>
+                        <Lightbulb className="w-4 h-4 mt-0.5 text-yellow-600" />
                         <div className="flex-1">
                           <p className="text-sm text-foreground">
                             {suggestion}
