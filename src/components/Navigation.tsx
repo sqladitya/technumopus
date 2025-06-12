@@ -138,6 +138,9 @@ const Navigation = () => {
 
   return (
     <>
+      {/* Search Dialog */}
+      <SearchDialog />
+
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div
