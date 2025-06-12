@@ -41,15 +41,15 @@ export function SearchCommand({ className }: SearchCommandProps) {
   const hasResults = filteredItems.length > 0;
 
   return (
-    <Dialog open={isOpen} onOpenChange={close}>
+    <Dialog open={isOpen} onOpenChange={closeSearch}>
       <DialogContent
         className={cn(
           "max-w-2xl p-0 gap-0 overflow-hidden",
           "bg-white dark:bg-gray-900",
           className,
         )}
-        onPointerDownOutside={close}
-        onEscapeKeyDown={close}
+        onPointerDownOutside={closeSearch}
+        onEscapeKeyDown={closeSearch}
       >
         <VisuallyHidden>
           <DialogTitle>Search</DialogTitle>
