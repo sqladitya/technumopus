@@ -59,16 +59,6 @@ const Navigation = () => {
     setActiveDropdown(null);
   };
 
-  const handleSearchSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (searchQuery.trim()) {
-      // Navigate to a search results page or filter content
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-      setIsSearchOpen(false);
-      setSearchQuery("");
-    }
-  };
-
   const toggleMobileDropdown = (dropdown: string) => {
     setActiveMobileDropdown(
       activeMobileDropdown === dropdown ? null : dropdown,
