@@ -43,7 +43,7 @@ const Index = () => {
 
       {/* Industries Section */}
       <Section className="bg-white">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-10 animate-fade-in">
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             INDUSTRIES
           </div>
@@ -56,7 +56,7 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
           {[
             { name: "Banking", icon: "🏦", href: "/industries/banking" },
             { name: "Healthcare", icon: "🏥", href: "/industries/healthcare" },
@@ -94,7 +94,7 @@ const Index = () => {
             <Link
               key={index}
               to={industry.href}
-              className="group flex flex-col items-center p-6 bg-accenture-gray-50 rounded-lg hover:bg-white hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              className="group flex flex-col items-center p-4 bg-accenture-gray-50 rounded-lg hover:bg-white hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -145,7 +145,7 @@ const Index = () => {
             advantage and drive growth.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
             {[
               {
                 title: "Artificial Intelligence",
@@ -204,7 +204,7 @@ const Index = () => {
 
       {/* Career CTA Section */}
       <Section className="bg-accenture-purple text-white">
-        <div className="text-center py-16 animate-fade-in">
+        <div className="text-center py-12 animate-fade-in">
           <h2 className="text-heading-xl font-semibold text-white mb-6">
             Join us. Shape the future.
           </h2>

@@ -106,7 +106,7 @@ const HeroSection = () => {
 
           {/* Content with Enhanced Typography */}
           <div className="relative z-20 flex items-center min-h-screen">
-            <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="max-w-7xl mx-auto px-4 py-16">
               <div className="max-w-5xl">
                 {/* Category with Enhanced Styling */}
                 <div className="mb-8 animate-fade-in">

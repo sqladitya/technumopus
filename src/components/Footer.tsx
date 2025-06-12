@@ -87,8 +87,8 @@ const Footer = () => {
   return (
     <footer className="bg-accenture-black text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
@@ -195,7 +195,7 @@ const Footer = () => {
 
       {/* Newsletter Subscription */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-heading-md font-semibold text-white mb-3">
@@ -222,7 +222,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-white/60">
               <span>© {currentYear} Technum Opus. All rights reserved.</span>

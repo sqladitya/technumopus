@@ -9,15 +9,15 @@ interface SectionProps {
 }
 
 export const Section = ({ children, className, id }: SectionProps) => (
-  <section id={id} className={cn("py-20 md:py-32", className)}>
-    <div className="max-w-7xl mx-auto px-6">{children}</div>
+  <section id={id} className={cn("py-12 md:py-16", className)}>
+    <div className="max-w-7xl mx-auto px-4">{children}</div>
   </section>
 );
 
 // Content Cards Grid - Accenture Style
 export const ContentCardsSection = () => (
   <Section className="bg-white">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {[
         {
           category: "TRANSFORMATION",
@@ -82,7 +82,7 @@ export const ContentCardsSection = () => (
               </span>
             </div>
           </div>
-          <div className="p-6">
+          <div className="p-4">
             <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
               {card.title}
             </h3>
@@ -99,7 +99,7 @@ export const ContentCardsSection = () => (
 // 360° Value Section - Accenture's signature section
 export const ValuePropositionSection = () => (
   <Section className="bg-accenture-black text-white">
-    <div className="text-center py-20 animate-fade-in">
+    <div className="text-center py-12 animate-fade-in">
       <h2 className="text-display font-heading text-white mb-8 leading-tight">
         360° VALUE
       </h2>
@@ -175,7 +175,7 @@ export const ClientStoriesSection = () => {
 
   return (
     <Section className="bg-accenture-gray-50">
-      <div className="text-center mb-16 animate-fade-in">
+      <div className="text-center mb-10 animate-fade-in">
         <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
           CLIENT STORIES
         </div>
@@ -188,7 +188,7 @@ export const ClientStoriesSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {stories.map((story, index) => (
           <div
             key={index}
@@ -207,7 +207,7 @@ export const ClientStoriesSection = () => {
                 </span>
               </div>
             </div>
-            <div className="p-6">
+            <div className="p-4">
               <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors">
                 {story.title}
               </h3>
@@ -460,12 +460,12 @@ export const NewsSection = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {news.map((item, index) => (
           <Link
             key={index}
             to={item.href}
-            className="group block bg-white border border-accenture-gray-200 rounded-lg p-6 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 animate-slide-up"
+            className="group block bg-white border border-accenture-gray-200 rounded-lg p-4 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 animate-slide-up"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-3">
@@ -525,7 +525,7 @@ export const ServicesSection = () => (
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {[
         {
           title: "Strategy & Consulting",
@@ -573,7 +573,7 @@ export const ServicesSection = () => (
         <Link
           key={index}
           to={service.href}
-          className="group block bg-white rounded-lg p-8 shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
+          className="group block bg-white rounded-lg p-6 shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-up"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -595,7 +595,7 @@ export const PartnersSection = () => <PartnersLogos />;
 
 export const AboutSection = () => (
   <Section className="bg-white">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
       <div className="animate-slide-up">
         <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
           ABOUT TECHNUM OPUS
