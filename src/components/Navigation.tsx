@@ -41,74 +41,24 @@ const Navigation = () => {
 
   const services = [
     {
-      category: "STRATEGY & CONSULTING",
-      items: [
-        {
-          name: "SAP Consulting",
-          href: "/services/sap-consulting",
-          description: "SAP S/4HANA transformation and consulting",
-        },
-        {
-          name: "Digital Transformation",
-          href: "/services/digital-transformation",
-          description: "End-to-end digital transformation",
-        },
-        {
-          name: "Technology Strategy",
-          href: "/services/technology-strategy",
-          description: "Technology-led business innovation",
-        },
-        {
-          name: "Operations",
-          href: "/services/operations",
-          description: "Operational excellence and efficiency",
-        },
-      ],
+      name: "SAP Consulting",
+      href: "/services/sap-consulting",
+      description: "Enterprise SAP implementations and optimization",
     },
     {
-      category: "TECHNOLOGY",
-      items: [
-        {
-          name: "SAAS Development",
-          href: "/services/saas-development",
-          description: "Scalable software-as-a-service solutions",
-        },
-        {
-          name: "Cloud Architecture",
-          href: "/services/cloud-architecture",
-          description: "Modern cloud infrastructure solutions",
-        },
-        {
-          name: "Hardware Infrastructure",
-          href: "/services/hardware-infrastructure",
-          description: "Enterprise hardware and infrastructure",
-        },
-        {
-          name: "Application Services",
-          href: "/services/application-services",
-          description: "End-to-end application development",
-        },
-      ],
+      name: "SAAS Platform Development",
+      href: "/services/saas-development",
+      description: "Scalable cloud-based software solutions",
     },
     {
-      category: "SPECIALIZED",
-      items: [
-        {
-          name: "Data & AI",
-          href: "/services/data-ai",
-          description: "Intelligent data solutions",
-        },
-        {
-          name: "Cybersecurity",
-          href: "/services/cybersecurity",
-          description: "Comprehensive security solutions",
-        },
-        {
-          name: "Integration",
-          href: "/services/integration",
-          description: "Seamless system integration",
-        },
-      ],
+      name: "Cloud Architecture",
+      href: "/services/cloud-architecture",
+      description: "Robust and secure cloud infrastructure",
+    },
+    {
+      name: "Hardware Infrastructure",
+      href: "/services/hardware-infrastructure",
+      description: "Complete hardware solutions and deployment",
     },
   ];
 
@@ -376,32 +326,49 @@ const Navigation = () => {
                   )}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-8">
-                    <div className="grid grid-cols-3 gap-12 min-w-[800px]">
-                      {services.map((category) => (
-                        <div key={category.category}>
-                          <div className="text-xs font-bold text-accenture-text-tertiary uppercase tracking-wider mb-4">
-                            {category.category}
+                  <div className="p-6 min-w-[400px]">
+                    <div className="space-y-4">
+                      {services.map((service) => (
+                        <Link
+                          key={service.name}
+                          to={service.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="block group p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                        >
+                          <div className="font-bold text-accenture-text-primary group-hover:text-accenture-purple mb-2 transition-colors text-lg">
+                            {service.name}
                           </div>
-                          <div className="space-y-3">
-                            {category.items.map((service) => (
-                              <Link
-                                key={service.name}
-                                to={service.href}
-                                onClick={() => setActiveDropdown(null)}
-                                className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
-                              >
-                                <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
-                                  {service.name}
-                                </div>
-                                <div className="text-sm text-accenture-text-tertiary">
-                                  {service.description}
-                                </div>
-                              </Link>
-                            ))}
+                          <div className="text-sm text-accenture-text-tertiary leading-relaxed">
+                            {service.description}
                           </div>
-                        </div>
+                        </Link>
                       ))}
+
+                      {/* View All Services Link */}
+                      <div className="pt-4 border-t border-accenture-gray-200">
+                        <Link
+                          to="/services"
+                          onClick={() => setActiveDropdown(null)}
+                          className="group flex items-center gap-2 p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                        >
+                          <span className="font-semibold text-accenture-purple group-hover:text-accenture-purple-dark transition-colors">
+                            View All Services
+                          </span>
+                          <svg
+                            className="w-4 h-4 text-accenture-purple group-hover:text-accenture-purple-dark transition-all duration-200 group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
