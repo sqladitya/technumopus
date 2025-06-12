@@ -135,29 +135,6 @@ const Navigation = () => {
     { name: "Utilities", href: "/industries/utilities" },
   ];
 
-  const insights = [
-    {
-      name: "Research & Insights",
-      href: "/insights/research",
-      description: "Latest thinking and research",
-    },
-    {
-      name: "Blogs",
-      href: "/insights/blogs",
-      description: "Expert perspectives and analysis",
-    },
-    {
-      name: "Case Studies",
-      href: "/insights/case-studies",
-      description: "Real-world success stories",
-    },
-    {
-      name: "Podcasts",
-      href: "/insights/podcasts",
-      description: "Conversations with industry leaders",
-    },
-  ];
-
   const about = [
     {
       name: "What We Believe",
@@ -245,13 +222,7 @@ const Navigation = () => {
           >
             Industries
           </Link>
-          <Link
-            to="/insights"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-lg font-medium text-accenture-text-primary hover:text-accenture-purple"
-          >
-            Insights
-          </Link>
+
           <Link
             to="/careers"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -400,59 +371,6 @@ const Navigation = () => {
                           className="block p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200 text-accenture-text-primary hover:text-accenture-purple font-medium"
                         >
                           {industry.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Insights Dropdown */}
-              <div className="relative">
-                <button
-                  onMouseEnter={() => handleDropdownEnter("insights")}
-                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
-                >
-                  Insights
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                <div
-                  className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
-                    activeDropdown === "insights"
-                      ? "opacity-100 visible scale-100"
-                      : "opacity-0 invisible scale-95",
-                  )}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <div className="p-6 min-w-[320px]">
-                    <div className="space-y-3">
-                      {insights.map((insight) => (
-                        <Link
-                          key={insight.name}
-                          to={insight.href}
-                          onClick={() => setActiveDropdown(null)}
-                          className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
-                        >
-                          <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
-                            {insight.name}
-                          </div>
-                          <div className="text-sm text-accenture-text-tertiary">
-                            {insight.description}
-                          </div>
                         </Link>
                       ))}
                     </div>
