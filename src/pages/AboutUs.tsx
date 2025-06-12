@@ -149,10 +149,10 @@ const AboutUs = () => {
                 <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">I</span>
                 </div>
-                <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                   Integrity
                 </h3>
-                <p className="text-tech-text-medium">
+                <p className="text-body-lg text-gray-600">
                   Building trust through transparency, honesty, and ethical
                   business practices.
                 </p>
