@@ -1,6 +1,5 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import SectionBackground from "@/components/SectionBackground";
 import { Link } from "react-router-dom";
 
 const ViewAllServices = () => {
