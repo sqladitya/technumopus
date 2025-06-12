@@ -1,133 +1,246 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import {
   Section,
+  ContentCardsSection,
+  ValuePropositionSection,
+  ClientStoriesSection,
+  AwardsSection,
+  CultureSection,
+  NewsSection,
   ServicesSection,
-  PartnersSection,
   AboutSection,
 } from "@/components/ContentSections";
 import Footer from "@/components/Footer";
-import SectionBackground from "@/components/SectionBackground";
 
 const Index = () => {
   return (
     <div className="bg-white">
       <Navigation />
-
       <HeroSection />
 
-      {/* Services Section */}
-      <SectionBackground variant="light">
-        <Section className="" id="services">
-          <ServicesSection />
-        </Section>
-      </SectionBackground>
+      {/* Content Cards Grid - Accenture's signature layout */}
+      <ContentCardsSection />
+
+      {/* 360° Value - Accenture's core message */}
+      <ValuePropositionSection />
+
+      {/* Client Stories Carousel */}
+      <ClientStoriesSection />
+
+      {/* Services Overview */}
+      <ServicesSection />
+
+      {/* Awards Section with floating cards */}
+      <AwardsSection />
 
       {/* About Section */}
-      <SectionBackground variant="gradient">
-        <Section className="" id="about">
-          <AboutSection />
-        </Section>
-      </SectionBackground>
+      <AboutSection />
 
-      {/* Partners Section */}
-      <SectionBackground variant="light">
-        <Section className="" id="partners">
-          <PartnersSection />
-        </Section>
-      </SectionBackground>
+      {/* Culture Section */}
+      <CultureSection />
 
-      {/* Why Choose Us Section */}
-      <SectionBackground variant="gradient">
-        <Section className="">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-              Why Choose Technum <span className="text-tech-primary">Opus</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-tech-text-medium max-w-3xl mx-auto px-4">
-              We combine technical excellence with business insight to deliver
-              transformative results
-            </p>
+      {/* Industries Section */}
+      <Section className="bg-white">
+        <div className="text-center mb-10 animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+            INDUSTRIES
+          </div>
+          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+            Industry expertise that drives results
+          </h2>
+          <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
+            We combine deep industry knowledge with technology innovation to
+            solve complex business challenges
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+          {[
+            { name: "Banking", icon: "🏦", href: "/industries/banking" },
+            { name: "Healthcare", icon: "🏥", href: "/industries/healthcare" },
+            {
+              name: "Manufacturing",
+              icon: "🏭",
+              href: "/industries/manufacturing",
+            },
+            { name: "Retail", icon: "🛍️", href: "/industries/retail" },
+            { name: "Energy", icon: "⚡", href: "/industries/energy" },
+            {
+              name: "Automotive",
+              icon: "🚗",
+              href: "/industries/automotive",
+            },
+            {
+              name: "Communications",
+              icon: "📡",
+              href: "/industries/communications",
+            },
+            { name: "Insurance", icon: "🛡️", href: "/industries/insurance" },
+            {
+              name: "Life Sciences",
+              icon: "🧬",
+              href: "/industries/life-sciences",
+            },
+            { name: "Travel", icon: "✈️", href: "/industries/travel" },
+            {
+              name: "Consumer Goods",
+              icon: "📦",
+              href: "/industries/consumer-goods",
+            },
+            { name: "High Tech", icon: "💻", href: "/industries/high-tech" },
+          ].map((industry, index) => (
+            <Link
+              key={index}
+              to={industry.href}
+              className="group flex flex-col items-center p-4 bg-accenture-gray-50 rounded-lg hover:bg-white hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                {industry.icon}
+              </div>
+              <span className="text-accenture-text-primary font-medium text-center group-hover:text-accenture-purple transition-colors">
+                {industry.name}
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <Link
+            to="/industries"
+            className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
+          >
+            View all industries
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
+      </Section>
+
+      {/* Technology Innovation Section */}
+      <Section className="bg-accenture-black text-white">
+        <div className="max-w-4xl mx-auto text-center animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
+            INNOVATION
+          </div>
+          <h2 className="text-heading-xl font-semibold text-white mb-8">
+            The technologies that will reshape business
+          </h2>
+          <p className="text-body-xl text-white/80 mb-12 leading-relaxed">
+            From artificial intelligence to quantum computing, we help
+            organizations harness emerging technologies to create competitive
+            advantage and drive growth.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+            {[
+              {
+                title: "Artificial Intelligence",
+                description: "AI that amplifies human potential",
+                icon: "🤖",
+              },
+              {
+                title: "Cloud Computing",
+                description: "Cloud-first transformation",
+                icon: "☁️",
+              },
+              {
+                title: "Quantum Computing",
+                description: "Quantum advantage for business",
+                icon: "⚛️",
+              },
+            ].map((tech, index) => (
+              <div
+                key={index}
+                className="animate-slide-up"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <div className="text-4xl mb-4">{tech.icon}</div>
+                <h3 className="text-heading-md font-semibold text-white mb-3">
+                  {tech.title}
+                </h3>
+                <p className="text-white/70">{tech.description}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
-                Innovation First
-              </h3>
-              <p className="text-sm sm:text-base text-tech-text-medium">
-                We stay ahead of technology trends to deliver cutting-edge
-                solutions that give you a competitive advantage.
-              </p>
-            </div>
+          <Link
+            to="/insights/technology-vision"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+          >
+            Explore Technology Vision
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
+      </Section>
 
-            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
-                Expert Team
-              </h3>
-              <p className="text-sm sm:text-base text-tech-text-medium">
-                Our certified professionals bring deep expertise across
-                enterprise technologies and emerging platforms.
-              </p>
-            </div>
+      {/* News Section */}
+      <NewsSection />
 
-            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
-                Proven Results
-              </h3>
-              <p className="text-sm sm:text-base text-tech-text-medium">
-                Our track record speaks for itself - 500+ successful projects
-                and 99% client satisfaction rate.
-              </p>
-            </div>
+      {/* Career CTA Section */}
+      <Section className="bg-accenture-purple text-white">
+        <div className="text-center py-12 animate-fade-in">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
+            Join us. Shape the future.
+          </h2>
+          <p className="text-body-xl text-white/90 mb-12 max-w-3xl mx-auto">
+            Be part of a team that's creating 360° value for clients, people,
+            shareholders, partners and communities.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="/careers"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-accenture-purple rounded-lg font-semibold hover:bg-accenture-gray-50 transition-all duration-300 hover:scale-105 text-xl"
+            >
+              Explore careers
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+            <Link
+              to="/about/life-at-accenture"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
+            >
+              Life at Technum Opus
+            </Link>
           </div>
-        </Section>
-      </SectionBackground>
+        </div>
+      </Section>
 
       <Footer />
     </div>

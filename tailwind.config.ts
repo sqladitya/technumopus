@@ -14,7 +14,7 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1280px",
+        "2xl": "1400px",
       },
     },
     extend: {
@@ -52,35 +52,54 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
-        // Updated Pink brand colors - #ff007f theme
-        tech: {
-          primary: "#ff007f",
-          "primary-dark": "#e01171",
-          "primary-light": "#ff3399",
-          secondary: "#ff66b3",
-          charcoal: "#374151",
-          "charcoal-dark": "#1f2937",
-          accent: "#ff007f",
-          "accent-light": "#ff99cc",
-          pink: "#ff007f",
-          "pink-light": "#ff99cc",
-          "text-dark": "#111827",
-          "text-medium": "#6b7280",
-          "text-light": "#9ca3af",
-          "bg-light": "#fef7f0",
-          "bg-dark": "#0f172a",
-          orange: "#f97316",
-          "orange-hover": "#ea580c",
+        // Accenture Theme Colors
+        accenture: {
+          // Primary blacks - Accenture's signature color
+          black: "#000000",
+          "black-light": "#0a0a0a",
+          "black-lighter": "#1a1a1a",
+
+          // Accenture purple - their brand color
+          purple: "#a600ff",
+          "purple-dark": "#8b00d9",
+          "purple-light": "#b84dff",
+          "purple-bright": "#ff00ff",
+
+          // Accent colors for variety
+          red: "#e2062e",
+          blue: "#0041f0",
+          violet: "#460073",
+
+          // Professional grays
+          gray: {
+            50: "#f1f1ef",
+            100: "#e5e5e3",
+            200: "#d1d1cf",
+            300: "#a2a2a0",
+            400: "#6b6b69",
+            500: "#4b4b49",
+            600: "#2b2b2b",
+            700: "#202020",
+            800: "#1a1a1a",
+            900: "#0a0a0a",
+          },
+
+          // Text colors
+          text: {
+            primary: "#000000",
+            secondary: "#2b2b2b",
+            tertiary: "#4b4b49",
+            light: "#a2a2a0",
+            inverse: "#ffffff",
+          },
+
+          // Background colors
+          bg: {
+            primary: "#ffffff",
+            secondary: "#f1f1ef",
+            dark: "#000000",
+            darker: "#0a0a0a",
+          },
         },
       },
       borderRadius: {
@@ -88,97 +107,111 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        // Accenture fonts - Graphik as primary
+        sans: ["Graphik", "Inter", "system-ui", "sans-serif"],
+        heading: ["GT Sectra Fine", "Palatino", "serif"],
+        body: ["Graphik", "Inter", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        // Accenture typography scale
+        hero: [
+          "6.25rem",
+          { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "500" },
+        ], // 100px
+        display: [
+          "5rem",
+          { lineHeight: "1.1", letterSpacing: "-0.025em", fontWeight: "500" },
+        ], // 80px
+        "heading-xl": [
+          "2.5rem",
+          { lineHeight: "1.2", letterSpacing: "-0.075em", fontWeight: "500" },
+        ], // 40px
+        "heading-lg": [
+          "2rem",
+          { lineHeight: "1.25", letterSpacing: "-0.04em", fontWeight: "500" },
+        ], // 32px
+        "heading-md": [
+          "1.75rem",
+          { lineHeight: "1.3", letterSpacing: "-0.035em", fontWeight: "500" },
+        ], // 28px
+        "body-xl": [
+          "1.25rem",
+          { lineHeight: "1.6", letterSpacing: "-0.025em", fontWeight: "500" },
+        ], // 20px
+        "body-lg": ["1rem", { lineHeight: "1.5", letterSpacing: "-0.005em" }], // 16px
+        "body-sm": [
+          "0.875rem",
+          { lineHeight: "1.5", letterSpacing: "0.0175em", fontWeight: "500" },
+        ], // 14px
+      },
+      spacing: {
+        // Accenture spacing system
+        "15": "3.75rem", // 60px
+        "18": "4.5rem", // 72px
+        "20": "5rem", // 80px
+        "22": "5.5rem", // 88px
+        "88": "22rem",
+        "128": "32rem",
+        "144": "36rem",
+      },
       backgroundImage: {
-        "hero-gradient":
-          "linear-gradient(135deg, #0f172a 0%, #ff007f 50%, #ff66b3 100%)",
-        "tech-gradient": "linear-gradient(to right, #ff007f, #ff66b3)",
-        "pink-gradient": "linear-gradient(to right, #ff007f, #ff99cc)",
-        "card-gradient": "linear-gradient(145deg, #ffffff 0%, #fef7f0 100%)",
-        "mesh-gradient":
-          "radial-gradient(circle at 20% 80%, #ff007f 0%, transparent 50%), radial-gradient(circle at 80% 20%, #ff66b3 0%, transparent 50%), radial-gradient(circle at 40% 40%, #a855f7 0%, transparent 50%)",
+        // Accenture gradients
+        "accenture-gradient":
+          "linear-gradient(135deg, #000000 0%, #a600ff 100%)",
+        "accenture-purple": "linear-gradient(135deg, #a600ff 0%, #8b00d9 100%)",
+        "accenture-dark": "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
+        "hero-overlay":
+          "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(166,0,255,0.6) 100%)",
       },
-      blur: {
-        "4xl": "72px",
-        "5xl": "96px",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
-        "pulse-slow": {
-          "0%, 100%": {
-            opacity: "0.8",
-            transform: "scale(1)",
-          },
-          "50%": {
-            opacity: "0.4",
-            transform: "scale(1.1)",
-          },
-        },
-        "spin-slow": {
-          "0%": {
-            transform: "rotate(0deg)",
-          },
-          "100%": {
-            transform: "rotate(360deg)",
-          },
-        },
-        float: {
-          "0%, 100%": {
-            transform: "translateY(0px)",
-          },
-          "50%": {
-            transform: "translateY(-20px)",
-          },
-        },
-        "glow-pulse": {
-          "0%, 100%": {
-            opacity: "0.4",
-            transform: "scale(1)",
-            filter: "blur(20px)",
-          },
-          "50%": {
-            opacity: "0.8",
-            transform: "scale(1.1)",
-            filter: "blur(15px)",
-          },
-        },
-        drift: {
-          "0%": {
-            transform: "translateX(0px) translateY(0px) rotate(0deg)",
-          },
-          "33%": {
-            transform: "translateX(30px) translateY(-30px) rotate(120deg)",
-          },
-          "66%": {
-            transform: "translateX(-20px) translateY(20px) rotate(240deg)",
-          },
-          "100%": {
-            transform: "translateX(0px) translateY(0px) rotate(360deg)",
-          },
-        },
+      boxShadow: {
+        // Accenture shadows
+        accenture: "0 4px 20px -2px rgba(0, 0, 0, 0.15)",
+        "accenture-lg": "0 10px 40px -4px rgba(0, 0, 0, 0.2)",
+        "accenture-xl": "0 20px 60px -8px rgba(0, 0, 0, 0.25)",
+        purple: "0 8px 32px -4px rgba(166, 0, 255, 0.3)",
+        card: "0 2px 12px -1px rgba(0, 0, 0, 0.1)",
+        "card-hover": "0 8px 32px -4px rgba(0, 0, 0, 0.15)",
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
-        "spin-slow": "spin-slow 8s linear infinite",
-        float: "float 6s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        drift: "drift 20s ease-in-out infinite",
+        // Accenture animations
+        "fade-in": "fadeIn 0.8s ease-out",
+        "slide-up": "slideUp 0.8s ease-out",
+        "slide-in-right": "slideInRight 0.8s ease-out",
+        "scale-in": "scaleIn 0.6s ease-out",
+        float: "float 8s ease-in-out infinite",
+        "pulse-glow": "pulseGlow 4s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(50px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideInRight: {
+          "0%": { opacity: "0", transform: "translateX(50px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        scaleIn: {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-30px)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.8", transform: "scale(1)" },
+          "50%": { opacity: "0.4", transform: "scale(1.05)" },
+        },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
     },
   },
