@@ -10,7 +10,13 @@ const Navigation = () => {
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
   >(null);
+  const [dropdownPositions, setDropdownPositions] = useState<{
+    [key: string]: { left?: number; right?: number; maxWidth?: number };
+  }>({});
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const companyDropdownRef = useRef<HTMLDivElement>(null);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const partnersDropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { openSearch } = useSearchContext();
 
@@ -19,9 +25,22 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
+    const handleResize = () => {
+      // Reset dropdown positions when window resizes
+      setDropdownPositions({});
+      if (activeDropdown) {
+        // Recalculate if dropdown is currently open
+        handleDropdownEnter(activeDropdown);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [activeDropdown]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -30,6 +49,7 @@ const Navigation = () => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setActiveDropdown(null);
+        setDropdownPositions({});
       }
     };
 
@@ -43,6 +63,7 @@ const Navigation = () => {
       // Escape key closes dropdowns and mobile menu
       if (event.key === "Escape") {
         setActiveDropdown(null);
+        setDropdownPositions({});
         setIsMobileMenuOpen(false);
       }
     };
@@ -51,12 +72,108 @@ const Navigation = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Calculate optimal dropdown position to prevent off-screen positioning
+  const calculateDropdownPosition = (
+    dropdownElement: HTMLElement,
+    triggerElement: HTMLElement,
+    dropdownWidth: number,
+  ) => {
+    const triggerRect = triggerElement.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const padding = 20; // Space from viewport edge
+
+    // Default position (left-aligned)
+    let position: { left?: number; right?: number; maxWidth?: number } = {};
+
+    // For very small screens, always constrain width
+    if (viewportWidth < 768) {
+      position.maxWidth = Math.min(dropdownWidth, viewportWidth - padding * 2);
+      position.left = 0;
+      return position;
+    }
+
+    // Calculate available space on both sides
+    const availableLeft = triggerRect.left - padding;
+    const availableRight = viewportWidth - triggerRect.right - padding;
+    const spaceFromLeftEdge = viewportWidth - triggerRect.left - padding;
+
+    // Check if dropdown would overflow on the right
+    const wouldOverflowRight =
+      triggerRect.left + dropdownWidth > viewportWidth - padding;
+
+    if (wouldOverflowRight) {
+      // Check if we can fit it by right-aligning to the trigger button
+      const rightAlignedSpace = triggerRect.right - padding;
+
+      if (dropdownWidth <= rightAlignedSpace) {
+        // Right-align the dropdown to the trigger button
+        position.right = viewportWidth - triggerRect.right;
+      } else if (dropdownWidth <= spaceFromLeftEdge) {
+        // Keep left-aligned but constrain width if needed
+        position.left = 0;
+        if (spaceFromLeftEdge < dropdownWidth) {
+          position.maxWidth = spaceFromLeftEdge;
+        }
+      } else {
+        // Constrain width and center between the trigger and viewport edge
+        position.left = 0;
+        position.maxWidth = Math.min(dropdownWidth, spaceFromLeftEdge);
+      }
+    } else {
+      // Default left-aligned position - enough space on the right
+      position.left = 0;
+    }
+
+    return position;
+  };
+
   const handleDropdownEnter = (dropdown: string) => {
     setActiveDropdown(dropdown);
+
+    // Calculate position after a brief delay to ensure refs are ready
+    setTimeout(() => {
+      let dropdownElement: HTMLDivElement | null = null;
+      let triggerElement: HTMLElement | null = null;
+      let dropdownWidth = 0;
+
+      // Find the correct dropdown element and trigger
+      if (dropdown === "company" && companyDropdownRef.current) {
+        dropdownElement = companyDropdownRef.current;
+        triggerElement = dropdownElement
+          .closest(".relative")
+          ?.querySelector("button") as HTMLElement;
+        dropdownWidth = 320; // min-w-[320px]
+      } else if (dropdown === "services" && servicesDropdownRef.current) {
+        dropdownElement = servicesDropdownRef.current;
+        triggerElement = dropdownElement
+          .closest(".relative")
+          ?.querySelector("button") as HTMLElement;
+        dropdownWidth = 400; // min-w-[400px]
+      } else if (dropdown === "partners" && partnersDropdownRef.current) {
+        dropdownElement = partnersDropdownRef.current;
+        triggerElement = dropdownElement
+          .closest(".relative")
+          ?.querySelector("button") as HTMLElement;
+        dropdownWidth = 500; // Reduced width for smaller partner list
+      }
+
+      if (dropdownElement && triggerElement) {
+        const position = calculateDropdownPosition(
+          dropdownElement,
+          triggerElement,
+          dropdownWidth,
+        );
+        setDropdownPositions((prev) => ({
+          ...prev,
+          [dropdown]: position,
+        }));
+      }
+    }, 50); // Increased delay to ensure proper DOM measurement
   };
 
   const handleDropdownLeave = () => {
     setActiveDropdown(null);
+    setDropdownPositions({});
   };
 
   const toggleMobileDropdown = (dropdown: string) => {
@@ -135,11 +252,6 @@ const Navigation = () => {
           href: "/partners/technology-partners",
           description: "Strategic technology alliances",
         },
-        {
-          name: "Integration Partners",
-          href: "/partners/integration-partners",
-          description: "System integration specialists",
-        },
       ],
     },
     {
@@ -154,11 +266,6 @@ const Navigation = () => {
           name: "SAP Partners",
           href: "/partners/sap-partners",
           description: "SAP ecosystem partners",
-        },
-        {
-          name: "View All Partners",
-          href: "/partners/view-all",
-          description: "Complete partner directory",
         },
       ],
     },
@@ -339,6 +446,13 @@ const Navigation = () => {
                       {partner.name}
                     </Link>
                   ))}
+                <Link
+                  to="/services"
+                  onClick={handleMobileLinkClick}
+                  className="block text-base text-accenture-purple hover:text-accenture-purple-dark py-2 font-medium"
+                >
+                  View All Services
+                </Link>
               </div>
             )}
           </div>
@@ -432,21 +546,44 @@ const Navigation = () => {
                 </button>
 
                 <div
+                  ref={companyDropdownRef}
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    "absolute top-full mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform",
                     activeDropdown === "company"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
+                    dropdownPositions.company?.right !== undefined
+                      ? "origin-top-right"
+                      : "origin-top-left",
                   )}
+                  style={{
+                    left:
+                      dropdownPositions.company?.right === undefined
+                        ? (dropdownPositions.company?.left ?? 0)
+                        : "auto",
+                    right:
+                      dropdownPositions.company?.right !== undefined
+                        ? dropdownPositions.company.right
+                        : "auto",
+                    maxWidth: dropdownPositions.company?.maxWidth,
+                  }}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6 min-w-[320px]">
+                  <div
+                    className={cn(
+                      "p-6 min-w-[320px]",
+                      dropdownPositions.company?.maxWidth && "overflow-auto",
+                    )}
+                  >
                     <div className="space-y-3">
                       {company.map((item) => (
                         <Link
                           key={item.name}
                           to={item.href}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setDropdownPositions({});
+                          }}
                           className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
@@ -485,21 +622,44 @@ const Navigation = () => {
                 </button>
 
                 <div
+                  ref={servicesDropdownRef}
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    "absolute top-full mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform",
                     activeDropdown === "services"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
+                    dropdownPositions.services?.right !== undefined
+                      ? "origin-top-right"
+                      : "origin-top-left",
                   )}
+                  style={{
+                    left:
+                      dropdownPositions.services?.right === undefined
+                        ? (dropdownPositions.services?.left ?? 0)
+                        : "auto",
+                    right:
+                      dropdownPositions.services?.right !== undefined
+                        ? dropdownPositions.services.right
+                        : "auto",
+                    maxWidth: dropdownPositions.services?.maxWidth,
+                  }}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-6 min-w-[400px]">
+                  <div
+                    className={cn(
+                      "p-6 min-w-[400px]",
+                      dropdownPositions.services?.maxWidth && "overflow-auto",
+                    )}
+                  >
                     <div className="space-y-4">
                       {services.map((service) => (
                         <Link
                           key={service.name}
                           to={service.href}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setDropdownPositions({});
+                          }}
                           className="block group p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <div className="font-bold text-accenture-text-primary group-hover:text-accenture-purple mb-2 transition-colors text-lg">
@@ -515,7 +675,10 @@ const Navigation = () => {
                       <div className="pt-4 border-t border-accenture-gray-200">
                         <Link
                           to="/services"
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setDropdownPositions({});
+                          }}
                           className="group flex items-center gap-2 p-4 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <span className="font-semibold text-accenture-purple group-hover:text-accenture-purple-dark transition-colors">
@@ -564,16 +727,41 @@ const Navigation = () => {
                 </button>
 
                 <div
+                  ref={partnersDropdownRef}
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    "absolute top-full mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform",
                     activeDropdown === "partners"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
+                    dropdownPositions.partners?.right !== undefined
+                      ? "origin-top-right"
+                      : "origin-top-left",
                   )}
+                  style={{
+                    left:
+                      dropdownPositions.partners?.right === undefined
+                        ? (dropdownPositions.partners?.left ?? 0)
+                        : "auto",
+                    right:
+                      dropdownPositions.partners?.right !== undefined
+                        ? dropdownPositions.partners.right
+                        : "auto",
+                    maxWidth: dropdownPositions.partners?.maxWidth,
+                  }}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="p-8">
-                    <div className="grid grid-cols-2 gap-12 min-w-[600px]">
+                  <div
+                    className={cn(
+                      "p-6",
+                      dropdownPositions.partners?.maxWidth && "overflow-auto",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "grid grid-cols-2 gap-8 min-w-[500px]",
+                        dropdownPositions.partners?.maxWidth && "min-w-0",
+                      )}
+                    >
                       {partners.map((category) => (
                         <div key={category.category}>
                           <div className="text-xs font-bold text-accenture-text-tertiary uppercase tracking-wider mb-4">
@@ -584,7 +772,10 @@ const Navigation = () => {
                               <Link
                                 key={partner.name}
                                 to={partner.href}
-                                onClick={() => setActiveDropdown(null)}
+                                onClick={() => {
+                                  setActiveDropdown(null);
+                                  setDropdownPositions({});
+                                }}
                                 className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                               >
                                 <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
@@ -598,6 +789,35 @@ const Navigation = () => {
                           </div>
                         </div>
                       ))}
+                    </div>
+
+                    {/* View All Services Link */}
+                    <div className="pt-4 border-t border-accenture-gray-200 mt-6">
+                      <Link
+                        to="/services"
+                        onClick={() => {
+                          setActiveDropdown(null);
+                          setDropdownPositions({});
+                        }}
+                        className="group flex items-center gap-2 p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
+                      >
+                        <span className="font-semibold text-accenture-purple group-hover:text-accenture-purple-dark transition-colors">
+                          View All Services
+                        </span>
+                        <svg
+                          className="w-4 h-4 text-accenture-purple group-hover:text-accenture-purple-dark transition-all duration-200 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </Link>
                     </div>
                   </div>
                 </div>

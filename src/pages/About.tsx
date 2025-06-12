@@ -261,9 +261,7 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900">
-                    Our Mission
-                  </h3>
+                  <h3 className="text-3xl font-bold text-white">Our Mission</h3>
                 </div>
                 <p className="text-body-xl text-gray-400 leading-relaxed">
                   To empower organizations worldwide with transformative
@@ -432,14 +430,14 @@ const About = () => {
                 <h3 className="text-2xl font-semibold text-accenture-text-primary mb-4">
                   {reason.title}
                 </h3>
-                <p className="text-body-xl text-gray-600 mb-6 leading-relaxed">
+                <p className="text-body-xl text-gray-400 mb-6 leading-relaxed">
                   {reason.description}
                 </p>
                 <ul className="space-y-3">
                   {reason.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                      <span className="text-gray-600 font-medium">
+                      <span className="text-gray-400 font-medium">
                         {feature}
                       </span>
                     </li>

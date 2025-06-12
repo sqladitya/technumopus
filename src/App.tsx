@@ -22,6 +22,7 @@ import TechnologyPartners from "./pages/partners/TechnologyPartners";
 import SecurityPartners from "./pages/partners/SecurityPartners";
 import IntegrationPartners from "./pages/partners/IntegrationPartners";
 import ViewAllPartners from "./pages/partners/ViewAllPartners";
+import SapPartners from "./pages/partners/SapPartners";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -83,6 +84,7 @@ const App = () => (
               path="/partners/security-partners"
               element={<SecurityPartners />}
             />
+            <Route path="/partners/sap-partners" element={<SapPartners />} />
             <Route
               path="/partners/integration-partners"
               element={<IntegrationPartners />}
