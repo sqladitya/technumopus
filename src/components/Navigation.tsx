@@ -580,12 +580,27 @@ const Navigation = () => {
                 </button>
 
                 <div
+                  ref={servicesDropdownRef}
                   className={cn(
-                    "absolute top-full left-0 mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform origin-top-left",
+                    "absolute top-full mt-2 w-max bg-white rounded-lg shadow-accenture-xl border transition-all duration-300 transform",
                     activeDropdown === "services"
                       ? "opacity-100 visible scale-100"
                       : "opacity-0 invisible scale-95",
+                    dropdownPositions.services?.right !== undefined
+                      ? "origin-top-right"
+                      : "origin-top-left",
                   )}
+                  style={{
+                    left:
+                      dropdownPositions.services?.left !== undefined
+                        ? dropdownPositions.services.left
+                        : undefined,
+                    right:
+                      dropdownPositions.services?.right !== undefined
+                        ? dropdownPositions.services.right
+                        : undefined,
+                    maxWidth: dropdownPositions.services?.maxWidth,
+                  }}
                   onMouseLeave={handleDropdownLeave}
                 >
                   <div className="p-6 min-w-[400px]">
