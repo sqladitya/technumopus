@@ -80,10 +80,17 @@ const Navigation = () => {
   ) => {
     const triggerRect = triggerElement.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
-    const padding = 16; // Space from viewport edge
+    const padding = 20; // Space from viewport edge
 
     // Default position (left-aligned)
     let position: { left?: number; right?: number; maxWidth?: number } = {};
+
+    // For very small screens, always constrain width
+    if (viewportWidth < 768) {
+      position.maxWidth = Math.min(dropdownWidth, viewportWidth - padding * 2);
+      position.left = 0;
+      return position;
+    }
 
     // Check if dropdown would go off the right edge
     const wouldOverflowRight =
@@ -102,6 +109,11 @@ const Navigation = () => {
     } else {
       // Default left-aligned position
       position.left = 0;
+
+      // Still check if it would overflow to the right and constrain if needed
+      if (triggerRect.left + dropdownWidth > viewportWidth - padding) {
+        position.maxWidth = viewportWidth - triggerRect.left - padding;
+      }
     }
 
     return position;
