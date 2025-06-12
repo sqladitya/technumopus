@@ -66,10 +66,10 @@ const AboutUs = () => {
               </div>
               <div className="space-y-8">
                 <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                     Our Vision
                   </h3>
-                  <p className="text-body-xl text-gray-400 leading-relaxed">
+                  <p className="text-body-xl text-accenture-text-primary leading-relaxed">
                     To be the trusted technology partner that organizations turn
                     to when they want to transform possibilities into reality,
                     creating lasting impact through innovative solutions.
@@ -77,28 +77,34 @@ const AboutUs = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-tech-primary mb-2">
+                    <div className="text-4xl font-bold text-accenture-purple mb-2">
                       500+
                     </div>
-                    <div className="text-gray-400">Projects Delivered</div>
+                    <div className="text-accenture-text-secondary">
+                      Projects Delivered
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-tech-primary mb-2">
+                    <div className="text-4xl font-bold text-accenture-purple mb-2">
                       150+
                     </div>
-                    <div className="text-gray-400">Happy Clients</div>
+                    <div className="text-accenture-text-secondary">
+                      Happy Clients
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-tech-primary mb-2">
+                    <div className="text-4xl font-bold text-accenture-purple mb-2">
                       50+
                     </div>
-                    <div className="text-tech-text-medium">Team Members</div>
+                    <div className="text-accenture-text-secondary">
+                      Team Members
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-tech-primary mb-2">
+                    <div className="text-4xl font-bold text-accenture-purple mb-2">
                       8+
                     </div>
-                    <div className="text-tech-text-medium">
+                    <div className="text-accenture-text-secondary">
                       Years Experience
                     </div>
                   </div>
