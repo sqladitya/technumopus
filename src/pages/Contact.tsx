@@ -193,16 +193,16 @@ const Contact = () => {
 
               {/* Contact Information */}
               <div className="space-y-8">
-                <div>
+                <div className="bg-black rounded-xl p-6">
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accenture-purple/20 to-accenture-purple-light/20 rounded-full px-4 py-2 mb-4">
                     <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                       Contact Info
                     </span>
                   </div>
-                  <h2 className="text-3xl font-bold text-white mb-4">
+                  <h2 className="text-3xl font-bold text-accenture-purple mb-4">
                     Get In Touch
                   </h2>
-                  <p className="text-white/80 leading-relaxed mb-8">
+                  <p className="text-accenture-purple-light leading-relaxed mb-8">
                     Have questions about our services? Need a custom solution?
                     Our team is here to help you succeed.
                   </p>
