@@ -42,6 +42,14 @@ const Navigation = () => {
     setActiveDropdown(null);
   };
 
+  const handleDropdownClick = (dropdown: string) => {
+    if (activeDropdown === dropdown) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(dropdown);
+    }
+  };
+
   const services = [
     {
       name: "SAP Consulting",
@@ -276,6 +284,11 @@ const Navigation = () => {
               <div className="relative">
                 <button
                   onMouseEnter={() => handleDropdownEnter("company")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleDropdownClick("company");
+                  }}
                   className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Company
@@ -309,7 +322,10 @@ const Navigation = () => {
                         <Link
                           key={item.name}
                           to={item.href}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(null);
+                          }}
                           className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
@@ -329,6 +345,11 @@ const Navigation = () => {
               <div className="relative">
                 <button
                   onMouseEnter={() => handleDropdownEnter("services")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleDropdownClick("services");
+                  }}
                   className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Services
@@ -408,6 +429,11 @@ const Navigation = () => {
               <div className="relative">
                 <button
                   onMouseEnter={() => handleDropdownEnter("partners")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleDropdownClick("partners");
+                  }}
                   className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Partners
