@@ -12,7 +12,7 @@ const Navigation = () => {
   >(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const search = useSearch();
+  const { openSearch } = useSearchContext();
 
   useEffect(() => {
     const handleScroll = () => {
