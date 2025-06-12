@@ -249,120 +249,146 @@ const SearchDialog = () => {
       </div>
 
       <CommandList>
-        <CommandEmpty>
-          <div className="flex flex-col items-center gap-2 py-6">
-            <span className="text-2xl">🔍</span>
-            <p className="text-sm font-medium">
-              No results found for "{query}"
-            </p>
-            <p className="text-xs text-muted-foreground text-center">
-              Try searching for "SAP", "cloud", "AI assistant", "partners",
-              "careers", or any service name
-            </p>
-          </div>
-        </CommandEmpty>
+        {isAIMode ? (
+          // AI Search Mode
+          <>
+            {aiResponse && query.trim() && (
+              <>
+                {/* AI Interpretation */}
+                <div className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 border-b border-purple-200">
+                  <div className="flex items-start gap-3">
+                    <span className="text-lg">🤖</span>
+                    <div>
+                      <p className="text-sm font-medium text-purple-900 mb-1">
+                        AI Response
+                      </p>
+                      <p className="text-sm text-purple-700">
+                        {aiResponse.interpretation}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-        {Object.entries(groupedResults).map(([category, items]) => (
-          <CommandGroup key={category} heading={category}>
-            {items.map((item) => (
-              <CommandItem
-                key={item.id}
-                value={item.id}
-                onSelect={() => handleSelect(item)}
-                className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
-              >
-                <span className="text-lg mt-0.5">
-                  {getCategoryIcon(item.category)}
-                </span>
-                <div className="flex-1 space-y-1 min-w-0">
-                  <p className="text-sm font-medium text-foreground leading-none">
-                    {item.title}
+                {/* AI Search Results */}
+                {aiResponse.results.length > 0 && (
+                  <CommandGroup heading="Relevant Pages & Resources">
+                    {aiResponse.results.map((result, index) => (
+                      <CommandItem
+                        key={`ai-result-${index}`}
+                        value={`ai-result-${index}`}
+                        onSelect={() => handleSelect(result)}
+                        className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                      >
+                        <span className="text-lg mt-0.5">{result.icon}</span>
+                        <div className="flex-1 space-y-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm font-medium text-foreground leading-none">
+                              {result.title}
+                            </p>
+                            {result.type === "suggestion" && (
+                              <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">
+                                AI Suggestion
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-muted-foreground line-clamp-2">
+                            {result.description}
+                          </p>
+                          {result.href && !result.href.startsWith("#") && (
+                            <p className="text-xs text-muted-foreground/60 font-mono">
+                              {result.href}
+                            </p>
+                          )}
+                        </div>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                )}
+
+                {/* AI Suggestions */}
+                {aiResponse.suggestions.length > 0 && (
+                  <CommandGroup heading="Related Questions">
+                    {aiResponse.suggestions.map((suggestion, index) => (
+                      <CommandItem
+                        key={`suggestion-${index}`}
+                        value={`suggestion-${index}`}
+                        onSelect={() => handleSuggestionSelect(suggestion)}
+                        className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                      >
+                        <span className="text-lg mt-0.5">💡</span>
+                        <div className="flex-1">
+                          <p className="text-sm text-foreground">
+                            {suggestion}
+                          </p>
+                        </div>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                )}
+              </>
+            )}
+
+            {/* AI Mode - No Query */}
+            {!query.trim() && (
+              <>
+                <CommandGroup heading="🤖 Ask AI Assistant">
+                  <div className="p-4 text-center">
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Ask me anything about our services, company, or how we can
+                      help you!
+                    </p>
+                  </div>
+                  {AI_SEARCH_SUGGESTIONS.map((suggestion, index) => (
+                    <CommandItem
+                      key={`default-suggestion-${index}`}
+                      value={`default-suggestion-${index}`}
+                      onSelect={() => handleSuggestionSelect(suggestion)}
+                      className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                    >
+                      <span className="text-lg mt-0.5">💭</span>
+                      <div className="flex-1">
+                        <p className="text-sm text-foreground">{suggestion}</p>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </>
+            )}
+
+            {/* AI Mode - No Results */}
+            {query.trim() && !aiResponse && (
+              <CommandEmpty>
+                <div className="flex flex-col items-center gap-2 py-6">
+                  <span className="text-2xl">🤖</span>
+                  <p className="text-sm font-medium">
+                    Processing your question...
                   </p>
-                  <p className="text-xs text-muted-foreground line-clamp-2">
-                    {item.description}
-                  </p>
-                  <p className="text-xs text-muted-foreground/60 font-mono">
-                    {item.href}
+                  <p className="text-xs text-muted-foreground text-center">
+                    AI is analyzing your query to provide the best response
                   </p>
                 </div>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        ))}
-
-        {/* Show all page suggestions when no query */}
-        {!query.trim() && (
+              </CommandEmpty>
+            )}
+          </>
+        ) : (
+          // Regular Search Mode
           <>
-            {/* AI Assistant first */}
-            <CommandGroup heading="✨ AI Assistant">
-              {searchCategories
-                .find((cat) => cat.name === "AI Assistant")
-                ?.items.slice(0, 3)
-                .map((item) => (
-                  <CommandItem
-                    key={item.id}
-                    value={item.id}
-                    onSelect={() => handleSelect(item)}
-                    className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200 border border-purple-200 bg-purple-50/50"
-                  >
-                    <span className="text-lg mt-0.5">
-                      {getCategoryIcon(item.category)}
-                    </span>
-                    <div className="flex-1 space-y-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground leading-none">
-                        {item.title}
-                      </p>
-                      <p className="text-xs text-muted-foreground line-clamp-2">
-                        {item.description}
-                      </p>
-                    </div>
-                  </CommandItem>
-                ))}
-            </CommandGroup>
+            <CommandEmpty>
+              <div className="flex flex-col items-center gap-2 py-6">
+                <span className="text-2xl">🔍</span>
+                <p className="text-sm font-medium">
+                  No results found for "{query}"
+                </p>
+                <p className="text-xs text-muted-foreground text-center">
+                  Try searching for "SAP", "cloud", "partners", "careers", or
+                  switch to AI mode for natural language search
+                </p>
+              </div>
+            </CommandEmpty>
 
-            {/* Popular pages */}
-            <CommandGroup heading="Popular Pages">
-              {[
-                searchCategories.find((cat) => cat.name === "Pages")?.items[0], // Home
-                ...(searchCategories
-                  .find((cat) => cat.name === "Company")
-                  ?.items.slice(0, 2) || []), // About, Leadership
-                ...(searchCategories
-                  .find((cat) => cat.name === "Services")
-                  ?.items.slice(0, 2) || []), // All Services, SAP
-                searchCategories.find((cat) => cat.name === "Support")
-                  ?.items[0], // Contact
-              ]
-                .filter(Boolean)
-                .map((item) => (
-                  <CommandItem
-                    key={item!.id}
-                    value={item!.id}
-                    onSelect={() => handleSelect(item!)}
-                    className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
-                  >
-                    <span className="text-lg mt-0.5">
-                      {getCategoryIcon(item!.category)}
-                    </span>
-                    <div className="flex-1 space-y-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground leading-none">
-                        {item!.title}
-                      </p>
-                      <p className="text-xs text-muted-foreground line-clamp-2">
-                        {item!.description}
-                      </p>
-                    </div>
-                  </CommandItem>
-                ))}
-            </CommandGroup>
-
-            {/* All other categories */}
-            {searchCategories.map((category) => (
-              <CommandGroup
-                key={category.name}
-                heading={`${category.name} (${category.items.length})`}
-              >
-                {category.items.map((item) => (
+            {Object.entries(groupedResults).map(([category, items]) => (
+              <CommandGroup key={category} heading={category}>
+                {items.map((item) => (
                   <CommandItem
                     key={item.id}
                     value={item.id}
@@ -388,20 +414,124 @@ const SearchDialog = () => {
               </CommandGroup>
             ))}
 
-            {/* Search tips at the bottom */}
-            <CommandGroup>
-              <CommandItem className="flex flex-col items-center gap-2 py-4 cursor-default">
-                <span className="text-lg">🤖</span>
-                <p className="text-xs text-muted-foreground text-center">
-                  Try AI Assistant for smart help, or browse all{" "}
-                  {searchCategories.reduce(
-                    (acc, cat) => acc + cat.items.length,
-                    0,
-                  )}{" "}
-                  pages above
-                </p>
-              </CommandItem>
-            </CommandGroup>
+            {/* Show all page suggestions when no query */}
+            {!query.trim() && (
+              <>
+                {/* AI Assistant first */}
+                <CommandGroup heading="✨ AI Assistant">
+                  {searchCategories
+                    .find((cat) => cat.name === "AI Assistant")
+                    ?.items.slice(0, 3)
+                    .map((item) => (
+                      <CommandItem
+                        key={item.id}
+                        value={item.id}
+                        onSelect={() => handleSelect(item)}
+                        className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200 border border-purple-200 bg-purple-50/50"
+                      >
+                        <span className="text-lg mt-0.5">
+                          {getCategoryIcon(item.category)}
+                        </span>
+                        <div className="flex-1 space-y-1 min-w-0">
+                          <p className="text-sm font-medium text-foreground leading-none">
+                            {item.title}
+                          </p>
+                          <p className="text-xs text-muted-foreground line-clamp-2">
+                            {item.description}
+                          </p>
+                        </div>
+                      </CommandItem>
+                    ))}
+                </CommandGroup>
+
+                {/* Popular pages */}
+                <CommandGroup heading="Popular Pages">
+                  {[
+                    searchCategories.find((cat) => cat.name === "Pages")
+                      ?.items[0], // Home
+                    ...(searchCategories
+                      .find((cat) => cat.name === "Company")
+                      ?.items.slice(0, 2) || []), // About, Leadership
+                    ...(searchCategories
+                      .find((cat) => cat.name === "Services")
+                      ?.items.slice(0, 2) || []), // All Services, SAP
+                    searchCategories.find((cat) => cat.name === "Support")
+                      ?.items[0], // Contact
+                  ]
+                    .filter(Boolean)
+                    .map((item) => (
+                      <CommandItem
+                        key={item!.id}
+                        value={item!.id}
+                        onSelect={() => handleSelect(item!)}
+                        className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                      >
+                        <span className="text-lg mt-0.5">
+                          {getCategoryIcon(item!.category)}
+                        </span>
+                        <div className="flex-1 space-y-1 min-w-0">
+                          <p className="text-sm font-medium text-foreground leading-none">
+                            {item!.title}
+                          </p>
+                          <p className="text-xs text-muted-foreground line-clamp-2">
+                            {item!.description}
+                          </p>
+                        </div>
+                      </CommandItem>
+                    ))}
+                </CommandGroup>
+
+                {/* All other categories */}
+                {searchCategories
+                  .filter((cat) => cat.name !== "AI Assistant")
+                  .map((category) => (
+                    <CommandGroup
+                      key={category.name}
+                      heading={`${category.name} (${category.items.length})`}
+                    >
+                      {category.items.map((item) => (
+                        <CommandItem
+                          key={item.id}
+                          value={item.id}
+                          onSelect={() => handleSelect(item)}
+                          className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
+                        >
+                          <span className="text-lg mt-0.5">
+                            {getCategoryIcon(item.category)}
+                          </span>
+                          <div className="flex-1 space-y-1 min-w-0">
+                            <p className="text-sm font-medium text-foreground leading-none">
+                              {item.title}
+                            </p>
+                            <p className="text-xs text-muted-foreground line-clamp-2">
+                              {item.description}
+                            </p>
+                            <p className="text-xs text-muted-foreground/60 font-mono">
+                              {item.href}
+                            </p>
+                          </div>
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  ))}
+
+                {/* Search tips at the bottom */}
+                <CommandGroup>
+                  <CommandItem className="flex flex-col items-center gap-2 py-4 cursor-default">
+                    <span className="text-lg">💡</span>
+                    <p className="text-xs text-muted-foreground text-center">
+                      Switch to AI mode for natural language search, or browse
+                      all{" "}
+                      {searchCategories.reduce(
+                        (acc, cat) => acc + cat.items.length,
+                        0,
+                      )}{" "}
+                      pages above
+                    </p>
+                  </CommandItem>
+                </CommandGroup>
+              </>
+            )}
           </>
         )}
       </CommandList>
