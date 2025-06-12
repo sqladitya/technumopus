@@ -15,8 +15,15 @@ import {
   searchCategories,
   type SearchItem,
 } from "@/lib/searchData";
+import {
+  processAIQuery,
+  AI_SEARCH_SUGGESTIONS,
+  type AISearchResult,
+} from "@/lib/aiSearch";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Sparkles, Search } from "lucide-react";
 
 const SearchDialog = () => {
   const { isOpen, closeSearch, openSearch } = useSearchContext();
@@ -129,7 +136,7 @@ const SearchDialog = () => {
       case "Company":
         return "🏢";
       case "Partners":
-        return "🤝";
+        return "���";
       case "Industries":
         return "🏭";
       case "Technologies":
