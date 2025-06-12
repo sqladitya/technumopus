@@ -533,7 +533,7 @@ const SearchDialog = () => {
                 {/* Search tips at the bottom */}
                 <CommandGroup>
                   <CommandItem className="flex flex-col items-center gap-2 py-4 cursor-default">
-                    <span className="text-lg">💡</span>
+                    <Lightbulb className="w-5 h-5 text-blue-500" />
                     <p className="text-xs text-muted-foreground text-center">
                       Switch to AI mode for natural language search, or browse
                       all{" "}
