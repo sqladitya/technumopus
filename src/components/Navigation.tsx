@@ -63,6 +63,7 @@ const Navigation = () => {
       // Escape key closes dropdowns and mobile menu
       if (event.key === "Escape") {
         setActiveDropdown(null);
+        setDropdownPositions({});
         setIsMobileMenuOpen(false);
       }
     };
