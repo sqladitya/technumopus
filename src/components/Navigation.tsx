@@ -557,7 +557,10 @@ const Navigation = () => {
                         <Link
                           key={item.name}
                           to={item.href}
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setDropdownPositions({});
+                          }}
                           className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                         >
                           <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
