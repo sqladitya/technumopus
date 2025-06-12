@@ -133,7 +133,7 @@ const About = () => {
               </div>
 
               <div className="space-y-6">
-                <p className="text-lg text-accenture-text-secondary leading-relaxed">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   Founded in 2015 by visionary technologists, Technum Opus was
                   born from a simple yet powerful belief: that technology should
                   empower human potential, not replace it. We saw organizations
@@ -141,7 +141,7 @@ const About = () => {
                   and practical implementation.
                 </p>
 
-                <p className="text-lg text-accenture-text-secondary leading-relaxed">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   What began as a boutique consulting firm has evolved into a
                   comprehensive technology partner, trusted by Fortune 500
                   companies and innovative startups alike. Our journey has been
@@ -149,7 +149,7 @@ const About = () => {
                   commitment to our clients' success.
                 </p>
 
-                <p className="text-lg text-accenture-text-secondary leading-relaxed">
+                <p className="text-lg text-gray-700 leading-relaxed">
                   Today, we stand as industry leaders in digital transformation,
                   combining deep technical expertise with strategic business
                   insight to deliver solutions that don't just meet today's
