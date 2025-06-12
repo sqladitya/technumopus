@@ -366,14 +366,16 @@ const ViewAllServices = () => {
                       key={serviceIndex}
                       className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
                     >
-                      <div className="w-16 h-16 bg-tech-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-tech-primary/20 transition-colors duration-300">
-                        <div className="text-tech-primary">{service.icon}</div>
+                      <div className="w-16 h-16 bg-accenture-purple/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accenture-purple/20 transition-colors duration-300">
+                        <div className="text-accenture-purple">
+                          {service.icon}
+                        </div>
                       </div>
 
-                      <h4 className="text-2xl font-bold text-tech-text-dark mb-4">
+                      <h4 className="text-2xl font-bold text-accenture-text-primary mb-4">
                         {service.name}
                       </h4>
-                      <p className="text-tech-text-medium mb-6">
+                      <p className="text-gray-600 mb-6">
                         {service.description}
                       </p>
 
@@ -383,8 +385,8 @@ const ViewAllServices = () => {
                             key={featureIndex}
                             className="flex items-start gap-3"
                           >
-                            <div className="w-2 h-2 bg-tech-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-tech-text-medium text-sm">
+                            <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-600 text-sm">
                               {feature}
                             </span>
                           </div>
@@ -393,7 +395,7 @@ const ViewAllServices = () => {
 
                       <Link
                         to={service.href}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-tech-primary text-white rounded-lg font-semibold hover:bg-tech-primary-dark transition-all duration-300 hover:scale-105"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
                       >
                         Learn More
                         <svg
