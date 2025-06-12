@@ -164,7 +164,7 @@ const SearchDialog = () => {
       </VisuallyHidden>
 
       <CommandInput
-        placeholder="Search pages, services, and more..."
+        placeholder="Search pages, services, or ask AI for help..."
         value={query}
         onValueChange={setQuery}
       />
