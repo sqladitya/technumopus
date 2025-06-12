@@ -312,9 +312,9 @@ const SearchDialog = () => {
             {/* Search tips at the bottom */}
             <CommandGroup>
               <CommandItem className="flex flex-col items-center gap-2 py-4 cursor-default">
-                <span className="text-lg">💡</span>
+                <span className="text-lg">🤖</span>
                 <p className="text-xs text-muted-foreground text-center">
-                  Type to search or browse all{" "}
+                  Try AI Assistant for smart help, or browse all{" "}
                   {searchCategories.reduce(
                     (acc, cat) => acc + cat.items.length,
                     0,
