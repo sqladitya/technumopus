@@ -1,6 +1,5 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import SectionBackground from "@/components/SectionBackground";
 import { Link } from "react-router-dom";
 
 const ViewAllServices = () => {
@@ -303,12 +302,11 @@ const ViewAllServices = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
+    <div className="bg-white">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-accenture-purple/20 via-purple-600/15 to-slate-900/95" />
+      <section className="relative pt-24 pb-16 bg-accenture-black">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             All Our Services
@@ -321,13 +319,13 @@ const ViewAllServices = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="px-8 py-4 bg-accenture-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
             >
               Get Started Today
             </a>
             <a
               href="/services"
-              className="px-8 py-4 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300"
+              className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
             >
               Browse Services
             </a>
@@ -336,214 +334,207 @@ const ViewAllServices = () => {
       </section>
 
       {/* Service Categories */}
-      <SectionBackground variant="light">
-        <section id="services" className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Our Service Portfolio
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Organized by solution type to help you find exactly what you
-                need for your business transformation.
-              </p>
-            </div>
+      <section id="services" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Our Service Portfolio
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              Organized by solution type to help you find exactly what you need
+              for your business transformation.
+            </p>
+          </div>
 
-            {serviceCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="mb-16">
-                <div className="text-center mb-12">
-                  <h3 className="text-3xl font-bold text-accenture-text-primary mb-4">
-                    {category.title}
-                  </h3>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    {category.description}
-                  </p>
-                </div>
+          {serviceCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="mb-16">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold text-accenture-text-primary mb-4">
+                  {category.title}
+                </h3>
+                <p className="text-lg text-accenture-text-secondary max-w-2xl mx-auto">
+                  {category.description}
+                </p>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {category.services.map((service, serviceIndex) => (
-                    <div
-                      key={serviceIndex}
-                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
-                    >
-                      <div className="w-16 h-16 bg-accenture-purple/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accenture-purple/20 transition-colors duration-300">
-                        <div className="text-accenture-purple">
-                          {service.icon}
-                        </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {category.services.map((service, serviceIndex) => (
+                  <div
+                    key={serviceIndex}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                  >
+                    <div className="w-16 h-16 bg-accenture-purple/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accenture-purple/20 transition-colors duration-300">
+                      <div className="text-accenture-purple">
+                        {service.icon}
                       </div>
+                    </div>
 
-                      <h4 className="text-2xl font-bold text-accenture-text-primary mb-4">
-                        {service.name}
-                      </h4>
-                      <p className="text-gray-600 mb-6">
-                        {service.description}
-                      </p>
+                    <h4 className="text-2xl font-bold text-accenture-text-primary mb-4">
+                      {service.name}
+                    </h4>
+                    <p className="text-accenture-text-secondary mb-6">
+                      {service.description}
+                    </p>
 
-                      <div className="space-y-3 mb-8">
-                        {service.features.map((feature, featureIndex) => (
-                          <div
-                            key={featureIndex}
-                            className="flex items-start gap-3"
-                          >
-                            <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-gray-600 text-sm">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <Link
-                        to={service.href}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
-                      >
-                        Learn More
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                    <div className="space-y-3 mb-8">
+                      {service.features.map((feature, featureIndex) => (
+                        <div
+                          key={featureIndex}
+                          className="flex items-start gap-3"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </Link>
+                          <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-accenture-text-secondary text-sm">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Link
+                      to={service.href}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+                    >
+                      Learn More
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Service Statistics */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Proven Track Record
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              Our success is measured by the success of our clients. Here are
+              some key metrics that showcase our commitment to excellence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {serviceStats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-8 text-center border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-accenture-purple mb-4">
+                  {stat.number}
+                </div>
+                <div className="text-xl font-semibold text-accenture-text-primary mb-3">
+                  {stat.label}
+                </div>
+                <div className="text-accenture-text-secondary text-sm">
+                  {stat.description}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Industries We Serve
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              Our solutions are tailored to meet the specific requirements and
+              compliance needs of various industries.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {industries.map((industry, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              >
+                <h3 className="text-xl font-bold text-accenture-text-primary mb-3">
+                  {industry.name}
+                </h3>
+                <p className="text-accenture-text-secondary mb-6">
+                  {industry.description}
+                </p>
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-accenture-text-primary mb-3">
+                    Key Services:
+                  </div>
+                  {industry.services.map((service, serviceIndex) => (
+                    <div key={serviceIndex} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-sm text-accenture-text-secondary">
+                        {service}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-        </section>
-      </SectionBackground>
-
-      {/* Service Statistics */}
-      <SectionBackground variant="gradient">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Proven Track Record
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our success is measured by the success of our clients. Here are
-                some key metrics that showcase our commitment to excellence.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {serviceStats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-8 text-center border border-white/20 hover:bg-white transition-all duration-300"
-                >
-                  <div className="text-4xl md:text-5xl font-bold text-accenture-purple mb-4">
-                    {stat.number}
-                  </div>
-                  <div className="text-xl font-semibold text-accenture-text-primary mb-3">
-                    {stat.label}
-                  </div>
-                  <div className="text-gray-600 text-sm">
-                    {stat.description}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </SectionBackground>
-
-      {/* Industries We Serve */}
-      <SectionBackground variant="light">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Industries We Serve
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our solutions are tailored to meet the specific requirements and
-                compliance needs of various industries.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {industries.map((industry, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                >
-                  <h3 className="text-xl font-bold text-accenture-text-primary mb-3">
-                    {industry.name}
-                  </h3>
-                  <p className="text-gray-600 mb-6">{industry.description}</p>
-                  <div className="space-y-2">
-                    <div className="text-sm font-semibold text-accenture-text-primary mb-3">
-                      Key Services:
-                    </div>
-                    {industry.services.map((service, serviceIndex) => (
-                      <div
-                        key={serviceIndex}
-                        className="flex items-start gap-2"
-                      >
-                        <div className="w-1.5 h-1.5 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-sm text-gray-600">{service}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </SectionBackground>
+        </div>
+      </section>
 
       {/* Technology Stack */}
-      <SectionBackground variant="gradient">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
-                Our Technology Stack
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We leverage cutting-edge technologies and maintain partnerships
-                with leading vendors to deliver best-in-class solutions.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {technologyStack.map((stack, index) => (
-                <div
-                  key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white transition-all duration-300"
-                >
-                  <h3 className="text-xl font-bold text-accenture-text-primary mb-6">
-                    {stack.category}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {stack.technologies.map((tech, techIndex) => (
-                      <div
-                        key={techIndex}
-                        className="text-sm text-gray-600 bg-gray-50 rounded px-3 py-2 text-center"
-                      >
-                        {tech}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-accenture-text-primary mb-6">
+              Our Technology Stack
+            </h2>
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
+              We leverage cutting-edge technologies and maintain partnerships
+              with leading vendors to deliver best-in-class solutions.
+            </p>
           </div>
-        </section>
-      </SectionBackground>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {technologyStack.map((stack, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-8 border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <h3 className="text-xl font-bold text-accenture-text-primary mb-6">
+                  {stack.category}
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {stack.technologies.map((tech, techIndex) => (
+                    <div
+                      key={techIndex}
+                      className="text-sm text-accenture-text-secondary bg-gray-50 rounded px-3 py-2 text-center"
+                    >
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section className="py-20 bg-accenture-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Transform Your Business?
@@ -555,7 +546,7 @@ const ViewAllServices = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#contact"
+              href="/contact"
               className="px-8 py-4 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
             >
               Schedule Consultation

@@ -1,26 +1,19 @@
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import SectionBackground from "@/components/SectionBackground";
 
 const About = () => {
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
+    <div className="bg-white min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-screen flex items-center">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
+      <section className="relative overflow-hidden bg-accenture-black min-h-screen flex items-center">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="max-w-5xl">
-            <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-accenture-purple/20 backdrop-blur-sm border border-accenture-purple/30 rounded-full px-6 py-2 mb-8">
+              <div className="w-2 h-2 bg-accenture-purple rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold text-accenture-purple uppercase tracking-wider">
                 About Technum Opus
               </span>
             </div>
@@ -28,7 +21,7 @@ const About = () => {
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-none">
               Where
               <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accenture-purple to-accenture-purple-light bg-clip-text text-transparent">
                 Innovation
               </span>
               <br />
@@ -50,10 +43,10 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-6">
               <Link
                 to="/contact"
-                className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+                className="group relative overflow-hidden px-8 py-4 bg-accenture-purple text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-accenture-purple/25 transition-all duration-300 hover:scale-105"
               >
                 <span className="relative z-10">Start Your Journey</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-accenture-purple-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
               <Link
                 to="/services"
@@ -80,39 +73,39 @@ const About = () => {
       </section>
 
       {/* Company Stats */}
-      <SectionBackground variant="light" className="py-16">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               {
                 number: "1000+",
                 label: "Projects Delivered",
-                color: "from-purple-600 to-purple-700",
+                color: "text-accenture-purple",
               },
               {
                 number: "250+",
                 label: "Global Clients",
-                color: "from-blue-600 to-blue-700",
+                color: "text-accenture-purple",
               },
               {
                 number: "85+",
                 label: "Expert Team",
-                color: "from-green-600 to-green-700",
+                color: "text-accenture-purple",
               },
               {
                 number: "10+",
                 label: "Years Excellence",
-                color: "from-orange-600 to-orange-700",
+                color: "text-accenture-purple",
               },
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <div
-                    className={`text-5xl md:text-6xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-3`}
+                    className={`text-5xl md:text-6xl font-bold ${stat.color} mb-3`}
                   >
                     {stat.number}
                   </div>
-                  <div className="text-gray-400 font-semibold text-lg">
+                  <div className="text-accenture-text-secondary font-semibold text-lg">
                     {stat.label}
                   </div>
                 </div>
@@ -120,25 +113,22 @@ const About = () => {
             ))}
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* Our Story */}
-      <SectionBackground variant="gradient" className="py-24">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
-                <div className="inline-flex items-center gap-2 bg-purple-100 rounded-full px-4 py-2 mb-6">
-                  <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                <div className="inline-flex items-center gap-2 bg-accenture-purple/10 rounded-full px-4 py-2 mb-6">
+                  <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                     Our Story
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
                   Built on a Foundation of
-                  <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                    {" "}
-                    Innovation
-                  </span>
+                  <span className="text-accenture-purple"> Innovation</span>
                 </h2>
               </div>
 
@@ -169,7 +159,7 @@ const About = () => {
 
               <Link
                 to="/about/leadership"
-                className="group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                className="group inline-flex items-center gap-3 px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark hover:shadow-lg transition-all duration-300"
               >
                 Meet Our Leadership
                 <svg
@@ -189,9 +179,9 @@ const About = () => {
             </div>
 
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-purple-100 via-blue-50 to-purple-100 rounded-3xl p-8 shadow-2xl">
+              <div className="aspect-square bg-gradient-to-br from-accenture-purple/10 via-gray-50 to-accenture-purple/10 rounded-3xl p-8 shadow-2xl">
                 <div className="h-full flex flex-col justify-center items-center text-center space-y-6">
-                  <div className="w-24 h-24 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-24 h-24 bg-accenture-purple rounded-full flex items-center justify-center shadow-lg">
                     <svg
                       className="w-12 h-12 text-white"
                       fill="none"
@@ -215,28 +205,24 @@ const About = () => {
                   </p>
                 </div>
               </div>
-
-              {/* Floating elements */}
-              <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-20 blur-xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-xl"></div>
             </div>
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* Mission & Vision */}
-      <SectionBackground variant="light" className="py-24">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-              <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-accenture-purple/10 rounded-full px-6 py-2 mb-6">
+              <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                 Our Purpose
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-accenture-text-primary mb-6">
               Driven by Purpose, Guided by Vision
             </h2>
-            <p className="text-xl text-gray-800 max-w-3xl mx-auto font-medium">
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto font-medium">
               Our mission and vision shape every decision we make and every
               solution we deliver
             </p>
@@ -246,7 +232,7 @@ const About = () => {
             <div className="relative">
               <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 h-full">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-accenture-purple rounded-2xl flex items-center justify-center shadow-lg">
                     <svg
                       className="w-8 h-8 text-white"
                       fill="none"
@@ -261,9 +247,11 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-white">Our Mission</h3>
+                  <h3 className="text-3xl font-bold text-accenture-text-primary">
+                    Our Mission
+                  </h3>
                 </div>
-                <p className="text-body-xl text-gray-400 leading-relaxed">
+                <p className="text-body-xl text-accenture-text-primary leading-relaxed font-medium">
                   To empower organizations worldwide with transformative
                   technology solutions that drive sustainable growth,
                   operational excellence, and competitive advantage. We believe
@@ -276,7 +264,7 @@ const About = () => {
             <div className="relative">
               <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 h-full">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-accenture-purple rounded-2xl flex items-center justify-center shadow-lg">
                     <svg
                       className="w-8 h-8 text-white"
                       fill="none"
@@ -297,11 +285,11 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-3xl font-bold text-accenture-text-primary">
                     Our Vision
                   </h3>
                 </div>
-                <p className="text-body-xl text-gray-400 leading-relaxed">
+                <p className="text-body-xl text-accenture-text-primary leading-relaxed font-medium">
                   To be the trusted technology partner that organizations turn
                   to when they want to transform possibilities into reality,
                   creating lasting impact through innovative solutions.
@@ -310,14 +298,14 @@ const About = () => {
             </div>
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* Core Values */}
-      <SectionBackground variant="dark" className="py-24">
+      <section className="py-24 bg-accenture-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
-              <span className="text-sm font-bold text-purple-300 uppercase tracking-wider">
+              <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
                 Core Values
               </span>
             </div>
@@ -363,7 +351,7 @@ const About = () => {
                   <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-body-lg text-gray-400 leading-relaxed">
+                  <p className="text-body-lg text-accenture-text-secondary leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -371,20 +359,20 @@ const About = () => {
             ))}
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* Why Choose Us */}
-      <SectionBackground variant="gradient" className="py-24">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-accenture-text-primary mb-6">
               Why Organizations Choose
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accenture-purple to-accenture-purple-light bg-clip-text text-transparent">
                 {" "}
                 Technum Opus
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
               We're more than a technology provider—we're your strategic partner
               in digital transformation
             </p>
@@ -430,14 +418,14 @@ const About = () => {
                 <h3 className="text-2xl font-semibold text-accenture-text-primary mb-4">
                   {reason.title}
                 </h3>
-                <p className="text-body-xl text-gray-400 mb-6 leading-relaxed">
+                <p className="text-body-xl text-accenture-text-secondary mb-6 leading-relaxed">
                   {reason.description}
                 </p>
                 <ul className="space-y-3">
                   {reason.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                      <span className="text-gray-400 font-medium">
+                      <div className="w-2 h-2 bg-accenture-purple rounded-full"></div>
+                      <span className="text-accenture-text-secondary font-medium">
                         {feature}
                       </span>
                     </li>
@@ -447,15 +435,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-        </div>
-
+      <section className="relative py-24 bg-accenture-black overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your Vision Into Reality?
@@ -469,10 +452,10 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               to="/contact"
-              className="group relative overflow-hidden px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+              className="group relative overflow-hidden px-10 py-4 bg-accenture-purple text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-accenture-purple/25 transition-all duration-300 hover:scale-105"
             >
               <span className="relative z-10">Start Your Transformation</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-accenture-purple-dark opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
             <Link
               to="/services"
