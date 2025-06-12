@@ -11,12 +11,10 @@ const AboutUs = () => {
       <SectionBackground variant="gradient">
         <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            text-white text-white
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-accenture-text-primary mb-6">
               About Technum Opus
             </h1>
-            text-gray-200 text-gray-200
-            <p className="text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-accenture-text-secondary max-w-3xl mx-auto">
               Pioneering digital transformation with innovation, expertise, and
               unwavering commitment to excellence
             </p>
@@ -30,17 +28,23 @@ const AboutUs = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
-                  Our Story
+                <div className="inline-flex items-center gap-2 bg-accenture-purple/10 rounded-full px-4 py-2 mb-6">
+                  <span className="text-sm font-bold text-accenture-purple uppercase tracking-wider">
+                    Our Story
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-accenture-text-primary mb-6">
+                  Built on a Foundation of
+                  <span className="text-accenture-purple"> Innovation</span>
                 </h2>
-                <p className="text-lg text-tech-text-medium mb-6 leading-relaxed">
+                <p className="text-lg text-accenture-text-secondary mb-6 leading-relaxed">
                   Founded in 2015, Technum Opus emerged from a simple yet
                   powerful vision: to bridge the gap between cutting-edge
                   technology and practical business solutions. Our founders
                   recognized that while technology was advancing rapidly, many
                   organizations struggled to harness its full potential.
                 </p>
-                <p className="text-lg text-tech-text-medium mb-8 leading-relaxed">
+                <p className="text-lg text-accenture-text-secondary mb-8 leading-relaxed">
                   What started as a small consulting firm has grown into a
                   comprehensive technology partner, helping organizations across
                   industries transform their operations, enhance their
@@ -48,10 +52,10 @@ const AboutUs = () => {
                   innovative solutions.
                 </p>
                 <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
+                  <h3 className="text-xl font-semibold text-accenture-text-primary mb-4">
                     Our Mission
                   </h3>
-                  <p className="text-body-xl text-gray-400 leading-relaxed">
+                  <p className="text-body-xl text-accenture-text-primary leading-relaxed">
                     To empower organizations worldwide with transformative
                     technology solutions that drive sustainable growth,
                     operational excellence, and competitive advantage. We
