@@ -10,7 +10,11 @@ import {
 } from "@/components/ui/command";
 import { DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
-import { searchItems, type SearchItem } from "@/lib/searchData";
+import {
+  searchItems,
+  searchCategories,
+  type SearchItem,
+} from "@/lib/searchData";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
