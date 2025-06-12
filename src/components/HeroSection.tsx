@@ -107,9 +107,9 @@ const HeroSection = () => {
           {/* Content with Enhanced Typography */}
           <div className="relative z-20 flex items-center min-h-screen">
             <div className="max-w-7xl mx-auto px-4 py-16">
-              <div className="max-w-5xl">
+              <div className="max-w-5xl text-left">
                 {/* Category with Enhanced Styling */}
-                <div className="mb-8 animate-fade-in">
+                <div className="mb-8 animate-fade-in text-left">
                   <span className="inline-flex items-center px-6 py-3 bg-accenture-purple/20 backdrop-blur-sm border border-accenture-purple/30 rounded-full text-accenture-purple text-body-sm font-bold uppercase tracking-wider shadow-glow-purple">
                     <span className="w-2 h-2 bg-accenture-purple rounded-full mr-3 animate-pulse"></span>
                     {slide.category}
@@ -117,13 +117,13 @@ const HeroSection = () => {
                 </div>
 
                 {/* Main Title with Enhanced Typography */}
-                <h1 className="text-hero font-heading text-white mb-8 leading-none animate-slide-up drop-shadow-2xl">
+                <h1 className="text-hero font-heading text-white mb-8 leading-none animate-slide-up drop-shadow-2xl text-left">
                   {slide.title}
                 </h1>
 
                 {/* Subtitle with Glow Effect */}
                 <h2
-                  className="text-heading-xl text-white/95 mb-10 font-medium animate-slide-up drop-shadow-lg"
+                  className="text-heading-xl text-white/95 mb-10 font-medium animate-slide-up drop-shadow-lg text-left"
                   style={{ animationDelay: "0.2s" }}
                 >
                   {slide.subtitle}
@@ -131,7 +131,7 @@ const HeroSection = () => {
 
                 {/* Description with Better Spacing */}
                 <p
-                  className="text-body-xl text-white/85 mb-14 max-w-4xl leading-relaxed animate-slide-up drop-shadow-md"
+                  className="text-body-xl text-white/85 mb-14 max-w-4xl leading-relaxed animate-slide-up drop-shadow-md text-left"
                   style={{ animationDelay: "0.4s" }}
                 >
                   {slide.description}
@@ -139,7 +139,7 @@ const HeroSection = () => {
 
                 {/* Enhanced CTA Buttons */}
                 <div
-                  className="flex flex-col sm:flex-row gap-6 animate-slide-up"
+                  className="flex flex-col sm:flex-row gap-6 animate-slide-up justify-start"
                   style={{ animationDelay: "0.6s" }}
                 >
                   <Link
