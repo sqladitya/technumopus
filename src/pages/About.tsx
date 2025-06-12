@@ -196,10 +196,10 @@ const About = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-accenture-text-primary">
+                  <h3 className="text-2xl font-bold text-gray-900">
                     Innovation First
                   </h3>
-                  <p className="text-accenture-text-secondary leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     Every solution we create is designed to push boundaries and
                     unlock new possibilities for our clients.
                   </p>
