@@ -71,7 +71,7 @@ export function SearchProvider({ children }: SearchProviderProps) {
   return (
     <SearchContext.Provider value={value}>
       {children}
-      <SearchCommand />
+      <SearchDialog />
     </SearchContext.Provider>
   );
 }
