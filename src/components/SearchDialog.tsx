@@ -270,7 +270,7 @@ const SearchDialog = () => {
                 {/* AI Interpretation */}
                 <div className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 border-b border-purple-200">
                   <div className="flex items-start gap-3">
-                    <span className="text-lg">🤖</span>
+                    <Bot className="w-5 h-5 text-purple-600 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-purple-900 mb-1">
                         AI Response
