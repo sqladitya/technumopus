@@ -99,11 +99,11 @@ const Services = () => {
         "From procurement to deployment, we provide comprehensive hardware infrastructure solutions. Our team ensures optimal performance, reliability, and cost-effectiveness for your hardware needs.",
       features: [
         "Hardware Procurement",
-        "Data Center Setup",
-        "Network Infrastructure",
+        "System Deployment",
+        "Performance Monitoring",
         "Maintenance & Support",
       ],
-      technologies: ["Cisco", "Dell", "HP", "Lenovo", "VMware"],
+      technologies: ["Dell", "HP", "Cisco", "Lenovo", "VMware"],
       href: "/services/hardware-infrastructure",
       icon: (
         <svg
@@ -116,7 +116,7 @@ const Services = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
           />
         </svg>
       ),
@@ -125,8 +125,7 @@ const Services = () => {
 
   const stats = [
     { number: "500+", label: "Projects Completed" },
-    { number: "99%", label: "Client Satisfaction" },
-    { number: "15+", label: "Years Experience" },
+    { number: "98%", label: "Client Satisfaction" },
     { number: "24/7", label: "Support Available" },
   ];
 
@@ -135,15 +134,34 @@ const Services = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-tech-primary/20 via-purple-600/15 to-slate-900/95" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Our Services
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[80vh] flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+              Our Services
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-none">
+            Technology
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
+              Solutions
+            </span>
+            <br />
+            That Transform
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+
+          <p className="text-xl md:text-2xl font-light text-white/80 mb-8 leading-relaxed max-w-3xl mx-auto">
             Comprehensive technology solutions designed to accelerate your
-            digital transformation journey
+            digital transformation journey and drive sustainable growth.
           </p>
         </div>
       </section>
@@ -153,10 +171,15 @@ const Services = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-6">
-                What We Offer
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  What We Offer
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Our Service Portfolio
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
                 From SAP implementations to cloud architecture, we provide
                 end-to-end technology solutions that drive business growth and
                 operational excellence.
@@ -170,45 +193,44 @@ const Services = () => {
                   className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-20 h-20 bg-tech-gradient rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
 
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-tech-text-dark mb-3">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-3">
                         {service.title}
                       </h3>
-                      <p className="text-tech-text-medium mb-4 leading-relaxed">
+                      <p className="text-gray-600 mb-6 leading-relaxed">
                         {service.detailedDescription}
                       </p>
 
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-tech-text-dark mb-2">
+                          <h4 className="font-semibold text-gray-900 mb-2">
                             Key Features:
                           </h4>
-                          <ul className="space-y-1">
+                          <ul className="space-y-2">
                             {service.features.map((feature, idx) => (
-                              <li
-                                key={idx}
-                                className="flex items-center gap-2 text-tech-text-medium"
-                              >
-                                <div className="w-1.5 h-1.5 bg-tech-primary rounded-full" />
-                                {feature}
+                              <li key={idx} className="flex items-center gap-2">
+                                <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                                <span className="text-gray-700 text-sm">
+                                  {feature}
+                                </span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-tech-text-dark mb-2">
+                          <h4 className="font-semibold text-gray-900 mb-2">
                             Technologies:
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {service.technologies.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1 bg-tech-primary/10 text-tech-primary text-sm rounded-full"
+                                className="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full"
                               >
                                 {tech}
                               </span>
@@ -220,7 +242,7 @@ const Services = () => {
                       <div className="mt-6">
                         <Link
                           to={service.href}
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
                         >
                           Learn More
                           <svg
@@ -252,27 +274,25 @@ const Services = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Our Track Record
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
                 Numbers that speak to our commitment to excellence and client
                 success
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
               {stats.map((stat, index) => (
                 <div
                   key={index}
                   className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100"
                 >
-                  <div className="text-4xl md:text-5xl font-bold text-tech-primary mb-2">
+                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-tech-text-medium font-medium">
-                    {stat.label}
-                  </div>
+                  <div className="text-gray-700 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -285,10 +305,15 @@ const Services = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-                Our Process
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
+                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
+                  Our Process
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                How We Work
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
                 A proven methodology that ensures successful project delivery
                 every time
               </p>
@@ -322,13 +347,13 @@ const Services = () => {
                 },
               ].map((phase, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6 text-white text-xl font-bold">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-xl font-bold">
                     {phase.step}
                   </div>
-                  <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {phase.title}
                   </h3>
-                  <p className="text-tech-text-medium leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     {phase.description}
                   </p>
                 </div>
@@ -339,33 +364,50 @@ const Services = () => {
       </SectionBackground>
 
       {/* CTA Section */}
-      <SectionBackground variant="gradient">
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl text-tech-text-medium mb-8">
-              Let's discuss how our services can help you achieve your
-              technology goals and drive business growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="px-8 py-4 bg-tech-gradient text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Let's discuss how our services can help you achieve your technology
+            goals and drive business growth.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="/contact"
+              className="group relative overflow-hidden px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+            >
+              <span className="relative z-10">Get Started Today</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
+            <Link
+              to="/about"
+              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+            >
+              Learn About Us
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Get Started Today
-              </a>
-              <a
-                href="/about"
-                className="px-8 py-4 border-2 border-tech-primary text-tech-primary rounded-lg font-semibold hover:bg-tech-primary hover:text-white transition-all duration-300"
-              >
-                Learn About Us
-              </a>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
           </div>
-        </section>
-      </SectionBackground>
+        </div>
+      </section>
 
       <Footer />
     </div>
