@@ -206,9 +206,6 @@ const SearchDialog = () => {
                     onSelect={() => handleSelect(item)}
                     className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
                   >
-                    <span className="text-lg mt-0.5">
-                      {getCategoryIcon(item.category)}
-                    </span>
                     <div className="flex-1 space-y-1 min-w-0">
                       <p className="text-sm font-medium text-foreground leading-none">
                         {item.title}
@@ -224,7 +221,6 @@ const SearchDialog = () => {
                 ))}
               </CommandGroup>
             ))}
-
             {/* Search tips at the bottom */}
             <CommandGroup>
               <CommandItem className="flex flex-col items-center gap-2 py-4 cursor-default">
