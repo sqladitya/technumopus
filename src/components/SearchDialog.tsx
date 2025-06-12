@@ -292,7 +292,9 @@ const SearchDialog = () => {
                         onSelect={() => handleSelect(result)}
                         className="flex items-start gap-3 p-3 cursor-pointer rounded-lg hover:bg-accent/50 transition-colors duration-200"
                       >
-                        <span className="text-lg mt-0.5">{result.icon}</span>
+                        <div className="mt-0.5">
+                          {getCategoryIcon(result.category)}
+                        </div>
                         <div className="flex-1 space-y-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <p className="text-sm font-medium text-foreground leading-none">
