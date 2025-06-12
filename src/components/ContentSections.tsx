@@ -65,35 +65,36 @@ export const ContentCardsSection = () => (
             <Link
               key={index}
               to={card.href}
-              className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-slide-in-left w-full"
+              className="group block bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 sm:hover:-translate-y-2 animate-slide-in-left w-full touch-manipulation"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="aspect-video bg-accenture-gray-100 relative overflow-hidden w-full">
+              <div className="aspect-video sm:aspect-video bg-accenture-gray-100 relative overflow-hidden w-full">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                   <span
                     className={cn(
-                      "inline-block px-3 py-1 text-white text-body-sm font-bold uppercase tracking-wider rounded",
+                      "inline-block px-2 py-1 sm:px-3 sm:py-1 text-white text-xs sm:text-body-sm font-bold uppercase tracking-wider rounded",
                       `bg-${card.color}`,
                     )}
-                    style={{ color: "white" }}
+                    style={{ color: 'white' }}
                   >
                     {card.category}
                   </span>
                 </div>
               </div>
-              <div className="p-6 w-full">
-                <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2">
+              <div className="p-4 sm:p-6 w-full">
+                <h3 className="text-lg sm:text-heading-md font-semibold text-accenture-text-primary mb-2 sm:mb-3 group-hover:text-accenture-purple transition-colors line-clamp-2 leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-accenture-text-tertiary leading-relaxed text-sm line-clamp-3">
+                <p className="text-accenture-text-tertiary leading-relaxed text-sm sm:text-base line-clamp-3">
                   {card.description}
                 </p>
               </div>
+            </Link>
             </Link>
           ))}
         </div>
