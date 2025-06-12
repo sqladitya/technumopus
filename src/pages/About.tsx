@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 
 const About = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
