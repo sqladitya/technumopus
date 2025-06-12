@@ -88,9 +88,9 @@ const Footer = () => {
     <footer className="bg-accenture-black text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div>
             <Link to="/" className="inline-block mb-6">
               <span className="text-2xl font-bold tracking-tight">
                 TECHNUM OPUS
@@ -118,77 +118,83 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-              SERVICES
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links in One Line */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Services */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
+                SERVICES
+              </h3>
+              <ul className="space-y-2">
+                {footerLinks.services.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Industries */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-              INDUSTRIES
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.industries.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Industries */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
+                INDUSTRIES
+              </h3>
+              <ul className="space-y-2">
+                {footerLinks.industries.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* About & Support */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-              COMPANY
-            </h3>
-            <ul className="space-y-3 mb-8">
-              {footerLinks.about.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Company */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
+                COMPANY
+              </h3>
+              <ul className="space-y-2">
+                {footerLinks.about.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
-              SUPPORT
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Support */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 text-body-sm uppercase tracking-wider">
+                SUPPORT
+              </h3>
+              <ul className="space-y-2">
+                {footerLinks.support.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-accenture-purple transition-colors duration-200 text-sm leading-relaxed"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
