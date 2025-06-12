@@ -487,7 +487,7 @@ const Navigation = () => {
             </svg>
             Search
             <kbd className="ml-auto px-2 py-1 bg-accenture-gray-100 text-accenture-text-tertiary rounded text-xs">
-              ��K
+              ⌘K
             </kbd>
           </button>
         </div>
@@ -557,13 +557,13 @@ const Navigation = () => {
                   )}
                   style={{
                     left:
-                      dropdownPositions.company?.left !== undefined
-                        ? dropdownPositions.company.left
-                        : undefined,
+                      dropdownPositions.company?.right === undefined
+                        ? (dropdownPositions.company?.left ?? 0)
+                        : "auto",
                     right:
                       dropdownPositions.company?.right !== undefined
                         ? dropdownPositions.company.right
-                        : undefined,
+                        : "auto",
                     maxWidth: dropdownPositions.company?.maxWidth,
                   }}
                   onMouseLeave={handleDropdownLeave}
