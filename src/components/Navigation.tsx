@@ -479,7 +479,10 @@ const Navigation = () => {
                               <Link
                                 key={partner.name}
                                 to={partner.href}
-                                onClick={() => setActiveDropdown(null)}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveDropdown(null);
+                                }}
                                 className="block group p-3 rounded-lg hover:bg-accenture-gray-50 transition-colors duration-200"
                               >
                                 <div className="font-semibold text-accenture-text-primary group-hover:text-accenture-purple mb-1 transition-colors">
