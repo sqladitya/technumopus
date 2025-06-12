@@ -12,10 +12,10 @@ const SAPConsulting = () => {
         <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                 SAP Consulting Services
               </h1>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
                 Transform your business with enterprise SAP implementations,
                 optimizations, and strategic consulting tailored to your
                 industry needs.
@@ -31,16 +31,16 @@ const SAPConsulting = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                   Enterprise SAP Solutions
                 </h2>
-                <p className="text-lg text-tech-text-medium mb-6">
+                <p className="text-lg text-gray-200 mb-6">
                   Our SAP consulting services help organizations maximize their
                   investment in SAP technologies. From initial implementation to
                   ongoing optimization, we provide comprehensive support across
                   the entire SAP ecosystem.
                 </p>
-                <p className="text-lg text-tech-text-medium mb-8">
+                <p className="text-lg text-gray-200 mb-8">
                   With deep expertise in SAP S/4HANA, SAP SuccessFactors, SAP
                   Ariba, and other SAP solutions, we ensure your digital
                   transformation delivers measurable business value.
@@ -78,6 +78,7 @@ const SAPConsulting = () => {
                         />
                       </svg>
                     </div>
+                    text-gray-200 text-gray-600
                     <p className="text-tech-text-medium font-medium">
                       Enterprise SAP Architecture
                     </p>
@@ -94,10 +95,10 @@ const SAPConsulting = () => {
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-tech-text-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Our SAP Services
               </h2>
-              <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
                 Comprehensive SAP solutions across implementation, migration,
                 and optimization
               </p>
@@ -120,10 +121,10 @@ const SAPConsulting = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   SAP Implementation
                 </h3>
-                <p className="text-tech-text-medium">
+                <p className="text-gray-600">
                   End-to-end SAP implementation services from planning and
                   design to deployment and go-live support.
                 </p>
@@ -145,10 +146,10 @@ const SAPConsulting = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-tech-text-dark mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   SAP Migration
                 </h3>
-                <p className="text-tech-text-medium">
+                <p className="text-gray-600">
                   Seamless migration from legacy SAP systems to S/4HANA with
                   minimal business disruption and data integrity.
                 </p>
@@ -170,6 +171,7 @@ const SAPConsulting = () => {
                     />
                   </svg>
                 </div>
+                text-white text-gray-900 text-gray-900
                 <h3 className="text-xl font-bold text-tech-text-dark mb-4">
                   Performance Optimization
                 </h3>

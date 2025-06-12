@@ -11,9 +11,11 @@ const AboutUs = () => {
       <SectionBackground variant="gradient">
         <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            text-white text-white
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tech-text-dark mb-6">
               About Technum Opus
             </h1>
+            text-gray-200 text-gray-200
             <p className="text-xl md:text-2xl text-tech-text-medium max-w-3xl mx-auto">
               Pioneering digital transformation with innovation, expertise, and
               unwavering commitment to excellence
@@ -49,7 +51,7 @@ const AboutUs = () => {
                   <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
                     Our Mission
                   </h3>
-                  <p className="text-body-xl text-gray-600 leading-relaxed">
+                  <p className="text-body-xl text-gray-400 leading-relaxed">
                     To empower organizations worldwide with transformative
                     technology solutions that drive sustainable growth,
                     operational excellence, and competitive advantage. We
@@ -63,7 +65,7 @@ const AboutUs = () => {
                   <h3 className="text-xl font-semibold text-tech-text-dark mb-4">
                     Our Vision
                   </h3>
-                  <p className="text-body-xl text-gray-600 leading-relaxed">
+                  <p className="text-body-xl text-gray-400 leading-relaxed">
                     To be the trusted technology partner that organizations turn
                     to when they want to transform possibilities into reality,
                     creating lasting impact through innovative solutions.
@@ -74,15 +76,13 @@ const AboutUs = () => {
                     <div className="text-4xl font-bold text-tech-primary mb-2">
                       500+
                     </div>
-                    <div className="text-tech-text-medium">
-                      Projects Delivered
-                    </div>
+                    <div className="text-gray-400">Projects Delivered</div>
                   </div>
                   <div className="text-center">
                     <div className="text-4xl font-bold text-tech-primary mb-2">
                       150+
                     </div>
-                    <div className="text-tech-text-medium">Happy Clients</div>
+                    <div className="text-gray-400">Happy Clients</div>
                   </div>
                   <div className="text-center">
                     <div className="text-4xl font-bold text-tech-primary mb-2">

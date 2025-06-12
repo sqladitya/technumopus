@@ -340,9 +340,11 @@ const ViewAllServices = () => {
         <section id="services" className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
+              text-white text-white
               <h2 className="text-4xl font-bold text-tech-text-dark mb-6">
                 Our Service Portfolio
               </h2>
+              text-gray-200 text-gray-200
               <p className="text-xl text-tech-text-medium max-w-3xl mx-auto">
                 Organized by solution type to help you find exactly what you
                 need for your business transformation.
