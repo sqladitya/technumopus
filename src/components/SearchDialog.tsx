@@ -84,14 +84,17 @@ const SearchDialog = () => {
       />
       <CommandList>
         <CommandEmpty>
-          <div className="flex flex-col items-center gap-2 py-6">
-            <div className="text-4xl opacity-50">🔍</div>
-            <p className="text-sm text-muted-foreground">
-              No results found for "{query}"
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Try searching for services, company info, or contact details
-            </p>
+          <div className="flex flex-col items-center gap-3 py-8">
+            <div className="text-5xl opacity-40">🔍</div>
+            <div className="text-center">
+              <p className="text-sm font-medium text-muted-foreground mb-1">
+                No results found for "{query}"
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Try searching for "SAP", "cloud", "partners", "careers", or any
+                service name
+              </p>
+            </div>
           </div>
         </CommandEmpty>
 
