@@ -77,9 +77,10 @@ const SearchDialog = () => {
   return (
     <CommandDialog open={isOpen} onOpenChange={closeSearch}>
       <CommandInput
-        placeholder="Search pages, services, and more..."
+        placeholder="Search pages, services, and more... (Cmd+K)"
         value={query}
         onValueChange={setQuery}
+        className="text-base"
       />
       <CommandList>
         <CommandEmpty>
