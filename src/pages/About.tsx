@@ -254,7 +254,7 @@ const About = () => {
       </SectionBackground>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <SectionBackground variant="dark" className="py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-sm font-bold text-purple-600 uppercase tracking-wider mb-4">
@@ -263,15 +263,15 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               The principles that guide us
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
               These core values shape our culture and define our approach to
               technology and business
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg
                   className="w-8 h-8 text-white"
                   fill="none"
@@ -289,14 +289,14 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Innovation
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700">
                 Continuously pushing boundaries to deliver cutting-edge
                 solutions
               </p>
             </div>
 
-            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg
                   className="w-8 h-8 text-white"
                   fill="none"
@@ -314,14 +314,14 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Integrity
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700">
                 Building trust through transparency and ethical business
                 practices
               </p>
             </div>
 
-            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg
                   className="w-8 h-8 text-white"
                   fill="none"
@@ -339,13 +339,13 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Collaboration
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700">
                 Working as partners with our clients to achieve shared success
               </p>
             </div>
 
-            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg
                   className="w-8 h-8 text-white"
                   fill="none"
@@ -363,13 +363,13 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Excellence
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700">
                 Delivering superior quality in every project and interaction
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
