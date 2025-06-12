@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import {
@@ -5,129 +6,163 @@ import {
   ServicesSection,
   PartnersSection,
   AboutSection,
+  ClientStoriesSection,
 } from "@/components/ContentSections";
 import Footer from "@/components/Footer";
-import SectionBackground from "@/components/SectionBackground";
 
 const Index = () => {
   return (
     <div className="bg-white">
       <Navigation />
-
       <HeroSection />
 
       {/* Services Section */}
-      <SectionBackground variant="light">
-        <Section className="" id="services">
-          <ServicesSection />
-        </Section>
-      </SectionBackground>
+      <Section className="bg-white" id="services">
+        <ServicesSection />
+      </Section>
+
+      {/* Client Success Stories */}
+      <ClientStoriesSection />
+
+      {/* Value Proposition Section */}
+      <Section className="bg-white">
+        <div className="text-center py-20">
+          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+            360° VALUE
+          </h2>
+          <p className="text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
+            We help organizations reinvent themselves through technology,
+            strategy, and innovation to create lasting value for all
+            stakeholders.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105 text-xl"
+            >
+              Explore Our Capabilities
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 px-10 py-5 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 text-xl"
+            >
+              Start Your Transformation
+            </Link>
+          </div>
+        </div>
+      </Section>
 
       {/* About Section */}
-      <SectionBackground variant="gradient">
-        <Section className="" id="about">
-          <AboutSection />
-        </Section>
-      </SectionBackground>
+      <Section className="bg-gray-50" id="about">
+        <AboutSection />
+      </Section>
 
       {/* Partners Section */}
-      <SectionBackground variant="light">
-        <Section className="" id="partners">
-          <PartnersSection />
-        </Section>
-      </SectionBackground>
-
-      {/* Why Choose Us Section */}
-      <SectionBackground variant="gradient">
-        <Section className="">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-tech-text-dark mb-4">
-              Why Choose Technum <span className="text-tech-primary">Opus</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-tech-text-medium max-w-3xl mx-auto px-4">
-              We combine technical excellence with business insight to deliver
-              transformative results
-            </p>
+      <Section className="bg-white" id="partners">
+        <div className="text-center mb-16">
+          <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">
+            STRATEGIC PARTNERSHIPS
           </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Powered by Industry Leaders
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            We collaborate with the world's leading technology providers to
+            deliver comprehensive, best-in-class solutions.
+          </p>
+        </div>
+        <PartnersSection />
+      </Section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
-                Innovation First
-              </h3>
-              <p className="text-sm sm:text-base text-tech-text-medium">
-                We stay ahead of technology trends to deliver cutting-edge
-                solutions that give you a competitive advantage.
-              </p>
-            </div>
-
-            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
-                Expert Team
-              </h3>
-              <p className="text-sm sm:text-base text-tech-text-medium">
-                Our certified professionals bring deep expertise across
-                enterprise technologies and emerging platforms.
-              </p>
-            </div>
-
-            <div className="text-center bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-tech-text-dark mb-3 sm:mb-4">
-                Proven Results
-              </h3>
-              <p className="text-sm sm:text-base text-tech-text-medium">
-                Our track record speaks for itself - 500+ successful projects
-                and 99% client satisfaction rate.
-              </p>
-            </div>
+      {/* Industry Focus Section */}
+      <Section className="bg-gray-50">
+        <div className="text-center mb-16">
+          <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">
+            INDUSTRY EXPERTISE
           </div>
-        </Section>
-      </SectionBackground>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Select Your Industry.
+            <span className="block">Discover Our Impact.</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {[
+            { name: "Financial Services", icon: "🏦" },
+            { name: "Healthcare", icon: "🏥" },
+            { name: "Manufacturing", icon: "🏭" },
+            { name: "Retail & Consumer", icon: "🛍️" },
+            { name: "Energy & Utilities", icon: "⚡" },
+            { name: "Government", icon: "🏛️" },
+            { name: "Telecommunications", icon: "📡" },
+            { name: "Education", icon: "🎓" },
+          ].map((industry, index) => (
+            <Link
+              key={index}
+              to={`/industries/${industry.name.toLowerCase().replace(/\s+/g, "-")}`}
+              className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 text-center"
+            >
+              <div className="text-4xl mb-4">{industry.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                {industry.name}
+              </h3>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* Call to Action Section */}
+      <Section className="bg-black text-white">
+        <div className="text-center py-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+            Join thousands of organizations that trust Technum Opus to drive
+            their digital transformation.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 hover:scale-105 text-xl"
+            >
+              Get Started Today
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-black transition-all duration-300 text-xl"
+            >
+              Learn More About Us
+            </Link>
+          </div>
+        </div>
+      </Section>
 
       <Footer />
     </div>
