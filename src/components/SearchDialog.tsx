@@ -390,7 +390,7 @@ const SearchDialog = () => {
           <>
             <CommandEmpty>
               <div className="flex flex-col items-center gap-2 py-6">
-                <span className="text-2xl">🔍</span>
+                <Search className="w-8 h-8 text-gray-400" />
                 <p className="text-sm font-medium">
                   No results found for "{query}"
                 </p>
