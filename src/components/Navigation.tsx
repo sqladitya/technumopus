@@ -7,14 +7,12 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
   >(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const search = useSearch();
 
   useEffect(() => {
     const handleScroll = () => {
