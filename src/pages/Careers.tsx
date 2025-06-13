@@ -469,7 +469,7 @@ const Careers = () => {
               <div className="text-3xl md:text-4xl font-bold text-accenture-purple mb-3 group-hover:scale-110 transition-transform duration-300">
                 {stat.number}
               </div>
-              <div className="text-accenture-text-secondary font-medium text-sm md:text-base">
+              <div className="text-gray-700 font-medium text-sm md:text-base">
                 {stat.label}
               </div>
             </div>
