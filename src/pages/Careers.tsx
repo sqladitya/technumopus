@@ -262,7 +262,7 @@ const Careers = () => {
           <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
             Why Work With Us
           </h2>
-          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-body-xl text-gray-600 max-w-3xl mx-auto">
             We believe in investing in our people with comprehensive benefits
             and a culture that promotes growth and innovation.
           </p>
