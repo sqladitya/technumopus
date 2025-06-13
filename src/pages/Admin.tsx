@@ -224,9 +224,10 @@ const Admin = () => {
 
               <button
                 type="submit"
-                className="w-full bg-accenture-purple text-white py-3 px-6 rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+                disabled={loginLoading}
+                className="w-full bg-accenture-purple text-white py-3 px-6 rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Sign In
+                {loginLoading ? "Signing In..." : "Sign In"}
               </button>
             </form>
 
