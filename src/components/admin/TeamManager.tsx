@@ -43,42 +43,59 @@ export const TeamManager = () => {
     twitter: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
 
-    const memberData: TeamMember = {
-      id: editingMember?.id || Date.now().toString(),
-      name: formData.name,
-      position: formData.position,
-      department: formData.department,
-      email: formData.email,
-      phone: formData.phone,
-      bio: formData.bio,
-      skills: formData.skills
-        .split(",")
-        .map((s) => s.trim())
-        .filter((s) => s),
-      image:
-        formData.image ||
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-      linkedin: formData.linkedin,
-      twitter: formData.twitter,
-      joinDate:
-        editingMember?.joinDate || new Date().toISOString().split("T")[0],
-      status: "active",
-    };
+    try {
+      const memberData = {
+        name: formData.name,
+        position: formData.position,
+        department: formData.department,
+        email: formData.email,
+        phone: formData.phone,
+        bio: formData.bio,
+        skills: formData.skills
+          .split(",")
+          .map((s) => s.trim())
+          .filter((s) => s),
+        image_url:
+          formData.image ||
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+        linkedin_url: formData.linkedin,
+        twitter_url: formData.twitter,
+        status: "active" as const,
+        join_date:
+          editingMember?.join_date || new Date().toISOString().split("T")[0],
+      };
 
-    if (editingMember) {
-      setTeamMembers(
-        teamMembers.map((member) =>
-          member.id === editingMember.id ? memberData : member,
-        ),
-      );
-    } else {
-      setTeamMembers([...teamMembers, memberData]);
+      if (editingMember) {
+        const response = await adminApiClient.updateTeamMember(
+          editingMember.id,
+          memberData,
+        );
+        if (response.success) {
+          setTeamMembers(
+            teamMembers.map((member) =>
+              member.id === editingMember.id
+                ? response.data.team_member
+                : member,
+            ),
+          );
+        }
+      } else {
+        const response = await adminApiClient.createTeamMember(memberData);
+        if (response.success) {
+          setTeamMembers([...teamMembers, response.data.team_member]);
+        }
+      }
+
+      resetForm();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setSubmitting(false);
     }
-
-    resetForm();
   };
 
   const resetForm = () => {
