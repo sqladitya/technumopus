@@ -88,8 +88,8 @@ ${formData.name}
         </svg>
       ),
       title: "Phone",
-      details: ["+1 (555) 123-4567", "+1 (555) 123-4568"],
-      description: "Call us during business hours (9 AM - 6 PM PST)",
+      details: ["+91 9910040134", "+91 9910040135"],
+      description: "Call us during business hours (9 AM - 6 PM IST)",
     },
     {
       icon: (
@@ -211,7 +211,7 @@ ${formData.name}
               </svg>
             </a>
             <a
-              href="tel:+15551234567"
+              href="tel:+919910040134"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
             >
               <svg
@@ -340,7 +340,7 @@ ${formData.name}
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 9910040134"
                   />
                 </div>
               </div>
@@ -587,7 +587,7 @@ ${formData.name}
               </svg>
             </a>
             <a
-              href="tel:+15551234567"
+              href="tel:+919910040134"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
             >
               <svg
