@@ -78,7 +78,7 @@ export const countries: Country[] = [
   { code: "NP", name: "Nepal", dialCode: "+977", flag: "🇳🇵" },
   { code: "MM", name: "Myanmar", dialCode: "+95", flag: "🇲🇲" },
   { code: "KH", name: "Cambodia", dialCode: "+855", flag: "🇰🇭" },
-  { code: "LA", name: "Laos", dialCode: "+856", flag: "🇱🇦" },
+  { code: "LA", name: "Laos", dialCode: "+856", flag: "��🇦" },
   { code: "BN", name: "Brunei", dialCode: "+673", flag: "🇧🇳" },
   { code: "MN", name: "Mongolia", dialCode: "+976", flag: "🇲🇳" },
   { code: "TW", name: "Taiwan", dialCode: "+886", flag: "🇹🇼" },
@@ -95,7 +95,7 @@ export const countries: Country[] = [
   { code: "JO", name: "Jordan", dialCode: "+962", flag: "🇯🇴" },
   { code: "LB", name: "Lebanon", dialCode: "+961", flag: "🇱🇧" },
   { code: "SY", name: "Syria", dialCode: "+963", flag: "🇸🇾" },
-  { code: "IQ", name: "Iraq", dialCode: "+964", flag: "🇮🇶" },
+  { code: "IQ", name: "Iraq", dialCode: "+964", flag: "🇮��" },
   { code: "IR", name: "Iran", dialCode: "+98", flag: "🇮🇷" },
   { code: "AF", name: "Afghanistan", dialCode: "+93", flag: "🇦🇫" },
   { code: "KZ", name: "Kazakhstan", dialCode: "+7", flag: "🇰🇿" },
@@ -118,26 +118,39 @@ export const countries: Country[] = [
   { code: "TV", name: "Tuvalu", dialCode: "+688", flag: "🇹🇻" },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
-interface CountryCodeSelectProps {
+interface UnifiedPhoneInputProps {
   value?: string;
-  onChange: (dialCode: string) => void;
+  countryCode?: string;
+  onPhoneChange: (phone: string) => void;
+  onCountryCodeChange: (dialCode: string) => void;
+  placeholder?: string;
   className?: string;
   disabled?: boolean;
   isDarkMode?: boolean;
+  id?: string;
+  name?: string;
+  required?: boolean;
 }
 
-export const CountryCodeSelect = ({
-  value = "+1",
-  onChange,
+export const UnifiedPhoneInput = ({
+  value = "",
+  countryCode = "+91",
+  onPhoneChange,
+  onCountryCodeChange,
+  placeholder = "Your phone number",
   className = "",
   disabled = false,
   isDarkMode = false,
-}: CountryCodeSelectProps) => {
+  id,
+  name,
+  required = false,
+}: UnifiedPhoneInputProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const selectedCountry =
-    countries.find((country) => country.dialCode === value) || countries[0];
+    countries.find((country) => country.dialCode === countryCode) ||
+    countries[0];
 
   const filteredCountries = countries.filter(
     (country) =>
@@ -146,8 +159,8 @@ export const CountryCodeSelect = ({
       country.code.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  const handleSelect = (country: Country) => {
-    onChange(country.dialCode);
+  const handleCountrySelect = (country: Country) => {
+    onCountryCodeChange(country.dialCode);
     setIsOpen(false);
     setSearchTerm("");
   };
@@ -156,44 +169,73 @@ export const CountryCodeSelect = ({
     ? "bg-white/10 border-white/20 text-white"
     : "bg-white border-gray-300 text-gray-900";
 
-  const hoverClasses = isDarkMode ? "hover:bg-white/20" : "hover:bg-gray-50";
-
   const dropdownClasses = isDarkMode
     ? "bg-gray-800 border-white/20 text-white"
     : "bg-white border-gray-300 text-gray-900";
 
+  const placeholderClasses = isDarkMode
+    ? "placeholder:text-white/60"
+    : "placeholder:text-gray-500";
+
   return (
     <div className={`relative ${className}`}>
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        disabled={disabled}
+      {/* Main Input Container */}
+      <div
         className={`
-          flex items-center gap-2 px-3 py-3 border rounded-lg transition-colors duration-300 min-w-0 w-full
-          ${baseClasses} ${hoverClasses}
-          ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
-          focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple
+          flex items-center border rounded-lg transition-colors duration-300 overflow-hidden
+          ${baseClasses}
+          ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+          focus-within:ring-2 focus-within:ring-accenture-purple focus-within:border-accenture-purple
         `}
       >
-        <span className="text-lg flex-shrink-0">{selectedCountry.flag}</span>
-        <span className="font-medium flex-shrink-0">
-          {selectedCountry.dialCode}
-        </span>
-        <svg
-          className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        {/* Country Code Selector */}
+        <button
+          type="button"
+          onClick={() => !disabled && setIsOpen(!isOpen)}
+          disabled={disabled}
+          className={`
+            flex items-center gap-1 px-3 py-3 border-r transition-colors duration-300 flex-shrink-0
+            ${isDarkMode ? "border-white/20 hover:bg-white/10" : "border-gray-300 hover:bg-gray-50"}
+            ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
+          `}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
+          <span className="font-medium text-sm">
+            {selectedCountry.dialCode}
+          </span>
+          <svg
+            className={`w-3 h-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
 
+        {/* Phone Number Input */}
+        <input
+          type="tel"
+          id={id}
+          name={name}
+          required={required}
+          value={value}
+          onChange={(e) => onPhoneChange(e.target.value)}
+          placeholder={placeholder}
+          disabled={disabled}
+          className={`
+            flex-1 px-4 py-3 bg-transparent border-none outline-none min-w-0
+            ${placeholderClasses}
+            ${disabled ? "cursor-not-allowed" : ""}
+          `}
+        />
+      </div>
+
+      {/* Dropdown */}
       {isOpen && (
         <>
           {/* Backdrop */}
@@ -202,12 +244,12 @@ export const CountryCodeSelect = ({
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Dropdown */}
+          {/* Country List */}
           <div
             className={`
-            absolute top-full left-0 mt-1 w-48 max-h-80 border rounded-lg shadow-lg z-50 overflow-hidden
-            ${dropdownClasses}
-          `}
+              absolute top-full left-0 mt-1 w-48 max-h-80 border rounded-lg shadow-lg z-50 overflow-hidden
+              ${dropdownClasses}
+            `}
           >
             {/* Search */}
             <div className="p-3 border-b border-gray-200 dark:border-gray-700">
@@ -241,7 +283,7 @@ export const CountryCodeSelect = ({
                   <button
                     key={country.code}
                     type="button"
-                    onClick={() => handleSelect(country)}
+                    onClick={() => handleCountrySelect(country)}
                     className={`
                       w-full flex items-center gap-3 px-3 py-2.5 text-left transition-colors duration-150
                       ${
@@ -258,9 +300,6 @@ export const CountryCodeSelect = ({
                       }
                     `}
                   >
-                    <span className="text-lg flex-shrink-0">
-                      {country.flag}
-                    </span>
                     <span
                       className={`text-sm font-mono flex-1 ${isDarkMode ? "text-white" : "text-gray-900"}`}
                     >
@@ -277,4 +316,4 @@ export const CountryCodeSelect = ({
   );
 };
 
-export default CountryCodeSelect;
+export default UnifiedPhoneInput;

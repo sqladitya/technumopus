@@ -11,6 +11,7 @@ import Careers from "./pages/Careers";
 import OpenPositions from "./pages/careers/OpenPositions";
 import NewsInsights from "./pages/NewsInsights";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
 import ViewAllServices from "./pages/ViewAllServices";
 import Partners from "./pages/Partners";
 import SAPConsulting from "./pages/services/SAPConsulting";
@@ -96,6 +97,7 @@ const App = () => (
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/about/what-we-believe" element={<WhatWeBelieve />} />
+            <Route path="/admin" element={<Admin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

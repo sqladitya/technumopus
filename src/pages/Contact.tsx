@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Section } from "@/components/ContentSections";
 import { submitContactForm, submitConsultationForm } from "@/lib/googleSheets";
-import { CountryCodeSelect } from "@/components/ui/country-code-select";
+import { UnifiedPhoneInput } from "@/components/ui/unified-phone-input";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,8 +41,8 @@ const Contact = () => {
   const [consultationError, setConsultationError] = useState("");
 
   // Country code states
-  const [contactCountryCode, setContactCountryCode] = useState("+1");
-  const [consultationCountryCode, setConsultationCountryCode] = useState("+1");
+  const [contactCountryCode, setContactCountryCode] = useState("+91");
+  const [consultationCountryCode, setConsultationCountryCode] = useState("+91");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -95,7 +95,7 @@ const Contact = () => {
           category: "",
           message: "",
         });
-        setContactCountryCode("+1");
+        setContactCountryCode("+91");
       } else {
         setSubmitError(response.message);
       }
@@ -148,7 +148,7 @@ const Contact = () => {
           preferredTime: "",
           message: "",
         });
-        setConsultationCountryCode("+1");
+        setConsultationCountryCode("+91");
         // Close modal after a brief delay to show success message
         setTimeout(() => {
           setIsConsultationModalOpen(false);
@@ -468,22 +468,17 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-white mb-2">
                       Phone Number
                     </label>
-                    <div className="flex gap-2">
-                      <CountryCodeSelect
-                        value={consultationCountryCode}
-                        onChange={setConsultationCountryCode}
-                        isDarkMode={true}
-                        className="flex-shrink-0"
-                      />
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={consultationForm.phone}
-                        onChange={handleConsultationChange}
-                        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                        placeholder="Your phone number"
-                      />
-                    </div>
+                    <UnifiedPhoneInput
+                      value={consultationForm.phone}
+                      countryCode={consultationCountryCode}
+                      onPhoneChange={(phone) =>
+                        setConsultationForm({ ...consultationForm, phone })
+                      }
+                      onCountryCodeChange={setConsultationCountryCode}
+                      placeholder="Your phone number"
+                      isDarkMode={true}
+                      name="phone"
+                    />
                   </div>
                 </div>
 
@@ -848,23 +843,18 @@ const Contact = () => {
                   >
                     Phone Number
                   </label>
-                  <div className="flex gap-2">
-                    <CountryCodeSelect
-                      value={contactCountryCode}
-                      onChange={setContactCountryCode}
-                      isDarkMode={true}
-                      className="flex-shrink-0"
-                    />
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                      placeholder="Your phone number"
-                    />
-                  </div>
+                  <UnifiedPhoneInput
+                    value={formData.phone}
+                    countryCode={contactCountryCode}
+                    onPhoneChange={(phone) =>
+                      setFormData({ ...formData, phone })
+                    }
+                    onCountryCodeChange={setContactCountryCode}
+                    placeholder="Your phone number"
+                    isDarkMode={true}
+                    id="phone"
+                    name="phone"
+                  />
                 </div>
               </div>
 
