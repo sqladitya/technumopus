@@ -100,10 +100,10 @@ const Leadership = () => {
       <SectionBackground variant="gradient">
         <section className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-accenture-text-primary mb-6">
               Meet Our Leadership Team
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-accenture-text-secondary max-w-3xl mx-auto">
               Experienced leaders driving innovation and excellence in
               technology solutions
             </p>
