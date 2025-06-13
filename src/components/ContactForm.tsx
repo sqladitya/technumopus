@@ -177,7 +177,7 @@ const ContactForm = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="Your phone number"
                 />
               </div>
 
