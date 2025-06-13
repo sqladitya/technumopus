@@ -14,6 +14,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
   const [submitError, setSubmitError] = useState("");
+  const [countryCode, setCountryCode] = useState("+1");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
