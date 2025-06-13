@@ -416,10 +416,10 @@ const Careers = () => {
               <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 {culture.icon}
               </div>
-              <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-4">
+              <h3 className="text-heading-md font-semibold text-gray-900 mb-4">
                 {culture.title}
               </h3>
-              <p className="text-accenture-text-secondary leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 {culture.description}
               </p>
             </div>
