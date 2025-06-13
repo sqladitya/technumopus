@@ -197,7 +197,7 @@ const Leadership = () => {
                   key={index}
                   className="text-center bg-white rounded-xl shadow-lg p-6 border border-gray-100"
                 >
-                  <div className="w-20 h-20 bg-tech-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-accenture-purple rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-xl font-bold text-white">
                       {leader.name
                         .split(" ")
