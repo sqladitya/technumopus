@@ -278,10 +278,10 @@ const Careers = () => {
               <div className="w-16 h-16 bg-accenture-purple rounded-xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 {benefit.icon}
               </div>
-              <h3 className="text-heading-md font-semibold text-gray-900 mb-4">
+              <h3 className="text-heading-md font-semibold text-gray-900 group-hover:text-gray-900 mb-4">
                 {benefit.title}
               </h3>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 group-hover:text-gray-700 leading-relaxed">
                 {benefit.description}
               </p>
             </div>
