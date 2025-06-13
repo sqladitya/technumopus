@@ -225,7 +225,7 @@ export const FormSubmissionsViewer = () => {
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-gray-500">
-                    {formatDate(submission.submittedAt)}
+                    {formatDate(submission.created_at)}
                   </p>
                 </div>
               </div>
