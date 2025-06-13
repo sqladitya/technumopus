@@ -158,7 +158,7 @@ const Leadership = () => {
                           {leader.specialties.map((specialty, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1 bg-tech-primary/10 text-tech-primary rounded-full text-sm font-medium"
+                              className="px-3 py-1 bg-accenture-purple/10 text-accenture-purple rounded-full text-sm font-medium"
                             >
                               {specialty}
                             </span>
