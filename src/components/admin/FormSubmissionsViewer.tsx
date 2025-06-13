@@ -239,8 +239,8 @@ export const FormSubmissionsViewer = () => {
                   {submission.category && (
                     <span>Category: {submission.category}</span>
                   )}
-                  {submission.projectType && (
-                    <span>Project: {submission.projectType}</span>
+                  {submission.project_type && (
+                    <span>Project: {submission.project_type}</span>
                   )}
                   {submission.budget && (
                     <span>Budget: {submission.budget}</span>
