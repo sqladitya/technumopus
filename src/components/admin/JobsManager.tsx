@@ -485,9 +485,14 @@ export const JobsManager = () => {
               <div className="flex gap-4 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-accenture-purple text-white py-3 px-6 rounded-lg font-medium hover:bg-accenture-purple-dark transition-colors"
+                  disabled={submitting}
+                  className="flex-1 bg-accenture-purple text-white py-3 px-6 rounded-lg font-medium hover:bg-accenture-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {editingJob ? "Update Job" : "Create Job"}
+                  {submitting
+                    ? "Saving..."
+                    : editingJob
+                      ? "Update Job"
+                      : "Create Job"}
                 </button>
                 <button
                   type="button"
