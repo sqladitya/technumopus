@@ -367,11 +367,11 @@ const Careers = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 lg:w-48">
-                  <button className="px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col gap-3 lg:flex-row lg:gap-2 lg:w-auto">
+                  <button className="px-4 py-2 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 text-sm">
                     Apply Now
                   </button>
-                  <button className="px-6 py-3 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300">
+                  <button className="px-4 py-2 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300 text-sm">
                     Learn More
                   </button>
                 </div>
