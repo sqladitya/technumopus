@@ -295,7 +295,7 @@ const Careers = () => {
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             OPEN POSITIONS
           </div>
-          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
             Current Opportunities
           </h2>
           <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
