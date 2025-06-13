@@ -169,16 +169,18 @@ export const CountryCodeSelect = ({
         onClick={() => setIsOpen(!isOpen)}
         disabled={disabled}
         className={`
-          flex items-center gap-2 px-3 py-3 border rounded-lg transition-colors duration-300
+          flex items-center gap-2 px-3 py-3 border rounded-lg transition-colors duration-300 min-w-0 w-full
           ${baseClasses} ${hoverClasses}
           ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
           focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple
         `}
       >
-        <span className="text-lg">{selectedCountry.flag}</span>
-        <span className="font-medium">{selectedCountry.dialCode}</span>
+        <span className="text-lg flex-shrink-0">{selectedCountry.flag}</span>
+        <span className="font-medium flex-shrink-0">
+          {selectedCountry.dialCode}
+        </span>
         <svg
-          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -203,7 +205,7 @@ export const CountryCodeSelect = ({
           {/* Dropdown */}
           <div
             className={`
-            absolute top-full left-0 mt-1 w-80 max-h-80 border rounded-lg shadow-lg z-50 overflow-hidden
+            absolute top-full left-0 mt-1 w-48 max-h-80 border rounded-lg shadow-lg z-50 overflow-hidden
             ${dropdownClasses}
           `}
           >
@@ -256,19 +258,14 @@ export const CountryCodeSelect = ({
                       }
                     `}
                   >
-                    <span className="text-lg">{country.flag}</span>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium truncate">
-                          {country.name}
-                        </span>
-                        <span
-                          className={`text-sm font-mono ${isDarkMode ? "text-white/80" : "text-gray-600"}`}
-                        >
-                          {country.dialCode}
-                        </span>
-                      </div>
-                    </div>
+                    <span className="text-lg flex-shrink-0">
+                      {country.flag}
+                    </span>
+                    <span
+                      className={`text-sm font-mono flex-1 ${isDarkMode ? "text-white" : "text-gray-900"}`}
+                    >
+                      {country.dialCode}
+                    </span>
                   </button>
                 ))
               )}
