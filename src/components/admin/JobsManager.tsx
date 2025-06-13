@@ -251,9 +251,11 @@ export const JobsManager = () => {
                 </p>
 
                 <div className="flex items-center gap-6 text-sm text-gray-500">
-                  <span>Salary: {job.salary}</span>
-                  <span>Applications: {job.applications}</span>
-                  <span>Created: {job.createdAt}</span>
+                  <span>Salary: {job.salary || "Not specified"}</span>
+                  <span>Applications: {job.applications_count}</span>
+                  <span>
+                    Created: {new Date(job.created_at).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
 
