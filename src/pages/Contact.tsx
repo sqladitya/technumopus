@@ -464,14 +464,22 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-white mb-2">
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={consultationForm.phone}
-                      onChange={handleConsultationChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                      placeholder="Your phone number"
-                    />
+                    <div className="flex gap-2">
+                      <CountryCodeSelect
+                        value={consultationCountryCode}
+                        onChange={setConsultationCountryCode}
+                        isDarkMode={true}
+                        className="flex-shrink-0"
+                      />
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={consultationForm.phone}
+                        onChange={handleConsultationChange}
+                        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                        placeholder="Your phone number"
+                      />
+                    </div>
                   </div>
                 </div>
 
