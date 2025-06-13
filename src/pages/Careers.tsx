@@ -325,7 +325,7 @@ const Careers = () => {
                     </span>
                   </div>
 
-                  <p className="text-accenture-text-secondary mb-4 flex items-center gap-2">
+                  <p className="text-gray-600 mb-4 flex items-center gap-2">
                     <svg
                       className="w-4 h-4"
                       fill="none"
