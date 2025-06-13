@@ -25,7 +25,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Create email body with all form data
     const emailBody = `
 Hi Technum Opus Team,
@@ -50,7 +50,7 @@ ${formData.name}
 
     // Create mailto link
     const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`${formData.category || 'General Inquiry'} - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
-    
+
     // Open email client
     window.location.href = mailtoLink;
   };
@@ -207,7 +207,6 @@ ${formData.name}
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </Link>
             <a
               href="tel:+15551234567"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
@@ -226,7 +225,7 @@ ${formData.name}
                 />
               </svg>
               Call Now
-            </Link>
+            </a>
           </div>
         </div>
       </Section>
