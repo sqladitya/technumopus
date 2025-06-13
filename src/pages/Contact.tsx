@@ -1105,7 +1105,7 @@ const Contact = () => {
               </svg>
             </button>
             <a
-              href="tel:+919910040134"
+              href="mailto:hello@technumopus.com"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
             >
               <svg
