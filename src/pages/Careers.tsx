@@ -259,7 +259,7 @@ const Careers = () => {
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             BENEFITS & PERKS
           </div>
-          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
             Why Work With Us
           </h2>
           <p className="text-body-xl text-gray-600 max-w-3xl mx-auto">
@@ -314,7 +314,7 @@ const Careers = () => {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-4 mb-4">
-                    <h3 className="text-heading-md font-semibold text-gray-900">
+                    <h3 className="text-heading-md font-semibold text-white">
                       {position.title}
                     </h3>
                     <span className="px-3 py-1.5 bg-accenture-purple/10 text-accenture-purple text-sm font-medium rounded-full border border-accenture-purple/20">
@@ -397,7 +397,7 @@ const Careers = () => {
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             OUR CULTURE
           </div>
-          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
             What Makes Us Different
           </h2>
           <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
