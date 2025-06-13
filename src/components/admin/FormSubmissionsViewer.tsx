@@ -32,19 +32,42 @@ export const FormSubmissionsViewer = () => {
   const [filterStatus, setFilterStatus] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
 
-  const updateStatus = (id: string, newStatus: ContactSubmission["status"]) => {
-    setSubmissions(
-      submissions.map((sub) =>
-        sub.id === id ? { ...sub, status: newStatus } : sub,
-      ),
-    );
+  const updateStatus = async (
+    id: number,
+    newStatus: ContactSubmission["status"],
+  ) => {
+    try {
+      const response = await adminApiClient.updateSubmissionStatus(
+        id,
+        newStatus,
+      );
+      if (response.success) {
+        setSubmissions(
+          submissions.map((sub) =>
+            sub.id === id ? response.data.submission : sub,
+          ),
+        );
+        if (selectedSubmission?.id === id) {
+          setSelectedSubmission(response.data.submission);
+        }
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    }
   };
 
-  const deleteSubmission = (id: string) => {
+  const deleteSubmission = async (id: number) => {
     if (confirm("Are you sure you want to delete this submission?")) {
-      setSubmissions(submissions.filter((sub) => sub.id !== id));
-      if (selectedSubmission?.id === id) {
-        setSelectedSubmission(null);
+      try {
+        const response = await adminApiClient.deleteSubmission(id);
+        if (response.success) {
+          setSubmissions(submissions.filter((sub) => sub.id !== id));
+          if (selectedSubmission?.id === id) {
+            setSelectedSubmission(null);
+          }
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
       }
     }
   };
