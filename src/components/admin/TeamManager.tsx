@@ -234,7 +234,10 @@ export const TeamManager = () => {
           >
             <div className="relative">
               <img
-                src={member.image}
+                src={
+                  member.image_url ||
+                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400"
+                }
                 alt={member.name}
                 className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
               />
