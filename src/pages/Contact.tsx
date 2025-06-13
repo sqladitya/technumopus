@@ -465,7 +465,7 @@ const Contact = () => {
                       value={consultationForm.phone}
                       onChange={handleConsultationChange}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                      placeholder="+91 9910040134"
+                      placeholder="Your phone number"
                     />
                   </div>
                 </div>
