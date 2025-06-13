@@ -95,6 +95,7 @@ const Contact = () => {
           category: "",
           message: "",
         });
+        setContactCountryCode("+1");
       } else {
         setSubmitError(response.message);
       }
