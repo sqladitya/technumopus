@@ -320,9 +320,9 @@ export const TeamManager = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                {member.linkedin && (
+                {member.linkedin_url && (
                   <a
-                    href={member.linkedin}
+                    href={member.linkedin_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-600"
@@ -336,9 +336,9 @@ export const TeamManager = () => {
                     </svg>
                   </a>
                 )}
-                {member.twitter && (
+                {member.twitter_url && (
                   <a
-                    href={member.twitter}
+                    href={member.twitter_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-400"
