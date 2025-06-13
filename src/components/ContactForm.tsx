@@ -172,15 +172,23 @@ const ContactForm = () => {
                 >
                   Phone
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
-                  placeholder="Your phone number"
-                />
+                <div className="flex gap-2">
+                  <CountryCodeSelect
+                    value={countryCode}
+                    onChange={setCountryCode}
+                    isDarkMode={false}
+                    className="flex-shrink-0"
+                  />
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
+                    placeholder="Your phone number"
+                  />
+                </div>
               </div>
 
               <div>
