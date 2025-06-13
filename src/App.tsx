@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import AboutUs from "./pages/About";
 import Leadership from "./pages/Leadership";
 import Careers from "./pages/Careers";
+import OpenPositions from "./pages/careers/OpenPositions";
 import NewsInsights from "./pages/NewsInsights";
 import Contact from "./pages/Contact";
 import ViewAllServices from "./pages/ViewAllServices";
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/about" element={<AboutUs />} />
             <Route path="/leadership" element={<Leadership />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/careers/open-positions" element={<OpenPositions />} />
             <Route path="/news-insights" element={<NewsInsights />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/partners" element={<Partners />} />

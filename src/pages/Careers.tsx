@@ -202,7 +202,7 @@ const Careers = () => {
       title: "Work-Life Balance",
       description:
         "Flexible schedules and remote work options to maintain a healthy work-life balance.",
-      icon: "⚖️",
+      icon: "⚖���",
     },
   ];
 
@@ -225,7 +225,7 @@ const Careers = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              to="#open-positions"
+              to="/careers/open-positions"
               className="group inline-flex items-center gap-3 px-10 py-5 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 text-xl"
             >
               View Open Positions
@@ -492,7 +492,7 @@ const Careers = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              to="#open-positions"
+              to="/careers/open-positions"
               className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-accenture-purple rounded-lg font-semibold hover:bg-accenture-gray-50 transition-all duration-300 hover:scale-105 text-xl"
             >
               View Open Positions
