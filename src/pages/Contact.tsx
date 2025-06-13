@@ -236,7 +236,7 @@ const Contact = () => {
         </svg>
       ),
       title: "Phone",
-      details: ["+91 9910040134", "+91 9910040135"],
+      details: ["Available on request"],
       description: "Call us during business hours (9 AM - 6 PM IST)",
     },
     {
