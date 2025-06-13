@@ -385,9 +385,12 @@ const Careers = () => {
             Don't see a role that fits? We're always looking for talented
             individuals.
           </p>
-          <button className="px-10 py-4 bg-accenture-purple text-white rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105">
+          <a
+            href="mailto:hr@technumopus.com?subject=Resume Submission&body=Hi HR Team,%0D%0A%0D%0APlease find my resume attached. I am interested in exploring opportunities with Technum Opus.%0D%0A%0D%0AThank you for your consideration.%0D%0A%0D%0ABest regards"
+            className="inline-block px-10 py-4 bg-accenture-purple text-white rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+          >
             Send Your Resume
-          </button>
+          </a>
         </div>
       </Section>
 
