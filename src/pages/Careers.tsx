@@ -314,7 +314,7 @@ const Careers = () => {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-4 mb-4">
-                    <h3 className="text-heading-md font-semibold text-accenture-text-primary">
+                    <h3 className="text-heading-md font-semibold text-gray-900">
                       {position.title}
                     </h3>
                     <span className="px-3 py-1.5 bg-accenture-purple/10 text-accenture-purple text-sm font-medium rounded-full border border-accenture-purple/20">
