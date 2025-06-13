@@ -407,16 +407,16 @@ ${formData.name}
 
           {/* Contact Information */}
           <div className="space-y-8 animate-fade-in">
-            <div className="bg-white rounded-xl shadow-accenture p-6 border border-accenture-purple/20">
-              <div className="inline-flex items-center gap-2 bg-accenture-purple/10 text-accenture-purple rounded-full px-4 py-2 mb-4">
-                <span className="text-sm font-bold uppercase tracking-wider">
+            <div className="bg-accenture-black rounded-xl shadow-accenture p-6 border border-accenture-purple/20">
+              <div className="inline-flex items-center gap-2 bg-accenture-purple rounded-full px-4 py-2 mb-4">
+                <span className="text-sm font-bold text-white uppercase tracking-wider">
                   Contact Info
                 </span>
               </div>
-              <h3 className="text-heading-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-heading-lg font-semibold text-white mb-4">
                 Get In Touch
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-white/80 leading-relaxed mb-8">
                 Have questions about our services? Need a custom solution? Our
                 team is here to help you succeed with personalized support.
               </p>
@@ -426,7 +426,7 @@ ${formData.name}
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl shadow-accenture p-6 border border-accenture-purple/20 hover:shadow-accenture-lg hover:border-accenture-purple/40 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+                  className="bg-accenture-black rounded-xl shadow-accenture p-6 border border-accenture-purple/20 hover:shadow-accenture-lg hover:border-accenture-purple/40 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
@@ -434,10 +434,10 @@ ${formData.name}
                       {info.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-heading-md font-semibold text-gray-900 mb-1">
+                      <h4 className="text-heading-md font-semibold text-white mb-1">
                         {info.title}
                       </h4>
-                      <p className="text-sm text-gray-600 mb-3">
+                      <p className="text-sm text-white/60 mb-3">
                         {info.description}
                       </p>
                       <div className="space-y-1">
@@ -526,15 +526,15 @@ ${formData.name}
       </Section>
 
       {/* FAQ Section */}
-      <Section className="bg-white">
+      <Section className="bg-accenture-black">
         <div className="text-center mb-16 animate-fade-in">
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             FAQ
           </div>
-          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
             Frequently Asked Questions
           </h2>
-          <p className="text-body-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-body-xl text-white/80 max-w-3xl mx-auto">
             Quick answers to questions you might have about our services and
             working with us.
           </p>
@@ -544,13 +544,13 @@ ${formData.name}
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-accenture-gray-50 border border-accenture-purple/20 rounded-xl p-6 hover:shadow-accenture hover:border-accenture-purple/40 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              className="bg-white/10 border border-accenture-purple/20 rounded-xl p-6 hover:shadow-accenture hover:border-accenture-purple/40 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <h3 className="text-heading-md font-semibold text-gray-900 mb-3">
+              <h3 className="text-heading-md font-semibold text-white mb-3">
                 {faq.question}
               </h3>
-              <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              <p className="text-white/80 leading-relaxed">{faq.answer}</p>
             </div>
           ))}
         </div>
