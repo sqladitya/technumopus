@@ -121,7 +121,9 @@ const Contact = () => {
         name: consultationForm.name,
         email: consultationForm.email,
         company: consultationForm.company,
-        phone: consultationForm.phone,
+        phone: consultationForm.phone
+          ? `${consultationCountryCode} ${consultationForm.phone}`
+          : "",
         projectType: consultationForm.projectType,
         budget: consultationForm.budget,
         timeline: consultationForm.timeline,
