@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Section } from "@/components/ContentSections";
+import { submitContactForm, submitConsultationForm } from "@/lib/googleSheets";
+import { CountryCodeSelect } from "@/components/ui/country-code-select";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -29,6 +31,19 @@ const Contact = () => {
 
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
+  // Loading and feedback states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConsultationSubmitting, setIsConsultationSubmitting] =
+    useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [consultationMessage, setConsultationMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
+  const [consultationError, setConsultationError] = useState("");
+
+  // Country code states
+  const [contactCountryCode, setContactCountryCode] = useState("+1");
+  const [consultationCountryCode, setConsultationCountryCode] = useState("+1");
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -51,79 +66,105 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create email body with all form data
-    const emailBody = `
-Hi Technum Opus Team,
+    // Clear previous messages
+    setSubmitMessage("");
+    setSubmitError("");
+    setIsSubmitting(true);
 
-I hope this message finds you well. I am reaching out regarding ${formData.category || "a general inquiry"}.
+    try {
+      const response = await submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone ? `${contactCountryCode} ${formData.phone}` : "",
+        category: formData.category,
+        message: formData.message,
+      });
 
-Contact Information:
-- Name: ${formData.name}
-- Email: ${formData.email}
-- Company: ${formData.company || "Not specified"}
-- Phone: ${formData.phone || "Not provided"}
-- Inquiry Type: ${formData.category}
-
-Message:
-${formData.message}
-
-Thank you for your time and consideration. I look forward to hearing from you soon.
-
-Best regards,
-${formData.name}
-    `.trim();
-
-    // Create mailto link
-    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`${formData.category || "General Inquiry"} - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
-
-    // Open email client
-    window.location.href = mailtoLink;
+      if (response.success) {
+        setSubmitMessage(response.message);
+        // Clear form on success
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          category: "",
+          message: "",
+        });
+        setContactCountryCode("+1");
+      } else {
+        setSubmitError(response.message);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitError(
+        "Something went wrong. Please try again or contact us directly.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleConsultationSubmit = (e: React.FormEvent) => {
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create email body for consultation
-    const emailBody = `
-Hi Technum Opus Team,
+    // Clear previous messages
+    setConsultationMessage("");
+    setConsultationError("");
+    setIsConsultationSubmitting(true);
 
-I would like to schedule a consultation with your team.
+    try {
+      const response = await submitConsultationForm({
+        name: consultationForm.name,
+        email: consultationForm.email,
+        company: consultationForm.company,
+        phone: consultationForm.phone
+          ? `${consultationCountryCode} ${consultationForm.phone}`
+          : "",
+        projectType: consultationForm.projectType,
+        budget: consultationForm.budget,
+        timeline: consultationForm.timeline,
+        preferredDate: consultationForm.preferredDate,
+        preferredTime: consultationForm.preferredTime,
+        message: consultationForm.message,
+      });
 
-Contact Information:
-- Name: ${consultationForm.name}
-- Email: ${consultationForm.email}
-- Company: ${consultationForm.company || "Not specified"}
-- Phone: ${consultationForm.phone || "Not provided"}
-
-Project Details:
-- Project Type: ${consultationForm.projectType}
-- Budget Range: ${consultationForm.budget}
-- Timeline: ${consultationForm.timeline}
-
-Preferred Meeting:
-- Date: ${consultationForm.preferredDate || "Flexible"}
-- Time: ${consultationForm.preferredTime || "Flexible"}
-
-Additional Information:
-${consultationForm.message || "No additional information provided"}
-
-Please let me know your availability for a consultation.
-
-Best regards,
-${consultationForm.name}
-    `.trim();
-
-    // Create mailto link
-    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`Consultation Request - ${consultationForm.name}`)}&body=${encodeURIComponent(emailBody)}`;
-
-    // Open email client
-    window.location.href = mailtoLink;
-
-    // Close modal
-    setIsConsultationModalOpen(false);
+      if (response.success) {
+        setConsultationMessage(response.message);
+        // Clear form on success
+        setConsultationForm({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          projectType: "",
+          budget: "",
+          timeline: "",
+          preferredDate: "",
+          preferredTime: "",
+          message: "",
+        });
+        setConsultationCountryCode("+1");
+        // Close modal after a brief delay to show success message
+        setTimeout(() => {
+          setIsConsultationModalOpen(false);
+          setConsultationMessage("");
+        }, 3000);
+      } else {
+        setConsultationError(response.message);
+      }
+    } catch (error) {
+      console.error("Consultation form submission error:", error);
+      setConsultationError(
+        "Something went wrong. Please try again or contact us directly.",
+      );
+    } finally {
+      setIsConsultationSubmitting(false);
+    }
   };
 
   const categories = [
@@ -204,7 +245,7 @@ ${consultationForm.name}
         </svg>
       ),
       title: "Phone",
-      details: ["+91 9910040134", "+91 9910040135"],
+      details: ["Available on request"],
       description: "Call us during business hours (9 AM - 6 PM IST)",
     },
     {
@@ -332,6 +373,49 @@ ${consultationForm.name}
                 </button>
               </div>
 
+              {/* Success/Error Messages */}
+              {consultationMessage && (
+                <div className="bg-green-500/20 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg mb-6">
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {consultationMessage}
+                  </div>
+                </div>
+              )}
+
+              {consultationError && (
+                <div className="bg-red-500/20 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg mb-6">
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    {consultationError}
+                  </div>
+                </div>
+              )}
+
               <form onSubmit={handleConsultationSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -384,14 +468,22 @@ ${consultationForm.name}
                     <label className="block text-sm font-medium text-white mb-2">
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={consultationForm.phone}
-                      onChange={handleConsultationChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                      placeholder="+91 9910040134"
-                    />
+                    <div className="flex gap-2">
+                      <CountryCodeSelect
+                        value={consultationCountryCode}
+                        onChange={setConsultationCountryCode}
+                        isDarkMode={true}
+                        className="flex-shrink-0"
+                      />
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={consultationForm.phone}
+                        onChange={handleConsultationChange}
+                        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                        placeholder="Your phone number"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -518,9 +610,29 @@ ${consultationForm.name}
                 <div className="flex gap-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+                    disabled={isConsultationSubmitting}
+                    className="flex-1 bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    Schedule Consultation
+                    {isConsultationSubmitting ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <svg
+                          className="w-5 h-5 animate-spin"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                          />
+                        </svg>
+                        Scheduling...
+                      </div>
+                    ) : (
+                      "Schedule Consultation"
+                    )}
                   </button>
                   <button
                     type="button"
@@ -571,7 +683,7 @@ ${consultationForm.name}
               </svg>
             </a>
             <a
-              href="tel:+919910040134"
+              href="mailto:hello@technumopus.com"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
             >
               <svg
@@ -584,10 +696,10 @@ ${consultationForm.name}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              Call Now
+              Email Us
             </a>
           </div>
         </div>
@@ -625,6 +737,49 @@ ${consultationForm.name}
                 customized proposal for your needs.
               </p>
             </div>
+
+            {/* Success/Error Messages */}
+            {submitMessage && (
+              <div className="bg-green-500/20 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg mb-6">
+                <div className="flex items-center gap-2">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {submitMessage}
+                </div>
+              </div>
+            )}
+
+            {submitError && (
+              <div className="bg-red-500/20 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg mb-6">
+                <div className="flex items-center gap-2">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {submitError}
+                </div>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -693,15 +848,23 @@ ${consultationForm.name}
                   >
                     Phone Number
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
-                    placeholder="+91 9910040134"
-                  />
+                  <div className="flex gap-2">
+                    <CountryCodeSelect
+                      value={contactCountryCode}
+                      onChange={setContactCountryCode}
+                      isDarkMode={true}
+                      className="flex-shrink-0"
+                    />
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="Your phone number"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -753,9 +916,29 @@ ${consultationForm.name}
 
               <button
                 type="submit"
-                className="w-full bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark hover:shadow-purple transition-all duration-300 hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark hover:shadow-purple transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Send Message
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <svg
+                      className="w-5 h-5 animate-spin"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </button>
 
               <p className="text-white/60 text-sm text-center">
@@ -947,7 +1130,7 @@ ${consultationForm.name}
               </svg>
             </button>
             <a
-              href="tel:+919910040134"
+              href="mailto:hello@technumopus.com"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
             >
               <svg
@@ -960,10 +1143,10 @@ ${consultationForm.name}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              Call Now
+              Email Us
             </a>
           </div>
         </div>

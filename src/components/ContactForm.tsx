@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { submitSimpleContactForm } from "@/lib/googleSheets";
+import { CountryCodeSelect } from "@/components/ui/country-code-select";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,10 +10,49 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Loading and feedback states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
+  const [countryCode, setCountryCode] = useState("+1");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+
+    // Clear previous messages
+    setSubmitMessage("");
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      const response = await submitSimpleContactForm({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone ? `${countryCode} ${formData.phone}` : "",
+        message: formData.message,
+      });
+
+      if (response.success) {
+        setSubmitMessage(response.message);
+        // Clear form on success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        setCountryCode("+1");
+      } else {
+        setSubmitError(response.message);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitError(
+        "Something went wrong. Please try again or contact us directly.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -42,6 +83,50 @@ const ContactForm = () => {
             <h3 className="text-xl sm:text-2xl font-bold text-tech-text-dark mb-6">
               Leave Us A Message
             </h3>
+
+            {/* Success/Error Messages */}
+            {submitMessage && (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
+                <div className="flex items-center gap-2">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {submitMessage}
+                </div>
+              </div>
+            )}
+
+            {submitError && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+                <div className="flex items-center gap-2">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {submitError}
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
@@ -88,15 +173,23 @@ const ContactForm = () => {
                 >
                   Phone
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
-                  placeholder="+1 (555) 123-4567"
-                />
+                <div className="flex gap-2">
+                  <CountryCodeSelect
+                    value={countryCode}
+                    onChange={setCountryCode}
+                    isDarkMode={false}
+                    className="flex-shrink-0"
+                  />
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tech-green focus:border-transparent transition-colors duration-300 text-sm sm:text-base"
+                    placeholder="Your phone number"
+                  />
+                </div>
               </div>
 
               <div>
@@ -120,9 +213,29 @@ const ContactForm = () => {
 
               <button
                 type="submit"
-                className="w-full bg-tech-orange hover:bg-tech-orange-hover text-white font-semibold py-3 sm:py-3.5 px-6 rounded-lg transition-colors duration-300 transform hover:scale-[1.02] text-sm sm:text-base"
+                disabled={isSubmitting}
+                className="w-full bg-tech-orange hover:bg-tech-orange-hover text-white font-semibold py-3 sm:py-3.5 px-6 rounded-lg transition-colors duration-300 transform hover:scale-[1.02] text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Send Message
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <svg
+                      className="w-5 h-5 animate-spin"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </button>
             </form>
           </div>
@@ -222,9 +335,7 @@ const ContactForm = () => {
                     Call Us
                   </h4>
                   <p className="text-sm sm:text-base text-tech-text-medium">
-                    +1 (555) 123-4567
-                    <br />
-                    +1 (555) 987-6543
+                    Available on request
                   </p>
                 </div>
               </div>
