@@ -165,7 +165,7 @@ const Leadership = () => {
                           ))}
                         </div>
                       </div>
-                      <div className="text-sm text-tech-text-light">
+                      <div className="text-sm text-accenture-text-tertiary">
                         <strong>Experience:</strong> {leader.experience}
                       </div>
                     </div>
