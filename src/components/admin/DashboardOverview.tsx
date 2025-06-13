@@ -1,144 +1,175 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { adminApiClient } from "@/lib/adminApi";
 
 export const DashboardOverview = () => {
   const [timeRange, setTimeRange] = useState("7d");
+  const [dashboardData, setDashboardData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const stats = [
-    {
-      title: "Total Page Views",
-      value: "24,567",
-      change: "+12%",
-      trend: "up",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Contact Form Submissions",
-      value: "89",
-      change: "+23%",
-      trend: "up",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Job Applications",
-      value: "156",
-      change: "+8%",
-      trend: "up",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m-8 0h8m-8 0v10a2 2 0 002 2h4a2 2 0 002-2V6"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Active Projects",
-      value: "12",
-      change: "+2",
-      trend: "up",
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-      ),
-    },
+  // Fetch dashboard data from API
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const fetchDashboardData = async () => {
+    try {
+      setLoading(true);
+      const response = await adminApiClient.getDashboardOverview();
+      if (response.success) {
+        setDashboardData(response.data);
+      } else {
+        setError("Failed to fetch dashboard data");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const stats = dashboardData
+    ? [
+        {
+          title: "Page Views (7 days)",
+          value:
+            dashboardData.overview?.page_views_7_days?.toLocaleString() || "0",
+          change: "+12%",
+          trend: "up",
+          icon: (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          ),
+        },
+        {
+          title: "Contact Form Submissions",
+          value:
+            dashboardData.overview?.total_submissions?.toLocaleString() || "0",
+          change: `+${dashboardData.overview?.submissions_last_7_days || 0} this week`,
+          trend: "up",
+          icon: (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+              />
+            </svg>
+          ),
+        },
+        {
+          title: "Job Applications",
+          value:
+            dashboardData.overview?.total_applications?.toLocaleString() || "0",
+          change: "+8%",
+          trend: "up",
+          icon: (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m-8 0h8m-8 0v10a2 2 0 002 2h4a2 2 0 002-2V6"
+              />
+            </svg>
+          ),
+        },
+        {
+          title: "Active Jobs",
+          value: dashboardData.overview?.active_jobs?.toLocaleString() || "0",
+          change: `${dashboardData.overview?.active_team_members || 0} team members`,
+          trend: "up",
+          icon: (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              />
+            </svg>
+          ),
+        },
+      ]
+    : [];
+
+  const recentActivity =
+    dashboardData?.recent_activity?.map((activity: any) => ({
+      type: activity.type,
+      message: activity.message,
+      time: new Date(activity.created_at).toLocaleDateString(),
+      icon: activity.type === "contact" ? "📧" : "📅",
+    })) || [];
+
+  const topPages = dashboardData?.top_pages?.slice(0, 5).map((page: any) => ({
+    page: page.page_path,
+    views: page.views?.toLocaleString() || "0",
+    percentage: "0%", // Calculate percentage if total is available
+  })) || [
+    { page: "/", views: "0", percentage: "0%" },
+    { page: "/services", views: "0", percentage: "0%" },
+    { page: "/contact", views: "0", percentage: "0%" },
+    { page: "/careers", views: "0", percentage: "0%" },
+    { page: "/about", views: "0", percentage: "0%" },
   ];
 
-  const recentActivity = [
-    {
-      type: "contact",
-      message: "New contact form submission from John Doe",
-      time: "2 hours ago",
-      icon: "📧",
-    },
-    {
-      type: "job",
-      message: "Sarah Johnson applied for Senior Developer position",
-      time: "4 hours ago",
-      icon: "💼",
-    },
-    {
-      type: "team",
-      message: "Team member profile updated - Mike Chen",
-      time: "6 hours ago",
-      icon: "👤",
-    },
-    {
-      type: "consultation",
-      message: "New consultation request from TechCorp",
-      time: "1 day ago",
-      icon: "📅",
-    },
-    {
-      type: "contact",
-      message: "Partnership inquiry from StartupXYZ",
-      time: "2 days ago",
-      icon: "🤝",
-    },
-  ];
-
-  const topPages = [
-    { page: "/", views: "8,234", percentage: "33%" },
-    { page: "/services", views: "5,123", percentage: "21%" },
-    { page: "/contact", views: "3,456", percentage: "14%" },
-    { page: "/careers", views: "2,789", percentage: "11%" },
-    { page: "/about", views: "2,234", percentage: "9%" },
-  ];
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accenture-purple"></div>
+        <span className="ml-2 text-gray-600">Loading dashboard...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
+      {/* Error Display */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+          <button
+            onClick={() => setError(null)}
+            className="ml-2 text-red-500 hover:text-red-700"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>

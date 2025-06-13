@@ -1,61 +1,32 @@
-import { useState } from "react";
-
-interface TeamMember {
-  id: string;
-  name: string;
-  position: string;
-  department: string;
-  email: string;
-  phone: string;
-  bio: string;
-  skills: string[];
-  image: string;
-  linkedin: string;
-  twitter: string;
-  joinDate: string;
-  status: "active" | "inactive";
-}
+import { useState, useEffect } from "react";
+import { adminApiClient, TeamMember } from "@/lib/adminApi";
 
 export const TeamManager = () => {
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      position: "Chief Technology Officer",
-      department: "Leadership",
-      email: "sarah@technumopus.com",
-      phone: "+1 (555) 123-4567",
-      bio: "Sarah leads our technical vision with over 15 years of experience in software architecture and team leadership.",
-      skills: [
-        "Leadership",
-        "Software Architecture",
-        "Cloud Computing",
-        "Team Management",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400",
-      linkedin: "https://linkedin.com/in/sarahjohnson",
-      twitter: "https://twitter.com/sarahjohnson",
-      joinDate: "2022-01-15",
-      status: "active",
-    },
-    {
-      id: "2",
-      name: "Michael Chen",
-      position: "Senior Full Stack Developer",
-      department: "Engineering",
-      email: "michael@technumopus.com",
-      phone: "+1 (555) 234-5678",
-      bio: "Michael is a passionate developer with expertise in modern web technologies and scalable systems.",
-      skills: ["React", "Node.js", "Python", "AWS", "Docker"],
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-      linkedin: "https://linkedin.com/in/michaelchen",
-      twitter: "https://twitter.com/michaelchen",
-      joinDate: "2022-03-10",
-      status: "active",
-    },
-  ]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Fetch team members from API
+  useEffect(() => {
+    fetchTeamMembers();
+  }, []);
+
+  const fetchTeamMembers = async () => {
+    try {
+      setLoading(true);
+      const response = await adminApiClient.getTeamMembers();
+      if (response.success) {
+        setTeamMembers(response.data.team_members);
+      } else {
+        setError("Failed to fetch team members");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const [showModal, setShowModal] = useState(false);
   const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
@@ -72,42 +43,59 @@ export const TeamManager = () => {
     twitter: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
 
-    const memberData: TeamMember = {
-      id: editingMember?.id || Date.now().toString(),
-      name: formData.name,
-      position: formData.position,
-      department: formData.department,
-      email: formData.email,
-      phone: formData.phone,
-      bio: formData.bio,
-      skills: formData.skills
-        .split(",")
-        .map((s) => s.trim())
-        .filter((s) => s),
-      image:
-        formData.image ||
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-      linkedin: formData.linkedin,
-      twitter: formData.twitter,
-      joinDate:
-        editingMember?.joinDate || new Date().toISOString().split("T")[0],
-      status: "active",
-    };
+    try {
+      const memberData = {
+        name: formData.name,
+        position: formData.position,
+        department: formData.department,
+        email: formData.email,
+        phone: formData.phone,
+        bio: formData.bio,
+        skills: formData.skills
+          .split(",")
+          .map((s) => s.trim())
+          .filter((s) => s),
+        image_url:
+          formData.image ||
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+        linkedin_url: formData.linkedin,
+        twitter_url: formData.twitter,
+        status: "active" as const,
+        join_date:
+          editingMember?.join_date || new Date().toISOString().split("T")[0],
+      };
 
-    if (editingMember) {
-      setTeamMembers(
-        teamMembers.map((member) =>
-          member.id === editingMember.id ? memberData : member,
-        ),
-      );
-    } else {
-      setTeamMembers([...teamMembers, memberData]);
+      if (editingMember) {
+        const response = await adminApiClient.updateTeamMember(
+          editingMember.id,
+          memberData,
+        );
+        if (response.success) {
+          setTeamMembers(
+            teamMembers.map((member) =>
+              member.id === editingMember.id
+                ? response.data.team_member
+                : member,
+            ),
+          );
+        }
+      } else {
+        const response = await adminApiClient.createTeamMember(memberData);
+        if (response.success) {
+          setTeamMembers([...teamMembers, response.data.team_member]);
+        }
+      }
+
+      resetForm();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setSubmitting(false);
     }
-
-    resetForm();
   };
 
   const resetForm = () => {
@@ -134,37 +122,78 @@ export const TeamManager = () => {
       position: member.position,
       department: member.department,
       email: member.email,
-      phone: member.phone,
+      phone: member.phone || "",
       bio: member.bio,
       skills: member.skills.join(", "),
-      image: member.image,
-      linkedin: member.linkedin,
-      twitter: member.twitter,
+      image: member.image_url || "",
+      linkedin: member.linkedin_url || "",
+      twitter: member.twitter_url || "",
     });
     setShowModal(true);
   };
 
-  const toggleMemberStatus = (memberId: string) => {
-    setTeamMembers(
-      teamMembers.map((member) =>
-        member.id === memberId
-          ? {
-              ...member,
-              status: member.status === "active" ? "inactive" : "active",
-            }
-          : member,
-      ),
-    );
-  };
+  const toggleMemberStatus = async (memberId: number) => {
+    try {
+      const member = teamMembers.find((m) => m.id === memberId);
+      if (!member) return;
 
-  const deleteMember = (memberId: string) => {
-    if (confirm("Are you sure you want to remove this team member?")) {
-      setTeamMembers(teamMembers.filter((member) => member.id !== memberId));
+      const newStatus = member.status === "active" ? "inactive" : "active";
+      const response = await adminApiClient.updateTeamMemberStatus(
+        memberId,
+        newStatus,
+      );
+
+      if (response.success) {
+        setTeamMembers(
+          teamMembers.map((m) =>
+            m.id === memberId ? response.data.team_member : m,
+          ),
+        );
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
     }
   };
 
+  const deleteMember = async (memberId: number) => {
+    if (confirm("Are you sure you want to remove this team member?")) {
+      try {
+        const response = await adminApiClient.deleteTeamMember(memberId);
+        if (response.success) {
+          setTeamMembers(
+            teamMembers.filter((member) => member.id !== memberId),
+          );
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      }
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accenture-purple"></div>
+        <span className="ml-2 text-gray-600">Loading team members...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
+      {/* Error Display */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+          <button
+            onClick={() => setError(null)}
+            className="ml-2 text-red-500 hover:text-red-700"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -205,7 +234,10 @@ export const TeamManager = () => {
           >
             <div className="relative">
               <img
-                src={member.image}
+                src={
+                  member.image_url ||
+                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400"
+                }
                 alt={member.name}
                 className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
               />
@@ -243,22 +275,24 @@ export const TeamManager = () => {
                 </svg>
                 {member.email}
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                {member.phone}
-              </div>
+              {member.phone && (
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  {member.phone}
+                </div>
+              )}
             </div>
 
             <p className="text-gray-600 text-sm mb-4 line-clamp-3">
@@ -286,9 +320,9 @@ export const TeamManager = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                {member.linkedin && (
+                {member.linkedin_url && (
                   <a
-                    href={member.linkedin}
+                    href={member.linkedin_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-600"
@@ -302,9 +336,9 @@ export const TeamManager = () => {
                     </svg>
                   </a>
                 )}
-                {member.twitter && (
+                {member.twitter_url && (
                   <a
-                    href={member.twitter}
+                    href={member.twitter_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-400"
@@ -557,9 +591,14 @@ export const TeamManager = () => {
               <div className="flex gap-4 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-accenture-purple text-white py-3 px-6 rounded-lg font-medium hover:bg-accenture-purple-dark transition-colors"
+                  disabled={submitting}
+                  className="flex-1 bg-accenture-purple text-white py-3 px-6 rounded-lg font-medium hover:bg-accenture-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {editingMember ? "Update Member" : "Add Member"}
+                  {submitting
+                    ? "Saving..."
+                    : editingMember
+                      ? "Update Member"
+                      : "Add Member"}
                 </button>
                 <button
                   type="button"

@@ -1,105 +1,73 @@
-import { useState } from "react";
-
-interface ContactSubmission {
-  id: string;
-  type: "contact" | "consultation";
-  name: string;
-  email: string;
-  company?: string;
-  phone?: string;
-  category?: string;
-  projectType?: string;
-  budget?: string;
-  timeline?: string;
-  preferredDate?: string;
-  preferredTime?: string;
-  message: string;
-  submittedAt: string;
-  status: "new" | "read" | "responded" | "archived";
-}
+import { useState, useEffect } from "react";
+import { adminApiClient, ContactSubmission } from "@/lib/adminApi";
 
 export const FormSubmissionsViewer = () => {
-  const [submissions, setSubmissions] = useState<ContactSubmission[]>([
-    {
-      id: "1",
-      type: "contact",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      company: "TechCorp Inc.",
-      phone: "+91 9876543210",
-      category: "SaaS Development",
-      message:
-        "We're looking for a custom SaaS solution for our inventory management. We need scalable architecture and modern UI/UX design.",
-      submittedAt: "2024-01-20T10:30:00Z",
-      status: "new",
-    },
-    {
-      id: "2",
-      type: "consultation",
-      name: "Sarah Wilson",
-      email: "sarah@startup.com",
-      company: "StartupXYZ",
-      phone: "+91 8765432109",
-      projectType: "Cloud Migration",
-      budget: "$50K - $100K",
-      timeline: "3-6 months",
-      preferredDate: "2024-01-25",
-      preferredTime: "2:00 PM - 3:00 PM",
-      message:
-        "We need help migrating our legacy systems to AWS. Currently running on-premise servers with about 50TB of data.",
-      submittedAt: "2024-01-19T14:15:00Z",
-      status: "read",
-    },
-    {
-      id: "3",
-      type: "contact",
-      name: "Michael Kumar",
-      email: "m.kumar@enterprise.com",
-      company: "Enterprise Solutions Ltd.",
-      phone: "+91 7654321098",
-      category: "SAP Consulting",
-      message:
-        "Looking for SAP implementation services for our manufacturing unit. We have about 500 employees and multiple locations.",
-      submittedAt: "2024-01-18T09:45:00Z",
-      status: "responded",
-    },
-    {
-      id: "4",
-      type: "consultation",
-      name: "Priya Sharma",
-      email: "priya@healthtech.in",
-      company: "HealthTech India",
-      phone: "+91 6543210987",
-      projectType: "Custom Software Development",
-      budget: "$100K - $250K",
-      timeline: "6-12 months",
-      preferredDate: "2024-01-22",
-      preferredTime: "10:00 AM - 11:00 AM",
-      message:
-        "We're developing a telemedicine platform and need expertise in HIPAA compliance, real-time video integration, and scalable backend architecture.",
-      submittedAt: "2024-01-17T16:20:00Z",
-      status: "new",
-    },
-  ]);
+  const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch submissions from API
+  useEffect(() => {
+    fetchSubmissions();
+  }, []);
+
+  const fetchSubmissions = async () => {
+    try {
+      setLoading(true);
+      const response = await adminApiClient.getSubmissions();
+      if (response.success) {
+        setSubmissions(response.data.submissions);
+      } else {
+        setError("Failed to fetch submissions");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const [selectedSubmission, setSelectedSubmission] =
     useState<ContactSubmission | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
 
-  const updateStatus = (id: string, newStatus: ContactSubmission["status"]) => {
-    setSubmissions(
-      submissions.map((sub) =>
-        sub.id === id ? { ...sub, status: newStatus } : sub,
-      ),
-    );
+  const updateStatus = async (
+    id: number,
+    newStatus: ContactSubmission["status"],
+  ) => {
+    try {
+      const response = await adminApiClient.updateSubmissionStatus(
+        id,
+        newStatus,
+      );
+      if (response.success) {
+        setSubmissions(
+          submissions.map((sub) =>
+            sub.id === id ? response.data.submission : sub,
+          ),
+        );
+        if (selectedSubmission?.id === id) {
+          setSelectedSubmission(response.data.submission);
+        }
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    }
   };
 
-  const deleteSubmission = (id: string) => {
+  const deleteSubmission = async (id: number) => {
     if (confirm("Are you sure you want to delete this submission?")) {
-      setSubmissions(submissions.filter((sub) => sub.id !== id));
-      if (selectedSubmission?.id === id) {
-        setSelectedSubmission(null);
+      try {
+        const response = await adminApiClient.deleteSubmission(id);
+        if (response.success) {
+          setSubmissions(submissions.filter((sub) => sub.id !== id));
+          if (selectedSubmission?.id === id) {
+            setSelectedSubmission(null);
+          }
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
       }
     }
   };
@@ -129,8 +97,30 @@ export const FormSubmissionsViewer = () => {
     return new Date(dateString).toLocaleString();
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accenture-purple"></div>
+        <span className="ml-2 text-gray-600">Loading submissions...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
+      {/* Error Display */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+          <button
+            onClick={() => setError(null)}
+            className="ml-2 text-red-500 hover:text-red-700"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -235,7 +225,7 @@ export const FormSubmissionsViewer = () => {
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-gray-500">
-                    {formatDate(submission.submittedAt)}
+                    {formatDate(submission.created_at)}
                   </p>
                 </div>
               </div>
@@ -249,8 +239,8 @@ export const FormSubmissionsViewer = () => {
                   {submission.category && (
                     <span>Category: {submission.category}</span>
                   )}
-                  {submission.projectType && (
-                    <span>Project: {submission.projectType}</span>
+                  {submission.project_type && (
+                    <span>Project: {submission.project_type}</span>
                   )}
                   {submission.budget && (
                     <span>Budget: {submission.budget}</span>
@@ -404,13 +394,13 @@ export const FormSubmissionsViewer = () => {
                   </div>
                 )}
 
-                {selectedSubmission.projectType && (
+                {selectedSubmission.project_type && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">
                       Project Type
                     </label>
                     <p className="text-gray-900">
-                      {selectedSubmission.projectType}
+                      {selectedSubmission.project_type}
                     </p>
                   </div>
                 )}
@@ -435,24 +425,24 @@ export const FormSubmissionsViewer = () => {
                   </div>
                 )}
 
-                {selectedSubmission.preferredDate && (
+                {selectedSubmission.preferred_date && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">
                       Preferred Date
                     </label>
                     <p className="text-gray-900">
-                      {selectedSubmission.preferredDate}
+                      {selectedSubmission.preferred_date}
                     </p>
                   </div>
                 )}
 
-                {selectedSubmission.preferredTime && (
+                {selectedSubmission.preferred_time && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">
                       Preferred Time
                     </label>
                     <p className="text-gray-900">
-                      {selectedSubmission.preferredTime}
+                      {selectedSubmission.preferred_time}
                     </p>
                   </div>
                 )}
@@ -471,7 +461,7 @@ export const FormSubmissionsViewer = () => {
                     Submitted
                   </label>
                   <p className="text-gray-900">
-                    {formatDate(selectedSubmission.submittedAt)}
+                    {formatDate(selectedSubmission.created_at)}
                   </p>
                 </div>
 

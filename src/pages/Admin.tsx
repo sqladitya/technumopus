@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -7,23 +7,71 @@ import { JobsManager } from "@/components/admin/JobsManager";
 import { TeamManager } from "@/components/admin/TeamManager";
 import { FormSubmissionsViewer } from "@/components/admin/FormSubmissionsViewer";
 import { DashboardOverview } from "@/components/admin/DashboardOverview";
+import { adminApiClient, isAuthenticated } from "@/lib/adminApi";
 
 type AdminSection = "dashboard" | "jobs" | "team" | "forms";
 
 const Admin = () => {
   const [activeSection, setActiveSection] = useState<AdminSection>("dashboard");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loginForm, setLoginForm] = useState({ username: "", password: "" });
   const [loginError, setLoginError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState<any>(null);
 
-  // Simple authentication (in production, use proper auth)
-  const handleLogin = (e: React.FormEvent) => {
+  // Check authentication on mount
+  useEffect(() => {
+    checkAuthentication();
+  }, []);
+
+  const checkAuthentication = async () => {
+    try {
+      if (isAuthenticated()) {
+        const response = await adminApiClient.getCurrentUser();
+        if (response.success) {
+          setAuthenticated(true);
+          setCurrentUser(response.data.user);
+        } else {
+          adminApiClient.clearToken();
+        }
+      }
+    } catch (error) {
+      adminApiClient.clearToken();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginForm.username === "admin" && loginForm.password === "admin123") {
-      setIsAuthenticated(true);
-      setLoginError("");
-    } else {
-      setLoginError("Invalid credentials");
+    setLoginLoading(true);
+    setLoginError("");
+
+    try {
+      const response = await adminApiClient.login(loginForm);
+      if (response.success) {
+        setAuthenticated(true);
+        setCurrentUser(response.data?.user);
+        setLoginForm({ username: "", password: "" });
+      } else {
+        setLoginError("Invalid credentials");
+      }
+    } catch (error) {
+      setLoginError(error instanceof Error ? error.message : "Login failed");
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await adminApiClient.logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      setAuthenticated(false);
+      setCurrentUser(null);
     }
   };
 
@@ -106,8 +154,17 @@ const Admin = () => {
     },
   ];
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-accenture-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accenture-purple"></div>
+      </div>
+    );
+  }
+
   // Login page
-  if (!isAuthenticated) {
+  if (!authenticated) {
     return (
       <div className="min-h-screen bg-accenture-black flex items-center justify-center">
         <div className="max-w-md w-full mx-4">
@@ -167,9 +224,10 @@ const Admin = () => {
 
               <button
                 type="submit"
-                className="w-full bg-accenture-purple text-white py-3 px-6 rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+                disabled={loginLoading}
+                className="w-full bg-accenture-purple text-white py-3 px-6 rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Sign In
+                {loginLoading ? "Signing In..." : "Sign In"}
               </button>
             </form>
 
@@ -217,25 +275,32 @@ const Admin = () => {
               all aspects of your platform from this centralized dashboard.
             </p>
           </div>
-          <button
-            onClick={() => setIsAuthenticated(false)}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div className="flex items-center gap-4">
+            {currentUser && (
+              <span className="text-white/80 text-sm">
+                Welcome, {currentUser.full_name || currentUser.username}
+              </span>
+            )}
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-              />
-            </svg>
-            Logout
-          </button>
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+              Logout
+            </button>
+          </div>
         </div>
       </Section>
 

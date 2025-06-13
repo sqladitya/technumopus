@@ -1,58 +1,34 @@
-import { useState } from "react";
-
-interface Job {
-  id: string;
-  title: string;
-  department: string;
-  location: string;
-  type: string;
-  level: string;
-  description: string;
-  requirements: string[];
-  benefits: string[];
-  salary: string;
-  status: "active" | "paused" | "closed";
-  createdAt: string;
-  applications: number;
-}
+import { useState, useEffect } from "react";
+import { adminApiClient, Job } from "@/lib/adminApi";
 
 export const JobsManager = () => {
-  const [jobs, setJobs] = useState<Job[]>([
-    {
-      id: "1",
-      title: "Senior Full Stack Developer",
-      department: "Engineering",
-      location: "Remote",
-      type: "Full-time",
-      level: "Senior",
-      description:
-        "We're looking for a Senior Full Stack Developer to join our growing engineering team...",
-      requirements: ["5+ years experience", "React/Node.js", "AWS experience"],
-      benefits: ["Health insurance", "Remote work", "Equity options"],
-      salary: "$120,000 - $150,000",
-      status: "active",
-      createdAt: "2024-01-15",
-      applications: 23,
-    },
-    {
-      id: "2",
-      title: "DevOps Engineer",
-      department: "Engineering",
-      location: "New York, NY",
-      type: "Full-time",
-      level: "Mid-level",
-      description: "Join our DevOps team to help scale our infrastructure...",
-      requirements: ["3+ years DevOps", "Kubernetes", "CI/CD pipelines"],
-      benefits: ["Health insurance", "401k matching", "Learning budget"],
-      salary: "$100,000 - $130,000",
-      status: "active",
-      createdAt: "2024-01-10",
-      applications: 15,
-    },
-  ]);
-
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Fetch jobs from API
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    try {
+      setLoading(true);
+      const response = await adminApiClient.getJobs();
+      if (response.success) {
+        setJobs(response.data.jobs);
+      } else {
+        setError("Failed to fetch jobs");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
   const [formData, setFormData] = useState({
     title: "",
     department: "",
@@ -65,33 +41,46 @@ export const JobsManager = () => {
     salary: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
 
-    const jobData: Job = {
-      id: editingJob?.id || Date.now().toString(),
-      title: formData.title,
-      department: formData.department,
-      location: formData.location,
-      type: formData.type,
-      level: formData.level,
-      description: formData.description,
-      requirements: formData.requirements.split("\n").filter((r) => r.trim()),
-      benefits: formData.benefits.split("\n").filter((b) => b.trim()),
-      salary: formData.salary,
-      status: "active",
-      createdAt:
-        editingJob?.createdAt || new Date().toISOString().split("T")[0],
-      applications: editingJob?.applications || 0,
-    };
+    try {
+      const jobData = {
+        title: formData.title,
+        department: formData.department,
+        location: formData.location,
+        type: formData.type,
+        level: formData.level,
+        description: formData.description,
+        requirements: formData.requirements.split("\n").filter((r) => r.trim()),
+        benefits: formData.benefits.split("\n").filter((b) => b.trim()),
+        salary: formData.salary,
+        status: "active" as const,
+      };
 
-    if (editingJob) {
-      setJobs(jobs.map((job) => (job.id === editingJob.id ? jobData : job)));
-    } else {
-      setJobs([...jobs, jobData]);
+      if (editingJob) {
+        const response = await adminApiClient.updateJob(editingJob.id, jobData);
+        if (response.success) {
+          setJobs(
+            jobs.map((job) =>
+              job.id === editingJob.id ? response.data.job : job,
+            ),
+          );
+        }
+      } else {
+        const response = await adminApiClient.createJob(jobData);
+        if (response.success) {
+          setJobs([...jobs, response.data.job]);
+        }
+      }
+
+      resetForm();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setSubmitting(false);
     }
-
-    resetForm();
   };
 
   const resetForm = () => {
@@ -121,29 +110,64 @@ export const JobsManager = () => {
       description: job.description,
       requirements: job.requirements.join("\n"),
       benefits: job.benefits.join("\n"),
-      salary: job.salary,
+      salary: job.salary || "",
     });
     setShowModal(true);
   };
 
-  const toggleJobStatus = (jobId: string) => {
-    setJobs(
-      jobs.map((job) =>
-        job.id === jobId
-          ? { ...job, status: job.status === "active" ? "paused" : "active" }
-          : job,
-      ),
-    );
-  };
+  const toggleJobStatus = async (jobId: number) => {
+    try {
+      const job = jobs.find((j) => j.id === jobId);
+      if (!job) return;
 
-  const deleteJob = (jobId: string) => {
-    if (confirm("Are you sure you want to delete this job?")) {
-      setJobs(jobs.filter((job) => job.id !== jobId));
+      const newStatus = job.status === "active" ? "paused" : "active";
+      const response = await adminApiClient.updateJobStatus(jobId, newStatus);
+
+      if (response.success) {
+        setJobs(jobs.map((j) => (j.id === jobId ? response.data.job : j)));
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
     }
   };
 
+  const deleteJob = async (jobId: number) => {
+    if (confirm("Are you sure you want to delete this job?")) {
+      try {
+        const response = await adminApiClient.deleteJob(jobId);
+        if (response.success) {
+          setJobs(jobs.filter((job) => job.id !== jobId));
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      }
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accenture-purple"></div>
+        <span className="ml-2 text-gray-600">Loading jobs...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
+      {/* Error Display */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+          <button
+            onClick={() => setError(null)}
+            className="ml-2 text-red-500 hover:text-red-700"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -227,9 +251,11 @@ export const JobsManager = () => {
                 </p>
 
                 <div className="flex items-center gap-6 text-sm text-gray-500">
-                  <span>Salary: {job.salary}</span>
-                  <span>Applications: {job.applications}</span>
-                  <span>Created: {job.createdAt}</span>
+                  <span>Salary: {job.salary || "Not specified"}</span>
+                  <span>Applications: {job.applications_count}</span>
+                  <span>
+                    Created: {new Date(job.created_at).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
 
@@ -459,9 +485,14 @@ export const JobsManager = () => {
               <div className="flex gap-4 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-accenture-purple text-white py-3 px-6 rounded-lg font-medium hover:bg-accenture-purple-dark transition-colors"
+                  disabled={submitting}
+                  className="flex-1 bg-accenture-purple text-white py-3 px-6 rounded-lg font-medium hover:bg-accenture-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {editingJob ? "Update Job" : "Create Job"}
+                  {submitting
+                    ? "Saving..."
+                    : editingJob
+                      ? "Update Job"
+                      : "Create Job"}
                 </button>
                 <button
                   type="button"
