@@ -324,9 +324,7 @@ const ContactForm = () => {
                     Call Us
                   </h4>
                   <p className="text-sm sm:text-base text-tech-text-medium">
-                    +1 (555) 123-4567
-                    <br />
-                    +1 (555) 987-6543
+                    Available on request
                   </p>
                 </div>
               </div>
