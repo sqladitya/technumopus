@@ -41,33 +41,46 @@ export const JobsManager = () => {
     salary: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
 
-    const jobData: Job = {
-      id: editingJob?.id || Date.now().toString(),
-      title: formData.title,
-      department: formData.department,
-      location: formData.location,
-      type: formData.type,
-      level: formData.level,
-      description: formData.description,
-      requirements: formData.requirements.split("\n").filter((r) => r.trim()),
-      benefits: formData.benefits.split("\n").filter((b) => b.trim()),
-      salary: formData.salary,
-      status: "active",
-      createdAt:
-        editingJob?.createdAt || new Date().toISOString().split("T")[0],
-      applications: editingJob?.applications || 0,
-    };
+    try {
+      const jobData = {
+        title: formData.title,
+        department: formData.department,
+        location: formData.location,
+        type: formData.type,
+        level: formData.level,
+        description: formData.description,
+        requirements: formData.requirements.split("\n").filter((r) => r.trim()),
+        benefits: formData.benefits.split("\n").filter((b) => b.trim()),
+        salary: formData.salary,
+        status: "active" as const,
+      };
 
-    if (editingJob) {
-      setJobs(jobs.map((job) => (job.id === editingJob.id ? jobData : job)));
-    } else {
-      setJobs([...jobs, jobData]);
+      if (editingJob) {
+        const response = await adminApiClient.updateJob(editingJob.id, jobData);
+        if (response.success) {
+          setJobs(
+            jobs.map((job) =>
+              job.id === editingJob.id ? response.data.job : job,
+            ),
+          );
+        }
+      } else {
+        const response = await adminApiClient.createJob(jobData);
+        if (response.success) {
+          setJobs([...jobs, response.data.job]);
+        }
+      }
+
+      resetForm();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setSubmitting(false);
     }
-
-    resetForm();
   };
 
   const resetForm = () => {
