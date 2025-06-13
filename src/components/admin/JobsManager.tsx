@@ -115,19 +115,32 @@ export const JobsManager = () => {
     setShowModal(true);
   };
 
-  const toggleJobStatus = (jobId: string) => {
-    setJobs(
-      jobs.map((job) =>
-        job.id === jobId
-          ? { ...job, status: job.status === "active" ? "paused" : "active" }
-          : job,
-      ),
-    );
+  const toggleJobStatus = async (jobId: number) => {
+    try {
+      const job = jobs.find((j) => j.id === jobId);
+      if (!job) return;
+
+      const newStatus = job.status === "active" ? "paused" : "active";
+      const response = await adminApiClient.updateJobStatus(jobId, newStatus);
+
+      if (response.success) {
+        setJobs(jobs.map((j) => (j.id === jobId ? response.data.job : j)));
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    }
   };
 
-  const deleteJob = (jobId: string) => {
+  const deleteJob = async (jobId: number) => {
     if (confirm("Are you sure you want to delete this job?")) {
-      setJobs(jobs.filter((job) => job.id !== jobId));
+      try {
+        const response = await adminApiClient.deleteJob(jobId);
+        if (response.success) {
+          setJobs(jobs.filter((job) => job.id !== jobId));
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      }
     }
   };
 
