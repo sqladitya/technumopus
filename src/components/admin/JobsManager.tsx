@@ -5,9 +5,30 @@ export const JobsManager = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const [showModal, setShowModal] = useState(false);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Fetch jobs from API
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    try {
+      setLoading(true);
+      const response = await adminApiClient.getJobs();
+      if (response.success) {
+        setJobs(response.data.jobs);
+      } else {
+        setError("Failed to fetch jobs");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
   const [formData, setFormData] = useState({
     title: "",
     department: "",
