@@ -122,32 +122,51 @@ export const TeamManager = () => {
       position: member.position,
       department: member.department,
       email: member.email,
-      phone: member.phone,
+      phone: member.phone || "",
       bio: member.bio,
       skills: member.skills.join(", "),
-      image: member.image,
-      linkedin: member.linkedin,
-      twitter: member.twitter,
+      image: member.image_url || "",
+      linkedin: member.linkedin_url || "",
+      twitter: member.twitter_url || "",
     });
     setShowModal(true);
   };
 
-  const toggleMemberStatus = (memberId: string) => {
-    setTeamMembers(
-      teamMembers.map((member) =>
-        member.id === memberId
-          ? {
-              ...member,
-              status: member.status === "active" ? "inactive" : "active",
-            }
-          : member,
-      ),
-    );
+  const toggleMemberStatus = async (memberId: number) => {
+    try {
+      const member = teamMembers.find((m) => m.id === memberId);
+      if (!member) return;
+
+      const newStatus = member.status === "active" ? "inactive" : "active";
+      const response = await adminApiClient.updateTeamMemberStatus(
+        memberId,
+        newStatus,
+      );
+
+      if (response.success) {
+        setTeamMembers(
+          teamMembers.map((m) =>
+            m.id === memberId ? response.data.team_member : m,
+          ),
+        );
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    }
   };
 
-  const deleteMember = (memberId: string) => {
+  const deleteMember = async (memberId: number) => {
     if (confirm("Are you sure you want to remove this team member?")) {
-      setTeamMembers(teamMembers.filter((member) => member.id !== memberId));
+      try {
+        const response = await adminApiClient.deleteTeamMember(memberId);
+        if (response.success) {
+          setTeamMembers(
+            teamMembers.filter((member) => member.id !== memberId),
+          );
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+      }
     }
   };
 
