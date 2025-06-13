@@ -148,6 +148,7 @@ const Contact = () => {
           preferredTime: "",
           message: "",
         });
+        setConsultationCountryCode("+1");
         // Close modal after a brief delay to show success message
         setTimeout(() => {
           setIsConsultationModalOpen(false);
