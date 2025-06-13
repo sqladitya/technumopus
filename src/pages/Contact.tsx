@@ -469,18 +469,20 @@ const Contact = () => {
                       Phone Number
                     </label>
                     <div className="flex gap-2">
-                      <CountryCodeSelect
-                        value={consultationCountryCode}
-                        onChange={setConsultationCountryCode}
-                        isDarkMode={true}
-                        className="flex-shrink-0"
-                      />
+                      <div className="w-24 flex-shrink-0">
+                        <CountryCodeSelect
+                          value={consultationCountryCode}
+                          onChange={setConsultationCountryCode}
+                          isDarkMode={true}
+                          className="w-full"
+                        />
+                      </div>
                       <input
                         type="tel"
                         name="phone"
                         value={consultationForm.phone}
                         onChange={handleConsultationChange}
-                        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                        className="flex-1 min-w-0 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                         placeholder="Your phone number"
                       />
                     </div>
@@ -849,19 +851,21 @@ const Contact = () => {
                     Phone Number
                   </label>
                   <div className="flex gap-2">
-                    <CountryCodeSelect
-                      value={contactCountryCode}
-                      onChange={setContactCountryCode}
-                      isDarkMode={true}
-                      className="flex-shrink-0"
-                    />
+                    <div className="w-24 flex-shrink-0">
+                      <CountryCodeSelect
+                        value={contactCountryCode}
+                        onChange={setContactCountryCode}
+                        isDarkMode={true}
+                        className="w-full"
+                      />
+                    </div>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      className="flex-1 min-w-0 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
                       placeholder="Your phone number"
                     />
                   </div>
