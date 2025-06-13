@@ -30,6 +30,15 @@ const Contact = () => {
 
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
+  // Loading and feedback states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConsultationSubmitting, setIsConsultationSubmitting] =
+    useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [consultationMessage, setConsultationMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
+  const [consultationError, setConsultationError] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
