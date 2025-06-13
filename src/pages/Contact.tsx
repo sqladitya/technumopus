@@ -103,47 +103,59 @@ const Contact = () => {
     }
   };
 
-  const handleConsultationSubmit = (e: React.FormEvent) => {
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create email body for consultation
-    const emailBody = `
-Hi Technum Opus Team,
+    // Clear previous messages
+    setConsultationMessage("");
+    setConsultationError("");
+    setIsConsultationSubmitting(true);
 
-I would like to schedule a consultation with your team.
+    try {
+      const response = await submitConsultationForm({
+        name: consultationForm.name,
+        email: consultationForm.email,
+        company: consultationForm.company,
+        phone: consultationForm.phone,
+        projectType: consultationForm.projectType,
+        budget: consultationForm.budget,
+        timeline: consultationForm.timeline,
+        preferredDate: consultationForm.preferredDate,
+        preferredTime: consultationForm.preferredTime,
+        message: consultationForm.message,
+      });
 
-Contact Information:
-- Name: ${consultationForm.name}
-- Email: ${consultationForm.email}
-- Company: ${consultationForm.company || "Not specified"}
-- Phone: ${consultationForm.phone || "Not provided"}
-
-Project Details:
-- Project Type: ${consultationForm.projectType}
-- Budget Range: ${consultationForm.budget}
-- Timeline: ${consultationForm.timeline}
-
-Preferred Meeting:
-- Date: ${consultationForm.preferredDate || "Flexible"}
-- Time: ${consultationForm.preferredTime || "Flexible"}
-
-Additional Information:
-${consultationForm.message || "No additional information provided"}
-
-Please let me know your availability for a consultation.
-
-Best regards,
-${consultationForm.name}
-    `.trim();
-
-    // Create mailto link
-    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`Consultation Request - ${consultationForm.name}`)}&body=${encodeURIComponent(emailBody)}`;
-
-    // Open email client
-    window.location.href = mailtoLink;
-
-    // Close modal
-    setIsConsultationModalOpen(false);
+      if (response.success) {
+        setConsultationMessage(response.message);
+        // Clear form on success
+        setConsultationForm({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          projectType: "",
+          budget: "",
+          timeline: "",
+          preferredDate: "",
+          preferredTime: "",
+          message: "",
+        });
+        // Close modal after a brief delay to show success message
+        setTimeout(() => {
+          setIsConsultationModalOpen(false);
+          setConsultationMessage("");
+        }, 3000);
+      } else {
+        setConsultationError(response.message);
+      }
+    } catch (error) {
+      console.error("Consultation form submission error:", error);
+      setConsultationError(
+        "Something went wrong. Please try again or contact us directly.",
+      );
+    } finally {
+      setIsConsultationSubmitting(false);
+    }
   };
 
   const categories = [
