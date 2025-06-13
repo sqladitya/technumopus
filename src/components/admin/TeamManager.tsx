@@ -1,61 +1,32 @@
-import { useState } from "react";
-
-interface TeamMember {
-  id: string;
-  name: string;
-  position: string;
-  department: string;
-  email: string;
-  phone: string;
-  bio: string;
-  skills: string[];
-  image: string;
-  linkedin: string;
-  twitter: string;
-  joinDate: string;
-  status: "active" | "inactive";
-}
+import { useState, useEffect } from "react";
+import { adminApiClient, TeamMember } from "@/lib/adminApi";
 
 export const TeamManager = () => {
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      position: "Chief Technology Officer",
-      department: "Leadership",
-      email: "sarah@technumopus.com",
-      phone: "+1 (555) 123-4567",
-      bio: "Sarah leads our technical vision with over 15 years of experience in software architecture and team leadership.",
-      skills: [
-        "Leadership",
-        "Software Architecture",
-        "Cloud Computing",
-        "Team Management",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400",
-      linkedin: "https://linkedin.com/in/sarahjohnson",
-      twitter: "https://twitter.com/sarahjohnson",
-      joinDate: "2022-01-15",
-      status: "active",
-    },
-    {
-      id: "2",
-      name: "Michael Chen",
-      position: "Senior Full Stack Developer",
-      department: "Engineering",
-      email: "michael@technumopus.com",
-      phone: "+1 (555) 234-5678",
-      bio: "Michael is a passionate developer with expertise in modern web technologies and scalable systems.",
-      skills: ["React", "Node.js", "Python", "AWS", "Docker"],
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-      linkedin: "https://linkedin.com/in/michaelchen",
-      twitter: "https://twitter.com/michaelchen",
-      joinDate: "2022-03-10",
-      status: "active",
-    },
-  ]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Fetch team members from API
+  useEffect(() => {
+    fetchTeamMembers();
+  }, []);
+
+  const fetchTeamMembers = async () => {
+    try {
+      setLoading(true);
+      const response = await adminApiClient.getTeamMembers();
+      if (response.success) {
+        setTeamMembers(response.data.team_members);
+      } else {
+        setError("Failed to fetch team members");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const [showModal, setShowModal] = useState(false);
   const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
