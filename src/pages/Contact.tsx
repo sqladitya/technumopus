@@ -40,6 +40,10 @@ const Contact = () => {
   const [submitError, setSubmitError] = useState("");
   const [consultationError, setConsultationError] = useState("");
 
+  // Country code states
+  const [contactCountryCode, setContactCountryCode] = useState("+1");
+  const [consultationCountryCode, setConsultationCountryCode] = useState("+1");
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
