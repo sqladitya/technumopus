@@ -394,13 +394,13 @@ export const FormSubmissionsViewer = () => {
                   </div>
                 )}
 
-                {selectedSubmission.projectType && (
+                {selectedSubmission.project_type && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">
                       Project Type
                     </label>
                     <p className="text-gray-900">
-                      {selectedSubmission.projectType}
+                      {selectedSubmission.project_type}
                     </p>
                   </div>
                 )}
@@ -425,24 +425,24 @@ export const FormSubmissionsViewer = () => {
                   </div>
                 )}
 
-                {selectedSubmission.preferredDate && (
+                {selectedSubmission.preferred_date && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">
                       Preferred Date
                     </label>
                     <p className="text-gray-900">
-                      {selectedSubmission.preferredDate}
+                      {selectedSubmission.preferred_date}
                     </p>
                   </div>
                 )}
 
-                {selectedSubmission.preferredTime && (
+                {selectedSubmission.preferred_time && (
                   <div>
                     <label className="text-sm font-medium text-gray-500">
                       Preferred Time
                     </label>
                     <p className="text-gray-900">
-                      {selectedSubmission.preferredTime}
+                      {selectedSubmission.preferred_time}
                     </p>
                   </div>
                 )}
