@@ -132,7 +132,7 @@ const Leadership = () => {
                   className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:scale-105"
                 >
                   <div className="flex items-start space-x-6">
-                    <div className="w-24 h-24 bg-tech-gradient rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-24 h-24 bg-accenture-purple rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-2xl font-bold text-white">
                         {leader.name
                           .split(" ")
