@@ -41,6 +41,7 @@ const ContactForm = () => {
           phone: "",
           message: "",
         });
+        setCountryCode("+1");
       } else {
         setSubmitError(response.message);
       }
