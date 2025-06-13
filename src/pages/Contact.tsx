@@ -41,8 +41,8 @@ const Contact = () => {
   const [consultationError, setConsultationError] = useState("");
 
   // Country code states
-  const [contactCountryCode, setContactCountryCode] = useState("+1");
-  const [consultationCountryCode, setConsultationCountryCode] = useState("+1");
+  const [contactCountryCode, setContactCountryCode] = useState("+91");
+  const [consultationCountryCode, setConsultationCountryCode] = useState("+91");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -95,7 +95,7 @@ const Contact = () => {
           category: "",
           message: "",
         });
-        setContactCountryCode("+1");
+        setContactCountryCode("+91");
       } else {
         setSubmitError(response.message);
       }
@@ -148,7 +148,7 @@ const Contact = () => {
           preferredTime: "",
           message: "",
         });
-        setConsultationCountryCode("+1");
+        setConsultationCountryCode("+91");
         // Close modal after a brief delay to show success message
         setTimeout(() => {
           setIsConsultationModalOpen(false);
