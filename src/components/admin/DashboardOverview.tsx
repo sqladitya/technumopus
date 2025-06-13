@@ -134,12 +134,16 @@ export const DashboardOverview = () => {
       icon: activity.type === "contact" ? "📧" : "📅",
     })) || [];
 
-  const topPages = [
-    { page: "/", views: "8,234", percentage: "33%" },
-    { page: "/services", views: "5,123", percentage: "21%" },
-    { page: "/contact", views: "3,456", percentage: "14%" },
-    { page: "/careers", views: "2,789", percentage: "11%" },
-    { page: "/about", views: "2,234", percentage: "9%" },
+  const topPages = dashboardData?.top_pages?.slice(0, 5).map((page: any) => ({
+    page: page.page_path,
+    views: page.views?.toLocaleString() || "0",
+    percentage: "0%", // Calculate percentage if total is available
+  })) || [
+    { page: "/", views: "0", percentage: "0%" },
+    { page: "/services", views: "0", percentage: "0%" },
+    { page: "/contact", views: "0", percentage: "0%" },
+    { page: "/careers", views: "0", percentage: "0%" },
+    { page: "/about", views: "0", percentage: "0%" },
   ];
 
   return (
