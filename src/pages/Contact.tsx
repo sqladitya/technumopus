@@ -828,9 +828,29 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark hover:shadow-purple transition-all duration-300 hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark hover:shadow-purple transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Send Message
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <svg
+                      className="w-5 h-5 animate-spin"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </button>
 
               <p className="text-white/60 text-sm text-center">
