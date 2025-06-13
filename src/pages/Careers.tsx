@@ -348,21 +348,19 @@ const Careers = () => {
                     {position.location}
                   </p>
 
-                  <p className="text-accenture-text-secondary mb-6 leading-relaxed">
+                  <p className="text-gray-700 mb-6 leading-relaxed">
                     {position.description}
                   </p>
 
                   <div>
-                    <h4 className="text-body-sm font-semibold text-accenture-text-tertiary uppercase tracking-wider mb-3">
+                    <h4 className="text-body-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">
                       Requirements:
                     </h4>
                     <ul className="space-y-2">
                       {position.requirements.map((req, idx) => (
                         <li key={idx} className="flex items-start gap-3">
                           <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-accenture-text-secondary">
-                            {req}
-                          </span>
+                          <span className="text-gray-700">{req}</span>
                         </li>
                       ))}
                     </ul>
