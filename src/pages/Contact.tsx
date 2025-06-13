@@ -15,7 +15,9 @@ const Contact = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormData({
       ...formData,
@@ -30,13 +32,13 @@ const Contact = () => {
     const emailBody = `
 Hi Technum Opus Team,
 
-I hope this message finds you well. I am reaching out regarding ${formData.category || 'a general inquiry'}.
+I hope this message finds you well. I am reaching out regarding ${formData.category || "a general inquiry"}.
 
 Contact Information:
 - Name: ${formData.name}
 - Email: ${formData.email}
-- Company: ${formData.company || 'Not specified'}
-- Phone: ${formData.phone || 'Not provided'}
+- Company: ${formData.company || "Not specified"}
+- Phone: ${formData.phone || "Not provided"}
 - Inquiry Type: ${formData.category}
 
 Message:
@@ -49,7 +51,7 @@ ${formData.name}
     `.trim();
 
     // Create mailto link
-    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`${formData.category || 'General Inquiry'} - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`${formData.category || "General Inquiry"} - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
 
     // Open email client
     window.location.href = mailtoLink;
@@ -189,8 +191,8 @@ ${formData.name}
             technology solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              to="#contact-form"
+            <a
+              href="#contact-form"
               className="group inline-flex items-center gap-3 px-10 py-5 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 text-xl"
             >
               Send Message
@@ -207,6 +209,7 @@ ${formData.name}
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
+            </a>
             <a
               href="tel:+15551234567"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
@@ -564,8 +567,8 @@ ${formData.name}
             consultation and discover how we can help you achieve your goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              to="#contact-form"
+            <a
+              href="#contact-form"
               className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-accenture-purple rounded-lg font-semibold hover:bg-accenture-gray-50 transition-all duration-300 hover:scale-105 text-xl"
             >
               Schedule Consultation
@@ -582,7 +585,7 @@ ${formData.name}
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-            </Link>
+            </a>
             <a
               href="tel:+15551234567"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
@@ -601,7 +604,7 @@ ${formData.name}
                 />
               </svg>
               Call Now
-            </Link>
+            </a>
           </div>
         </div>
       </Section>
