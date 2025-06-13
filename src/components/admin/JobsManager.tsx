@@ -1,55 +1,10 @@
-import { useState } from "react";
-
-interface Job {
-  id: string;
-  title: string;
-  department: string;
-  location: string;
-  type: string;
-  level: string;
-  description: string;
-  requirements: string[];
-  benefits: string[];
-  salary: string;
-  status: "active" | "paused" | "closed";
-  createdAt: string;
-  applications: number;
-}
+import { useState, useEffect } from "react";
+import { adminApiClient, Job } from "@/lib/adminApi";
 
 export const JobsManager = () => {
-  const [jobs, setJobs] = useState<Job[]>([
-    {
-      id: "1",
-      title: "Senior Full Stack Developer",
-      department: "Engineering",
-      location: "Remote",
-      type: "Full-time",
-      level: "Senior",
-      description:
-        "We're looking for a Senior Full Stack Developer to join our growing engineering team...",
-      requirements: ["5+ years experience", "React/Node.js", "AWS experience"],
-      benefits: ["Health insurance", "Remote work", "Equity options"],
-      salary: "$120,000 - $150,000",
-      status: "active",
-      createdAt: "2024-01-15",
-      applications: 23,
-    },
-    {
-      id: "2",
-      title: "DevOps Engineer",
-      department: "Engineering",
-      location: "New York, NY",
-      type: "Full-time",
-      level: "Mid-level",
-      description: "Join our DevOps team to help scale our infrastructure...",
-      requirements: ["3+ years DevOps", "Kubernetes", "CI/CD pipelines"],
-      benefits: ["Health insurance", "401k matching", "Learning budget"],
-      salary: "$100,000 - $130,000",
-      status: "active",
-      createdAt: "2024-01-10",
-      applications: 15,
-    },
-  ]);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const [showModal, setShowModal] = useState(false);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
