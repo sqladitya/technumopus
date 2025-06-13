@@ -251,13 +251,13 @@ const Leadership = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="text-4xl font-bold text-tech-primary mb-2">
+                <div className="text-4xl font-bold text-accenture-purple mb-2">
                   150+
                 </div>
                 <div className="text-gray-600">Combined Years Experience</div>
               </div>
               <div className="text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-                <div className="text-4xl font-bold text-tech-primary mb-2">
+                <div className="text-4xl font-bold text-accenture-purple mb-2">
                   25+
                 </div>
                 <div className="text-gray-600">Industry Certifications</div>
