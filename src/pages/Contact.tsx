@@ -14,6 +14,21 @@ const Contact = () => {
     message: "",
   });
 
+  const [consultationForm, setConsultationForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    projectType: "",
+    budget: "",
+    timeline: "",
+    preferredDate: "",
+    preferredTime: "",
+    message: "",
+  });
+
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -21,6 +36,17 @@ const Contact = () => {
   ) => {
     setFormData({
       ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleConsultationChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setConsultationForm({
+      ...consultationForm,
       [e.target.name]: e.target.value,
     });
   };
@@ -57,6 +83,49 @@ ${formData.name}
     window.location.href = mailtoLink;
   };
 
+  const handleConsultationSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Create email body for consultation
+    const emailBody = `
+Hi Technum Opus Team,
+
+I would like to schedule a consultation with your team.
+
+Contact Information:
+- Name: ${consultationForm.name}
+- Email: ${consultationForm.email}
+- Company: ${consultationForm.company || "Not specified"}
+- Phone: ${consultationForm.phone || "Not provided"}
+
+Project Details:
+- Project Type: ${consultationForm.projectType}
+- Budget Range: ${consultationForm.budget}
+- Timeline: ${consultationForm.timeline}
+
+Preferred Meeting:
+- Date: ${consultationForm.preferredDate || "Flexible"}
+- Time: ${consultationForm.preferredTime || "Flexible"}
+
+Additional Information:
+${consultationForm.message || "No additional information provided"}
+
+Please let me know your availability for a consultation.
+
+Best regards,
+${consultationForm.name}
+    `.trim();
+
+    // Create mailto link
+    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`Consultation Request - ${consultationForm.name}`)}&body=${encodeURIComponent(emailBody)}`;
+
+    // Open email client
+    window.location.href = mailtoLink;
+
+    // Close modal
+    setIsConsultationModalOpen(false);
+  };
+
   const categories = [
     { value: "", label: "Select an inquiry type" },
     { value: "SAP Consulting", label: "SAP Consulting & Implementation" },
@@ -68,6 +137,53 @@ ${formData.name}
     { value: "Career Inquiry", label: "Career & Employment" },
     { value: "Support", label: "Technical Support" },
     { value: "General", label: "General Inquiry" },
+  ];
+
+  const projectTypes = [
+    { value: "", label: "Select project type" },
+    { value: "SAP Implementation", label: "SAP Implementation & Consulting" },
+    {
+      value: "Custom Software Development",
+      label: "Custom Software Development",
+    },
+    { value: "Cloud Migration", label: "Cloud Migration & Architecture" },
+    { value: "Digital Transformation", label: "Digital Transformation" },
+    { value: "System Integration", label: "System Integration" },
+    { value: "IT Infrastructure", label: "IT Infrastructure Setup" },
+    { value: "Consulting Only", label: "Consulting & Strategy Only" },
+    { value: "Other", label: "Other (Please specify in message)" },
+  ];
+
+  const budgetRanges = [
+    { value: "", label: "Select budget range" },
+    { value: "Under $10K", label: "Under $10,000" },
+    { value: "$10K - $25K", label: "$10,000 - $25,000" },
+    { value: "$25K - $50K", label: "$25,000 - $50,000" },
+    { value: "$50K - $100K", label: "$50,000 - $100,000" },
+    { value: "$100K - $250K", label: "$100,000 - $250,000" },
+    { value: "$250K+", label: "$250,000+" },
+    { value: "TBD", label: "To be discussed" },
+  ];
+
+  const timelines = [
+    { value: "", label: "Select timeline" },
+    { value: "ASAP", label: "As soon as possible" },
+    { value: "1-3 months", label: "1-3 months" },
+    { value: "3-6 months", label: "3-6 months" },
+    { value: "6-12 months", label: "6-12 months" },
+    { value: "12+ months", label: "12+ months" },
+    { value: "Flexible", label: "Flexible timeline" },
+  ];
+
+  const timeSlots = [
+    { value: "", label: "Select preferred time" },
+    { value: "9:00 AM - 10:00 AM", label: "9:00 AM - 10:00 AM" },
+    { value: "10:00 AM - 11:00 AM", label: "10:00 AM - 11:00 AM" },
+    { value: "11:00 AM - 12:00 PM", label: "11:00 AM - 12:00 PM" },
+    { value: "2:00 PM - 3:00 PM", label: "2:00 PM - 3:00 PM" },
+    { value: "3:00 PM - 4:00 PM", label: "3:00 PM - 4:00 PM" },
+    { value: "4:00 PM - 5:00 PM", label: "4:00 PM - 5:00 PM" },
+    { value: "5:00 PM - 6:00 PM", label: "5:00 PM - 6:00 PM" },
   ];
 
   const contactInfo = [
@@ -175,6 +291,250 @@ ${formData.name}
   return (
     <div className="bg-white">
       <Navigation />
+
+      {/* Consultation Modal */}
+      {isConsultationModalOpen && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="bg-accenture-black rounded-2xl shadow-accenture-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-8">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 bg-accenture-purple rounded-full px-4 py-2 mb-4">
+                    <span className="text-sm font-bold text-white uppercase tracking-wider">
+                      Schedule Consultation
+                    </span>
+                  </div>
+                  <h3 className="text-heading-lg font-semibold text-white">
+                    Book Your Free Consultation
+                  </h3>
+                  <p className="text-white/80 mt-2">
+                    Tell us about your project and we'll schedule a personalized
+                    consultation.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsConsultationModalOpen(false)}
+                  className="text-white/60 hover:text-white transition-colors p-2"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <form onSubmit={handleConsultationSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={consultationForm.name}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={consultationForm.email}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={consultationForm.company}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="Your company name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={consultationForm.phone}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white placeholder:text-white/60"
+                      placeholder="+91 9910040134"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Project Type *
+                  </label>
+                  <select
+                    name="projectType"
+                    required
+                    value={consultationForm.projectType}
+                    onChange={handleConsultationChange}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white"
+                  >
+                    {projectTypes.map((type) => (
+                      <option
+                        key={type.value}
+                        value={type.value}
+                        className="bg-accenture-black text-white"
+                      >
+                        {type.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Budget Range
+                    </label>
+                    <select
+                      name="budget"
+                      value={consultationForm.budget}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white"
+                    >
+                      {budgetRanges.map((range) => (
+                        <option
+                          key={range.value}
+                          value={range.value}
+                          className="bg-accenture-black text-white"
+                        >
+                          {range.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Timeline
+                    </label>
+                    <select
+                      name="timeline"
+                      value={consultationForm.timeline}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white"
+                    >
+                      {timelines.map((timeline) => (
+                        <option
+                          key={timeline.value}
+                          value={timeline.value}
+                          className="bg-accenture-black text-white"
+                        >
+                          {timeline.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Preferred Date
+                    </label>
+                    <input
+                      type="date"
+                      name="preferredDate"
+                      value={consultationForm.preferredDate}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Preferred Time
+                    </label>
+                    <select
+                      name="preferredTime"
+                      value={consultationForm.preferredTime}
+                      onChange={handleConsultationChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors text-white"
+                    >
+                      {timeSlots.map((slot) => (
+                        <option
+                          key={slot.value}
+                          value={slot.value}
+                          className="bg-accenture-black text-white"
+                        >
+                          {slot.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Additional Information
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    value={consultationForm.message}
+                    onChange={handleConsultationChange}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accenture-purple focus:border-accenture-purple transition-colors resize-none text-white placeholder:text-white/60"
+                    placeholder="Tell us more about your project goals and specific requirements..."
+                  />
+                </div>
+
+                <div className="flex gap-4">
+                  <button
+                    type="submit"
+                    className="flex-1 bg-accenture-purple text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+                  >
+                    Schedule Consultation
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsConsultationModalOpen(false)}
+                    className="px-6 py-4 border-2 border-white/20 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <Section className="bg-accenture-black text-white pt-24 pb-16">
@@ -567,8 +927,8 @@ ${formData.name}
             consultation and discover how we can help you achieve your goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a
-              href="#contact-form"
+            <button
+              onClick={() => setIsConsultationModalOpen(true)}
               className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-accenture-purple rounded-lg font-semibold hover:bg-accenture-gray-50 transition-all duration-300 hover:scale-105 text-xl"
             >
               Schedule Consultation
@@ -585,7 +945,7 @@ ${formData.name}
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-            </a>
+            </button>
             <a
               href="tel:+919910040134"
               className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
