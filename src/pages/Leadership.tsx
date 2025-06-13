@@ -116,10 +116,10 @@ const Leadership = () => {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-accenture-text-primary mb-6">
                 Executive Leadership
               </h2>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+              <p className="text-xl text-accenture-text-secondary max-w-3xl mx-auto">
                 Our executive team brings decades of combined experience in
                 technology, business strategy, and operational excellence.
               </p>
