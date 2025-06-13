@@ -154,8 +154,17 @@ const Admin = () => {
     },
   ];
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-accenture-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accenture-purple"></div>
+      </div>
+    );
+  }
+
   // Login page
-  if (!isAuthenticated) {
+  if (!authenticated) {
     return (
       <div className="min-h-screen bg-accenture-black flex items-center justify-center">
         <div className="max-w-md w-full mx-4">
