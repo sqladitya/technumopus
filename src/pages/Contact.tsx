@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Section } from "@/components/ContentSections";
+import { submitContactForm, submitConsultationForm } from "@/lib/googleSheets";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
