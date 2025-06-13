@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -7,23 +7,71 @@ import { JobsManager } from "@/components/admin/JobsManager";
 import { TeamManager } from "@/components/admin/TeamManager";
 import { FormSubmissionsViewer } from "@/components/admin/FormSubmissionsViewer";
 import { DashboardOverview } from "@/components/admin/DashboardOverview";
+import { adminApiClient, isAuthenticated } from "@/lib/adminApi";
 
 type AdminSection = "dashboard" | "jobs" | "team" | "forms";
 
 const Admin = () => {
   const [activeSection, setActiveSection] = useState<AdminSection>("dashboard");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loginForm, setLoginForm] = useState({ username: "", password: "" });
   const [loginError, setLoginError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState<any>(null);
 
-  // Simple authentication (in production, use proper auth)
-  const handleLogin = (e: React.FormEvent) => {
+  // Check authentication on mount
+  useEffect(() => {
+    checkAuthentication();
+  }, []);
+
+  const checkAuthentication = async () => {
+    try {
+      if (isAuthenticated()) {
+        const response = await adminApiClient.getCurrentUser();
+        if (response.success) {
+          setAuthenticated(true);
+          setCurrentUser(response.data.user);
+        } else {
+          adminApiClient.clearToken();
+        }
+      }
+    } catch (error) {
+      adminApiClient.clearToken();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginForm.username === "admin" && loginForm.password === "admin123") {
-      setIsAuthenticated(true);
-      setLoginError("");
-    } else {
-      setLoginError("Invalid credentials");
+    setLoginLoading(true);
+    setLoginError("");
+
+    try {
+      const response = await adminApiClient.login(loginForm);
+      if (response.success) {
+        setAuthenticated(true);
+        setCurrentUser(response.data?.user);
+        setLoginForm({ username: "", password: "" });
+      } else {
+        setLoginError("Invalid credentials");
+      }
+    } catch (error) {
+      setLoginError(error instanceof Error ? error.message : "Login failed");
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await adminApiClient.logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      setAuthenticated(false);
+      setCurrentUser(null);
     }
   };
 
