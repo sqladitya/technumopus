@@ -79,7 +79,7 @@ const Contact = () => {
         name: formData.name,
         email: formData.email,
         company: formData.company,
-        phone: formData.phone,
+        phone: formData.phone ? `${contactCountryCode} ${formData.phone}` : "",
         category: formData.category,
         message: formData.message,
       });
