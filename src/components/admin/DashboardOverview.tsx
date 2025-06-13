@@ -126,38 +126,13 @@ export const DashboardOverview = () => {
       ]
     : [];
 
-  const recentActivity = [
-    {
-      type: "contact",
-      message: "New contact form submission from John Doe",
-      time: "2 hours ago",
-      icon: "📧",
-    },
-    {
-      type: "job",
-      message: "Sarah Johnson applied for Senior Developer position",
-      time: "4 hours ago",
-      icon: "💼",
-    },
-    {
-      type: "team",
-      message: "Team member profile updated - Mike Chen",
-      time: "6 hours ago",
-      icon: "👤",
-    },
-    {
-      type: "consultation",
-      message: "New consultation request from TechCorp",
-      time: "1 day ago",
-      icon: "📅",
-    },
-    {
-      type: "contact",
-      message: "Partnership inquiry from StartupXYZ",
-      time: "2 days ago",
-      icon: "🤝",
-    },
-  ];
+  const recentActivity =
+    dashboardData?.recent_activity?.map((activity: any) => ({
+      type: activity.type,
+      message: activity.message,
+      time: new Date(activity.created_at).toLocaleDateString(),
+      icon: activity.type === "contact" ? "📧" : "📅",
+    })) || [];
 
   const topPages = [
     { page: "/", views: "8,234", percentage: "33%" },
