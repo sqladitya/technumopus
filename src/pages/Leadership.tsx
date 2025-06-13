@@ -226,7 +226,7 @@ const Leadership = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="text-xs text-tech-text-light">
+                  <div className="text-xs text-accenture-text-tertiary">
                     <strong>Experience:</strong> {leader.experience}
                   </div>
                 </div>
