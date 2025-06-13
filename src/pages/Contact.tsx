@@ -61,36 +61,46 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create email body with all form data
-    const emailBody = `
-Hi Technum Opus Team,
+    // Clear previous messages
+    setSubmitMessage("");
+    setSubmitError("");
+    setIsSubmitting(true);
 
-I hope this message finds you well. I am reaching out regarding ${formData.category || "a general inquiry"}.
+    try {
+      const response = await submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        category: formData.category,
+        message: formData.message,
+      });
 
-Contact Information:
-- Name: ${formData.name}
-- Email: ${formData.email}
-- Company: ${formData.company || "Not specified"}
-- Phone: ${formData.phone || "Not provided"}
-- Inquiry Type: ${formData.category}
-
-Message:
-${formData.message}
-
-Thank you for your time and consideration. I look forward to hearing from you soon.
-
-Best regards,
-${formData.name}
-    `.trim();
-
-    // Create mailto link
-    const mailtoLink = `mailto:hello@technumopus.com?subject=${encodeURIComponent(`${formData.category || "General Inquiry"} - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
-
-    // Open email client
-    window.location.href = mailtoLink;
+      if (response.success) {
+        setSubmitMessage(response.message);
+        // Clear form on success
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          category: "",
+          message: "",
+        });
+      } else {
+        setSubmitError(response.message);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitError(
+        "Something went wrong. Please try again or contact us directly.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleConsultationSubmit = (e: React.FormEvent) => {
