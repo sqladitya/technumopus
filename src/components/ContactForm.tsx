@@ -28,7 +28,7 @@ const ContactForm = () => {
       const response = await submitSimpleContactForm({
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        phone: formData.phone ? `${countryCode} ${formData.phone}` : "",
         message: formData.message,
       });
 
