@@ -110,7 +110,7 @@ export const JobsManager = () => {
       description: job.description,
       requirements: job.requirements.join("\n"),
       benefits: job.benefits.join("\n"),
-      salary: job.salary,
+      salary: job.salary || "",
     });
     setShowModal(true);
   };
