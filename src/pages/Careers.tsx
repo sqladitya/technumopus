@@ -381,7 +381,7 @@ const Careers = () => {
         </div>
 
         <div className="text-center mt-16 animate-fade-in">
-          <p className="text-accenture-text-secondary mb-6">
+          <p className="text-gray-700 mb-6">
             Don't see a role that fits? We're always looking for talented
             individuals.
           </p>
