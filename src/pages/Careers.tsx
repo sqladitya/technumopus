@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import SectionBackground from "@/components/SectionBackground";
-import { Link } from "react-router-dom";
+import { Section } from "@/components/ContentSections";
 
 const Careers = () => {
   const benefits = [
@@ -190,267 +190,45 @@ const Careers = () => {
       title: "Innovation First",
       description:
         "We encourage creative thinking and provide time for exploring new technologies and solutions.",
+      icon: "💡",
     },
     {
       title: "Growth Mindset",
       description:
         "Continuous learning and development opportunities to advance your career and skills.",
+      icon: "🚀",
     },
     {
       title: "Work-Life Balance",
       description:
         "Flexible schedules and remote work options to maintain a healthy work-life balance.",
+      icon: "⚖️",
     },
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100/50">
+    <div className="bg-white">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[80vh] flex items-center">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
-              Join Our Team
-            </span>
+      <Section className="bg-accenture-black text-white pt-24 pb-16">
+        <div className="text-center animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
+            CAREERS
           </div>
-
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-none">
-            Build Your
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
-              Future
-            </span>
-            <br />
-            With Us
+          <h1 className="text-display font-semibold text-white mb-8">
+            Build Your Future With Us
           </h1>
-
-          <p className="text-xl md:text-2xl font-light text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-body-xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-12">
             Be part of a team that's shaping the future of technology and
             transforming businesses worldwide through innovation and excellence.
           </p>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <SectionBackground variant="light">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
-                  Benefits & Perks
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Why Work With Us
-              </h2>
-              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-                We believe in investing in our people with comprehensive
-                benefits and a culture that promotes growth and innovation.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {benefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 text-center"
-                >
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center text-white mx-auto mb-6">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </SectionBackground>
-
-      {/* Open Positions */}
-      <SectionBackground variant="gradient">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
-                  Open Positions
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Current Opportunities
-              </h2>
-              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-                Explore our current job openings and find the perfect role to
-                advance your career in technology.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {openPositions.map((position, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-4 mb-4">
-                        <h3 className="text-2xl font-bold text-gray-900">
-                          {position.title}
-                        </h3>
-                        <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
-                          {position.department}
-                        </span>
-                        <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
-                          {position.type}
-                        </span>
-                      </div>
-
-                      <p className="text-gray-600 mb-4 flex items-center gap-2">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                        {position.location}
-                      </p>
-
-                      <p className="text-gray-700 mb-6 leading-relaxed">
-                        {position.description}
-                      </p>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">
-                          Requirements:
-                        </h4>
-                        <ul className="space-y-2">
-                          {position.requirements.map((req, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
-                              <span className="text-gray-700">{req}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3 lg:w-48">
-                      <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        Apply Now
-                      </button>
-                      <button className="px-6 py-3 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-all duration-300">
-                        Learn More
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <p className="text-gray-600 mb-6">
-                Don't see a role that fits? We're always looking for talented
-                individuals.
-              </p>
-              <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
-                Send Your Resume
-              </button>
-            </div>
-          </div>
-        </section>
-      </SectionBackground>
-
-      {/* Work Culture */}
-      <SectionBackground variant="light">
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-sm font-bold text-purple-700 uppercase tracking-wider">
-                  Our Culture
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                What Makes Us Different
-              </h2>
-              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-                Our culture is built on collaboration, innovation, and a shared
-                commitment to excellence in everything we do.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {workCulture.map((culture, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 text-center hover:shadow-xl transition-all duration-300"
-                >
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {culture.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {culture.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </SectionBackground>
-
-      {/* CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Join Our Team?
-          </h2>
-          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Take the next step in your career and become part of a team that's
-            making a real impact in the world of technology.
-          </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="group relative overflow-hidden px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
-              <span className="relative z-10">View Open Positions</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
             <Link
-              to="/contact"
-              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+              to="#open-positions"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 text-xl"
             >
-              Contact HR
+              View Open Positions
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -465,9 +243,281 @@ const Careers = () => {
                 />
               </svg>
             </Link>
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
+            >
+              Contact HR
+            </Link>
           </div>
         </div>
-      </section>
+      </Section>
+
+      {/* Benefits Section */}
+      <Section className="bg-white">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+            BENEFITS & PERKS
+          </div>
+          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+            Why Work With Us
+          </h2>
+          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
+            We believe in investing in our people with comprehensive benefits
+            and a culture that promotes growth and innovation.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="group bg-gradient-to-br from-white to-gray-50 border border-accenture-purple/20 rounded-xl p-8 text-center hover:from-accenture-purple/5 hover:to-accenture-purple/10 hover:border-accenture-purple/40 hover:shadow-accenture transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="w-16 h-16 bg-accenture-purple rounded-xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                {benefit.icon}
+              </div>
+              <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-4">
+                {benefit.title}
+              </h3>
+              <p className="text-accenture-text-secondary leading-relaxed">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Open Positions */}
+      <Section className="bg-accenture-gray-50" id="open-positions">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+            OPEN POSITIONS
+          </div>
+          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+            Current Opportunities
+          </h2>
+          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
+            Explore our current job openings and find the perfect role to
+            advance your career in technology.
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {openPositions.map((position, index) => (
+            <div
+              key={index}
+              className="group bg-white border border-accenture-purple/20 rounded-xl p-8 hover:shadow-accenture hover:border-accenture-purple/40 transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-4 mb-4">
+                    <h3 className="text-heading-md font-semibold text-accenture-text-primary">
+                      {position.title}
+                    </h3>
+                    <span className="px-3 py-1.5 bg-accenture-purple/10 text-accenture-purple text-sm font-medium rounded-full border border-accenture-purple/20">
+                      {position.department}
+                    </span>
+                    <span className="px-3 py-1.5 bg-accenture-purple/10 text-accenture-purple text-sm font-medium rounded-full border border-accenture-purple/20">
+                      {position.type}
+                    </span>
+                  </div>
+
+                  <p className="text-accenture-text-secondary mb-4 flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                    {position.location}
+                  </p>
+
+                  <p className="text-accenture-text-secondary mb-6 leading-relaxed">
+                    {position.description}
+                  </p>
+
+                  <div>
+                    <h4 className="text-body-sm font-semibold text-accenture-text-tertiary uppercase tracking-wider mb-3">
+                      Requirements:
+                    </h4>
+                    <ul className="space-y-2">
+                      {position.requirements.map((req, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-accenture-purple rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-accenture-text-secondary">
+                            {req}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3 lg:w-48">
+                  <button className="px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105">
+                    Apply Now
+                  </button>
+                  <button className="px-6 py-3 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-16 animate-fade-in">
+          <p className="text-accenture-text-secondary mb-6">
+            Don't see a role that fits? We're always looking for talented
+            individuals.
+          </p>
+          <button className="px-10 py-4 bg-accenture-purple text-white rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105">
+            Send Your Resume
+          </button>
+        </div>
+      </Section>
+
+      {/* Work Culture */}
+      <Section className="bg-white">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+            OUR CULTURE
+          </div>
+          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+            What Makes Us Different
+          </h2>
+          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
+            Our culture is built on collaboration, innovation, and a shared
+            commitment to excellence in everything we do.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {workCulture.map((culture, index) => (
+            <div
+              key={index}
+              className="group bg-gradient-to-br from-white to-gray-50 border border-accenture-purple/20 rounded-xl p-8 text-center hover:from-accenture-purple/5 hover:to-accenture-purple/10 hover:border-accenture-purple/40 hover:shadow-accenture transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                {culture.icon}
+              </div>
+              <h3 className="text-heading-md font-semibold text-accenture-text-primary mb-4">
+                {culture.title}
+              </h3>
+              <p className="text-accenture-text-secondary leading-relaxed">
+                {culture.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Statistics Section */}
+      <Section className="bg-accenture-gray-50">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
+            WHY JOIN US
+          </div>
+          <h2 className="text-heading-xl font-semibold text-accenture-text-primary mb-6">
+            Our Impact in Numbers
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {[
+            {
+              number: "500+",
+              label: "Team Members",
+              color: "accenture-purple",
+            },
+            {
+              number: "50+",
+              label: "Countries Served",
+              color: "accenture-purple",
+            },
+            {
+              number: "98%",
+              label: "Employee Satisfaction",
+              color: "accenture-purple",
+            },
+            {
+              number: "4.9",
+              label: "Glassdoor Rating",
+              color: "accenture-purple",
+            },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="group text-center bg-white border border-accenture-purple/20 rounded-xl p-6 md:p-8 hover:shadow-accenture hover:border-accenture-purple/40 transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-3xl md:text-4xl font-bold text-accenture-purple mb-3 group-hover:scale-110 transition-transform duration-300">
+                {stat.number}
+              </div>
+              <div className="text-accenture-text-secondary font-medium text-sm md:text-base">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* CTA Section */}
+      <Section className="bg-accenture-purple text-white">
+        <div className="text-center py-12 animate-fade-in">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
+            Ready to Join Our Team?
+          </h2>
+          <p className="text-body-xl text-white/90 mb-12 max-w-3xl mx-auto">
+            Take the next step in your career and become part of a team that's
+            making a real impact in the world of technology.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="#open-positions"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-accenture-purple rounded-lg font-semibold hover:bg-accenture-gray-50 transition-all duration-300 hover:scale-105 text-xl"
+            >
+              View Open Positions
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
+            >
+              Contact HR
+            </Link>
+          </div>
+        </div>
+      </Section>
 
       <Footer />
     </div>
