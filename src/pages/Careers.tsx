@@ -259,10 +259,10 @@ const Careers = () => {
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             BENEFITS & PERKS
           </div>
-          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
             Why Work With Us
           </h2>
-          <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-body-xl text-gray-600 max-w-3xl mx-auto">
             We believe in investing in our people with comprehensive benefits
             and a culture that promotes growth and innovation.
           </p>
@@ -278,10 +278,10 @@ const Careers = () => {
               <div className="w-16 h-16 bg-accenture-purple rounded-xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 {benefit.icon}
               </div>
-              <h3 className="text-heading-md font-semibold text-gray-900 mb-4">
+              <h3 className="text-heading-md font-semibold text-gray-900 group-hover:text-gray-900 mb-4">
                 {benefit.title}
               </h3>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 group-hover:text-gray-700 leading-relaxed">
                 {benefit.description}
               </p>
             </div>
@@ -304,7 +304,7 @@ const Careers = () => {
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {openPositions.map((position, index) => (
             <div
               key={index}
@@ -314,7 +314,7 @@ const Careers = () => {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-4 mb-4">
-                    <h3 className="text-heading-md font-semibold text-gray-900">
+                    <h3 className="text-heading-md font-semibold text-white">
                       {position.title}
                     </h3>
                     <span className="px-3 py-1.5 bg-accenture-purple/10 text-accenture-purple text-sm font-medium rounded-full border border-accenture-purple/20">
@@ -367,11 +367,11 @@ const Careers = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 lg:w-48">
-                  <button className="px-6 py-3 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col gap-3 lg:flex-row lg:gap-2 lg:w-auto">
+                  <button className="px-4 py-2 bg-accenture-purple text-white rounded-lg font-semibold hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105 text-sm">
                     Apply Now
                   </button>
-                  <button className="px-6 py-3 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300">
+                  <button className="px-4 py-2 border-2 border-accenture-purple text-accenture-purple rounded-lg font-semibold hover:bg-accenture-purple hover:text-white transition-all duration-300 text-sm">
                     Learn More
                   </button>
                 </div>
@@ -385,9 +385,12 @@ const Careers = () => {
             Don't see a role that fits? We're always looking for talented
             individuals.
           </p>
-          <button className="px-10 py-4 bg-accenture-purple text-white rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105">
+          <a
+            href="mailto:hr@technumopus.com?subject=Resume Submission&body=Hi HR Team,%0D%0A%0D%0APlease find my resume attached. I am interested in exploring opportunities with Technum Opus.%0D%0A%0D%0AThank you for your consideration.%0D%0A%0D%0ABest regards"
+            className="inline-block px-10 py-4 bg-accenture-purple text-white rounded-lg font-semibold text-lg hover:bg-accenture-purple-dark transition-all duration-300 hover:scale-105"
+          >
             Send Your Resume
-          </button>
+          </a>
         </div>
       </Section>
 
@@ -397,7 +400,7 @@ const Careers = () => {
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
             OUR CULTURE
           </div>
-          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
+          <h2 className="text-heading-xl font-semibold text-white mb-6">
             What Makes Us Different
           </h2>
           <p className="text-body-xl text-gray-400 max-w-3xl mx-auto">
