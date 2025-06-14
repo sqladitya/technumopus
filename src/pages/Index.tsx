@@ -131,15 +131,15 @@ const Index = () => {
       </Section>
 
       {/* Technology Innovation Section */}
-      <Section className="bg-accenture-black text-white">
+      <Section className="bg-gray-100 text-gray-900">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
           <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
             INNOVATION
           </div>
-          <h2 className="text-heading-xl font-semibold text-white mb-8">
+          <h2 className="text-heading-xl font-semibold text-gray-900 mb-8">
             The technologies that will reshape business
           </h2>
-          <p className="text-body-xl text-white/80 mb-12 leading-relaxed">
+          <p className="text-body-xl text-gray-700 mb-12 leading-relaxed">
             From artificial intelligence to quantum computing, we help
             organizations harness emerging technologies to create competitive
             advantage and drive growth.
@@ -169,10 +169,10 @@ const Index = () => {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="text-4xl mb-4">{tech.icon}</div>
-                <h3 className="text-heading-md font-semibold text-white mb-3">
+                <h3 className="text-heading-md font-semibold text-gray-900 mb-3">
                   {tech.title}
                 </h3>
-                <p className="text-white/70">{tech.description}</p>
+                <p className="text-gray-700">{tech.description}</p>
               </div>
             ))}
           </div>
