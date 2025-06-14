@@ -106,7 +106,7 @@ const Footer = () => {
             </div>
 
             {/* Company Description */}
-            <p className="text-gray-300 leading-relaxed mb-8 text-base">
+            <p className="text-gray-600 leading-relaxed mb-8 text-base">
               Driving innovation and digital transformation across industries.
               We help businesses navigate the complexities of modern technology
               to achieve sustainable growth.
@@ -114,7 +114,7 @@ const Footer = () => {
 
             {/* Contact Information */}
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-gray-300">
+              <div className="flex items-center gap-3 text-gray-600">
                 <MapPin className="w-5 h-5 text-purple-500 flex-shrink-0" />
                 <span className="text-sm">
                   123 Innovation Drive, Tech City, TC 12345
@@ -136,7 +136,7 @@ const Footer = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {/* Services */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Services
                 </h3>
                 <ul className="space-y-4">
@@ -144,7 +144,7 @@ const Footer = () => {
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-gray-400 hover:text-white transition-colors text-sm block"
+                        className="text-gray-600 hover:text-accenture-purple transition-colors text-sm block"
                       >
                         {link.name}
                       </Link>
