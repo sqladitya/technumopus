@@ -115,16 +115,6 @@ const Footer = () => {
             {/* Contact Information */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-600">
-                <MapPin className="w-5 h-5 text-purple-500 flex-shrink-0" />
-                <span className="text-sm">
-                  123 Innovation Drive, Tech City, TC 12345
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <Phone className="w-5 h-5 text-purple-500 flex-shrink-0" />
-                <span className="text-sm">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
                 <MapPin className="w-5 h-5 text-pink-500 flex-shrink-0" />
                 <span className="text-sm">
                   123 Innovation Drive, Tech City, TC 12345
@@ -136,6 +126,17 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <Mail className="w-5 h-5 text-pink-500 flex-shrink-0" />
+                <span className="text-sm">hello@technumopus.com</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Links Grid - Right side */}
+          <div className="lg:col-span-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {/* Services */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Services
                 </h3>
                 <ul className="space-y-4">
