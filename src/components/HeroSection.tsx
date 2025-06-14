@@ -85,7 +85,7 @@ const HeroSection = () => {
         <div className="absolute inset-0">
           {/* Background Image with Enhanced Overlay */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/90 to-accenture-black/70 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/90 to-gray-100/70 z-10" />
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
@@ -109,13 +109,13 @@ const HeroSection = () => {
                 </div>
 
                 {/* Main Title */}
-                <h1 className="text-4xl sm:text-5xl font-heading text-white mb-6 leading-tight animate-slide-in-left drop-shadow-2xl text-left">
+                <h1 className="text-4xl sm:text-5xl font-heading text-gray-900 mb-6 leading-tight animate-slide-in-left drop-shadow-2xl text-left">
                   {heroSlides[0].title}
                 </h1>
 
                 {/* Subtitle */}
                 <h2
-                  className="text-xl sm:text-2xl text-white/95 mb-8 font-medium animate-slide-in-left drop-shadow-lg text-left"
+                  className="text-xl sm:text-2xl text-gray-700 mb-8 font-medium animate-slide-in-left drop-shadow-lg text-left"
                   style={{ animationDelay: "0.2s" }}
                 >
                   {heroSlides[0].subtitle}
