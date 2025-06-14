@@ -188,7 +188,7 @@ const HeroSection = () => {
           >
             {/* Background Image with Enhanced Overlay */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/90 to-accenture-black/70 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/90 to-gray-100/70 z-10" />
               <div
                 className="w-full h-full bg-cover bg-center"
                 style={{
