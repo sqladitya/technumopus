@@ -213,14 +213,14 @@ const Footer = () => {
       </div>
 
       {/* Newsletter Subscription Section */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 Stay ahead of the curve
               </h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
+              <p className="text-gray-600 leading-relaxed text-lg">
                 Get the latest insights on technology trends, industry
                 innovations, and business transformation strategies.
               </p>
@@ -233,17 +233,17 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-gray-600">
               © {currentYear} Technum Opus. All rights reserved.
             </div>
 
             <div className="flex gap-6 text-sm">
               <Link
                 to="/privacy"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-600 hover:text-accenture-purple transition-colors"
               >
                 Privacy Policy
               </Link>
