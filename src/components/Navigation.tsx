@@ -517,7 +517,7 @@ const Navigation = () => {
               </Link>
 
               {/* Company Dropdown */}
-              <div className="relative">
+              <span className="text-sm font-bold text-gray-900 uppercase tracking-wider">
                 <button
                   onMouseEnter={() => handleDropdownEnter("company")}
                   className="flex items-center gap-1 text-gray-900 hover:text-accenture-purple font-medium transition-colors duration-200"
