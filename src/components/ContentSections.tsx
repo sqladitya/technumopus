@@ -142,12 +142,12 @@ export const ContentCardsSection = () => (
 
 // 360° Value Section - Accenture's signature section
 export const ValuePropositionSection = () => (
-  <Section className="bg-accenture-black text-white">
+  <Section className="bg-gray-100 text-gray-900">
     <div className="text-center py-12 animate-fade-in">
-      <h2 className="text-display font-heading text-white mb-8 leading-tight">
+      <h2 className="text-display font-heading text-gray-900 mb-8 leading-tight">
         360° VALUE
       </h2>
-      <p className="text-body-xl text-white/80 max-w-4xl mx-auto mb-16 leading-relaxed">
+      <p className="text-body-xl text-gray-700 max-w-4xl mx-auto mb-16 leading-relaxed">
         We create 360° value for our clients, their customers, our people, our
         partners, our shareholders and our communities. It's a bold commitment
         to shared success, and it's how we create a positive, enduring impact.
@@ -673,7 +673,7 @@ export const ServicesSection = () => (
           title: "Strategy & Consulting",
           description:
             "Strategic transformation that drives sustainable growth and competitive advantage",
-          icon: "🎯",
+          icon: "����",
           href: "/services/strategy-consulting",
         },
         {
