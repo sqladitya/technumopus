@@ -203,12 +203,12 @@ const Index = () => {
       <NewsSection />
 
       {/* Career CTA Section */}
-      <Section className="bg-accenture-purple text-white">
+      <Section className="bg-accenture-purple text-gray-900">
         <div className="text-center py-12 animate-fade-in">
-          <h2 className="text-heading-xl font-semibold text-white mb-6">
+          <h2 className="text-heading-xl font-semibold text-gray-900 mb-6">
             Join us. Shape the future.
           </h2>
-          <p className="text-body-xl text-white/90 mb-12 max-w-3xl mx-auto">
+          <p className="text-body-xl text-gray-700 mb-12 max-w-3xl mx-auto">
             Be part of a team that's creating 360° value for clients, people,
             shareholders, partners and communities.
           </p>
@@ -234,7 +234,7 @@ const Index = () => {
             </Link>
             <Link
               to="/about/life-at-accenture"
-              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 text-xl"
+              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-gray-800 text-gray-900 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300 text-xl"
             >
               Life at Technum Opus
             </Link>
