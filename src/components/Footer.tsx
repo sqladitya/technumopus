@@ -43,12 +43,12 @@ const FooterSubscriptionForm = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled={isLoading}
-        className="flex-1 px-6 py-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex-1 px-6 py-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
       />
       <button
         type="submit"
         disabled={isLoading || !email.trim()}
-        className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-8 py-4 bg-pink-600 hover:bg-pink-700 text-white rounded-lg font-semibold transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isLoading ? "Subscribing..." : "Subscribe"}
       </button>
@@ -92,7 +92,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-gray-100 text-gray-900">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
@@ -106,7 +106,7 @@ const Footer = () => {
             </div>
 
             {/* Company Description */}
-            <p className="text-gray-300 leading-relaxed mb-8 text-base">
+            <p className="text-gray-600 leading-relaxed mb-8 text-base">
               Driving innovation and digital transformation across industries.
               We help businesses navigate the complexities of modern technology
               to achieve sustainable growth.
@@ -114,18 +114,18 @@ const Footer = () => {
 
             {/* Contact Information */}
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-gray-300">
-                <MapPin className="w-5 h-5 text-purple-500 flex-shrink-0" />
+              <div className="flex items-center gap-3 text-gray-600">
+                <MapPin className="w-5 h-5 text-pink-500 flex-shrink-0" />
                 <span className="text-sm">
                   123 Innovation Drive, Tech City, TC 12345
                 </span>
               </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <Phone className="w-5 h-5 text-purple-500 flex-shrink-0" />
+              <div className="flex items-center gap-3 text-gray-600">
+                <Phone className="w-5 h-5 text-pink-500 flex-shrink-0" />
                 <span className="text-sm">+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <Mail className="w-5 h-5 text-purple-500 flex-shrink-0" />
+              <div className="flex items-center gap-3 text-gray-600">
+                <Mail className="w-5 h-5 text-pink-500 flex-shrink-0" />
                 <span className="text-sm">hello@technumopus.com</span>
               </div>
             </div>
@@ -136,7 +136,7 @@ const Footer = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {/* Services */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Services
                 </h3>
                 <ul className="space-y-4">
@@ -144,7 +144,7 @@ const Footer = () => {
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-gray-400 hover:text-white transition-colors text-sm block"
+                        className="text-gray-600 hover:text-accenture-purple transition-colors text-sm block"
                       >
                         {link.name}
                       </Link>
@@ -155,7 +155,7 @@ const Footer = () => {
 
               {/* Industries */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Industries
                 </h3>
                 <ul className="space-y-4">
@@ -163,7 +163,7 @@ const Footer = () => {
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-gray-400 hover:text-white transition-colors text-sm block"
+                        className="text-gray-600 hover:text-accenture-purple transition-colors text-sm block"
                       >
                         {link.name}
                       </Link>
@@ -174,7 +174,9 @@ const Footer = () => {
 
               {/* About */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">About</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                  About
+                </h3>
                 <ul className="space-y-4">
                   {footerLinks.about.map((link) => (
                     <li key={link.name}>
@@ -191,7 +193,7 @@ const Footer = () => {
 
               {/* Support */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Support
                 </h3>
                 <ul className="space-y-4">
@@ -213,14 +215,14 @@ const Footer = () => {
       </div>
 
       {/* Newsletter Subscription Section */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 Stay ahead of the curve
               </h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
+              <p className="text-gray-600 leading-relaxed text-lg">
                 Get the latest insights on technology trends, industry
                 innovations, and business transformation strategies.
               </p>
@@ -233,23 +235,23 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-gray-600">
               © {currentYear} Technum Opus. All rights reserved.
             </div>
 
             <div className="flex gap-6 text-sm">
               <Link
                 to="/privacy"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-600 hover:text-accenture-purple transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-600 hover:text-accenture-purple transition-colors"
               >
                 Terms of Service
               </Link>

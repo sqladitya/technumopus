@@ -283,7 +283,7 @@ const Navigation = () => {
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        <div className="flex items-center justify-between p-6 bg-accenture-black text-white">
+        <div className="flex items-center justify-between p-6 bg-gray-100 text-gray-900">
           <Link to="/" onClick={handleMobileLinkClick}>
             <span className="text-xl font-bold">TECHNUM OPUS</span>
           </Link>
@@ -490,7 +490,7 @@ const Navigation = () => {
       {/* Main Navigation */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 bg-accenture-black transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-40 bg-gray-100 transition-all duration-300",
           isScrolled ? "shadow-accenture" : "",
         )}
       >
@@ -498,7 +498,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <span className="text-xl font-bold text-white tracking-tight">
+              <span className="text-xl font-bold text-gray-900 tracking-tight">
                 TECHNUM OPUS
               </span>
             </Link>
@@ -511,7 +511,7 @@ const Navigation = () => {
               {/* Home */}
               <Link
                 to="/"
-                className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                className="text-gray-900 hover:text-accenture-purple font-medium transition-colors duration-200"
               >
                 Home
               </Link>
@@ -520,7 +520,7 @@ const Navigation = () => {
               <div className="relative">
                 <button
                   onMouseEnter={() => handleDropdownEnter("company")}
-                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                  className="flex items-center gap-1 text-gray-900 hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Company
                   <svg
@@ -596,7 +596,7 @@ const Navigation = () => {
               <div className="relative">
                 <button
                   onMouseEnter={() => handleDropdownEnter("services")}
-                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                  className="flex items-center gap-1 text-gray-900 hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Services
                   <svg
@@ -701,7 +701,7 @@ const Navigation = () => {
               <div className="relative">
                 <button
                   onMouseEnter={() => handleDropdownEnter("partners")}
-                  className="flex items-center gap-1 text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                  className="flex items-center gap-1 text-gray-900 hover:text-accenture-purple font-medium transition-colors duration-200"
                 >
                   Partners
                   <svg
@@ -805,7 +805,7 @@ const Navigation = () => {
               {/* Contact */}
               <Link
                 to="/contact"
-                className="text-white hover:text-accenture-purple font-medium transition-colors duration-200"
+                className="text-gray-900 hover:text-accenture-purple font-medium transition-colors duration-200"
               >
                 Contact
               </Link>
@@ -813,7 +813,7 @@ const Navigation = () => {
               {/* Search Button */}
               <button
                 onClick={openSearch}
-                className="flex items-center gap-2 px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 group"
+                className="flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-200 rounded-lg transition-all duration-200 group"
                 title="Search"
               >
                 <svg
@@ -838,7 +838,7 @@ const Navigation = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:text-accenture-purple transition-colors"
+              className="lg:hidden p-2 text-gray-900 hover:text-accenture-purple transition-colors"
             >
               <svg
                 className="w-6 h-6"

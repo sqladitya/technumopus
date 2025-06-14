@@ -79,13 +79,13 @@ const HeroSection = () => {
       : heroSlides[currentSlide];
 
   return (
-    <section className="relative min-h-screen bg-accenture-black overflow-hidden">
+    <section className="relative min-h-screen bg-gray-100 overflow-hidden">
       {/* Mobile: Single static hero */}
       <div className="block md:hidden">
         <div className="absolute inset-0">
           {/* Background Image with Enhanced Overlay */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/90 to-accenture-black/70 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/90 to-gray-100/70 z-10" />
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
@@ -109,13 +109,13 @@ const HeroSection = () => {
                 </div>
 
                 {/* Main Title */}
-                <h1 className="text-4xl sm:text-5xl font-heading text-white mb-6 leading-tight animate-slide-in-left drop-shadow-2xl text-left">
+                <h1 className="text-4xl sm:text-5xl font-heading text-gray-900 mb-6 leading-tight animate-slide-in-left drop-shadow-2xl text-left">
                   {heroSlides[0].title}
                 </h1>
 
                 {/* Subtitle */}
                 <h2
-                  className="text-xl sm:text-2xl text-white/95 mb-8 font-medium animate-slide-in-left drop-shadow-lg text-left"
+                  className="text-xl sm:text-2xl text-gray-700 mb-8 font-medium animate-slide-in-left drop-shadow-lg text-left"
                   style={{ animationDelay: "0.2s" }}
                 >
                   {heroSlides[0].subtitle}
@@ -123,7 +123,7 @@ const HeroSection = () => {
 
                 {/* Description */}
                 <p
-                  className="text-base sm:text-lg text-white/85 mb-10 max-w-3xl leading-relaxed animate-slide-in-left drop-shadow-md text-left"
+                  className="text-base sm:text-lg text-gray-700 mb-10 max-w-3xl leading-relaxed animate-slide-in-left drop-shadow-md text-left"
                   style={{ animationDelay: "0.4s" }}
                 >
                   {heroSlides[0].description}
@@ -154,8 +154,8 @@ const HeroSection = () => {
                     </svg>
                   </Link>
 
-                  <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 border-2 border-white/60 text-white rounded-xl font-semibold hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-base w-full sm:w-auto">
-                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
+                  <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gray-200 border-2 border-gray-400 text-gray-900 rounded-xl font-semibold hover:bg-gray-300 backdrop-blur-sm transition-all duration-300 text-base w-full sm:w-auto">
+                    <div className="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
                       <svg
                         className="w-3 h-3"
                         fill="currentColor"
@@ -188,7 +188,7 @@ const HeroSection = () => {
           >
             {/* Background Image with Enhanced Overlay */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/90 to-accenture-black/70 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/90 to-gray-100/70 z-10" />
               <div
                 className="w-full h-full bg-cover bg-center"
                 style={{
@@ -384,8 +384,8 @@ const HeroSection = () => {
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(166, 0, 255, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(166, 0, 255, 0.3) 1px, transparent 1px)
+              linear-gradient(rgba(233, 30, 99, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(233, 30, 99, 0.3) 1px, transparent 1px)
             `,
             backgroundSize: "100px 100px",
           }}

@@ -90,7 +90,7 @@ export const ContentCardsSection = () => (
                     )}
                     style={{
                       color: "white",
-                      backgroundColor: "rgb(166, 0, 255)", // Accenture purple
+                      backgroundColor: "rgb(233, 30, 99)", // Pink/red primary
                     }}
                   >
                     {card.category}
@@ -117,7 +117,7 @@ export const ContentCardsSection = () => (
         <div className="mt-8 sm:mt-12 text-center">
           <Link
             to="/insights"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-none sm:rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-none sm:rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
           >
             View all insights
             <svg
@@ -142,12 +142,12 @@ export const ContentCardsSection = () => (
 
 // 360° Value Section - Accenture's signature section
 export const ValuePropositionSection = () => (
-  <Section className="bg-accenture-black text-white">
+  <Section className="bg-gray-100 text-gray-900">
     <div className="text-center py-12 animate-fade-in">
-      <h2 className="text-display font-heading text-white mb-8 leading-tight">
+      <h2 className="text-display font-heading text-gray-900 mb-8 leading-tight">
         360° VALUE
       </h2>
-      <p className="text-body-xl text-white/80 max-w-4xl mx-auto mb-16 leading-relaxed">
+      <p className="text-body-xl text-gray-700 max-w-4xl mx-auto mb-16 leading-relaxed">
         We create 360° value for our clients, their customers, our people, our
         partners, our shareholders and our communities. It's a bold commitment
         to shared success, and it's how we create a positive, enduring impact.
@@ -223,7 +223,7 @@ export const ClientStoriesSection = () => {
         <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
           CLIENT STORIES
         </div>
-        <h2 className="text-heading-xl font-semibold text-purple-600 mb-6">
+        <h2 className="text-heading-xl font-semibold text-pink-600 mb-6">
           Real impact for real business
         </h2>
         <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
@@ -319,7 +319,7 @@ export const AwardsSection = () => {
       title: "Leader in Digital Services",
       organization: "Gartner Magic Quadrant",
       year: "2024",
-      color: "from-purple-600 to-purple-800",
+      color: "from-pink-600 to-pink-800",
       position: "top-6 left-12",
     },
     {
@@ -464,7 +464,7 @@ export const AwardsSection = () => {
 
           {/* View All Recognition Button (Mobile/Tablet only) */}
           <div className="mt-12 sm:mt-16 text-center lg:hidden">
-            <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
+            <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
               View all recognition
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -488,7 +488,7 @@ export const AwardsSection = () => {
 };
 // Culture Section - Accenture Style
 export const CultureSection = () => (
-  <Section className="bg-accenture-black text-white relative overflow-hidden">
+  <Section className="bg-gray-100 text-gray-900 relative overflow-hidden">
     <div className="absolute inset-0">
       <div
         className="w-full h-full bg-cover bg-center opacity-30"
@@ -497,17 +497,17 @@ export const CultureSection = () => (
             "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/80 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/80 to-transparent" />
     </div>
 
     <div className="relative z-10 max-w-4xl animate-fade-in">
       <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
         CULTURE & VALUES
       </div>
-      <h2 className="text-heading-xl font-semibold text-white mb-8">
+      <h2 className="text-heading-xl font-semibold text-gray-900 mb-8">
         Our core values shape everything we do
       </h2>
-      <p className="text-body-xl text-white/80 mb-12 leading-relaxed">
+      <p className="text-body-xl text-gray-700 mb-12 leading-relaxed">
         We believe in the power of technology to transform businesses and
         improve lives. Our commitment to innovation, inclusion, and shared
         success drives us to create lasting impact for all stakeholders.
@@ -533,10 +533,10 @@ export const CultureSection = () => (
             className="animate-slide-up"
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            <h3 className="text-heading-md font-semibold text-white mb-3">
+            <h3 className="text-heading-md font-semibold text-gray-900 mb-3">
               {value.title}
             </h3>
-            <p className="text-white/70">{value.description}</p>
+            <p className="text-gray-700">{value.description}</p>
           </div>
         ))}
       </div>

@@ -8,7 +8,7 @@ const About = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-accenture-black min-h-screen flex items-center">
+      <section className="relative overflow-hidden bg-gray-100 min-h-screen flex items-center">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="max-w-5xl">
             <div className="inline-flex items-center gap-2 bg-accenture-purple/20 backdrop-blur-sm border border-accenture-purple/30 rounded-full px-6 py-2 mb-8">
@@ -18,7 +18,7 @@ const About = () => {
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-none">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-8 leading-none">
               Where
               <br />
               <span className="bg-gradient-to-r from-accenture-purple to-accenture-purple-light bg-clip-text text-transparent">
@@ -28,12 +28,12 @@ const About = () => {
               Meets Excellence
             </h1>
 
-            <p className="text-2xl md:text-3xl font-light text-white/80 mb-8 leading-relaxed max-w-4xl">
+            <p className="text-2xl md:text-3xl font-light text-gray-700 mb-8 leading-relaxed max-w-4xl">
               Transforming businesses through cutting-edge technology solutions,
               strategic innovation, and unwavering commitment to excellence.
             </p>
 
-            <p className="text-lg text-white/70 mb-12 leading-relaxed max-w-3xl">
+            <p className="text-lg text-gray-600 mb-12 leading-relaxed max-w-3xl">
               For over a decade, we've been at the forefront of digital
               transformation, helping organizations reimagine their
               possibilities and achieve extraordinary results through the power
@@ -50,7 +50,7 @@ const About = () => {
               </Link>
               <Link
                 to="/services"
-                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-gray-800 text-gray-900 rounded-xl font-semibold hover:bg-gray-200 hover:border-gray-600 transition-all duration-300 backdrop-blur-sm"
               >
                 Explore Services
                 <svg
@@ -126,7 +126,7 @@ const About = () => {
                     Our Story
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                   Built on a Foundation of
                   <span className="text-accenture-purple"> Innovation</span>
                 </h2>
@@ -301,7 +301,7 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 bg-accenture-black">
+      <section className="py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
@@ -309,10 +309,10 @@ const About = () => {
                 Core Values
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               The Principles That Define Us
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               These core values are the foundation of our culture and guide
               every interaction, decision, and solution we create
             </p>
@@ -438,12 +438,12 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-accenture-black overflow-hidden">
+      <section className="relative py-24 bg-gray-100 overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Ready to Transform Your Vision Into Reality?
           </h2>
-          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
             Join the hundreds of organizations that have partnered with Technum
             Opus to achieve extraordinary results through innovative technology
             solutions.
@@ -459,7 +459,7 @@ const About = () => {
             </Link>
             <Link
               to="/services"
-              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-gray-800 text-gray-900 rounded-xl font-semibold text-lg hover:bg-gray-200 hover:border-gray-600 transition-all duration-300 backdrop-blur-sm"
             >
               Explore Our Services
               <svg

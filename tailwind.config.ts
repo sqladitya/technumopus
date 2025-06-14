@@ -59,11 +59,11 @@ export default {
           "black-light": "#0a0a0a",
           "black-lighter": "#1a1a1a",
 
-          // Accenture purple - their brand color
-          purple: "#a600ff",
-          "purple-dark": "#8b00d9",
-          "purple-light": "#b84dff",
-          "purple-bright": "#ff00ff",
+          // Brand pink/red colors
+          purple: "#e91e63", // Pink/red primary
+          "purple-dark": "#c2185b", // Darker pink/red
+          "purple-light": "#f06292", // Lighter pink/red
+          "purple-bright": "#ff6090", // Bright pink/red
 
           // Accent colors for variety
           red: "#e2062e",
@@ -158,18 +158,18 @@ export default {
       backgroundImage: {
         // Accenture gradients
         "accenture-gradient":
-          "linear-gradient(135deg, #000000 0%, #a600ff 100%)",
-        "accenture-purple": "linear-gradient(135deg, #a600ff 0%, #8b00d9 100%)",
+          "linear-gradient(135deg, #000000 0%, #e91e63 100%)",
+        "accenture-purple": "linear-gradient(135deg, #e91e63 0%, #c2185b 100%)",
         "accenture-dark": "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
         "hero-overlay":
-          "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(166,0,255,0.6) 100%)",
+          "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(233,30,99,0.6) 100%)",
       },
       boxShadow: {
         // Accenture shadows
         accenture: "0 4px 20px -2px rgba(0, 0, 0, 0.15)",
         "accenture-lg": "0 10px 40px -4px rgba(0, 0, 0, 0.2)",
         "accenture-xl": "0 20px 60px -8px rgba(0, 0, 0, 0.25)",
-        purple: "0 8px 32px -4px rgba(166, 0, 255, 0.3)",
+        purple: "0 8px 32px -4px rgba(233, 30, 99, 0.3)",
         card: "0 2px 12px -1px rgba(0, 0, 0, 0.1)",
         "card-hover": "0 8px 32px -4px rgba(0, 0, 0, 0.15)",
       },
