@@ -155,7 +155,7 @@ const Footer = () => {
 
               {/* Industries */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Industries
                 </h3>
                 <ul className="space-y-4">
@@ -163,7 +163,7 @@ const Footer = () => {
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-gray-400 hover:text-white transition-colors text-sm block"
+                        className="text-gray-600 hover:text-accenture-purple transition-colors text-sm block"
                       >
                         {link.name}
                       </Link>
@@ -174,7 +174,9 @@ const Footer = () => {
 
               {/* About */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">About</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                  About
+                </h3>
                 <ul className="space-y-4">
                   {footerLinks.about.map((link) => (
                     <li key={link.name}>
@@ -191,7 +193,7 @@ const Footer = () => {
 
               {/* Support */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
                   Support
                 </h3>
                 <ul className="space-y-4">
