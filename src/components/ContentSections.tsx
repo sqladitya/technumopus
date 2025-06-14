@@ -464,7 +464,7 @@ export const AwardsSection = () => {
 
           {/* View All Recognition Button (Mobile/Tablet only) */}
           <div className="mt-12 sm:mt-16 text-center lg:hidden">
-            <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
+            <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl hover:scale-105">
               View all recognition
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
