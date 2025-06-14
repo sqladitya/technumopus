@@ -384,8 +384,8 @@ const HeroSection = () => {
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(166, 0, 255, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(166, 0, 255, 0.3) 1px, transparent 1px)
+              linear-gradient(rgba(233, 30, 99, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(233, 30, 99, 0.3) 1px, transparent 1px)
             `,
             backgroundSize: "100px 100px",
           }}

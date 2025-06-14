@@ -90,7 +90,7 @@ export const ContentCardsSection = () => (
                     )}
                     style={{
                       color: "white",
-                      backgroundColor: "rgb(166, 0, 255)", // Accenture purple
+                      backgroundColor: "rgb(233, 30, 99)", // Pink/red primary
                     }}
                   >
                     {card.category}
