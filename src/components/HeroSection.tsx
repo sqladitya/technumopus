@@ -123,7 +123,7 @@ const HeroSection = () => {
 
                 {/* Description */}
                 <p
-                  className="text-base sm:text-lg text-white/85 mb-10 max-w-3xl leading-relaxed animate-slide-in-left drop-shadow-md text-left"
+                  className="text-base sm:text-lg text-gray-700 mb-10 max-w-3xl leading-relaxed animate-slide-in-left drop-shadow-md text-left"
                   style={{ animationDelay: "0.4s" }}
                 >
                   {heroSlides[0].description}
