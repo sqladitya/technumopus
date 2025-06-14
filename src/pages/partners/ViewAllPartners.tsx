@@ -64,7 +64,7 @@ const ViewAllPartners = () => {
         { name: "Impinj", tier: "Technology" },
         { name: "Intermec (Honeywell)", tier: "Legacy" },
       ],
-      color: "purple",
+      color: "pink",
     },
   ];
 

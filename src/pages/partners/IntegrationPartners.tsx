@@ -302,7 +302,7 @@ const IntegrationPartners = () => {
       description:
         "Eliminate manual errors with advanced scanning and verification technology",
       icon: "target",
-      color: "purple",
+      color: "pink",
     },
     {
       title: "Mobility Solutions",
