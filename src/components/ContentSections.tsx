@@ -319,7 +319,7 @@ export const AwardsSection = () => {
       title: "Leader in Digital Services",
       organization: "Gartner Magic Quadrant",
       year: "2024",
-      color: "from-purple-600 to-purple-800",
+      color: "from-pink-600 to-pink-800",
       position: "top-6 left-12",
     },
     {
