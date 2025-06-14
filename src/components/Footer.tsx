@@ -43,12 +43,12 @@ const FooterSubscriptionForm = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled={isLoading}
-        className="flex-1 px-6 py-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex-1 px-6 py-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
       />
       <button
         type="submit"
         disabled={isLoading || !email.trim()}
-        className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-8 py-4 bg-pink-600 hover:bg-pink-700 text-white rounded-lg font-semibold transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isLoading ? "Subscribing..." : "Subscribe"}
       </button>
@@ -125,18 +125,17 @@ const Footer = () => {
                 <span className="text-sm">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <Mail className="w-5 h-5 text-purple-500 flex-shrink-0" />
-                <span className="text-sm">hello@technumopus.com</span>
+                <MapPin className="w-5 h-5 text-pink-500 flex-shrink-0" />
+                <span className="text-sm">
+                  123 Innovation Drive, Tech City, TC 12345
+                </span>
               </div>
-            </div>
-          </div>
-
-          {/* Links Grid - Right side */}
-          <div className="lg:col-span-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {/* Services */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+              <div className="flex items-center gap-3 text-gray-600">
+                <Phone className="w-5 h-5 text-pink-500 flex-shrink-0" />
+                <span className="text-sm">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-600">
+                <Mail className="w-5 h-5 text-pink-500 flex-shrink-0" />
                   Services
                 </h3>
                 <ul className="space-y-4">
