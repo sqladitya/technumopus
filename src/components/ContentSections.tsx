@@ -488,7 +488,7 @@ export const AwardsSection = () => {
 };
 // Culture Section - Accenture Style
 export const CultureSection = () => (
-  <Section className="bg-accenture-black text-white relative overflow-hidden">
+  <Section className="bg-gray-100 text-gray-900 relative overflow-hidden">
     <div className="absolute inset-0">
       <div
         className="w-full h-full bg-cover bg-center opacity-30"
@@ -497,7 +497,7 @@ export const CultureSection = () => (
             "url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-accenture-black via-accenture-black/80 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/80 to-transparent" />
     </div>
 
     <div className="relative z-10 max-w-4xl animate-fade-in">
@@ -673,7 +673,7 @@ export const ServicesSection = () => (
           title: "Strategy & Consulting",
           description:
             "Strategic transformation that drives sustainable growth and competitive advantage",
-          icon: "����",
+          icon: "🎯",
           href: "/services/strategy-consulting",
         },
         {
