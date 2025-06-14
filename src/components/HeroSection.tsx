@@ -154,8 +154,8 @@ const HeroSection = () => {
                     </svg>
                   </Link>
 
-                  <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 border-2 border-white/60 text-white rounded-xl font-semibold hover:bg-white/20 backdrop-blur-sm transition-all duration-300 text-base w-full sm:w-auto">
-                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
+                  <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gray-200 border-2 border-gray-400 text-gray-900 rounded-xl font-semibold hover:bg-gray-300 backdrop-blur-sm transition-all duration-300 text-base w-full sm:w-auto">
+                    <div className="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
                       <svg
                         className="w-3 h-3"
                         fill="currentColor"
