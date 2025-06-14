@@ -117,7 +117,7 @@ export const ContentCardsSection = () => (
         <div className="mt-8 sm:mt-12 text-center">
           <Link
             to="/insights"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-none sm:rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-none sm:rounded-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto"
           >
             View all insights
             <svg
@@ -223,7 +223,7 @@ export const ClientStoriesSection = () => {
         <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-4">
           CLIENT STORIES
         </div>
-        <h2 className="text-heading-xl font-semibold text-purple-600 mb-6">
+        <h2 className="text-heading-xl font-semibold text-pink-600 mb-6">
           Real impact for real business
         </h2>
         <p className="text-body-xl text-accenture-text-tertiary max-w-3xl mx-auto">
