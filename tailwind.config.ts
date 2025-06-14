@@ -169,7 +169,7 @@ export default {
         accenture: "0 4px 20px -2px rgba(0, 0, 0, 0.15)",
         "accenture-lg": "0 10px 40px -4px rgba(0, 0, 0, 0.2)",
         "accenture-xl": "0 20px 60px -8px rgba(0, 0, 0, 0.25)",
-        purple: "0 8px 32px -4px rgba(166, 0, 255, 0.3)",
+        purple: "0 8px 32px -4px rgba(233, 30, 99, 0.3)",
         card: "0 2px 12px -1px rgba(0, 0, 0, 0.1)",
         "card-hover": "0 8px 32px -4px rgba(0, 0, 0, 0.15)",
       },
