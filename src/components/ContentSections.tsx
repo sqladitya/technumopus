@@ -504,10 +504,10 @@ export const CultureSection = () => (
       <div className="text-body-sm font-bold text-accenture-purple uppercase tracking-wider mb-6">
         CULTURE & VALUES
       </div>
-      <h2 className="text-heading-xl font-semibold text-white mb-8">
+      <h2 className="text-heading-xl font-semibold text-gray-900 mb-8">
         Our core values shape everything we do
       </h2>
-      <p className="text-body-xl text-white/80 mb-12 leading-relaxed">
+      <p className="text-body-xl text-gray-700 mb-12 leading-relaxed">
         We believe in the power of technology to transform businesses and
         improve lives. Our commitment to innovation, inclusion, and shared
         success drives us to create lasting impact for all stakeholders.
@@ -533,10 +533,10 @@ export const CultureSection = () => (
             className="animate-slide-up"
             style={{ animationDelay: `${index * 0.2}s` }}
           >
-            <h3 className="text-heading-md font-semibold text-white mb-3">
+            <h3 className="text-heading-md font-semibold text-gray-900 mb-3">
               {value.title}
             </h3>
-            <p className="text-white/70">{value.description}</p>
+            <p className="text-gray-700">{value.description}</p>
           </div>
         ))}
       </div>
