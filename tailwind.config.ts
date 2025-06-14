@@ -158,11 +158,11 @@ export default {
       backgroundImage: {
         // Accenture gradients
         "accenture-gradient":
-          "linear-gradient(135deg, #000000 0%, #a600ff 100%)",
-        "accenture-purple": "linear-gradient(135deg, #a600ff 0%, #8b00d9 100%)",
+          "linear-gradient(135deg, #000000 0%, #e91e63 100%)",
+        "accenture-purple": "linear-gradient(135deg, #e91e63 0%, #c2185b 100%)",
         "accenture-dark": "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
         "hero-overlay":
-          "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(166,0,255,0.6) 100%)",
+          "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(233,30,99,0.6) 100%)",
       },
       boxShadow: {
         // Accenture shadows
