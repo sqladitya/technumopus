@@ -440,10 +440,10 @@ const About = () => {
       {/* CTA Section */}
       <section className="relative py-24 bg-gray-100 overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Ready to Transform Your Vision Into Reality?
           </h2>
-          <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
             Join the hundreds of organizations that have partnered with Technum
             Opus to achieve extraordinary results through innovative technology
             solutions.
@@ -459,7 +459,7 @@ const About = () => {
             </Link>
             <Link
               to="/services"
-              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
+              className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-gray-800 text-gray-900 rounded-xl font-semibold text-lg hover:bg-gray-200 hover:border-gray-600 transition-all duration-300 backdrop-blur-sm"
             >
               Explore Our Services
               <svg
