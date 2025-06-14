@@ -8,7 +8,7 @@ const About = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-accenture-black min-h-screen flex items-center">
+      <section className="relative overflow-hidden bg-gray-100 min-h-screen flex items-center">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="max-w-5xl">
             <div className="inline-flex items-center gap-2 bg-accenture-purple/20 backdrop-blur-sm border border-accenture-purple/30 rounded-full px-6 py-2 mb-8">
@@ -301,7 +301,7 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 bg-accenture-black">
+      <section className="py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
@@ -438,7 +438,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 bg-accenture-black overflow-hidden">
+      <section className="relative py-24 bg-gray-100 overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your Vision Into Reality?
