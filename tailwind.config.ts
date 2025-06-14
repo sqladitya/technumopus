@@ -59,11 +59,11 @@ export default {
           "black-light": "#0a0a0a",
           "black-lighter": "#1a1a1a",
 
-          // Accenture purple - their brand color
-          purple: "#a600ff",
-          "purple-dark": "#8b00d9",
-          "purple-light": "#b84dff",
-          "purple-bright": "#ff00ff",
+          // Brand pink/red colors
+          purple: "#e91e63", // Pink/red primary
+          "purple-dark": "#c2185b", // Darker pink/red
+          "purple-light": "#f06292", // Lighter pink/red
+          "purple-bright": "#ff6090", // Bright pink/red
 
           // Accent colors for variety
           red: "#e2062e",
