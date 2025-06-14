@@ -137,14 +137,14 @@ const Services = () => {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 min-h-[80vh] flex items-center">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-slate-900/90"></div>
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2 mb-8">
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-            <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 bg-pink-500/20 backdrop-blur-sm border border-pink-500/30 rounded-full px-6 py-2 mb-8">
+            <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-pink-300 uppercase tracking-wider">
               Our Services
             </span>
           </div>
