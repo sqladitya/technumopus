@@ -79,7 +79,7 @@ const HeroSection = () => {
       : heroSlides[currentSlide];
 
   return (
-    <section className="relative min-h-screen bg-accenture-black overflow-hidden">
+    <section className="relative min-h-screen bg-gray-100 overflow-hidden">
       {/* Mobile: Single static hero */}
       <div className="block md:hidden">
         <div className="absolute inset-0">
